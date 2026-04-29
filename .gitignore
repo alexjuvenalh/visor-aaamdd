@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+api/node_modules/
+
+# Third-party libraries (use CDN or install via npm)
+leaflet/
+leaflet-geoman-develop/
+leaflet-search-master/
+Leaflet.FileLayer-master/
+
+# Environment files (contains credentials)
+.env
+.env.local
+api/.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Cache
+.cache/

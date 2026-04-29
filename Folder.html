@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<meta charset="UTF-8">
+	<title>Leaflet FileLayer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+	<style> 
+  .icon {
+  max-width: 70%;
+  max-height: 70%;
+  margin: 4px;
+    }
+
+  body {
+     padding: 0;
+     margin: 0;
+     }
+  html, body, #map {
+    		height: 100%;
+		}
+
+</style> 
+</head>  
+	<body>
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   <script src="https://unpkg.com/togeojson@0.16.0"></script>
+   <script src="https://unpkg.com/leaflet-filelayer@1.2.0"></script>
+
+	<div id ="map"> </div> 
+	<script>
+	
+	var map = L.map('map').fitWorld();
+	var osm= L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+	var style = {
+            color: 'red',
+            opacity: 1.0,
+            fillOpacity: 1.0,
+            weight: 2,
+            clickable: false
+        };
+	L.Control.FileLayerLoad.LABEL = '<img class="icon" src="imagenes/Folder.svg" alt="file icon"/>';
+	 var control = L.Control.fileLayerLoad({
+	    
+        layer: L.geoJson,
+        
+        layerOptions: {
+                style: style,
+                pointToLayer: function (data, latlng) {
+                    return L.circleMarker(
+                        latlng,
+                        { style: style }
+                    );
+                }
+            },
+       
+        addToMap: true,
+        
+        fileSizeLimit: 1024,
+       
+        formats: [
+            '.geojson',
+            '.gpx',
+            '.kml'
+        ]
+    }).addTo(map);
+
+	var baseMaps = {
+    "OSM": osm,
+    };
+
+    var overlayMaps = {
+   };
+
+    var layerswitcher= L.control.layers(baseMaps, overlayMaps,{collapsed:false}).addTo(map);
+
+	
+    control.loader.on('data:loaded', function (event) {   
+      layerswitcher.addOverlay(event.layer, event.filename);
+    });
+
+  
+    control.loader.on('data:error', function (error) {
+       alert(error.error.message);
+    });
+  
+	</script>
+   </body> 
+</html> 

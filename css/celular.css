@@ -1,0 +1,18 @@
+/* Estilos para Celular (320px+) */
+/* El base ya es responsive, esto añade ajustes específicos */
+
+#controls {
+    padding: 8px 10px;
+    gap: 10px;
+    font-size: 14px;
+}
+
+#controls input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* En celulares muy pequeños,labels en línea */
+#controls label {
+    display: inline-block;
+    margin-right: 8px;
+}

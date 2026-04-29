@@ -1,0 +1,15 @@
+/* Estilos para Tablet (768px+) */
+
+#controls {
+    padding: 12px 20px;
+    gap: 20px;
+}
+
+#controls label {
+    font-size: 15px;
+}
+
+/* Quizás poner los controles en una fila más espaciosa */
+#controls label {
+    display: inline-block;
+}

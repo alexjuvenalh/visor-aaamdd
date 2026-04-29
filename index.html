@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="imagenes/favicon.png">
+    <link rel="icon" type="image/jpeg" href="imagenes/favicon.jpg">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visor AAA Madre de Dios</title>
+    <link rel="stylesheet" href="leaflet/leaflet.css">
+    <script src="leaflet/leaflet.js"></script>
+
+    <script src="leaflet-search-master\src\leaflet-search.js"></script>
+    <link rel="stylesheet" href="leaflet-search-master\src\leaflet-search.css" />
+
+    <!-- Librerías de clusterización (solo las necesarias) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+    <script src="https://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+    <link rel="stylesheet" href="css/estilosmapa.css"/>
+    <link rel="stylesheet" href="css/celular.css" media="screen and (min-width: 320px)"/>
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 768px)"/>
+    <link rel="stylesheet" href="css/computadora.css" media="screen and (min-width: 1200px)"/>
+</head>
+
+<body>
+    <main class="container">
+        <div id="controls">
+            <label><input type="checkbox" id="chkFaja"> Faja Marginal</label>
+            <label><input type="checkbox" id="chkHito"> Hitos Faja</label>
+            <label><input type="checkbox" id="chkAut"> Uso Temporal</label>
+            <label><input type="checkbox" id="chkRadaFuente"> RADA Fuente</label>
+            <label><input type="checkbox" id="chkRadaDerecho"> RADA Derecho</label>
+
+            <div id="search-box">
+                <input type="text" id="buscar-input" placeholder="Buscar...">
+                <button id="btn-buscar">🔍</button>
+            </div>
+
+            <div id="export-box">
+                <button id="btn-exportar">📥 Exportar</button>
+            </div>
+        </div>
+
+        <div id="map"></div>
+
+        <!-- Datos GeoJSON desde API -->
+        <script>
+            // Cargar datos desde API
+            fetch('http://localhost:3000/api/poligonos-faja')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    window.faja_poligono = data;
+                    console.log('Faja Marginal cargada:', data.features.length);
+                })
+                .catch(function(e) { console.error('Error:', e); });
+
+            fetch('http://localhost:3000/api/hitos-faja')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    window.faja_hito = data;
+                    console.log('Hitos Faja cargados:', data.features.length);
+                })
+                .catch(function(e) { console.error('Error:', e); });
+
+            fetch('http://localhost:3000/api/poligonos-autorizacion')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    window.uso_temporal = data;
+                    console.log('Uso Temporal cargado:', data.features.length);
+                })
+                .catch(function(e) { console.error('Error:', e); });
+
+            // RADA desde derechos
+            fetch('http://localhost:3000/api/derechos')
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    // Filtrar por tipo
+                    var porFuente = { type: 'FeatureCollection', features: [] };
+                    var porDerecho = { type: 'FeatureCollection', features: [] };
+                    if (data.features) {
+                        data.features.forEach(function(f) {
+                            if (f.properties && f.properties.tipo === 'fuente') {
+                                porFuente.features.push(f);
+                            } else {
+                                porDerecho.features.push(f);
+                            }
+                        });
+                    }
+                    window.rada_por_fuente = porFuente;
+                    window.rada_por_derecho = porDerecho;
+                    console.log('RADA por Fuente:', porFuente.features.length);
+                    console.log('RADA por Derecho:', porDerecho.features.length);
+                })
+                .catch(function(e) { console.error('Error:', e); });
+        </script>
+    </main>
+
+    <script src="https://unpkg.com/togeojson@0.16.0"></script>
+    <script src="https://unpkg.com/leaflet-filelayer@1.2.0"></script>
+    <script src="jsmapa/index.js"></script>
+</body>
+</html>
