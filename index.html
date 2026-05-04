@@ -239,14 +239,18 @@
                     try { mapa.removeLayer(kmlLayer); } catch(e) { console.log('Error removing:', e); }
                 }
                 
-                console.log('Creando capa GeoJSON con L:', typeof L);
+                console.log('Creando capa GeoJSON con L:', typeof L, 'window.L:', typeof window.L);
                 console.log('geojson válido:', !!geojson);
                 
                 try {
-                    kmlLayer = L.geoJson(geojson, {
+                    // Usar window.L para asegurar que tenemos Leaflet
+                    var Leaflet = window.L || L;
+                    console.log('Leaflet usado:', typeof Leaflet);
+                    
+                    kmlLayer = Leaflet.geoJson(geojson, {
                         style: { color: '#ff0000', weight: 3 },
                         pointToLayer: function(f, latlng) { 
-                            return L.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); 
+                            return Leaflet.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); 
                         },
                         onEachFeature: function(feature, layer) {
                             var props = feature.properties || {};
@@ -255,9 +259,11 @@
                             layer.bindPopup(content);
                         }
                     });
-                    console.log('kmlLayer creado:', !!kmlLayer, 'layers:', kmlLayer.getLayers ? kmlLayer.getLayers().length : 'N/A');
+                    console.log('kmlLayer creado:', !!kmlLayer, 'type:', typeof kmlLayer, 'layers:', kmlLayer.getLayers ? kmlLayer.getLayers().length : 'N/A');
                     
                     if (mapa && kmlLayer) {
+                        console.log('mapa.addTo existe:', typeof mapa.addTo);
+                        console.log('kmlLayer.addTo existe:', typeof kmlLayer.addTo);
                         kmlLayer.addTo(mapa);
                         console.log('Capa añadida al mapa');
                     }
