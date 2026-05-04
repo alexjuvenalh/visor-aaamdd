@@ -252,31 +252,39 @@
                     
                     // Usar window.L para asegurar que tenemos Leaflet
                     var Leaflet = window.L || L;
-                    console.log('Leaflet usado:', typeof Leaflet, 'geoJson:', typeof Leaflet.geoJson);
+                    console.log('Leaflet:', typeof Leaflet, 'geoJson:', typeof Leaflet.geoJson);
                     
-                    var layerGroup = Leaflet.geoJson(geojson, {
-                        style: { color: '#ff0000', weight: 3 },
-                        pointToLayer: function(f, latlng) { 
-                            return Leaflet.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); 
-                        },
-                        onEachFeature: function(feature, layer) {
-                            var props = feature.properties || {};
-                            var content = '<b>Feature</b><br/>';
-                            for (var key in props) content += key + ': ' + sanitize(props[key]) + '<br/>';
-                            layer.bindPopup(content);
+                    // Crear grupo de capas primero
+                    var layerGroup = Leaflet.layerGroup();
+                    
+                    // Agregar cada feature manualmente
+                    var layersAdded = 0;
+                    geojson.features.forEach(function(feature) {
+                        try {
+                            var layer = Leaflet.geoJson(feature, {
+                                style: { color: '#ff0000', weight: 3 },
+                                pointToLayer: function(f, latlng) { 
+                                    return Leaflet.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); 
+                                }
+                            });
+                            if (layer) {
+                                layerGroup.addLayer(layer);
+                                layersAdded++;
+                            }
+                        } catch(e) {
+                            console.log('Error en feature:', e);
                         }
                     });
                     
-                    // Asignar a variable global
+                    console.log('Features procesados:', geojson.features.length, 'capas agregadas:', layersAdded);
+                    
                     kmlLayer = layerGroup;
                     
-                    console.log('kmlLayer creado:', !!kmlLayer, 'type:', typeof kmlLayer, 'layers:', kmlLayer.getLayers ? kmlLayer.getLayers().length : 'N/A');
+                    console.log('kmlLayer:', !!kmlLayer, 'addLayer:', typeof kmlLayer.addLayer);
                     
-                    if (mapa && kmlLayer && typeof kmlLayer.addTo === 'function') {
+                    if (layersAdded > 0) {
                         kmlLayer.addTo(mapa);
-                        console.log('Capa añadida al mapa');
-                    } else {
-                        console.log('NO SE PUDO AGREGAR: mapa=', !!mapa, 'kmlLayer=', !!kmlLayer, 'addTo=', kmlLayer ? typeof kmlLayer.addTo : 'undefined');
+                        console.log('Capa añadida exitosamente');
                     }
                 } catch(e) {
                     console.error('Error creando capa:', e);
