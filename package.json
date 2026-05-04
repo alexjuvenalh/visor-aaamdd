@@ -4,7 +4,8 @@
   "description": "Visor GIS ANA Madre de Dios",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "start:api": "cd api && node server.js"
   },
   "engines": {
     "node": ">=14.0.0"
