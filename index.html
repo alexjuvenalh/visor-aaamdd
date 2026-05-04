@@ -156,16 +156,26 @@
         }
 
         function inicializar() {
+            console.log('Inicializando carga de archivos...');
             var fileInput = document.getElementById('file-kml');
-            if (!fileInput) { setTimeout(inicializar, 300); return; }
+            if (!fileInput) { 
+                console.log('Input no encontrado, reintentando...');
+                setTimeout(inicializar, 300); 
+                return; 
+            }
+            console.log('Input encontrado:', fileInput);
             fileInput.onclick = function(e) { e.target.value = ''; };
             fileInput.onchange = function(e) {
                 var file = e.target.files[0];
+                console.log('Archivo seleccionado:', file ? file.name : 'ninguno');
                 if (!file) return;
                 // Esperar a que el mapa esté listo
                 var intentos = 0;
+                console.log('Esperando mapa...');
                 function esperarMapa() {
+                    console.log('Intento', intentos, 'window.map:', window.map);
                     if (window.map) {
+                        console.log('Mapa listo, procesando archivo');
                         procesarArchivo(file);
                     } else if (intentos < 50) {
                         intentos++;
@@ -189,10 +199,13 @@
         }
 
         function procesarArchivo(file) {
+            console.log('=== PROCESAR ARCHIVO ===');
             var ext = file.name.split('.').pop().toLowerCase();
+            console.log('Extensión:', ext);
             var reader = new FileReader();
             reader.onload = function(event) {
                 var text = event.target.result;
+                console.log('Texto leído, tamaño:', text.length);
                 var geojson = null;
                 if (ext === 'kml') {
                     if (typeof toGeoJSON !== 'undefined') {
@@ -212,9 +225,18 @@
                 } else if (ext === 'json' || ext === 'geojson') {
                     geojson = JSON.parse(text);
                 }
-                if (!geojson || !geojson.features || geojson.features.length === 0) return;
+                console.log('GeoJSON:', geojson ? geojson.features.length : 0, 'features');
+                if (!geojson || !geojson.features || geojson.features.length === 0) {
+                    alert('No se pudieron leer coordenadas');
+                    return;
+                }
                 var mapa = window.map;
-                if (kmlLayer) mapa.removeLayer(kmlLayer);
+                console.log('Mapa:', !!mapa);
+                if (kmlLayer) {
+                    console.log('Removiendo capa anterior');
+                    mapa.removeLayer(kmlLayer);
+                }
+                console.log('Creando capa GeoJSON...');
                 kmlLayer = L.geoJson(geojson, {
                     style: { color: '#ff0000', weight: 3 },
                     pointToLayer: function(f, latlng) { return L.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); },
@@ -225,9 +247,14 @@
                         layer.bindPopup(content);
                     }
                 }).addTo(mapa);
+                console.log('Capa ajoutée al mapa, layers:', kmlLayer.getLayers().length);
                 document.getElementById('file-kml').value = '';
                 var bounds = kmlLayer.getBounds();
-                if (bounds.isValid()) mapa.fitBounds(bounds);
+                if (bounds.isValid()) {
+                    console.log('Zoom a bounds');
+                    mapa.fitBounds(bounds);
+                }
+                alert('KML cargado: ' + geojson.features.length + ' elementos');
             };
             reader.readAsText(file);
         }
