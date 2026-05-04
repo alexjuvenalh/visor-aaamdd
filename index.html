@@ -162,8 +162,19 @@
             fileInput.onchange = function(e) {
                 var file = e.target.files[0];
                 if (!file) return;
-                if (!window.map) return;
-                procesarArchivo(file);
+                // Esperar a que el mapa esté listo
+                var intentos = 0;
+                function esperarMapa() {
+                    if (window.map) {
+                        procesarArchivo(file);
+                    } else if (intentos < 50) {
+                        intentos++;
+                        setTimeout(esperarMapa, 100);
+                    } else {
+                        alert('Mapa no disponible');
+                    }
+                }
+                esperarMapa();
             };
             var btnLimpiar = document.getElementById('btn-limpiar-kml');
             if (btnLimpiar) {
