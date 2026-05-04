@@ -230,23 +230,41 @@
                     alert('No se pudieron leer coordenadas');
                     return;
                 }
+                
                 var mapa = window.map;
-                console.log('Mapa:', !!mapa);
-                if (kmlLayer) {
-                    console.log('Removiendo capa anterior');
-                    mapa.removeLayer(kmlLayer);
+                console.log('Mapa:', !!mapa, mapa);
+                
+                // Remover capa anterior si existe
+                if (kmlLayer && mapa) {
+                    try { mapa.removeLayer(kmlLayer); } catch(e) { console.log('Error removing:', e); }
                 }
-                console.log('Creando capa GeoJSON...');
-                kmlLayer = L.geoJson(geojson, {
-                    style: { color: '#ff0000', weight: 3 },
-                    pointToLayer: function(f, latlng) { return L.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); },
-                    onEachFeature: function(feature, layer) {
-                        var props = feature.properties || {};
-                        var content = '<b>Feature</b><br/>';
-                        for (var key in props) content += key + ': ' + sanitize(props[key]) + '<br/>';
-                        layer.bindPopup(content);
+                
+                console.log('Creando capa GeoJSON con L:', typeof L);
+                console.log('geojson válido:', !!geojson);
+                
+                try {
+                    kmlLayer = L.geoJson(geojson, {
+                        style: { color: '#ff0000', weight: 3 },
+                        pointToLayer: function(f, latlng) { 
+                            return L.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); 
+                        },
+                        onEachFeature: function(feature, layer) {
+                            var props = feature.properties || {};
+                            var content = '<b>Feature</b><br/>';
+                            for (var key in props) content += key + ': ' + sanitize(props[key]) + '<br/>';
+                            layer.bindPopup(content);
+                        }
+                    });
+                    console.log('kmlLayer creado:', !!kmlLayer, 'layers:', kmlLayer.getLayers ? kmlLayer.getLayers().length : 'N/A');
+                    
+                    if (mapa && kmlLayer) {
+                        kmlLayer.addTo(mapa);
+                        console.log('Capa añadida al mapa');
                     }
-                }).addTo(mapa);
+                } catch(e) {
+                    console.error('Error creando capa:', e);
+                    alert('Error: ' + e.message);
+                }
                 console.log('Capa ajoutée al mapa, layers:', kmlLayer.getLayers().length);
                 document.getElementById('file-kml').value = '';
                 var bounds = kmlLayer.getBounds();
