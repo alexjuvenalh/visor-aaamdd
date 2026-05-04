@@ -64,19 +64,6 @@
             fillOpacity: 0.8
         };
 
-        // FileLayer
-        L.Control.FileLayerLoad.LABEL = '<img class="icon" src="imagenes/Folder.svg" alt="file icon"/>';
-        var control = L.Control.fileLayerLoad({
-            fitBounds: true,
-            layerOptions: {
-                style: polygonStyle,
-                pointToLayer: function (data, latlng) {
-                    return L.circleMarker(latlng, { style: pointStyle });
-                }
-            }
-        });
-        control.addTo(map);
-
         // ============================================
         // LEYENDA
         // ============================================
