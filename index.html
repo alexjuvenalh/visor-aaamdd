@@ -240,14 +240,21 @@
                 }
                 
                 console.log('Creando capa GeoJSON con L:', typeof L, 'window.L:', typeof window.L);
-                console.log('geojson válido:', !!geojson);
+                console.log('geojson válido:', !!geojson, 'type:', geojson ? geojson.type : 'N/A');
+                console.log('geojson.features:', geojson ? geojson.features : 'N/A');
                 
                 try {
+                    // Verificar geojson
+                    if (!geojson || !geojson.features || geojson.features.length === 0) {
+                        alert('GeoJSON inválido o vacío');
+                        return;
+                    }
+                    
                     // Usar window.L para asegurar que tenemos Leaflet
                     var Leaflet = window.L || L;
-                    console.log('Leaflet usado:', typeof Leaflet);
+                    console.log('Leaflet usado:', typeof Leaflet, 'geoJson:', typeof Leaflet.geoJson);
                     
-                    kmlLayer = Leaflet.geoJson(geojson, {
+                    var layerGroup = Leaflet.geoJson(geojson, {
                         style: { color: '#ff0000', weight: 3 },
                         pointToLayer: function(f, latlng) { 
                             return Leaflet.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); 
@@ -259,13 +266,17 @@
                             layer.bindPopup(content);
                         }
                     });
+                    
+                    // Asignar a variable global
+                    kmlLayer = layerGroup;
+                    
                     console.log('kmlLayer creado:', !!kmlLayer, 'type:', typeof kmlLayer, 'layers:', kmlLayer.getLayers ? kmlLayer.getLayers().length : 'N/A');
                     
-                    if (mapa && kmlLayer) {
-                        console.log('mapa.addTo existe:', typeof mapa.addTo);
-                        console.log('kmlLayer.addTo existe:', typeof kmlLayer.addTo);
+                    if (mapa && kmlLayer && typeof kmlLayer.addTo === 'function') {
                         kmlLayer.addTo(mapa);
                         console.log('Capa añadida al mapa');
+                    } else {
+                        console.log('NO SE PUDO AGREGAR: mapa=', !!mapa, 'kmlLayer=', !!kmlLayer, 'addTo=', kmlLayer ? typeof kmlLayer.addTo : 'undefined');
                     }
                 } catch(e) {
                     console.error('Error creando capa:', e);
