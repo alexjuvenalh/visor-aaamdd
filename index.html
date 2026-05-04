@@ -47,55 +47,20 @@
 
         <div id="map"></div>
 
-        <!-- Datos GeoJSON desde API -->
+        <!-- Datos locales (modo offline) -->
+        <script src="visor/geojson/faja_poligono.js"></script>
+        <script src="visor/geojson/faja_hito.js"></script>
+        <script src="visor/geojson/uso_temporal.js"></script>
         <script>
-            // Cargar datos desde API
-            fetch('http://localhost:3000/api/poligonos-faja')
-                .then(function(r) { return r.json(); })
-                .then(function(data) {
-                    window.faja_poligono = data;
-                    console.log('Faja Marginal cargada:', data.features.length);
-                })
-                .catch(function(e) { console.error('Error:', e); });
-
-            fetch('http://localhost:3000/api/hitos-faja')
-                .then(function(r) { return r.json(); })
-                .then(function(data) {
-                    window.faja_hito = data;
-                    console.log('Hitos Faja cargados:', data.features.length);
-                })
-                .catch(function(e) { console.error('Error:', e); });
-
-            fetch('http://localhost:3000/api/poligonos-autorizacion')
-                .then(function(r) { return r.json(); })
-                .then(function(data) {
-                    window.uso_temporal = data;
-                    console.log('Uso Temporal cargado:', data.features.length);
-                })
-                .catch(function(e) { console.error('Error:', e); });
-
-            // RADA desde derechos
-            fetch('http://localhost:3000/api/derechos')
-                .then(function(r) { return r.json(); })
-                .then(function(data) {
-                    // Filtrar por tipo
-                    var porFuente = { type: 'FeatureCollection', features: [] };
-                    var porDerecho = { type: 'FeatureCollection', features: [] };
-                    if (data.features) {
-                        data.features.forEach(function(f) {
-                            if (f.properties && f.properties.tipo === 'fuente') {
-                                porFuente.features.push(f);
-                            } else {
-                                porDerecho.features.push(f);
-                            }
-                        });
-                    }
-                    window.rada_por_fuente = porFuente;
-                    window.rada_por_derecho = porDerecho;
-                    console.log('RADA por Fuente:', porFuente.features.length);
-                    console.log('RADA por Derecho:', porDerecho.features.length);
-                })
-                .catch(function(e) { console.error('Error:', e); });
+            // Asignar datos locales
+            window.faja_poligono = faja_poligono;
+            window.faja_hito = faja_hito;
+            window.uso_temporal = uso_temporal;
+            window.rada_por_fuente = { type: 'FeatureCollection', features: [] };
+            window.rada_por_derecho = { type: 'FeatureCollection', features: [] };
+            console.log('Faja Marginal cargada:', faja_poligono.features.length);
+            console.log('Hitos Faja cargados:', faja_hito.features.length);
+            console.log('Uso Temporal cargado:', uso_temporal.features.length);
         </script>
     </main>
 
