@@ -379,6 +379,65 @@
         console.log('Autorizaciones disponibles:', window.uso_temporal?.features?.length || 0);
     }
 
+        // Buscar por número de resolución
+        var btnBuscar = document.getElementById('btn-buscar');
+        var inputBuscar = document.getElementById('buscar-input');
+        if (btnBuscar && inputBuscar) {
+            btnBuscar.addEventListener('click', buscarPorResolucion);
+            inputBuscar.addEventListener('keypress', function(e) { if (e.key === 'Enter') buscarPorResolucion(); });
+        }
+
+        function buscarPorResolucion() {
+            var texto = inputBuscar.value.trim().toUpperCase();
+            if (!texto) return;
+            var resultados = [];
+            if (window.faja_poligono && window.faja_poligono.features) {
+                window.faja_poligono.features.forEach(function(f) {
+                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                        resultados.push({ tipo: 'Faja Marginal', data: f });
+                    }
+                });
+            }
+            if (window.faja_hito && window.faja_hito.features) {
+                window.faja_hito.features.forEach(function(f) {
+                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                        resultados.push({ tipo: 'Hito', data: f });
+                    }
+                });
+            }
+            if (window.uso_temporal && window.uso_temporal.features) {
+                window.uso_temporal.features.forEach(function(f) {
+                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                        resultados.push({ tipo: 'Uso Temporal', data: f });
+                    }
+                });
+            }
+            if (resultados.length === 0) { alert('No se encontró: ' + inputBuscar.value); return; }
+            var feature = resultados[0].data;
+            var layer = L.geoJson(feature);
+            var bounds = layer.getBounds();
+            if (bounds.isValid()) { map.fitBounds(bounds, { padding: [50, 50] }); }
+            else if (feature.geometry.type === 'Point') { var c = feature.geometry.coordinates; map.setView([c[1], c[0]], 15); }
+        }
+
+        // GPS
+        var gpsMarker = null;
+        var btnGps = document.getElementById('btn-gps');
+        if (btnGps) {
+            btnGps.addEventListener('click', function() {
+                if (!navigator.geolocation) { alert('Tu navegador no soporta GPS'); return; }
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                    var lat = pos.coords.latitude, lng = pos.coords.longitude, prec = pos.coords.accuracy;
+                    if (gpsMarker) map.removeLayer(gpsMarker);
+                    gpsMarker = L.marker([lat, lng], {
+                        icon: L.divIcon({ className: 'gps-marker', html: '<div style="background:#2196F3;width:20px;height:20px;border-radius:50%;border:3px solid white;box-shadow:0 2px 5px rgba(0,0,0,0.3);"></div>', iconSize: [20, 20], iconAnchor: [10, 10] })
+                    }).addTo(map);
+                    map.setView([lat, lng], 16);
+                    gpsMarker.bindPopup('<b>📍 Tu ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm').openPopup();
+                }, function(err) { alert('Error GPS: ' + err.message); }, { enableHighAccuracy: true, timeout: 30000 });
+            });
+        }
+
     window.addEventListener('load', function () {
         initMap();
     });
