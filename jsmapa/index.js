@@ -1,5 +1,7 @@
 (function (window) {
     'use strict';
+    
+    console.log('>>> jsmapa/index.js CARGADO');
 
     function sanitize(str) {
         if (str == null) return '';
