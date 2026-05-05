@@ -17,16 +17,16 @@ const path = require('path');
 const CONFIG = {
     host: 'localhost',
     port: 5432,
-    database: 'tu_base_de_datos',    // <-- CAMBIA ESTO
-    user: 'postgres',                // <-- CAMBIA ESTO
-    password: 'tu_password'          // <-- CAMBIA ESTO
+    database: 'aaamadrededios',
+    user: 'postgres',
+    password: 'Aut0ridad1'
 };
 
-// Tablas a exportar (ajusta los nombres si son diferentes)
+// Vistas a exportar (en esquema geo)
 const TABLAS = [
-    { nombre: 'faja_poligono', archivo: 'faja_poligono.js' },
-    { nombre: 'faja_hito', archivo: 'faja_hito.js' },
-    { nombre: 'uso_temporal', archivo: 'uso_temporal.js' }
+    { nombre: 'geo.vi_faja_marginal_poligono', archivo: 'faja_poligono.js' },
+    { nombre: 'geo.vi_faja_marginal_hito', archivo: 'faja_hito.js' },
+    { nombre: 'geo.vi_autorizacion_uso_temporal_poligono', archivo: 'uso_temporal.js' }
 ];
 
 // Directorio de salida
@@ -38,8 +38,13 @@ async function exportarTabla(client, nombreTabla, nombreArchivo) {
     console.log(`\n📦 Exportando ${nombreTabla}...`);
     
     try {
-        // Obtener todos los registros
-        const result = await client.query(`SELECT * FROM ${nombreTabla}`);
+        // Obtener registros usando ST_AsGeoJSON para la geometría
+        const result = await client.query(`
+            SELECT 
+                *,
+                ST_AsGeoJSON(geom) as geometria_json
+            FROM ${nombreTabla}
+        `);
         const filas = result.rows;
         
         console.log(`   ✓ ${filas.length} registros encontrados`);
@@ -53,12 +58,13 @@ async function exportarTabla(client, nombreTabla, nombreArchivo) {
         
         // Convertir a GeoJSON
         const features = filas.map(fila => {
-            // Extraer geometría (ajusta según tu estructura de columnas)
-            const geometry = fila.geometria || fila.geom || fila.the_geom;
+            // Usar la geometría convertida con ST_AsGeoJSON
+            const geometry = fila.geometria_json ? JSON.parse(fila.geometria_json) : null;
             const propiedades = { ...fila };
             
             // Eliminar columnas de geometría de las propiedades
             delete propiedades.geometria;
+            delete propiedades.geometria_json;
             delete propiedades.geom;
             delete propiedades.the_geom;
             delete propiedades.wkb_geometry;
@@ -66,20 +72,8 @@ async function exportarTabla(client, nombreTabla, nombreArchivo) {
             return {
                 type: 'Feature',
                 properties: propiedades,
-                geometry: geometry  // PostgreSQL retorna esto como string o objeto
+                geometry: geometry
             };
-        });
-        
-        // Convertir geometrías de string a objeto si es necesario
-        features.forEach(f => {
-            if (f.geometry && typeof f.geometry === 'string') {
-                try {
-                    f.geometry = JSON.parse(f.geometry);
-                } catch (e) {
-                    // No es JSON, puedeser WKB binario - intenta convertir
-                    console.log(`   ⚠️ Geometría en formato no estándar`);
-                }
-            }
         });
         
         const geojson = {
