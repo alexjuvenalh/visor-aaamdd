@@ -129,6 +129,20 @@
                 }
                 kml += '  </Style>\n';
                 
+                // Estilo para etiqueta de resolución en uso temporal
+                if (tipoCapa === 'uso') {
+                    kml += '  <Style id="uso-resolucion">\n';
+                    kml += '    <LabelStyle>\n';
+                    kml += '      <color>ffff0000</color>\n';
+                    kml += '      <scale>0.7</scale>\n';
+                    kml += '    </LabelStyle>\n';
+                    kml += '    <IconStyle>\n';
+                    kml += '      <color>00000000</color>\n';
+                    kml += '      <scale>0</scale>\n';
+                    kml += '    </IconStyle>\n';
+                    kml += '  </Style>\n';
+                }
+                
                 // Agregar estilo de icono para puntos
                 if (geojson.features[0] && geojson.features[0].geometry.type === 'Point') {
                     kml += '  <Style id="hito-icon">\n';
@@ -178,6 +192,22 @@
                         kml += '    <Polygon><outerBoundaryIs><LinearRing><coordinates>';
                         feature.geometry.coordinates[0].forEach(function(c) { kml += c[0] + ',' + c[1] + ',0 '; });
                         kml += '</coordinates></LinearRing></outerBoundaryIs></Polygon>\n';
+                        
+                        // Para uso temporal, agregar etiqueta con número de resolución en el centro
+                        if (tipoCapa === 'uso' && feature.properties.numero_resolucion) {
+                            // Calcular centroide simple (promedio de coordenadas)
+                            var ring = feature.geometry.coordinates[0];
+                            var sumLng = 0, sumLat = 0;
+                            ring.forEach(function(c) { sumLng += c[0]; sumLat += c[1]; });
+                            var centroLng = sumLng / ring.length;
+                            var centroLat = sumLat / ring.length;
+                            
+                            kml += '  <Placemark>\n';
+                            kml += '    <name><![CDATA[' + feature.properties.numero_resolucion + ']]></name>\n';
+                            kml += '    <styleUrl>#uso-resolucion</styleUrl>\n';
+                            kml += '    <Point><coordinates>' + centroLng + ',' + centroLat + ',0</coordinates></Point>\n';
+                            kml += '  </Placemark>\n';
+                        }
                     }
                     
                     kml += '  </Placemark>\n';
