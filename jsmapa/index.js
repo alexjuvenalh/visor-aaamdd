@@ -461,22 +461,155 @@
             else if (feature.geometry.type === 'Point') { var c = feature.geometry.coordinates; map.setView([c[1], c[0]], 15); }
         }
 
-        // GPS
+        // GPS - Seguimiento en tiempo real como Google Earth
         var gpsMarker = null;
+        var gpsTrack = null;
+        var gpsWatchId = null;
+        var gpsTrackCoords = [];
+        var gpsPathLayer = null;
+        
         var btnGps = document.getElementById('btn-gps');
         if (btnGps) {
             btnGps.addEventListener('click', function() {
-                if (!navigator.geolocation) { alert('Tu navegador no soporta GPS'); return; }
-                navigator.geolocation.getCurrentPosition(function(pos) {
-                    var lat = pos.coords.latitude, lng = pos.coords.longitude, prec = pos.coords.accuracy;
-                    if (gpsMarker) map.removeLayer(gpsMarker);
-                    gpsMarker = L.marker([lat, lng], {
-                        icon: L.divIcon({ className: 'gps-marker', html: '<div style="background:#2196F3;width:20px;height:20px;border-radius:50%;border:3px solid white;box-shadow:0 2px 5px rgba(0,0,0,0.3);"></div>', iconSize: [20, 20], iconAnchor: [10, 10] })
-                    }).addTo(map);
+                if (!navigator.geolocation) { 
+                    alert('Tu navegador no soporta GPS'); 
+                    return; 
+                }
+                
+                // Si ya está activo, detener seguimiento
+                if (gpsWatchId !== null) {
+                    navigator.geolocation.clearWatch(gpsWatchId);
+                    gpsWatchId = null;
+                    btnGps.textContent = '📍 GPS';
+                    btnGps.style.background = '#4CAF50';
+                    
+                    // Agregar botones de exportar
+                    agregarBotonesExportarGPS();
+                    return;
+                }
+                
+                // Iniciar seguimiento
+                gpsTrackCoords = [];
+                btnGps.textContent = '⏹️ Detener';
+                btnGps.style.background = '#f44336';
+                
+                // Crear polyline para el track
+                gpsPathLayer = L.polyline([], {
+                    color: '#2196F3',
+                    weight: 4,
+                    opacity: 0.8
+                }).addTo(map);
+                
+                // Iniciar watchPosition
+                gpsWatchId = navigator.geolocation.watchPosition(function(pos) {
+                    var lat = pos.coords.latitude;
+                    var lng = pos.coords.longitude;
+                    var prec = pos.coords.accuracy;
+                    
+                    // Agregar al track
+                    gpsTrackCoords.push([lat, lng]);
+                    gpsPathLayer.setLatLngs(gpsTrackCoords);
+                    
+                    // Actualizar o crear marker
+                    if (gpsMarker) {
+                        gpsMarker.setLatLng([lat, lng]);
+                        gpsMarker.setPopupContent('<b>📍 Tu ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm<br>Puntos: ' + gpsTrackCoords.length);
+                    } else {
+                        gpsMarker = L.marker([lat, lng], {
+                            icon: L.divIcon({ 
+                                className: 'gps-marker', 
+                                html: '<div style="background:#2196F3;width:24px;height:24px;border-radius:50%;border:3px solid white;box-shadow:0 2px 5px rgba(0,0,0,0.3);animation:pulse 1s infinite;"></div>', 
+                                iconSize: [24, 24], 
+                                iconAnchor: [12, 12] 
+                            })
+                        }).addTo(map);
+                        gpsMarker.bindPopup('<b>📍 Tu ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm<br>Puntos: ' + gpsTrackCoords.length);
+                        gpsMarker.openPopup();
+                    }
+                    
+                    // Centrar mapa en posición actual
                     map.setView([lat, lng], 16);
-                    gpsMarker.bindPopup('<b>📍 Tu ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm').openPopup();
-                }, function(err) { alert('Error GPS: ' + err.message); }, { enableHighAccuracy: true, timeout: 30000 });
+                    
+                }, function(err) { 
+                    alert('Error GPS: ' + err.message); 
+                }, { 
+                    enableHighAccuracy: true, 
+                    timeout: 10000,
+                    maximumAge: 0,
+                    distanceFilter: 1 // Actualizar cada 1 metro
+                });
             });
+        }
+        
+        // Función para agregar botones de exportar track GPS
+        function agregarBotonesExportarGPS() {
+            if (gpsTrackCoords.length === 0) return;
+            
+            var infoDiv = document.getElementById('controls');
+            if (!infoDiv) return;
+            
+            // Verificar si ya existen los botones
+            if (document.getElementById('gps-export-btns')) return;
+            
+            var exportDiv = document.createElement('div');
+            exportDiv.id = 'gps-export-btns';
+            exportDiv.style.cssText = 'margin-top:10px;padding:10px;background:#e3f2fd;border-radius:5px;';
+            exportDiv.innerHTML = '<b>📍 Track GPS (' + gpsTrackCoords.length + ' puntos)</b><br>' +
+                '<button id="btn-gps-gpx" style="margin:3px;padding:3px 8px;cursor:pointer;background:#4CAF50;color:white;border:none;border-radius:3px;">📥 GPX</button>' +
+                '<button id="btn-gps-geojson" style="margin:3px;padding:3px 8px;cursor:pointer;background:#2196F3;color:white;border:none;border-radius:3px;">📥 GeoJSON</button>' +
+                '<button id="btn-gps-txt" style="margin:3px;padding:3px 8px;cursor:pointer;background:#ff9800;color:white;border:none;border-radius:3px;">📥 TXT</button>' +
+                '<button id="btn-gps-limpiar" style="margin:3px;padding:3px 8px;cursor:pointer;background:#f44336;color:white;border:none;border-radius:3px;">🗑️ Limpiar</button>';
+            infoDiv.appendChild(exportDiv);
+            
+            // GPX
+            document.getElementById('btn-gps-gpx').onclick = function() {
+                var gpx = '<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1"><trk><name>Track GPS</name><trkseg>\n';
+                gpsTrackCoords.forEach(function(c) {
+                    gpx += '  <trkpt lat="' + c[0] + '" lon="' + c[1] + '"></trkpt>\n';
+                });
+                gpx += '</trkseg></trk></gpx>';
+                var blob = new Blob([gpx], { type: 'application/gpx+xml' });
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'track_gps_' + Date.now() + '.gpx';
+                link.click();
+            };
+            
+            // GeoJSON
+            document.getElementById('btn-gps-geojson').onclick = function() {
+                var geojson = { type: 'FeatureCollection', features: [{
+                    type: 'Feature',
+                    properties: { name: 'Track GPS', puntos: gpsTrackCoords.length },
+                    geometry: { type: 'LineString', coordinates: gpsTrackCoords.map(function(c) { return [c[1], c[0]]; }) }
+                }]};
+                var blob = new Blob([JSON.stringify(geojson, null, 2)], { type: 'application/json' });
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'track_gps_' + Date.now() + '.geojson';
+                link.click();
+            };
+            
+            // TXT
+            document.getElementById('btn-gps-txt').onclick = function() {
+                var txt = 'Latitud,Longitud\n';
+                gpsTrackCoords.forEach(function(c) {
+                    txt += c[0].toFixed(6) + ',' + c[1].toFixed(6) + '\n';
+                });
+                var blob = new Blob([txt], { type: 'text/plain' });
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'track_gps_' + Date.now() + '.csv';
+                link.click();
+            };
+            
+            // Limpiar
+            document.getElementById('btn-gps-limpiar').onclick = function() {
+                if (gpsMarker) { map.removeLayer(gpsMarker); gpsMarker = null; }
+                if (gpsPathLayer) { map.removeLayer(gpsPathLayer); gpsPathLayer = null; }
+                gpsTrackCoords = [];
+                var exportDiv = document.getElementById('gps-export-btns');
+                if (exportDiv) exportDiv.remove();
+            };
         }
 
     window.addEventListener('load', function () {
