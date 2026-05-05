@@ -1,4 +1,4 @@
-var geo.vi_autorizacion_uso_temporal_poligono = {
+var uso_temporal = {
   "type": "FeatureCollection",
   "features": [
     {

@@ -1,4 +1,4 @@
-var geo.vi_faja_marginal_poligono = {
+var faja_poligono = {
   "type": "FeatureCollection",
   "features": [
     {

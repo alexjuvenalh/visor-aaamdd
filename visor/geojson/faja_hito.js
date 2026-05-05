@@ -1,4 +1,4 @@
-var geo.vi_faja_marginal_hito = {
+var faja_hito = {
   "type": "FeatureCollection",
   "features": [
     {
