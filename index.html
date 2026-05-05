@@ -17,20 +17,45 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="https://unpkg.com/shp-write@0.3.1/shpwrite.js"></script>
 
     <script src="https://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
     <link rel="stylesheet" href="css/estilosmapa.css"/>
     <link rel="stylesheet" href="css/celular.css" media="screen and (min-width: 320px)"/>
     <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 768px)"/>
     <link rel="stylesheet" href="css/computadora.css" media="screen and (min-width: 1200px)"/>
+    <style>
+        .capa-item { display: flex; align-items: center; gap: 5px; margin: 3px 0; }
+        .capa-btns { display: inline-flex; gap: 3px; margin-left: 5px; }
+        .btn-descarga { font-size: 9px; padding: 2px 6px; cursor: pointer; background: #607D8B; color: white; border: none; border-radius: 3px; }
+        .btn-descarga:hover { background: #455A64; }
+    </style>
 </head>
 
 <body>
     <main class="container">
         <div id="controls">
-            <label><input type="checkbox" id="chkFaja"> Faja Marginal</label>
-            <label><input type="checkbox" id="chkHito"> Hitos Faja</label>
-            <label><input type="checkbox" id="chkAut"> Uso Temporal</label>
+            <div class="capa-item">
+                <label><input type="checkbox" id="chkFaja"> Faja Marginal</label>
+                <span class="capa-btns">
+                    <button class="btn-descarga" onclick="descargarCapa('faja')">KML</button>
+                    <button class="btn-descarga" onclick="descargarCapaShp('faja')">SHP</button>
+                </span>
+            </div>
+            <div class="capa-item">
+                <label><input type="checkbox" id="chkHito"> Hitos Faja</label>
+                <span class="capa-btns">
+                    <button class="btn-descarga" onclick="descargarCapa('hito')">KML</button>
+                    <button class="btn-descarga" onclick="descargarCapaShp('hito')">SHP</button>
+                </span>
+            </div>
+            <div class="capa-item">
+                <label><input type="checkbox" id="chkAut"> Uso Temporal</label>
+                <span class="capa-btns">
+                    <button class="btn-descarga" onclick="descargarCapa('uso')">KML</button>
+                    <button class="btn-descarga" onclick="descargarCapaShp('uso')">SHP</button>
+                </span>
+            </div>
             <label><input type="checkbox" id="chkRadaFuente"> RADA Fuente</label>
             <label><input type="checkbox" id="chkRadaDerecho"> RADA Derecho</label>
 
@@ -71,6 +96,93 @@
             console.log('Faja Marginal cargada:', faja_poligono.features.length);
             console.log('Hitos Faja cargados:', faja_hito.features.length);
             console.log('Uso Temporal cargado:', uso_temporal.features.length);
+        </script>
+
+        <!-- Funciones para descargar capas -->
+        <script>
+            // Convertir GeoJSON a KML
+            function geojsonToKML(geojson, nombreCapa) {
+                var kml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+                kml += '<kml xmlns="http://www.opengis.net/kml/2.2">\n';
+                kml += '<Document>\n';
+                kml += '  <name>' + nombreCapa + '</name>\n';
+                
+                geojson.features.forEach(function(feature, i) {
+                    var nombre = feature.properties.nombre_faja_marginal || feature.properties.nombre_o_razon_social || feature.properties.hito || ('Feature ' + (i + 1));
+                    kml += '  <Placemark>\n';
+                    kml += '    <name><![CDATA[' + nombre + ']]></name>\n';
+                    
+                    var desc = '';
+                    for (var key in feature.properties) {
+                        if (feature.properties[key]) desc += key + ': ' + feature.properties[key] + '\n';
+                    }
+                    kml += '    <description><![CDATA[' + desc + ']]></description>\n';
+                    
+                    if (feature.geometry.type === 'Point') {
+                        var coords = feature.geometry.coordinates;
+                        kml += '    <Point><coordinates>' + coords[0] + ',' + coords[1] + ',0</coordinates></Point>\n';
+                    } else if (feature.geometry.type === 'LineString') {
+                        kml += '    <LineString><coordinates>';
+                        feature.geometry.coordinates.forEach(function(c) { kml += c[0] + ',' + c[1] + ',0 '; });
+                        kml += '</coordinates></LineString>\n';
+                    } else if (feature.geometry.type === 'Polygon') {
+                        kml += '    <Polygon><outerBoundaryIs><LinearRing><coordinates>';
+                        feature.geometry.coordinates[0].forEach(function(c) { kml += c[0] + ',' + c[1] + ',0 '; });
+                        kml += '</coordinates></LinearRing></outerBoundaryIs></Polygon>\n';
+                    }
+                    
+                    kml += '  </Placemark>\n';
+                });
+                
+                kml += '</Document>\n</kml>';
+                return kml;
+            }
+
+            // Descargar como KML
+            function descargarCapa(capa) {
+                var geojson, nombre;
+                if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'Faja_Marginal'; }
+                else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'Hitos_Faja'; }
+                else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'Uso_Temporal'; }
+                
+                if (!geojson || !geojson.features || geojson.features.length === 0) {
+                    alert('No hay datos para descargar');
+                    return;
+                }
+                
+                var kml = geojsonToKML(geojson, nombre);
+                var blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = nombre + '_' + Date.now() + '.kml';
+                link.click();
+            }
+
+            // Descargar como SHP usando shp-write
+            function descargarCapaShp(capa) {
+                var geojson, nombre;
+                if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'Faja_Marginal'; }
+                else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'Hitos_Faja'; }
+                else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'Uso_Temporal'; }
+                
+                if (!geojson || !geojson.features || geojson.features.length === 0) {
+                    alert('No hay datos para descargar');
+                    return;
+                }
+                
+                if (typeof shpwrite === 'undefined') {
+                    alert('Librería SHP no cargada. Intenta de nuevo.');
+                    return;
+                }
+                
+                shpwrite.download({
+                    type: 'FeatureCollection',
+                    features: geojson.features
+                }, {
+                    folder: nombre,
+                    filename: nombre
+                });
+            }
         </script>
     </main>
 
