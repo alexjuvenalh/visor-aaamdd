@@ -56,7 +56,13 @@
                     <button class="btn-descarga" onclick="descargarCapaShp('uso')">SHP</button>
                 </span>
             </div>
-            <label><input type="checkbox" id="chkRadaFuente"> RADA Fuente</label>
+            <div class="capa-item">
+                <label><input type="checkbox" id="chkRadaFuente"> RADA Fuente</label>
+                <span class="capa-btns">
+                    <button class="btn-descarga" onclick="descargarCapa('rada')">KML</button>
+                    <button class="btn-descarga" onclick="descargarCapaShp('rada')">SHP</button>
+                </span>
+            </div>
             <label><input type="checkbox" id="chkRadaDerecho"> RADA Derecho</label>
 
             <div id="search-box">
@@ -86,20 +92,88 @@
         <script src="visor/geojson/faja_poligono.js"></script>
         <script src="visor/geojson/faja_hito.js"></script>
         <script src="visor/geojson/uso_temporal.js"></script>
+        <script src="visor/geojson/rada_fuente.js"></script>
         <script>
             // Asignar datos locales
             window.faja_poligono = faja_poligono;
             window.faja_hito = faja_hito;
             window.uso_temporal = uso_temporal;
-            window.rada_por_fuente = { type: 'FeatureCollection', features: [] };
+            window.rada_por_fuente = (typeof rada_fuente !== 'undefined') ? rada_fuente : { type: 'FeatureCollection', features: [] };
             window.rada_por_derecho = { type: 'FeatureCollection', features: [] };
             console.log('Faja Marginal cargada:', faja_poligono.features.length);
             console.log('Hitos Faja cargados:', faja_hito.features.length);
             console.log('Uso Temporal cargado:', uso_temporal.features.length);
+            console.log('RADA Fuente cargado:', rada_fuente.features.length);
         </script>
 
         <!-- Funciones para descargar capas -->
         <script>
+            // Colores para categorización de RADA por Uso
+            var coloresRADA = {
+                'Acuícola': 'ff00ffff',      // Cyan
+                'Minero': 'ffbf00ff',        // Amarillo
+                'Poblacional': 'ff0000ff',    // Rojo
+                'Otros Usos': 'ff808080',    // Gris
+                'Agrícola': 'ff00ff00',      // Verde
+                'Doméstico - Poblacional': 'ff0080ff', // Naranja
+                'Industrial': 'ff8000ff',    // Púrpura
+                'Recreativo': 'ff00bf00',    // Lima
+                'Pecuario': 'ff804000',      // Marrón
+                'Energético': 'ff0000ff',    // Azul
+                'Turístico': 'ffff00ff'      // Rosa
+            };
+            
+            // Convertir GeoJSON a KML para RADA con categorización por Uso
+            function geojsonToKMLRADA(geojson) {
+                var kml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+                kml += '<kml xmlns="http://www.opengis.net/kml/2.2">\n';
+                kml += '<Document>\n';
+                kml += '  <name>RADA Fuente</name>\n';
+                
+                // Crear estilos para cada Uso
+                var usos = {};
+                geojson.features.forEach(function(f) {
+                    var uso = f.properties.Uso || 'Otro';
+                    if (!usos[uso]) usos[uso] = true;
+                });
+                
+                for (var uso in usos) {
+                    var color = coloresRADA[uso] || 'ff808080';
+                    kml += '  <Style id="rada-' + uso.replace(/[^a-zA-Z0-9]/g, '_') + '">\n';
+                    kml += '    <IconStyle><color>' + color + '</color><scale>1.0</scale></IconStyle>\n';
+                    kml += '    <LabelStyle><color>' + color + '</color><scale>0.7</scale></LabelStyle>\n';
+                    kml += '  </Style>\n';
+                }
+                
+                geojson.features.forEach(function(feature, i) {
+                    var uso = feature.properties.Uso || 'Otro';
+                    var nombre = feature.properties.Usuario || feature.properties.Lugar_Uso || ('Punto ' + (i + 1));
+                    var resolucion = feature.properties['Resolucin'] || feature.properties['Resolución'] || '';
+                    
+                    var styleId = 'rada-' + uso.replace(/[^a-zA-Z0-9]/g, '_');
+                    
+                    kml += '  <Placemark>\n';
+                    kml += '    <name><![CDATA[' + uso + ' - ' + nombre + ']]></name>\n';
+                    kml += '    <styleUrl>#' + styleId + '</styleUrl>\n';
+                    
+                    var desc = '';
+                    for (var key in feature.properties) {
+                        if (feature.properties[key]) desc += key + ': ' + feature.properties[key] + '\n';
+                    }
+                    kml += '    <description><![CDATA[' + desc + ']]></description>\n';
+                    
+                    if (feature.geometry.type === 'Point') {
+                        var coords = feature.geometry.coordinates;
+                        kml += '    <Point><coordinates>' + coords[0] + ',' + coords[1] + ',0</coordinates></Point>\n';
+                    }
+                    
+                    kml += '  </Placemark>\n';
+                });
+                
+                kml += '</Document>\n</kml>';
+                return kml;
+            }
+            
             // Convertir GeoJSON a KML con estilos
             function geojsonToKML(geojson, nombreCapa, tipoCapa) {
                 // Definir estilos según tipo de capa
@@ -221,13 +295,19 @@
                 if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'Faja_Marginal'; tipo = 'faja'; }
                 else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'Hitos_Faja'; tipo = 'hito'; }
                 else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'Uso_Temporal'; tipo = 'uso'; }
+                else if (capa === 'rada') { geojson = window.rada_por_fuente; nombre = 'RADA_Fuente'; tipo = 'rada'; }
                 
                 if (!geojson || !geojson.features || geojson.features.length === 0) {
                     alert('No hay datos para descargar');
                     return;
                 }
                 
-                var kml = geojsonToKML(geojson, nombre, tipo);
+                // Si es RADA, usar función especial con categorización por Uso
+                if (capa === 'rada') {
+                    var kml = geojsonToKMLRADA(geojson);
+                } else {
+                    var kml = geojsonToKML(geojson, nombre, tipo);
+                }
                 var blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
                 var link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
@@ -241,6 +321,7 @@
                 if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'Faja_Marginal'; }
                 else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'Hitos_Faja'; }
                 else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'Uso_Temporal'; }
+                else if (capa === 'rada') { geojson = window.rada_por_fuente; nombre = 'RADA_Fuente'; }
                 
                 if (!geojson || !geojson.features || geojson.features.length === 0) {
                     alert('No hay datos para descargar');

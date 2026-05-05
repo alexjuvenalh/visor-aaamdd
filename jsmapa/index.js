@@ -90,8 +90,14 @@
             div.innerHTML += '<div><span style="background:#ff7800;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Faja Marginal</div>';
             div.innerHTML += '<div><span style="background:#ffff00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Hitos Faja</div>';
             div.innerHTML += '<div><span style="background:#00ff00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Uso Temporal</div>';
-            div.innerHTML += '<div><span style="background:#0000ff;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> RADA Fuente</div>';
-            div.innerHTML += '<div><span style="background:#ff00ff;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> RADA Derecho</div>';
+            div.innerHTML += '<div style="margin-top:5px;padding-top:5px;border-top:1px solid #ccc;"><b>RADA Fuente:</b></div>';
+            div.innerHTML += '<div><span style="background:#00FFFF;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Acuícola</div>';
+            div.innerHTML += '<div><span style="background:#BFBF00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Minero</div>';
+            div.innerHTML += '<div><span style="background:#FF0000;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Poblacional</div>';
+            div.innerHTML += '<div><span style="background:#00FF00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Agrícola</div>';
+            div.innerHTML += '<div><span style="background:#0080FF;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Doméstico</div>';
+            div.innerHTML += '<div><span style="background:#8000FF;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Industrial</div>';
+            div.innerHTML += '<div><span style="background:#808080;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Otros</div>';
             return div;
         };
         legend.addTo(map);
@@ -226,13 +232,30 @@
         // ============================================
         var rada_fuente_cluster = null;
 
+        // Colores para categorización de RADA por Uso
+        var coloresUsoRADA = {
+            'Acuícola': '#00FFFF',
+            'Minero': '#BFBF00',
+            'Poblacional': '#FF0000',
+            'Otros Usos': '#808080',
+            'Agrícola': '#00FF00',
+            'Doméstico - Poblacional': '#0080FF',
+            'Industrial': '#8000FF',
+            'Recreativo': '#00BF00',
+            'Pecuario': '#804000',
+            'Energético': '#0000FF',
+            'Turístico': '#FF00FF'
+        };
+
         function getRadaFuente() {
             if (!rada_fuente_cluster && window.rada_por_fuente) {
                 var rada_fuente = L.geoJson(window.rada_por_fuente, {
                     pointToLayer: function(feature, latlng) {
+                        var uso = feature.properties.Uso || 'Otro';
+                        var color = coloresUsoRADA[uso] || '#808080';
                         return L.circleMarker(latlng, {
                             radius: 6,
-                            fillColor: '#0000ff',
+                            fillColor: color,
                             color: '#000',
                             weight: 1,
                             fillOpacity: 0.8
@@ -240,7 +263,16 @@
                     },
                     onEachFeature: function(feature, layer) {
                         var p = feature.properties;
-                        layer.bindPopup('<b>Usuario:</b> ' + sanitize(p.usuario));
+                        var content = '';
+                        if (p.Uso) content += '<b>Uso:</b> ' + sanitize(p.Uso) + '<br/>';
+                        if (p.Usuario) content += '<b>Usuario:</b> ' + sanitize(p.Usuario) + '<br/>';
+                        if (p['Resolucin'] || p.Resolución) content += '<b>Resolución:</b> ' + sanitize(p['Resolucin'] || p.Resolución) + '<br/>';
+                        if (p.Fuente) content += '<b>Fuente:</b> ' + sanitize(p.Fuente) + '<br/>';
+                        if (p.Lugar_Uso) content += '<b>Lugar:</b> ' + sanitize(p.Lugar_Uso) + '<br/>';
+                        if (p['Volumen (m']) content += '<b>Volumen:</b> ' + sanitize(p['Volumen (m']) + ' m³/s<br/>';
+                        if (p['Area (ha)']) content += '<b>Área:</b> ' + sanitize(p['Area (ha)']) + ' ha<br/>';
+                        if (p.Archivo) content += '<b>Archivo:</b> <a target="_blank" href="' + sanitize(p.Archivo) + '">📄 Ver PDF</a><br/>';
+                        layer.bindPopup(content);
                     }
                 });
 
