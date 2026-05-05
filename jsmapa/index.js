@@ -271,7 +271,7 @@
                         
                         // Mostrar PDF si existe
                         if (p.Archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="' + sanitize(p.Archivo) + '">📄 Ver PDF</a><br/>';
+                            content += '<b>Archivo:</b> <a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.Archivo) + '">📄 Ver PDF</a><br/>';
                         }
                         
                         content += '</div>';
