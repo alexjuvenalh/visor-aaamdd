@@ -248,6 +248,11 @@
         };
 
         function getRadaFuente() {
+            console.log('>>> getRadaFuente() ejecutandose');
+            console.log('  rada_fuente_cluster existente:', rada_fuente_cluster);
+            console.log('  window.rada_por_fuente:', !!window.rada_por_fuente);
+            console.log('  window.rada_por_fuente.features:', window.rada_por_fuente ? window.rada_por_fuente.features : 'undefined');
+            
             if (!rada_fuente_cluster && window.rada_por_fuente && window.rada_por_fuente.features) {
                 console.log('Creando capa RADA con', window.rada_por_fuente.features.length, 'features');
                 
@@ -365,8 +370,11 @@
 
         if (checkBoxRadaFuente) {
             checkBoxRadaFuente.addEventListener("click", function() {
+                console.log('Checkbox RADA click, checked:', checkBoxRadaFuente.checked);
+                console.log('rada_fuente_cluster:', rada_fuente_cluster);
                 if (checkBoxRadaFuente.checked) {
                     var capa = getRadaFuente();
+                    console.log('Capa creada:', capa);
                     if (capa) capa.addTo(map);
                 } else {
                     var capa = getRadaFuente();
