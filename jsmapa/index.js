@@ -11,36 +11,414 @@
         return div.innerHTML;
     }
 
-    // Cargar datos desde API si no existen
-    function cargarDatosAPI(callback) {
-        var intentos = 0;
-        var maxIntentos = 3;
+    // ============================================
+    // MODO ONLINE/OFFLINE - Fase 2: Carga Inteligente
+    // ============================================
+    
+    // Clave para localStorage
+    var STORAGE_KEY = 'visor_ana_datos';
+    var STORAGE_FECHA_KEY = 'visor_ana_fecha';
+
+    // Guardar datos en localStorage
+    function guardarEnCache(datos) {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(datos));
+            localStorage.setItem(STORAGE_FECHA_KEY, new Date().toISOString());
+            console.log('✅ Datos guardados en caché local');
+        } catch (e) {
+            console.warn('⚠️ No se pudo guardar en cache:', e.message);
+        }
+    }
+
+    // Cargar datos desde localStorage
+    function cargarDesdeCache() {
+        try {
+            var datos = localStorage.getItem(STORAGE_KEY);
+            var fecha = localStorage.getItem(STORAGE_FECHA_KEY);
+            if (datos) {
+                var parsed = JSON.parse(datos);
+                console.log('📦 Datos cargados desde caché local');
+                if (fecha) {
+                    console.log('   Fecha:', new Date(fecha).toLocaleString());
+                    fechaDatosOffline = fecha;
+                    actualizarIndicadorFecha(fecha);
+                }
+                return parsed;
+            }
+        } catch (e) {
+            console.warn('⚠️ Error leyendo caché:', e.message);
+        }
+        return null;
+    }
+
+    // Función para cargar todos los datos de forma inteligente
+    function cargarDatosInteligente(callback) {
+        // Si está offline, usar cache o datos embebidos
+        if (!navigator.onLine) {
+            console.log('📴Modo offline - buscando datos...');
+            var datosCache = cargarDesdeCache();
+            if (datosCache) {
+                window.faja_poligono = datosCache.faja_poligono || window.faja_poligono;
+                window.faja_hito = datosCache.faja_hito || window.faja_hito;
+                window.uso_temporal = datosCache.uso_temporal || window.uso_temporal;
+                window.rada_por_fuente = datosCache.rada_por_fuente || window.rada_por_fuente;
+                window.rada_por_derecho = datosCache.rada_por_derecho || window.rada_por_derecho;
+                console.log('✅ Datos cargados desde caché');
+                if (callback) callback();
+                return;
+            }
+            // Si no hay cache, usar datos embebidos (ya definidos en HTML)
+            console.log('📦 Usando datos embebidos (offline)');
+            if (callback) callback();
+            return;
+        }
+
+        // Si está online, intentar cargar de la API
+        console.log('🌐 Modo online - intentando cargar de API...');
         
-        function intentar() {
-            fetch('http://localhost:3000/api/poligonos-faja')
-                .then(function(r) { 
+        var endpoints = [
+            { key: 'faja_poligono', url: '/api/poligonos-faja' },
+            { key: 'faja_hito', url: '/api/hitos-faja' },
+            { key: 'uso_temporal', url: '/api/poligonos-autorizacion' },
+            { key: 'rada_por_fuente', url: '/api/derechos' }, // temporal
+            { key: 'rada_por_derecho', url: '/api/derechos' } // temporal
+        ];
+
+        var datosCargados = {};
+        var errores = 0;
+        var completados = 0;
+
+        endpoints.forEach(function(ep) {
+            fetch('http://localhost:3000' + ep.url)
+                .then(function(r) {
                     if (!r.ok) throw new Error('HTTP ' + r.status);
-                    return r.json(); 
+                    return r.json();
                 })
                 .then(function(data) {
-                    window.faja_poligono = data;
-                    console.log('✅ Datos faja cargados:', data.features.length);
-                    if (callback) callback();
+                    datosCargados[ep.key] = data;
+                    console.log('   ✅ ' + ep.key + ':', data.features ? data.features.length : 0);
+                    completados++;
+                    if (completados === endpoints.length) {
+                        // Todos los datos cargados, guardar en cache y usar
+                        window.faja_poligono = datosCargados.faja_poligono || window.faja_poligono;
+                        window.faja_hito = datosCargados.faja_hito || window.faja_hito;
+                        window.uso_temporal = datosCargados.uso_temporal || window.uso_temporal;
+                        window.rada_por_fuente = datosCargados.rada_por_fuente || window.rada_por_fuente;
+                        window.rada_por_derecho = datosCargados.rada_por_derecho || window.rada_por_derecho;
+                        
+                        // Guardar en cache
+                        guardarEnCache(datosCargados);
+                        
+                        console.log('✅ Todos los datos cargados de API y guardados en caché');
+                        if (callback) callback();
+                    }
                 })
                 .catch(function(e) {
-                    console.warn('⚠️ Error cargando faja (intento ' + (intentos + 1) + '):', e.message);
-                    if (intentos < maxIntentos - 1) {
-                        intentos++;
-                        console.log('⏳ Reintentando en 2 segundos...');
-                        setTimeout(intentar, 2000);
-                    } else {
-                        console.error('❌ Falló después de ' + maxIntentos + ' intentos. Usando datos offline.');
+                    console.warn('   ⚠️ Error en ' + ep.key + ':', e.message);
+                    errores++;
+                    completados++;
+                    // Usar datos embebidos si fallan
+                    if (completados === endpoints.length) {
+                        console.log('⚠️ Algunos datos fallaron, usando embebidos + cache');
+                        var datosCache = cargarDesdeCache();
+                        if (datosCache) {
+                            window.faja_poligono = datosCache.faja_poligono || window.faja_poligono;
+                            window.faja_hito = datosCache.faja_hito || window.faja_hito;
+                            window.uso_temporal = datosCache.uso_temporal || window.uso_temporal;
+                        }
                         if (callback) callback();
                     }
                 });
-        }
-        intentar();
+        });
     }
+
+    // Actualizar indicador con fecha de datos
+    function actualizarIndicadorFecha(fecha) {
+        var el = document.getElementById('online-indicator');
+        if (el && fecha) {
+            var fechaObj = new Date(fecha);
+            var diasDiff = Math.floor((Date.now() - fechaObj.getTime()) / (1000 * 60 * 60 * 24));
+            var mensajeFecha = '';
+            if (diasDiff === 0) mensajeFecha = ' (hoy)';
+            else if (diasDiff === 1) mensajeFecha = ' (ayer)';
+            else mensajeFecha = ' (' + diasDiff + ' días)';
+            
+            // Agregarinfo de fecha al indicador
+            el.title = 'Datos: ' + fechaObj.toLocaleString() + mensajeFecha;
+        }
+    }
+
+    // Función para forzar actualización de datos
+    function forzarActualizacion(callback) {
+        console.log('🔄 Forzando actualización de datos...');
+        // Limpiar cache
+        try {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(STORAGE_FECHA_KEY);
+        } catch(e) {}
+        
+        // Recargar desde API
+        cargarDatosInteligente(callback);
+    }
+
+    // Alias para compatibilidad
+    var cargarDatosAPI = cargarDatosInteligente;
+
+    // ============================================
+    // FIN MODO ONLINE/OFFLINE - Fase 2
+    // =========================================
+
+    // ============================================
+    // MODO ONLINE/OFFLINE - Fase 3: Sincronización
+    // ============================================
+
+    // Estado de sincronización
+    var sincronizando = false;
+    var btnSync = null;
+
+    // Inicializar botón de sincronización
+    function inicializarSync() {
+        btnSync = document.getElementById('btn-sync');
+        if (btnSync) {
+            btnSync.addEventListener('click', function() {
+                if (sincronizando) {
+                    alert('⏳ Sincronización en progreso...');
+                    return;
+                }
+                sincronizarDatos(function(actualizado) {
+                    if (actualizado) {
+                        alert('✅ Datos sincronizados correctamente');
+                    } else {
+                        alert('ℹ️ Los datos ya están actualizados o no hay cambios');
+                    }
+                });
+            });
+        }
+    }
+
+    // Función principal de sincronización
+    function sincronizarDatos(callback) {
+        if (!navigator.onLine) {
+            alert('📴 No hay conexión a internet');
+            if (callback) callback(false);
+            return;
+        }
+
+        sincronizando = true;
+        if (btnSync) {
+            btnSync.innerHTML = '⏳...';
+            btnSync.disabled = true;
+        }
+
+        console.log('🔄 Iniciando sincronización...');
+
+        var endpoints = [
+            { key: 'faja_poligono', url: '/api/poligonos-faja' },
+            { key: 'faja_hito', url: '/api/hitos-faja' },
+            { key: 'uso_temporal', url: '/api/poligonos-autorizacion' }
+        ];
+
+        var datosNuevos = {};
+        var errores = 0;
+        var completados = 0;
+
+        endpoints.forEach(function(ep) {
+            fetch('http://localhost:3000' + ep.url)
+                .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+                .then(function(data) {
+                    datosNuevos[ep.key] = data;
+                    console.log('   ✅ ' + ep.key + ':', data.features ? data.features.length : 0);
+                    completados++;
+                    verificarFinSync(completados, endpoints.length, datosNuevos, errores, callback);
+                })
+                .catch(function(e) {
+                    console.warn('   ⚠️ Error en ' + ep.key + ':', e.message);
+                    errores++;
+                    completados++;
+                    verificarFinSync(completados, endpoints.length, datosNuevos, errores, callback);
+                });
+        });
+    }
+
+    function verificarFinSync(completados, total, datos, errores, callback) {
+        if (completados === total) {
+            sincronizando = false;
+            if (btnSync) { btnSync.innerHTML = '🔄 Sincronizar'; btnSync.disabled = false; }
+
+            var hayCambios = false;
+            var datosActuales = { faja_poligono: window.faja_poligono, faja_hito: window.faja_hito, uso_temporal: window.uso_temporal };
+
+            Object.keys(datos).forEach(function(key) {
+                var actual = datosActuales[key] ? datosActuales[key].features.length : 0;
+                var nuevo = datos[key] ? datos[key].features.length : 0;
+                if (actual !== nuevo) { console.log('📊 ' + key + ': ' + actual + ' → ' + nuevo); hayCambios = true; }
+            });
+
+            if (errores < total && hayCambios) {
+                window.faja_poligono = datos.faja_poligono || window.faja_poligono;
+                window.faja_hito = datos.faja_hito || window.faja_hito;
+                window.uso_temporal = datos.uso_temporal || window.uso_temporal;
+                guardarEnCache(datos);
+                console.log('✅ Datos actualizados');
+                mostrarNotificacion('✅ Datos sincronizados', 'success');
+                if (callback) callback(true);
+            } else if (errores === total) {
+                mostrarNotificacion('❌ Error al sincronizar', 'error');
+                if (callback) callback(false);
+            } else { console.log('ℹ️ Sin cambios'); if (callback) callback(false); }
+        }
+    }
+
+    // Verificar actualizaciones disponibles
+    function verificarActualizaciones(callback) {
+        if (!navigator.onLine) { if (callback) callback(false, 'Sin conexión'); return; }
+        fetch('http://localhost:3000/api/estadisticas')
+            .then(function(r) { return r.json(); })
+            .then(function(data) {
+                var fajasActual = window.faja_poligono ? window.faja_poligono.features.length : 0;
+                var authActual = window.uso_temporal ? window.uso_temporal.features.length : 0;
+                var hayCambios = (data.fajas_marginales !== fajasActual) || (data.autorizaciones_temporales !== authActual);
+                var mensaje = 'Fajas: ' + fajasActual + '→' + data.fajas_marginales + ', Auth: ' + authActual + '→' + data.autorizaciones_temporales;
+                if (callback) callback(hayCambios, hayCambios ? mensaje : 'Sin cambios');
+            })
+            .catch(function(e) { if (callback) callback(false, 'Error: ' + e.message); });
+    }
+
+    // Mostrar notificación temporal
+    function mostrarNotificacion(mensaje, tipo) {
+        var notif = document.createElement('div');
+        notif.style.cssText = 'position:fixed;bottom:20px;right:20px;padding:15px 20px;border-radius:8px;z-index:2000;box-shadow:0 4px 12px rgba(0,0,0,0.3);font-weight:bold;animation:fadeIn 0.3s;';
+        notif.style.background = (tipo === 'success' ? '#4CAF50' : (tipo === 'error' ? '#f44336' : '#2196F3'));
+        notif.style.color = 'white';
+        notif.innerHTML = mensaje;
+        document.body.appendChild(notif);
+        setTimeout(function() { notif.style.animation = 'fadeOut 0.3s'; setTimeout(function() { notif.remove(); }, 300); }, 3000);
+    }
+
+    // Agregar estilos
+    if (!document.getElementById('notif-styles')) {
+        var style = document.createElement('style');
+        style.id = 'notif-styles';
+        style.textContent = '@keyframes fadeIn {from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}} @keyframes fadeOut {from{opacity:1;transform:translateY(0);}to{opacity:0;transform:translateY(20px);}}';
+        document.head.appendChild(style);
+    }
+
+    // ============================================
+    // FIN MODO ONLINE/OFFLINE - Fase 3
+    // =========================================
+
+    // ============================================
+    // MODO ONLINE/OFFLINE - Fase 1
+    // ============================================
+    var modoOnline = true;
+    var indicadorOnline = null;
+    var bannerOffline = null;
+    var fechaDatosOffline = null;
+
+    // Crear indicador de modo online/offline
+    function crearIndicadorOnline() {
+        if (!indicadorOnline) {
+            indicadorOnline = L.control({ position: 'topright' });
+            indicadorOnline.onAdd = function(map) {
+                var div = L.DomUtil.create('div', 'online-indicator');
+                div.id = 'online-indicator';
+                div.style.cssText = 'background:rgba(76,175,80,0.9);color:white;padding:8px 15px;border-radius:20px;font-size:12px;font-weight:bold;box-shadow:0 2px 10px rgba(0,0,0,0.3);z-index:1000;display:flex;align-items:center;gap:5px;';
+                div.innerHTML = '<span style="font-size:14px;">🌐</span> <span>Online</span>';
+                return div;
+            };
+            indicadorOnline.addTo(map);
+        }
+    }
+
+    // Actualizar indicador según estado
+    function actualizarIndicadorOnline(online) {
+        crearIndicadorOnline();
+        var el = document.getElementById('online-indicator');
+        if (el) {
+            if (online) {
+                el.style.background = 'rgba(76,175,80,0.9)';
+                el.innerHTML = '<span style="font-size:14px;">🌐</span> <span>Online</span>';
+            } else {
+                el.style.background = 'rgba(158,158,158,0.9)';
+                el.innerHTML = '<span style="font-size:14px;">📴</span> <span>Offline</span>';
+            }
+        }
+        modoOnline = online;
+        console.log('📡 Modo:', online ? 'Online' : 'Offline');
+    }
+
+    // Mostrar banner de offline
+    function mostrarBannerOffline() {
+        if (!bannerOffline) {
+            bannerOffline = document.createElement('div');
+            bannerOffline.id = 'banner-offline';
+            bannerOffline.style.cssText = 'position:fixed;top:0;left:0;right:0;background:rgba(255,152,0,0.95);color:white;padding:12px;text-align:center;font-weight:bold;z-index:2000;display:none;';
+            bannerOffline.innerHTML = '📴 Sin conexión - Usando datos offline';
+            document.body.insertBefore(bannerOffline, document.body.firstChild);
+        }
+        bannerOffline.style.display = 'block';
+        // Ajustar mapa si hay banner
+        var mapEl = document.getElementById('map');
+        if (mapEl) mapEl.style.marginTop = '44px';
+    }
+
+    // Ocultar banner de offline
+    function ocultarBannerOffline() {
+        if (bannerOffline) {
+            bannerOffline.style.display = 'none';
+        }
+        var mapEl = document.getElementById('map');
+        if (mapEl) mapEl.style.marginTop = '0';
+    }
+
+    // Inicializar detección de conexión
+    function inicializarDeteccionOnline() {
+        // Estado inicial
+        actualizarIndicadorOnline(navigator.onLine);
+
+        // Cargar datos de forma inteligente al inicio
+        cargarDatosInteligente(function() {
+            console.log('✅ Datos inicializados');
+            // Verificar si hay datos en cache y mostrar fecha
+            try {
+                var fecha = localStorage.getItem(STORAGE_FECHA_KEY);
+                if (fecha) actualizarIndicadorFecha(fecha);
+            } catch(e) {}
+        });
+
+        // Escuchar cambios de conexión
+        window.addEventListener('online', function() {
+            console.log('✅ Conexión restaurada');
+            actualizarIndicadorOnline(true);
+            ocultarBannerOffline();
+            // Intentar cargar datos frescos
+            forzarActualizacion(function() {
+                console.log('✅ Datos actualizados desde la API');
+            });
+        });
+
+        window.addEventListener('offline', function() {
+            console.log('⚠️ Conexión perdida');
+            actualizarIndicadorOnline(false);
+            mostrarBannerOffline();
+        });
+    }
+
+    // Obtener fecha de datos offline
+    function obtenerFechaDatos() {
+        try {
+            // Intentar leer metadata
+            // Por ahora usamos una variable global si está disponible
+            if (window.datosMeta && window.datosMeta.fecha_exportacion) {
+                return window.datosMeta.fecha_exportacion;
+            }
+        } catch(e) {}
+        return null;
+    }
+
+    // ============================================
+    // FIN MODO ONLINE/OFFLINE
+    // ============================================
 
     function initMap() {
         var self = this;
@@ -1056,6 +1434,11 @@
     }
 
     window.addEventListener('load', function () {
+        // Inicializar detección online/offline primero
+        inicializarDeteccionOnline();
+        // Inicializar sincronización
+        inicializarSync();
+        // Luego inicializar el mapa
         initMap();
     });
 
