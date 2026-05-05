@@ -119,13 +119,26 @@
                 // Definir estilo
                 kml += '  <Style id="' + tipoCapa + '">\n';
                 if (geojson.features[0] && geojson.features[0].geometry.type === 'Point') {
-                    kml += '    <IconStyle><color>' + estilo.color + '</color><scale>1.2</scale></IconStyle>\n';
-                    kml += '    <LabelStyle><color>' + estilo.color + '</color></LabelStyle>\n';
+                    // Para puntos (hitos), usar icono circular
+                    kml += '    <IconStyle><color>' + estilo.color + '</color><scale>0.8</scale><heading>0</heading></IconStyle>\n';
+                    kml += '    <LabelStyle><color>' + estilo.color + '</color><scale>0.8</scale></LabelStyle>\n';
+                    kml += '    <BalloonStyle><text>$[name]</text></BalloonStyle>\n';
                 } else {
                     kml += '    <LineStyle><color>' + estilo.color + '</color><width>3</width></LineStyle>\n';
                     kml += '    <PolyStyle><color>' + (estilo.fill ? estilo.color : '00000000') + '</color><outline>' + estilo.outline + '</outline></PolyStyle>\n';
                 }
                 kml += '  </Style>\n';
+                
+                // Agregar estilo de icono para puntos
+                if (geojson.features[0] && geojson.features[0].geometry.type === 'Point') {
+                    kml += '  <Style id="hito-icon">\n';
+                    kml += '    <IconStyle>\n';
+                    kml += '      <color>ff800080</color>\n';
+                    kml += '      <scale>0.6</scale>\n';
+                    kml += '      <Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-circle.png</href></Icon>\n';
+                    kml += '    </IconStyle>\n';
+                    kml += '  </Style>\n';
+                }
                 
                 geojson.features.forEach(function(feature, i) {
                     // Nombre según tipo de capa
@@ -140,7 +153,9 @@
                     
                     kml += '  <Placemark>\n';
                     kml += '    <name><![CDATA[' + nombre + ']]></name>\n';
-                    kml += '    <styleUrl>#' + tipoCapa + '</styleUrl>\n';
+                    // Para hitos (puntos), usar estilo de círculo
+                    var styleRef = (tipoCapa === 'hito' && feature.geometry.type === 'Point') ? '#hito-icon' : '#' + tipoCapa;
+                    kml += '    <styleUrl>' + styleRef + '</styleUrl>\n';
                     
                     var desc = '';
                     for (var key in feature.properties) {
