@@ -421,21 +421,634 @@
             });
         }
 
-        // GPS
+        // ============================================
+        // GPS - Seguimiento en tiempo real (Fase 1 + Fase 2)
+        // ============================================
         var gpsMarker = null;
-        var btnGps = document.getElementById('btn-gps');
-        if (btnGps) {
-            btnGps.addEventListener('click', function() {
-                if (!navigator.geolocation) { alert('Tu navegador no soporta GPS'); return; }
-                navigator.geolocation.getCurrentPosition(function(pos) {
-                    var lat = pos.coords.latitude, lng = pos.coords.longitude, prec = pos.coords.accuracy;
-                    if (gpsMarker) map.removeLayer(gpsMarker);
-                    gpsMarker = L.marker([lat, lng], {
-                        icon: L.divIcon({ className: 'gps-marker', html: '<div style="background:#2196F3;width:20px;height:20px;border-radius:50%;border:3px solid white;box-shadow:0 2px 5px rgba(0,0,0,0.3);"></div>', iconSize: [20, 20], iconAnchor: [10, 10] })
-                    }).addTo(map);
-                    map.setView([lat, lng], 16);
-                    gpsMarker.bindPopup('<b>📍 Tu ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm').openPopup();
-                }, function(err) { alert('Error GPS: ' + err.message); }, { enableHighAccuracy: true, timeout: 30000 });
+        var gpsWatchId = null;
+        var gpsBtn = document.getElementById('btn-gps');
+        var gpsIndicator = null;
+        var gpsPath = null;
+        var gpsPathShadow = null; // Sombra del trail
+        var gpsPathCoords = [];
+        var gpsInicioMarker = null; // Marker de inicio
+        var gpsFinMarker = null; // Marker de posición actual
+        var btnCentrar = null; // Botón flotante centrar
+        var ultimaPosicion = null; // Para seguimiento
+        
+        // Variables Fase 4 - Mobile Optimization
+        var gpsPerdidoTimeout = null; // Timer para detectar pérdida de señal
+        var gpsUltimaActualizacion = Date.now(); // Para calcular timeout
+        var gpsIntervaloActual = 1000; // Intervalo actual en ms
+        var gpsEstaPerdido = false; // Estado de señal perdida
+        var gpsUltimaVelocidad = 0; // Para calcular intervalo adaptativo
+        var gpsContadorTimeouts = 0; // Contador de timeouts consecutivos
+
+        // Crear indicador visual de GPS mejorado
+        function crearIndicadorGPS() {
+            if (!gpsIndicator) {
+                gpsIndicator = L.control({ position: 'topright' });
+                gpsIndicator.onAdd = function(map) {
+                    var div = L.DomUtil.create('div', 'gps-status');
+                    div.id = 'gps-status-indicator';
+                    div.style.cssText = 'background:rgba(33,150,243,0.9);color:white;padding:10px 15px;border-radius:8px;font-size:12px;display:none;box-shadow:0 2px 10px rgba(0,0,0,0.3);z-index:1000;min-width:180px;';
+                    div.innerHTML = '📡 Buscando GPS...';
+                    return div;
+                };
+                gpsIndicator.addTo(map);
+            }
+        }
+
+        function mostrarIndicador(mostrar, mensaje, precision) {
+            crearIndicadorGPS();
+            var el = document.getElementById('gps-status-indicator');
+            if (el) {
+                if (mostrar) {
+                    el.style.display = 'block';
+                    el.innerHTML = mensaje || '📡 Buscando GPS...';
+                } else {
+                    // Mostrar estado cuando está activo
+                    if (precision !== undefined) {
+                        var calidad = precision < 10 ? '🟢' : (precision < 25 ? '🟡' : '🔴');
+                        el.innerHTML = '<b>GPS Activo</b><br/>' + calidad + ' ±' + Math.round(precision) + 'm';
+                    }
+                }
+            }
+        }
+
+        // Crear botón flotante para centrar posición
+        function crearBotonCentrar() {
+            if (!btnCentrar) {
+                btnCentrar = L.control({ position: 'bottomright' });
+                btnCentrar.onAdd = function(map) {
+                    var div = L.DomUtil.create('div', 'btn-centrar-gps');
+                    div.id = 'btn-centrar-gps';
+                    div.innerHTML = '🎯';
+                    div.title = 'Centrar en mi posición';
+                    div.style.cssText = 'background:white;width:40px;height:40px;border-radius:50%;border:2px solid #2196F3;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.3);z-index:1000;transition:transform 0.2s;';
+                    div.onclick = function() {
+                        if (ultimaPosicion) {
+                            map.setView([ultimaPosicion.lat, ultimaPosicion.lng], 16);
+                        }
+                    };
+                    div.onmouseover = function() { this.style.transform = 'scale(1.1)'; };
+                    div.onmouseout = function() { this.style.transform = 'scale(1)'; };
+                    return div;
+                };
+                btnCentrar.addTo(map);
+                btnCentrar.hide = function() { 
+                    var el = document.getElementById('btn-centrar-gps'); 
+                    if (el) el.style.display = 'none'; 
+                };
+                btnCentrar.show = function() { 
+                    var el = document.getElementById('btn-centrar-gps'); 
+                    if (el) el.style.display = 'flex'; 
+                };
+                btnCentrar.hide();
+            }
+        }
+
+        function obtenerIconoGPS(heading) {
+            var rotation = heading !== null && !isNaN(heading) ? heading : 0;
+            var tieneDireccion = heading !== null && !isNaN(heading);
+            
+            // Crear icono con flecha grande y visible
+            var html = '<div style="width:50px;height:50px;position:relative;">';
+            
+            // Flecha de dirección (solo si hay heading)
+            if (tieneDireccion) {
+                html += '<div style="position:absolute;top:0;left:10px;width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:30px solid #FF5722;transform:rotate(' + rotation + 'deg);transform-origin:center 30px;filter:drop-shadow(0 2px 2px rgba(0,0,0,0.3));"></div>';
+            }
+            
+            // Círculo principal con animación de pulso
+            html += '<div style="background:linear-gradient(135deg,#2196F3,#1976D2);width:30px;height:30px;border-radius:50%;border:3px solid white;position:absolute;top:10px;left:10px;box-shadow:0 3px 8px rgba(0,0,0,0.4);animation:pulse 2s infinite;">' +
+                    '<div style="width:10px;height:10px;background:white;border-radius:50%;position:absolute;top:7px;left:7px;"></div></div>';
+            
+            // Círculo de precisión
+            html += '<div style="position:absolute;top:5px;left:5px;width:40px;height:40px;border:2px solid rgba(33,150,243,0.3);border-radius:50%;"></div>';
+            
+            html += '</div>';
+            
+            // Agregar CSS de animación si no existe
+            if (!document.getElementById('gps-marker-css')) {
+                var style = document.createElement('style');
+                style.id = 'gps-marker-css';
+                style.textContent = '@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }';
+                document.head.appendChild(style);
+            }
+            
+            return L.divIcon({
+                className: 'gps-marker-animated',
+                html: html,
+                iconSize: [50, 50],
+                iconAnchor: [25, 25]
+            });
+        }
+
+        // ============================================
+        // Fase 4: Mobile Optimization
+        // ============================================
+
+        // Verificar permisos usando Permission API
+        function verificarPermisosGPS() {
+            return new Promise(function(resolve, reject) {
+                // Verificar si la API de permisos está disponible
+                if (navigator.permissions && navigator.permissions.query) {
+                    navigator.permissions.query({ name: 'geolocation' })
+                        .then(function(permissionStatus) {
+                            if (permissionStatus.state === 'granted') {
+                                resolve('granted');
+                            } else if (permissionStatus.state === 'prompt') {
+                                resolve('prompt');
+                            } else {
+                                resolve('denied');
+                            }
+                        })
+                        .catch(function() {
+                            resolve('unknown'); // API no soportada, continuar normalmente
+                        });
+                } else {
+                    resolve('unknown'); // API no soportada
+                }
+            });
+        }
+
+        // Calcular intervalo adaptativo según velocidad
+        function obtenerIntervaloAdaptativo(speed) {
+            // Convertir m/s a km/h
+            var speedKmh = speed * 3.6;
+            
+            if (speedKmh < 1) {
+                // Estático o muy lento - actualizar cada 3 segundos
+                return 3000;
+            } else if (speedKmh < 10) {
+                // Caminando - actualizar cada 1.5 segundos
+                return 1500;
+            } else if (speedKmh < 30) {
+                // En bicicleta - actualizar cada 1 segundo
+                return 1000;
+            } else {
+                // En vehículo - actualizar cada 500ms
+                return 500;
+            }
+        }
+
+        // Mostrar indicador de señal perdida
+        function mostrarSenyalPerdida() {
+            gpsEstaPerdido = true;
+            crearIndicadorGPS();
+            var el = document.getElementById('gps-status-indicator');
+            if (el) {
+                el.style.display = 'block';
+                el.style.background = 'rgba(255,152,0,0.9)';
+                el.innerHTML = '⚠️ GPS perdido<br/>Buscando señal...';
+            }
+            // Agregar marker de espera
+            if (!gpsMarkerPerdido) {
+                gpsMarkerPerdido = L.circleMarker([map.getCenter().lat, map.getCenter().lng], {
+                    radius: 20,
+                    fillColor: 'orange',
+                    color: 'white',
+                    weight: 2,
+                    fillOpacity: 0.5,
+                    className: 'gps-pulse-warning'
+                }).addTo(map).bindPopup('⚠️ Buscando señal GPS...');
+            }
+            // Reproducir sonido de alerta (solo una vez)
+            reproducirAlertaSonido();
+        }
+
+        // Recuperar señal
+        function recuperarSenyal() {
+            gpsEstaPerdido = false;
+            gpsContadorTimeouts = 0;
+            if (gpsMarkerPerdido) {
+                map.removeLayer(gpsMarkerPerdido);
+                gpsMarkerPerdido = null;
+            }
+        }
+
+        var gpsMarkerPerdido = null; // Marker de señal perdida
+
+        // ============================================
+        // Fase 5: Exportación de rutas y alertas
+        // ============================================
+
+        // Generar archivo GPX de la ruta
+        function exportarRutaGPX() {
+            if (gpsPathCoords.length === 0) {
+                alert('No hay ruta para exportar');
+                return;
+            }
+
+            var gpx = '<?xml version="1.0" encoding="UTF-8"?>\n';
+            gpx += '<gpx version="1.1" creator="Visor ANA MDD">\n';
+            gpx += '  <trk>\n';
+            gpx += '    <name>Ruta GPS - ' + new Date().toLocaleString() + '</name>\n';
+            gpx += '    <trkseg>\n';
+            
+            gpsPathCoords.forEach(function(coord) {
+                gpx += '      <trkpt lat="' + coord[0] + '" lon="' + coord[1] + '"></trkpt>\n';
+            });
+            
+            gpx += '    </trkseg>\n';
+            gpx += '  </trk>\n';
+            gpx += '</gpx>';
+
+            var blob = new Blob([gpx], { type: 'application/gpx+xml' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'ruta_gps_' + Date.now() + '.gpx';
+            link.click();
+            console.log('✅ Ruta exportada a GPX');
+        }
+
+        // Generar archivo GeoJSON de la ruta
+        function exportarRutaGeoJSON() {
+            if (gpsPathCoords.length === 0) {
+                alert('No hay ruta para exportar');
+                return;
+            }
+
+            var geojson = {
+                type: 'Feature',
+                properties: {
+                    name: 'Ruta GPS',
+                    fecha: new Date().toISOString(),
+                    puntos: gpsPathCoords.length
+                },
+                geometry: {
+                    type: 'LineString',
+                    coordinates: gpsPathCoords
+                }
+            };
+
+            var blob = new Blob([JSON.stringify(geojson, null, 2)], { type: 'application/json' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'ruta_gps_' + Date.now() + '.geojson';
+            link.click();
+            console.log('✅ Ruta exportada a GeoJSON');
+        }
+
+        // Generar texto simple con coordenadas
+        function exportarRutaTexto() {
+            if (gpsPathCoords.length === 0) {
+                alert('No hay ruta para exportar');
+                return;
+            }
+
+            var texto = 'RUTA GPS - Visor ANA MDD\n';
+            texto += 'Fecha: ' + new Date().toLocaleString() + '\n';
+            texto += 'Puntos: ' + gpsPathCoords.length + '\n';
+            texto += '------------------------\n\n';
+            
+            gpsPathCoords.forEach(function(coord, i) {
+                texto += (i + 1) + '. ' + coord[0].toFixed(6) + ', ' + coord[1].toFixed(6) + '\n';
+            });
+
+            var blob = new Blob([texto], { type: 'text/plain' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'ruta_gps_' + Date.now() + '.txt';
+            link.click();
+            console.log('✅ Ruta exportada a TXT');
+        }
+
+        // Reproducir sonido de alerta
+        function reproducirAlertaSonido() {
+            try {
+                // Crear un tono simple usando Web Audio API
+                var AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    var audioCtx = new AudioContext();
+                    var oscillator = audioCtx.createOscillator();
+                    var gainNode = audioCtx.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                    
+                    oscillator.type = 'sine';
+                    oscillator.frequency.setValueAtTime(880, audioCtx.currentTime); // Nota A5
+                    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime + 0.2); // Nota A4
+                    
+                    gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.5);
+                    
+                    oscillator.start(audioCtx.currentTime);
+                    oscillator.stop(audioCtx.currentTime + 0.5);
+                }
+            } catch (e) {
+                console.log('Audio no disponible:', e);
+            }
+        }
+
+        // Crear botón de exportación en el mapa
+        function crearBotonExportar() {
+            var btnExport = L.control({ position: 'bottomright' });
+            btnExport.onAdd = function(map) {
+                var div = L.DomUtil.create('div', 'btn-export-gps');
+                div.id = 'btn-export-gps';
+                div.innerHTML = '💾';
+                div.title = 'Exportar ruta GPS';
+                div.style.cssText = 'background:white;width:40px;height:40px;border-radius:50%;border:2px solid #4CAF50;cursor:pointer;font-size:18px;display:none;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.3);z-index:1000;';
+                div.onclick = function() {
+                    // Mostrar menú de opciones
+                    var opciones = prompt('Selecciona formato de exportación:\n1 = GPX\n2 = GeoJSON\n3 = Texto', '1');
+                    if (opciones === '1') exportarRutaGPX();
+                    else if (opciones === '2') exportarRutaGeoJSON();
+                    else if (opciones === '3') exportarRutaTexto();
+                };
+                div.onmouseover = function() { this.style.transform = 'scale(1.1)'; };
+                div.onmouseout = function() { this.style.transform = 'scale(1)'; };
+                return div;
+            };
+            btnExport.addTo(map);
+            btnExport.mostrar = function() {
+                var el = document.getElementById('btn-export-gps');
+                if (el && gpsPathCoords.length > 0) el.style.display = 'flex';
+            };
+            btnExport.ocultar = function() {
+                var el = document.getElementById('btn-export-gps');
+                if (el) el.style.display = 'none';
+            };
+            btnExport.ocultar();
+            return btnExport;
+        }
+
+        var gpsBtnExportar = null; // Referencia al botón de exportación
+            var lat = pos.coords.latitude;
+            var lng = pos.coords.longitude;
+            var prec = pos.coords.accuracy;
+            var heading = pos.coords.heading;
+            var speed = pos.coords.speed !== null ? pos.coords.speed : 0; // m/s
+            var altitude = pos.coords.altitude; // metros
+
+            // Resetear timeout de pérdida de señal
+            if (gpsPerdidoTimeout) {
+                clearTimeout(gpsPerdidoTimeout);
+                gpsPerdidoTimeout = null;
+            }
+            gpsUltimaActualizacion = Date.now();
+            gpsContadorTimeouts = 0;
+            
+            // Recuperar señal si estaba perdida
+            if (gpsEstaPerdido) {
+                recuperarSenyal();
+            }
+            
+            // Actualizar velocidad para intervalo adaptativo
+            gpsUltimaVelocidad = speed;
+
+            // Guardar última posición para botón centrar
+            ultimaPosicion = { lat: lat, lng: lng };
+
+            // Agregar coordenadas al path
+            gpsPathCoords.push([lat, lng]);
+            
+            // Crear o mejorar trail con estilo más visible
+            if (gpsPath) {
+                gpsPath.setLatLngs(gpsPathCoords);
+            } else {
+                // Trail principal (línea sólida)
+                gpsPath = L.polyline(gpsPathCoords, {
+                    color: '#2196F3',
+                    weight: 5,
+                    opacity: 0.9,
+                    lineCap: 'round',
+                    lineJoin: 'round'
+                }).addTo(map);
+                
+                // Trail sombra para mejor visibilidad
+                gpsPathShadow = L.polyline(gpsPathCoords, {
+                    color: 'white',
+                    weight: 8,
+                    opacity: 0.5
+                }).addTo(map);
+            }
+            
+            // Actualizar trail sombra también
+            if (gpsPathShadow) {
+                gpsPathShadow.setLatLngs(gpsPathCoords);
+            }
+
+            // Crear marcadores de inicio y fin
+            var inicioMarker = null;
+            var finMarker = null;
+            
+            // Marker de inicio (solo la primera vez)
+            if (gpsPathCoords.length === 1 && !gpsInicioMarker) {
+                gpsInicioMarker = L.circleMarker([lat, lng], {
+                    radius: 8,
+                    fillColor: '#4CAF50',
+                    color: 'white',
+                    weight: 2,
+                    fillOpacity: 1
+                }).bindPopup('🚩 Inicio').addTo(map);
+            }
+            
+            // Marker de fin (siempre actualizar)
+            if (gpsFinMarker) {
+                map.removeLayer(gpsFinMarker);
+            }
+            gpsFinMarker = L.circleMarker([lat, lng], {
+                radius: 6,
+                fillColor: '#2196F3',
+                color: 'white',
+                weight: 2,
+                fillOpacity: 1
+            }).bindPopup('📍 Actual').addTo(map);
+
+            // Crear o actualizar marker principal
+            if (!gpsMarker) {
+                gpsMarker = L.marker([lat, lng], {
+                    icon: obtenerIconoGPS(heading),
+                    zIndexOffset: 1000,
+                    riseAngle: 0,
+                    riseOnHover: true
+                }).addTo(map);
+            } else {
+                // Animación suave de movimiento
+                gpsMarker.setLatLng([lat, lng]);
+                gpsMarker.setIcon(obtenerIconoGPS(heading));
+            }
+
+            // Calcular calidad
+            var precisionTexto = prec < 10 ? 'Excelente' : (prec < 25 ? 'Buena' : (prec < 50 ? 'Regular' : 'Baja'));
+            var precisionColor = prec < 10 ? 'green' : (prec < 25 ? '#8BC34A' : (prec < 50 ? 'orange' : 'red'));
+
+            // Mostrar velocidad en km/h si está disponible
+            var speedKmh = speed !== null ? (speed * 3.6).toFixed(1) : 'N/D';
+            var altitudeText = altitude !== null ? altitude.toFixed(0) + ' m' : 'N/D';
+
+            // Actualizar popup con información mejorada
+            gpsMarker.bindPopup(
+                '<div style="min-width:180px;font-size:12px;">' +
+                '<b style="font-size:14px;">📍 Mi ubicación</b><br/>' +
+                '<hr style="border:0;border-top:1px solid #ddd;margin:8px 0;">' +
+                '<b>Lat:</b> ' + lat.toFixed(6) + '<br/>' +
+                '<b>Lng:</b> ' + lng.toFixed(6) + '<br/>' +
+                '<b>Altitud:</b> ' + altitudeText + '<br/>' +
+                '<b>Velocidad:</b> ' + speedKmh + ' km/h<br/>' +
+                '<hr style="border:0;border-top:1px solid #ddd;margin:8px 0;">' +
+                '<b>Precisión:</b> ±' + Math.round(prec) + 'm<br/>' +
+                '<b>Calidad:</b> <span style="color:' + precisionColor + ';font-weight:bold;">' + precisionTexto + '</span><br/>' +
+                '<b>Puntos ruta:</b> ' + gpsPathCoords.length +
+                '</div>'
+            ).openPopup();
+
+            // Mostrar botón centrar
+            crearBotonCentrar();
+            if (btnCentrar) btnCentrar.show();
+
+            // Actualizar indicador con precisión
+            mostrarIndicador(false, null, prec);
+
+            // Actualizar botón GPS
+            gpsBtn.innerHTML = '📍 GPS: ON';
+            gpsBtn.style.background = '#f44336';
+
+            // Configurar timeout para detectar pérdida de señal (5 segundos)
+            gpsPerdidoTimeout = setTimeout(function() {
+                gpsContadorTimeouts++;
+                if (gpsContadorTimeouts >= 2 && !gpsEstaPerdido) {
+                    mostrarSenyalPerdida();
+                }
+            }, 5000);
+
+            // Mostrar botón de exportar si hay ruta
+            if (!gpsBtnExportar) {
+                gpsBtnExportar = crearBotonExportar();
+            }
+            gpsBtnExportar.mostrar();
+        }
+
+        function manejarErrorGPS(err) {
+            gpsContadorTimeouts++;
+            
+            // Si hay muchos timeouts seguidos, mostrar advertencia
+            if (gpsContadorTimeouts >= 3 && !gpsEstaPerdido) {
+                mostrarSenyalPerdida();
+            }
+            
+            // Solo mostrar error si es error de permisos o varios timeouts
+            if (err.code === 1 || gpsContadorTimeouts >= 5) {
+                mostrarIndicador(false);
+                var mensajes = {
+                    1: '❌ Permiso denegado. Habilita GPS en ajustes del navegador.',
+                    2: '❌ Posición no disponible. Intenta de nuevo.',
+                    3: '❌ Tiempo de espera agotado. Intenta de nuevo.',
+                    0: '❌ Error desconocido: ' + err.message
+                };
+                var msg = mensajes[err.code] || mensajes[0];
+                console.error('GPS Error:', msg);
+                alert(msg);
+                gpsBtn.innerHTML = '📍 GPS';
+                gpsBtn.style.background = '#4CAF50';
+                // Limpiar todos los elementos en caso de error
+                if (gpsPath) { map.removeLayer(gpsPath); gpsPath = null; }
+                if (gpsPathShadow) { map.removeLayer(gpsPathShadow); gpsPathShadow = null; }
+                if (gpsInicioMarker) { map.removeLayer(gpsInicioMarker); gpsInicioMarker = null; }
+                if (gpsFinMarker) { map.removeLayer(gpsFinMarker); gpsFinMarker = null; }
+                if (gpsMarker) { map.removeLayer(gpsMarker); gpsMarker = null; }
+                if (gpsMarkerPerdido) { map.removeLayer(gpsMarkerPerdido); gpsMarkerPerdido = null; }
+                // Ocultar botón centrar en caso de error
+                if (btnCentrar) btnCentrar.hide();
+                if (gpsBtnExportar) gpsBtnExportar.ocultar();
+                // Resetear contadores
+                gpsContadorTimeouts = 0;
+                gpsEstaPerdido = false;
+            }
+            // Si es solo timeout, no mostrar error, seguir intentando
+        }
+
+        if (gpsBtn) {
+            gpsBtn.addEventListener('click', function() {
+                if (!navigator.geolocation) {
+                    alert('❌ Tu navegador no soporta GPS');
+                    return;
+                }
+
+                // Si ya está activo, detener seguimiento
+                if (gpsWatchId !== null) {
+                    navigator.geolocation.clearWatch(gpsWatchId);
+                    gpsWatchId = null;
+                    gpsPathCoords = [];
+                    
+                    // Limpiar todos los elementos del GPS
+                    if (gpsPath) {
+                        map.removeLayer(gpsPath);
+                        gpsPath = null;
+                    }
+                    if (gpsPathShadow) {
+                        map.removeLayer(gpsPathShadow);
+                        gpsPathShadow = null;
+                    }
+                    if (gpsInicioMarker) {
+                        map.removeLayer(gpsInicioMarker);
+                        gpsInicioMarker = null;
+                    }
+                    if (gpsFinMarker) {
+                        map.removeLayer(gpsFinMarker);
+                        gpsFinMarker = null;
+                    }
+                    if (gpsMarker) {
+                        map.removeLayer(gpsMarker);
+                        gpsMarker = null;
+                    }
+                    if (gpsMarkerPerdido) {
+                        map.removeLayer(gpsMarkerPerdido);
+                        gpsMarkerPerdido = null;
+                    }
+                    // Resetear contadores
+                    gpsContadorTimeouts = 0;
+                    gpsEstaPerdido = false;
+                    if (gpsPerdidoTimeout) {
+                        clearTimeout(gpsPerdidoTimeout);
+                        gpsPerdidoTimeout = null;
+                    }
+                    
+                    mostrarIndicador(false);
+                    gpsBtn.innerHTML = '📍 GPS';
+                    gpsBtn.style.background = '#4CAF50';
+                    // Ocultar botón centrar
+                    if (btnCentrar) btnCentrar.hide();
+                    if (gpsBtnExportar) gpsBtnExportar.ocultar();
+                    return;
+                }
+
+                // Iniciar seguimiento con watchPosition
+                mostrarIndicador(true, '📡 Solicitando permisos GPS...');
+                gpsBtn.innerHTML = '⏳...';
+                
+                // Resetear contadores
+                gpsContadorTimeouts = 0;
+                gpsEstaPerdido = false;
+                gpsUltimaVelocidad = 0;
+                
+                // Verificar permisos primero (Permission API)
+                verificarPermisosGPS().then(function(estadoPermiso) {
+                    if (estadoPermiso === 'denied') {
+                        alert('❌ Permiso de GPS denegado. Por favor habilítalo en los ajustes del navegador.');
+                        gpsBtn.innerHTML = '📍 GPS';
+                        gpsBtn.style.background = '#4CAF50';
+                        mostrarIndicador(false);
+                        return;
+                    }
+                    
+                    // Iniciar seguimiento con watchPosition y opciones optimizadas
+                    gpsWatchId = navigator.geolocation.watchPosition(
+                        actualizarPosicion,
+                        manejarErrorGPS,
+                        {
+                            enableHighAccuracy: true, // Precisión máxima
+                            maximumAge: 0, // No usar posición en caché
+                            timeout: 10000 // 10 segundos timeout
+                        }
+                    );
+                    
+                    console.log('GPS iniciado - Estado permisos:', estadoPermiso);
+                });
             });
         }
 
