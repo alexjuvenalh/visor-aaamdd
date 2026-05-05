@@ -7,7 +7,24 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visor GIS de la Autoridad Nacional del Agua - Madre de Dios">
     <title>Visor AAA Madre de Dios</title>
+
+    <!-- Service Worker para modo offline -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(function(reg) {
+                        console.log('✅ Service Worker registrado');
+                        window.swRegistration = reg;
+                    })
+                    .catch(function(err) {
+                        console.log('⚠️ Service Worker no disponible:', err.message);
+                    });
+            });
+        }
+    </script>
     <link rel="stylesheet" href="leaflet/leaflet.css">
     <script src="leaflet/leaflet.js"></script>
 
@@ -50,6 +67,14 @@
             <div id="gps-box" style="margin-top: 10px;">
                 <button id="btn-gps" title="Mi ubicación actual" style="font-size:10px; padding:3px 8px; cursor:pointer; background:#4CAF50; color:white; border:none; border-radius:3px;">📍 GPS</button>
             </div>
+
+            <div id="sync-box" style="margin-top: 10px;">
+                <button id="btn-sync" title="Sincronizar datos" style="font-size:10px; padding:3px 8px; cursor:pointer; background:#2196F3; color:white; border:none; border-radius:3px;">🔄 Sincronizar</button>
+            </div>
+
+            <div id="status-box" style="margin-top: 10px; font-size:10px;">
+                <span id="connection-status" style="color: #4CAF50;">🟢 En línea</span>
+            </div>
         </div>
 
         <div id="map"></div>
@@ -68,6 +93,25 @@
             console.log('Faja Marginal cargada:', faja_poligono.features.length);
             console.log('Hitos Faja cargados:', faja_hito.features.length);
             console.log('Uso Temporal cargado:', uso_temporal.features.length);
+        </script>
+
+        <!-- Indicador de conexión -->
+        <script>
+            function actualizarEstadoConexion() {
+                var statusEl = document.getElementById('connection-status');
+                if (statusEl) {
+                    if (navigator.onLine) {
+                        statusEl.innerHTML = '🟢 En línea';
+                        statusEl.style.color = '#4CAF50';
+                    } else {
+                        statusEl.innerHTML = '🔴 Modo offline';
+                        statusEl.style.color = '#f44336';
+                    }
+                }
+            }
+            window.addEventListener('online', actualizarEstadoConexion);
+            window.addEventListener('offline', actualizarEstadoConexion);
+            actualizarEstadoConexion();
         </script>
     </main>
 
