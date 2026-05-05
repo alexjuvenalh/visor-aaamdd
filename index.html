@@ -7,23 +7,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Visor GIS de la Autoridad Nacional del Agua - Madre de Dios">
     <title>Visor AAA Madre de Dios</title>
-    
-    <!-- Service Worker para offline -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function() {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(function(registration) {
-                        console.log('✅ Service Worker registrado:', registration.scope);
-                    })
-                    .catch(function(err) {
-                        console.warn('⚠️ Service Worker no registrado:', err);
-                    });
-            });
-        }
-    </script>
     <link rel="stylesheet" href="leaflet/leaflet.css">
     <script src="leaflet/leaflet.js"></script>
 
@@ -68,10 +52,6 @@
 
             <div id="gps-box" style="margin-top: 10px;">
                 <button id="btn-gps" title="Mi ubicación actual" style="font-size:10px; padding:3px 8px; cursor:pointer; background:#4CAF50; color:white; border:none; border-radius:3px;">📍 GPS</button>
-            </div>
-
-            <div id="sync-box" style="margin-top: 10px;">
-                <button id="btn-sync" title="Actualizar datos desde servidor" style="font-size:10px; padding:3px 8px; cursor:pointer; background:#2196F3; color:white; border:none; border-radius:3px;">🔄 Sincronizar</button>
             </div>
         </div>
 
@@ -176,35 +156,14 @@
         }
 
         function inicializar() {
-            console.log('Inicializando carga de archivos...');
             var fileInput = document.getElementById('file-kml');
-            if (!fileInput) { 
-                console.log('Input no encontrado, reintentando...');
-                setTimeout(inicializar, 300); 
-                return; 
-            }
-            console.log('Input encontrado:', fileInput);
+            if (!fileInput) { setTimeout(inicializar, 300); return; }
             fileInput.onclick = function(e) { e.target.value = ''; };
             fileInput.onchange = function(e) {
                 var file = e.target.files[0];
-                console.log('Archivo seleccionado:', file ? file.name : 'ninguno');
                 if (!file) return;
-                // Esperar a que el mapa esté listo
-                var intentos = 0;
-                console.log('Esperando mapa...');
-                function esperarMapa() {
-                    console.log('Intento', intentos, 'window.map:', window.map);
-                    if (window.map) {
-                        console.log('Mapa listo, procesando archivo');
-                        procesarArchivo(file);
-                    } else if (intentos < 50) {
-                        intentos++;
-                        setTimeout(esperarMapa, 100);
-                    } else {
-                        alert('Mapa no disponible');
-                    }
-                }
-                esperarMapa();
+                if (!window.map) return;
+                procesarArchivo(file);
             };
             var btnLimpiar = document.getElementById('btn-limpiar-kml');
             if (btnLimpiar) {
@@ -219,13 +178,10 @@
         }
 
         function procesarArchivo(file) {
-            console.log('=== PROCESAR ARCHIVO ===');
             var ext = file.name.split('.').pop().toLowerCase();
-            console.log('Extensión:', ext);
             var reader = new FileReader();
             reader.onload = function(event) {
                 var text = event.target.result;
-                console.log('Texto leído, tamaño:', text.length);
                 var geojson = null;
                 if (ext === 'kml') {
                     if (typeof toGeoJSON !== 'undefined') {
@@ -245,79 +201,22 @@
                 } else if (ext === 'json' || ext === 'geojson') {
                     geojson = JSON.parse(text);
                 }
-                console.log('GeoJSON:', geojson ? geojson.features.length : 0, 'features');
-                if (!geojson || !geojson.features || geojson.features.length === 0) {
-                    alert('No se pudieron leer coordenadas');
-                    return;
-                }
-                
+                if (!geojson || !geojson.features || geojson.features.length === 0) return;
                 var mapa = window.map;
-                console.log('Mapa:', !!mapa, mapa);
-                
-                // Remover capa anterior si existe
-                if (kmlLayer && mapa) {
-                    try { mapa.removeLayer(kmlLayer); } catch(e) { console.log('Error removing:', e); }
-                }
-                
-                console.log('Creando capa GeoJSON con L:', typeof L, 'window.L:', typeof window.L);
-                console.log('geojson válido:', !!geojson, 'type:', geojson ? geojson.type : 'N/A');
-                console.log('geojson.features:', geojson ? geojson.features : 'N/A');
-                
-                try {
-                    // Verificar geojson
-                    if (!geojson || !geojson.features || geojson.features.length === 0) {
-                        alert('GeoJSON inválido o vacío');
-                        return;
+                if (kmlLayer) mapa.removeLayer(kmlLayer);
+                kmlLayer = L.geoJson(geojson, {
+                    style: { color: '#ff0000', weight: 3 },
+                    pointToLayer: function(f, latlng) { return L.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); },
+                    onEachFeature: function(feature, layer) {
+                        var props = feature.properties || {};
+                        var content = '<b>Feature</b><br/>';
+                        for (var key in props) content += key + ': ' + sanitize(props[key]) + '<br/>';
+                        layer.bindPopup(content);
                     }
-                    
-                    // Usar window.L para asegurar que tenemos Leaflet
-                    var Leaflet = window.L || L;
-                    console.log('Leaflet:', typeof Leaflet, 'geoJson:', typeof Leaflet.geoJson);
-                    
-                    // Crear grupo de capas primero
-                    var layerGroup = Leaflet.layerGroup();
-                    
-                    // Agregar cada feature manualmente
-                    var layersAdded = 0;
-                    geojson.features.forEach(function(feature) {
-                        try {
-                            var layer = Leaflet.geoJson(feature, {
-                                style: { color: '#ff0000', weight: 3 },
-                                pointToLayer: function(f, latlng) { 
-                                    return Leaflet.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); 
-                                }
-                            });
-                            if (layer) {
-                                layerGroup.addLayer(layer);
-                                layersAdded++;
-                            }
-                        } catch(e) {
-                            console.log('Error en feature:', e);
-                        }
-                    });
-                    
-                    console.log('Features procesados:', geojson.features.length, 'capas agregadas:', layersAdded);
-                    
-                    kmlLayer = layerGroup;
-                    
-                    console.log('kmlLayer:', !!kmlLayer, 'addLayer:', typeof kmlLayer.addLayer);
-                    
-                    if (layersAdded > 0) {
-                        kmlLayer.addTo(mapa);
-                        console.log('Capa añadida exitosamente');
-                    }
-                } catch(e) {
-                    console.error('Error creando capa:', e);
-                    alert('Error: ' + e.message);
-                }
-                console.log('Capa ajoutée al mapa, layers:', kmlLayer.getLayers().length);
+                }).addTo(mapa);
                 document.getElementById('file-kml').value = '';
                 var bounds = kmlLayer.getBounds();
-                if (bounds.isValid()) {
-                    console.log('Zoom a bounds');
-                    mapa.fitBounds(bounds);
-                }
-                alert('KML cargado: ' + geojson.features.length + ' elementos');
+                if (bounds.isValid()) mapa.fitBounds(bounds);
             };
             reader.readAsText(file);
         }
