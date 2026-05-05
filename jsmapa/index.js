@@ -1,7 +1,5 @@
 (function (window) {
     'use strict';
-    
-    console.log('>>> jsmapa/index.js CARGADO');
 
     function sanitize(str) {
         if (str == null) return '';
@@ -9,71 +7,6 @@
         div.textContent = String(str);
         return div.innerHTML;
     }
-
-    // Colores para categorización de RADA por Uso (fuera de initMap)
-    var coloresUsoRADA = {
-        'Acuícola': '#00FFFF',
-        'Minero': '#BFBF00',
-        'Poblacional': '#FF0000',
-        'Otros Usos': '#808080',
-        'Agrícola': '#00FF00',
-        'Doméstico - Poblacional': '#0080FF',
-        'Industrial': '#8000FF',
-        'Recreativo': '#00BF00',
-        'Pecuario': '#804000',
-        'Energético': '#0000FF',
-        'Turístico': '#FF00FF'
-    };
-
-    // Función getRadaFuente fuera de initMap
-    var rada_fuente_cluster = null;
-
-    function getRadaFuente() {
-        console.log('>>> getRadaFuente() ejecutandose');
-        console.log('  rada_fuente_cluster existente:', rada_fuente_cluster);
-        console.log('  window.rada_por_fuente:', !!window.rada_por_fuente);
-        
-        if (!rada_fuente_cluster && window.rada_por_fuente && window.rada_por_fuente.features) {
-            console.log('Creando capa RADA con', window.rada_por_fuente.features.length, 'features');
-            
-            var rada_fuente = L.geoJson(window.rada_por_fuente, {
-                pointToLayer: function(feature, latlng) {
-                    var uso = feature.properties.Uso || 'Otro';
-                    var color = coloresUsoRADA[uso] || '#808080';
-                    console.log('  Feature uso:', uso, 'color:', color);
-                    return L.circleMarker(latlng, {
-                        radius: 6,
-                        fillColor: color,
-                        color: '#000',
-                        weight: 1,
-                        fillOpacity: 0.8
-                    });
-                },
-                onEachFeature: function(feature, layer) {
-                    var p = feature.properties;
-                    var content = '<div style="max-width:250px;max-height:200px;overflow:auto;">';
-                    for (var key in p) {
-                        if (p[key] !== null && p[key] !== undefined && p[key] !== '') {
-                            content += '<b>' + key + ':</b> ' + sanitize(String(p[key])) + '<br/>';
-                        }
-                    }
-                    content += '</div>';
-                    layer.bindPopup(content);
-                }
-            });
-
-            rada_fuente_cluster = L.markerClusterGroup({
-                maxClusterRadius: 50
-            });
-            rada_fuente_cluster.addLayer(rada_fuente);
-            console.log('Capa RADA creada:', !!rada_fuente_cluster);
-        }
-        return rada_fuente_cluster;
-    }
-
-    // Exponer globalmente
-    window.getRadaFuente = getRadaFuente;
-    console.log('getRadaFuente expuesta al window');
 
     // Cargar datos desde API si no existen
     function cargarDatosAPI() {
@@ -104,9 +37,6 @@
             center: [-12.5933100, -69.1891300],
             zoom: 8,
         }).addLayer(osm);
-
-        // Exponer el mapa globalmente para funciones KML
-        window.map = map;
 
         // Estilo para polígonos de Faja Marginal (rojo)
         var fajaStyle = {
@@ -157,14 +87,8 @@
             div.innerHTML += '<div><span style="background:#ff7800;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Faja Marginal</div>';
             div.innerHTML += '<div><span style="background:#ffff00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Hitos Faja</div>';
             div.innerHTML += '<div><span style="background:#00ff00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Uso Temporal</div>';
-            div.innerHTML += '<div style="margin-top:5px;padding-top:5px;border-top:1px solid #ccc;"><b>RADA Fuente:</b></div>';
-            div.innerHTML += '<div><span style="background:#00FFFF;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Acuícola</div>';
-            div.innerHTML += '<div><span style="background:#BFBF00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Minero</div>';
-            div.innerHTML += '<div><span style="background:#FF0000;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Poblacional</div>';
-            div.innerHTML += '<div><span style="background:#00FF00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Agrícola</div>';
-            div.innerHTML += '<div><span style="background:#0080FF;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Doméstico</div>';
-            div.innerHTML += '<div><span style="background:#8000FF;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Industrial</div>';
-            div.innerHTML += '<div><span style="background:#808080;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Otros</div>';
+            div.innerHTML += '<div><span style="background:#0000ff;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> RADA Fuente</div>';
+            div.innerHTML += '<div><span style="background:#ff00ff;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> RADA Derecho</div>';
             return div;
         };
         legend.addTo(map);
@@ -295,7 +219,35 @@
             }
             return aut;
         }
-        // RADA usa la función global
+        // CAPAS - RADA
+        // ============================================
+        var rada_fuente_cluster = null;
+
+        function getRadaFuente() {
+            if (!rada_fuente_cluster && window.rada_por_fuente) {
+                var rada_fuente = L.geoJson(window.rada_por_fuente, {
+                    pointToLayer: function(feature, latlng) {
+                        return L.circleMarker(latlng, {
+                            radius: 6,
+                            fillColor: '#0000ff',
+                            color: '#000',
+                            weight: 1,
+                            fillOpacity: 0.8
+                        });
+                    },
+                    onEachFeature: function(feature, layer) {
+                        var p = feature.properties;
+                        layer.bindPopup('<b>Usuario:</b> ' + sanitize(p.usuario));
+                    }
+                });
+
+                rada_fuente_cluster = L.markerClusterGroup({
+                    maxClusterRadius: 50
+                });
+                rada_fuente_cluster.addLayer(rada_fuente);
+            }
+            return rada_fuente_cluster;
+        }
 
         var rada_derecho_cluster = null;
 
@@ -372,11 +324,8 @@
 
         if (checkBoxRadaFuente) {
             checkBoxRadaFuente.addEventListener("click", function() {
-                console.log('Checkbox RADA click, checked:', checkBoxRadaFuente.checked);
-                console.log('rada_fuente_cluster:', rada_fuente_cluster);
                 if (checkBoxRadaFuente.checked) {
                     var capa = getRadaFuente();
-                    console.log('Capa creada:', capa);
                     if (capa) capa.addTo(map);
                 } else {
                     var capa = getRadaFuente();
@@ -422,8 +371,13 @@
                 link.href = URL.createObjectURL(blob);
                 link.download = 'visor_ana_datos.csv';
                 link.click();
-});
+            });
         }
+
+        console.log('Visor ANA inicializado correctamente');
+        console.log('Fajas disponibles:', window.faja_poligono?.features?.length || 0);
+        console.log('Autorizaciones disponibles:', window.uso_temporal?.features?.length || 0);
+    }
 
         // Buscar por número de resolución
         var btnBuscar = document.getElementById('btn-buscar');
@@ -431,236 +385,58 @@
         if (btnBuscar && inputBuscar) {
             btnBuscar.addEventListener('click', buscarPorResolucion);
             inputBuscar.addEventListener('keypress', function(e) { if (e.key === 'Enter') buscarPorResolucion(); });
-
-            function buscarPorResolucion() {
-                var texto = inputBuscar.value.trim().toUpperCase();
-                if (!texto) return;
-                var resultados = [];
-                if (window.faja_poligono && window.faja_poligono.features) {
-                    window.faja_poligono.features.forEach(function(f) {
-                        if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
-                            resultados.push({ tipo: 'Faja Marginal', data: f });
-                        }
-                    });
-                }
-                if (window.faja_hito && window.faja_hito.features) {
-                    window.faja_hito.features.forEach(function(f) {
-                        if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
-                            resultados.push({ tipo: 'Hito', data: f });
-                        }
-                    });
-                }
-                if (window.uso_temporal && window.uso_temporal.features) {
-                    window.uso_temporal.features.forEach(function(f) {
-                        if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
-                            resultados.push({ tipo: 'Uso Temporal', data: f });
-                        }
-                    });
-                }
-                if (resultados.length === 0) { alert('No se encontró: ' + inputBuscar.value); return; }
-                var feature = resultados[0].data;
-                var layer = L.geoJson(feature);
-                var bounds = layer.getBounds();
-                if (bounds.isValid()) { map.fitBounds(bounds, { padding: [50, 50] }); }
-                else if (feature.geometry.type === 'Point') { var c = feature.geometry.coordinates; map.setView([c[1], c[0]], 15); }
-            }
         }
 
-        // GPS con seguimiento en tiempo real
-        var gpsMarker = null;
-        var gpsWatchId = null;
-        var gpsPathCoords = [];
-        var gpsPathLine = null;
-        var gpsBtn = document.getElementById('btn-gps');
-        var gpsEstaActivo = false;
-        var gpsIndicator = null;
-        var btnCentrar = null;
-
-        // Crear indicador de estado GPS
-        function crearIndicadorGPS() {
-            if (!gpsIndicator) {
-                gpsIndicator = L.control({ position: 'topright' });
-                gpsIndicator.onAdd = function(map) {
-                    var div = L.DomUtil.create('div', 'gps-status');
-                    div.id = 'gps-status-indicator';
-                    div.style.cssText = 'background:rgba(33,150,243,0.9);color:white;padding:8px 12px;border-radius:6px;font-size:11px;display:none;box-shadow:0 2px 8px rgba(0,0,0,0.3);z-index:1000;';
-                    div.innerHTML = '📡 GPS...';
-                    return div;
-                };
-                gpsIndicator.addTo(map);
-            }
-        }
-
-        function mostrarIndicador(texto, precision) {
-            crearIndicadorGPS();
-            var el = document.getElementById('gps-status-indicator');
-            if (el) {
-                el.style.display = 'block';
-                if (precision !== undefined) {
-                    var color = precision < 15 ? '#4CAF50' : (precision < 30 ? '#FF9800' : '#f44336');
-                    el.innerHTML = '<span style="color:' + color + '">●</span> <b>GPS Activo</b><br>±' + Math.round(precision) + 'm<br>Puntos: ' + gpsPathCoords.length;
-                } else {
-                    el.innerHTML = texto;
-                }
-            }
-        }
-
-        // Crear botón flotante para centrar
-        function crearBotonCentrar() {
-            if (!btnCentrar) {
-                btnCentrar = L.control({ position: 'bottomright' });
-                btnCentrar.onAdd = function(map) {
-                    var div = L.DomUtil.create('div', 'btn-centrar');
-                    div.id = 'btn-centrar-gps';
-                    div.innerHTML = '🎯';
-                    div.title = 'Centrar en mi posición';
-                    div.style.cssText = 'background:white;width:36px;height:36px;border-radius:50%;border:2px solid #2196F3;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.3);z-index:1000;';
-                    div.onclick = function() {
-                        if (gpsPathCoords.length > 0) {
-                            var ultimo = gpsPathCoords[gpsPathCoords.length - 1];
-                            map.setView([ultimo[0], ultimo[1]], 16);
-                        }
-                    };
-                    return div;
-                };
-                btnCentrar.addTo(map);
-            }
-        }
-
-        // Actualizar posición
-        function actualizarPosicion(pos) {
-            var lat = pos.coords.latitude;
-            var lng = pos.coords.longitude;
-            var prec = pos.coords.accuracy;
-            var speed = pos.coords.speed || 0;
-
-            // Guardar coordenadas
-            gpsPathCoords.push([lat, lng]);
-
-            // Crear o actualizar marcador
-            if (gpsMarker) map.removeLayer(gpsMarker);
-
-            var markerHtml = '<div style="background:#2196F3;width:24px;height:24px;border-radius:50%;border:3px solid white;box-shadow:0 3px 8px rgba(0,0,0,0.4);position:relative;">' +
-                '<div style="width:8px;height:8px;background:white;border-radius:50%;position:absolute;top:5px;left:5px;"></div></div>';
-
-            gpsMarker = L.marker([lat, lng], {
-                icon: L.divIcon({ className: 'gps-marker', html: markerHtml, iconSize: [24, 24], iconAnchor: [12, 12] })
-            }).addTo(map);
-
-            var speedKmh = speed ? Math.round(speed * 3.6) : 0;
-            gpsMarker.bindPopup('<b>📍 Mi ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm' + (speedKmh > 0 ? '<br>Velocidad: ' + speedKmh + ' km/h' : '')).openPopup();
-
-            // Dibujar trayectoria
-            if (gpsPathLine) map.removeLayer(gpsPathLine);
-            gpsPathLine = L.polyline(gpsPathCoords, { color: '#2196F3', weight: 4, opacity: 0.7 }).addTo(map);
-
-            // Actualizar indicador
-            mostrarIndicador(null, prec);
-
-            // Mostrar botón centrar
-            if (btnCentrar) document.getElementById('btn-centrar-gps').style.display = 'flex';
-
-            gpsEstaActivo = true;
-        }
-
-        // Manejar errores
-        function manejarErrorGPS(err) {
-            if (err.code === 1) alert('Permiso GPS denegado');
-            else if (err.code === 2) alert('GPS no disponible');
-            else if (err.code === 3) alert('Tiempo agotado');
-            else alert('Error GPS: ' + err.message);
-        }
-
-        // Alternar GPS
-        function toggleGPS() {
-            if (!navigator.geolocation) { alert('Tu navegador no soporta GPS'); return; }
-
-            if (gpsEstaActivo) {
-                // Detener seguimiento
-                if (gpsWatchId !== null) {
-                    navigator.geolocation.clearWatch(gpsWatchId);
-                    gpsWatchId = null;
-                }
-                gpsEstaActivo = false;
-                gpsBtn.innerHTML = '📍 GPS';
-                var el = document.getElementById('gps-status-indicator');
-                if (el) el.style.display = 'none';
-                alert('GPS detenido.\nTrayectoria: ' + gpsPathCoords.length + ' puntos');
-            } else {
-                // Iniciar seguimiento
-                gpsPathCoords = [];
-                gpsBtn.innerHTML = '⏹️ Detener';
-                gpsWatchId = navigator.geolocation.watchPosition(actualizarPosicion, manejarErrorGPS, {
-                    enableHighAccuracy: true,
-                    maximumAge: 0,
-                    timeout: 30000
+        function buscarPorResolucion() {
+            var texto = inputBuscar.value.trim().toUpperCase();
+            if (!texto) return;
+            var resultados = [];
+            if (window.faja_poligono && window.faja_poligono.features) {
+                window.faja_poligono.features.forEach(function(f) {
+                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                        resultados.push({ tipo: 'Faja Marginal', data: f });
+                    }
                 });
             }
+            if (window.faja_hito && window.faja_hito.features) {
+                window.faja_hito.features.forEach(function(f) {
+                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                        resultados.push({ tipo: 'Hito', data: f });
+                    }
+                });
+            }
+            if (window.uso_temporal && window.uso_temporal.features) {
+                window.uso_temporal.features.forEach(function(f) {
+                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                        resultados.push({ tipo: 'Uso Temporal', data: f });
+                    }
+                });
+            }
+            if (resultados.length === 0) { alert('No se encontró: ' + inputBuscar.value); return; }
+            var feature = resultados[0].data;
+            var layer = L.geoJson(feature);
+            var bounds = layer.getBounds();
+            if (bounds.isValid()) { map.fitBounds(bounds, { padding: [50, 50] }); }
+            else if (feature.geometry.type === 'Point') { var c = feature.geometry.coordinates; map.setView([c[1], c[0]], 15); }
         }
 
-        if (gpsBtn) {
-            gpsBtn.addEventListener('click', toggleGPS);
-            crearBotonCentrar();
-        }
-
-        // Exportar ruta GPS
-        var btnExportGps = document.getElementById('btn-export-gps');
-        if (btnExportGps) {
-            btnExportGps.addEventListener('click', function() {
-                if (gpsPathCoords.length === 0) {
-                    alert('No hay trayectoria para exportar.\nIniciá el GPS primero.');
-                    return;
-                }
-
-                var opciones = prompt('Exportar como:\n1 = GPX\n2 = GeoJSON\n3 = Texto\n(Ingresá 1, 2 o 3)', '1');
-                if (!opciones) return;
-
-                if (opciones === '1') {
-                    // GPX
-                    var gpx = '<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1"><trk><name>Ruta GPS</name><trkseg>\n';
-                    gpsPathCoords.forEach(function(c) {
-                        gpx += '<trkpt lat="' + c[0] + '" lon="' + c[1] + '"></trkpt>\n';
-                    });
-                    gpx += '</trkseg></trk></gpx>';
-                    var blob = new Blob([gpx], { type: 'application/gpx+xml' });
-                    var link = document.createElement('a');
-                    link.href = URL.createObjectURL(blob);
-                    link.download = 'ruta_gps_' + Date.now() + '.gpx';
-                    link.click();
-                    alert('✅ Ruta exportada a GPX');
-                } else if (opciones === '2') {
-                    // GeoJSON
-                    var geojson = JSON.stringify({
-                        type: 'Feature',
-                        properties: { puntos: gpsPathCoords.length, fecha: new Date().toISOString() },
-                        geometry: { type: 'LineString', coordinates: gpsPathCoords }
-                    }, null, 2);
-                    var blob = new Blob([geojson], { type: 'application/json' });
-                    var link = document.createElement('a');
-                    link.href = URL.createObjectURL(blob);
-                    link.download = 'ruta_gps_' + Date.now() + '.geojson';
-                    link.click();
-                    alert('✅ Ruta exportada a GeoJSON');
-                } else if (opciones === '3') {
-                    // Texto
-                    var texto = 'RUTA GPS - Visor ANA\nPuntos: ' + gpsPathCoords.length + '\nFecha: ' + new Date().toLocaleString() + '\n\n';
-                    gpsPathCoords.forEach(function(c, i) {
-                        texto += (i + 1) + '. ' + c[0].toFixed(6) + ', ' + c[1].toFixed(6) + '\n';
-                    });
-                    var blob = new Blob([texto], { type: 'text/plain' });
-                    var link = document.createElement('a');
-                    link.href = URL.createObjectURL(blob);
-                    link.download = 'ruta_gps_' + Date.now() + '.txt';
-                    link.click();
-                    alert('✅ Ruta exportada a TXT');
-                }
+        // GPS
+        var gpsMarker = null;
+        var btnGps = document.getElementById('btn-gps');
+        if (btnGps) {
+            btnGps.addEventListener('click', function() {
+                if (!navigator.geolocation) { alert('Tu navegador no soporta GPS'); return; }
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                    var lat = pos.coords.latitude, lng = pos.coords.longitude, prec = pos.coords.accuracy;
+                    if (gpsMarker) map.removeLayer(gpsMarker);
+                    gpsMarker = L.marker([lat, lng], {
+                        icon: L.divIcon({ className: 'gps-marker', html: '<div style="background:#2196F3;width:20px;height:20px;border-radius:50%;border:3px solid white;box-shadow:0 2px 5px rgba(0,0,0,0.3);"></div>', iconSize: [20, 20], iconAnchor: [10, 10] })
+                    }).addTo(map);
+                    map.setView([lat, lng], 16);
+                    gpsMarker.bindPopup('<b>📍 Tu ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm').openPopup();
+                }, function(err) { alert('Error GPS: ' + err.message); }, { enableHighAccuracy: true, timeout: 30000 });
             });
-
-        console.log('Visor ANA inicializado correctamente');
-        console.log('Fajas disponibles:', window.faja_poligono?.features?.length || 0);
-        console.log('Hitos disponibles:', window.faja_hito?.features?.length || 0);
-        console.log('Autorizaciones disponibles:', window.uso_temporal?.features?.length || 0);
-    }
+        }
 
     window.addEventListener('load', function () {
         initMap();
