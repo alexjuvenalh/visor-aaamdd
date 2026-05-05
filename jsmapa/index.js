@@ -374,13 +374,8 @@
                 link.href = URL.createObjectURL(blob);
                 link.download = 'visor_ana_datos.csv';
                 link.click();
-            });
+});
         }
-
-        console.log('Visor ANA inicializado correctamente');
-        console.log('Fajas disponibles:', window.faja_poligono?.features?.length || 0);
-        console.log('Autorizaciones disponibles:', window.uso_temporal?.features?.length || 0);
-    }
 
         // Buscar por número de resolución
         var btnBuscar = document.getElementById('btn-buscar');
@@ -388,39 +383,39 @@
         if (btnBuscar && inputBuscar) {
             btnBuscar.addEventListener('click', buscarPorResolucion);
             inputBuscar.addEventListener('keypress', function(e) { if (e.key === 'Enter') buscarPorResolucion(); });
-        }
 
-        function buscarPorResolucion() {
-            var texto = inputBuscar.value.trim().toUpperCase();
-            if (!texto) return;
-            var resultados = [];
-            if (window.faja_poligono && window.faja_poligono.features) {
-                window.faja_poligono.features.forEach(function(f) {
-                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
-                        resultados.push({ tipo: 'Faja Marginal', data: f });
-                    }
-                });
+            function buscarPorResolucion() {
+                var texto = inputBuscar.value.trim().toUpperCase();
+                if (!texto) return;
+                var resultados = [];
+                if (window.faja_poligono && window.faja_poligono.features) {
+                    window.faja_poligono.features.forEach(function(f) {
+                        if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                            resultados.push({ tipo: 'Faja Marginal', data: f });
+                        }
+                    });
+                }
+                if (window.faja_hito && window.faja_hito.features) {
+                    window.faja_hito.features.forEach(function(f) {
+                        if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                            resultados.push({ tipo: 'Hito', data: f });
+                        }
+                    });
+                }
+                if (window.uso_temporal && window.uso_temporal.features) {
+                    window.uso_temporal.features.forEach(function(f) {
+                        if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                            resultados.push({ tipo: 'Uso Temporal', data: f });
+                        }
+                    });
+                }
+                if (resultados.length === 0) { alert('No se encontró: ' + inputBuscar.value); return; }
+                var feature = resultados[0].data;
+                var layer = L.geoJson(feature);
+                var bounds = layer.getBounds();
+                if (bounds.isValid()) { map.fitBounds(bounds, { padding: [50, 50] }); }
+                else if (feature.geometry.type === 'Point') { var c = feature.geometry.coordinates; map.setView([c[1], c[0]], 15); }
             }
-            if (window.faja_hito && window.faja_hito.features) {
-                window.faja_hito.features.forEach(function(f) {
-                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
-                        resultados.push({ tipo: 'Hito', data: f });
-                    }
-                });
-            }
-            if (window.uso_temporal && window.uso_temporal.features) {
-                window.uso_temporal.features.forEach(function(f) {
-                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
-                        resultados.push({ tipo: 'Uso Temporal', data: f });
-                    }
-                });
-            }
-            if (resultados.length === 0) { alert('No se encontró: ' + inputBuscar.value); return; }
-            var feature = resultados[0].data;
-            var layer = L.geoJson(feature);
-            var bounds = layer.getBounds();
-            if (bounds.isValid()) { map.fitBounds(bounds, { padding: [50, 50] }); }
-            else if (feature.geometry.type === 'Point') { var c = feature.geometry.coordinates; map.setView([c[1], c[0]], 15); }
         }
 
         // GPS
@@ -440,6 +435,11 @@
                 }, function(err) { alert('Error GPS: ' + err.message); }, { enableHighAccuracy: true, timeout: 30000 });
             });
         }
+
+        console.log('Visor ANA inicializado correctamente');
+        console.log('Fajas disponibles:', window.faja_poligono?.features?.length || 0);
+        console.log('Autorizaciones disponibles:', window.uso_temporal?.features?.length || 0);
+    }
 
     window.addEventListener('load', function () {
         initMap();
