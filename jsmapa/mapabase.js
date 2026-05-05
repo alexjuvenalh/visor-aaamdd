@@ -1,3 +1,11 @@
+// Función para sanitizar HTML y prevenir XSS
+function sanitize(str) {
+    if (str == null) return '';
+    var div = document.createElement('div');
+    div.textContent = String(str);
+    return div.innerHTML;
+}
+
 let map = L.map('map', {
     center: [-12.5933100, -69.1891300],
     zoom: 8,
@@ -18,27 +26,27 @@ title.addTo(map);
 
 
 let faja_marginal = L.geoJson(faja_poligono, {
-  
+   
     onEachFeature: function(feature, layer) {
         let p = feature.properties;
         let linkPDF = '';
         if (p.archivo) {
-            linkPDF = '<br/><b>Resolución: </b><a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + p.archivo + '">' + p.archivo + '</a>';
+            linkPDF = '<br/><b>Resolución: </b><a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">' + sanitize(p.archivo) + '</a>';
         }
         layer.bindPopup(
-            '<center><b>' + p.clase_resolucion + '</b></center><br/>' +
-            '<b>Nombre Faja: </b>' + p.nombre_faja_marginal + '<br/>' +
-            '<b>Margen: </b>' + p.margen + '<br/>' +
-            '<b>N° Resolución: </b>' + p.numero_resolucion + '<br/>' +
-            '<b>Fecha Resolución: </b>' + p.fecha_resolucion + '<br/>' +
-            '<b>AAA: </b>' + p.aaa + '<br/>' +
-            '<b>ALA: </b>' + p.ala + '<br/>' +
-            '<b>CUT: </b>' + p.cut + '<br/>' +
-            '<b>Departamento: </b>' + p.departamento + '<br/>' +
-            '<b>Provincia: </b>' + p.provincia + '<br/>' +
-            '<b>Distrito: </b>' + p.distrito + '<br/>' +
-            '<b>Sector: </b>' + p.sector + '<br/>' +
-            '<b>Resumen: </b>' + p.resumen + linkPDF
+            '<center><b>' + sanitize(p.clase_resolucion) + '</b></center><br/>' +
+            '<b>Nombre Faja: </b>' + sanitize(p.nombre_faja_marginal) + '<br/>' +
+            '<b>Margen: </b>' + sanitize(p.margen) + '<br/>' +
+            '<b>N° Resolución: </b>' + sanitize(p.numero_resolucion) + '<br/>' +
+            '<b>Fecha Resolución: </b>' + sanitize(p.fecha_resolucion) + '<br/>' +
+            '<b>AAA: </b>' + sanitize(p.aaa) + '<br/>' +
+            '<b>ALA: </b>' + sanitize(p.ala) + '<br/>' +
+            '<b>CUT: </b>' + sanitize(p.cut) + '<br/>' +
+            '<b>Departamento: </b>' + sanitize(p.departamento) + '<br/>' +
+            '<b>Provincia: </b>' + sanitize(p.provincia) + '<br/>' +
+            '<b>Distrito: </b>' + sanitize(p.distrito) + '<br/>' +
+            '<b>Sector: </b>' + sanitize(p.sector) + '<br/>' +
+            '<b>Resumen: </b>' + sanitize(p.resumen) + linkPDF
         );
         layer.on({
             mouseover: highlightFeature,
@@ -118,9 +126,9 @@ function zoomToFeature(e) {
 
 let hito_faja = L.geoJson(faja_hito, {
     onEachFeature: function(feature, layer) {
-
-        layer.bindPopup("<strong>Hito: </strong>" + feature.properties.hito + '<br/> <b>Ancho Faja: </b>' + feature.properties.ancho_faja + '<br/><b>Numero RD: </b>' + feature.properties.numero_resolucion +
-            '<br/> <b>Fecha Resolucion: </b>' + feature.properties.fecha_resolucion + '<br/><b>Margen: </b>' + feature.properties.margen + '<br/><b>ESTE: </b>' + feature.properties.este + '<br/><b>NORTE : </b> <a Target="_blank" href="https://autoridad.sharepoint.com/intranet/SitePages/Inicio.aspx">' + feature.properties.norte +'</a>'+ feature.properties.norte);
+        let p = feature.properties;
+        layer.bindPopup("<strong>Hito: </strong>" + sanitize(p.hito) + '<br/> <b>Ancho Faja: </b>' + sanitize(p.ancho_faja) + '<br/><b>Numero RD: </b>' + sanitize(p.numero_resolucion) +
+            '<br/> <b>Fecha Resolucion: </b>' + sanitize(p.fecha_resolucion) + '<br/><b>Margen: </b>' + sanitize(p.margen) + '<br/><b>ESTE: </b>' + sanitize(p.este) + '<br/><b>NORTE: </b>' + sanitize(p.norte));
     }
 });
 //--------------------------------------------------------------------------------------------------------------------------------//
@@ -135,41 +143,41 @@ let aut = L.geoJson(uso_temporal, {
         let p = feature.properties;
         let linkPDF = '';
         if (p.archivo) {
-            linkPDF = '<br/><b>Resolución: </b><a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + p.archivo + '">' + p.archivo + '</a>';
+            linkPDF = '<br/><b>Resolución: </b><a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">' + sanitize(p.archivo) + '</a>';
         }
         layer.bindPopup(
-            '<center><b>' + p.clase_resolucion + '</b></center><br/>' +
-            '<b>Área Otorgada: </b>' + p.area_otorgada + '<br/>' +
-            '<b>Bien Asociado: </b>' + p.bien_asociado + '<br/>' +
-            '<b>AAA: </b>' + p.aaa + '<br/>' +
-            '<b>ALA: </b>' + p.ala + '<br/>' +
-            '<b>CUT: </b>' + p.cut + '<br/>' +
-            '<b>N° Resolución: </b>' + p.numero_resolucion + '<br/>' +
-            '<b>Fecha Resolución: </b>' + p.fecha_resolucion + '<br/>' +
-            '<b>Resumen: </b>' + p.resumen + '<br/>' +
-            '<b>Nombre/Razón Social: </b>' + p.nombre_o_razon_social + '<br/>' +
-            '<b>Documento: </b>' + p.tipo_documento + ' ' + p.numero_documento + '<br/>' +
-            '<b>Departamento: </b>' + p.departamento + '<br/>' +
-            '<b>Provincia: </b>' + p.provincia + '<br/>' +
-            '<b>Distrito: </b>' + p.distrito + '<br/>' +
-            '<b>Sector: </b>' + p.sector + '<br/>' +
-            '<b>Tipo de Autorización: </b>' + p.tipo_aut + '<br/>' +
-            '<b>Fecha Autorización: </b>' + p.fecha_autorizacion + linkPDF
+            '<center><b>' + sanitize(p.clase_resolucion) + '</b></center><br/>' +
+            '<b>Área Otorgada: </b>' + sanitize(p.area_otorgada) + '<br/>' +
+            '<b>Bien Asociado: </b>' + sanitize(p.bien_asociado) + '<br/>' +
+            '<b>AAA: </b>' + sanitize(p.aaa) + '<br/>' +
+            '<b>ALA: </b>' + sanitize(p.ala) + '<br/>' +
+            '<b>CUT: </b>' + sanitize(p.cut) + '<br/>' +
+            '<b>N° Resolución: </b>' + sanitize(p.numero_resolucion) + '<br/>' +
+            '<b>Fecha Resolución: </b>' + sanitize(p.fecha_resolucion) + '<br/>' +
+            '<b>Resumen: </b>' + sanitize(p.resumen) + '<br/>' +
+            '<b>Nombre/Razón Social: </b>' + sanitize(p.nombre_o_razon_social) + '<br/>' +
+            '<b>Documento: </b>' + sanitize(p.tipo_documento) + ' ' + sanitize(p.numero_documento) + '<br/>' +
+            '<b>Departamento: </b>' + sanitize(p.departamento) + '<br/>' +
+            '<b>Provincia: </b>' + sanitize(p.provincia) + '<br/>' +
+            '<b>Distrito: </b>' + sanitize(p.distrito) + '<br/>' +
+            '<b>Sector: </b>' + sanitize(p.sector) + '<br/>' +
+            '<b>Tipo de Autorización: </b>' + sanitize(p.tipo_aut) + '<br/>' +
+            '<b>Fecha Autorización: </b>' + sanitize(p.fecha_autorizacion) + linkPDF
         );
     }
 });
 let rada_fuente = L.geoJson(rada_por_fuente, {
     onEachFeature: function(feature, layer) {
-
-        layer.bindPopup("<strong>ALA: </strong>" + feature.properties.ala + '<br/> <b>Numero de Resolucion: </b>' + feature.properties.resolucion + '<br/><b>Fecha RD: </b>' + feature.properties.fecha +
-            '<br/> <b>Tipo de Uso: </b>' + feature.properties.uso + '<br/><b>Clase: </b>' + feature.properties.clase + '<br/><b>Usuario: </b>' + feature.properties.usuario);
+        let p = feature.properties;
+        layer.bindPopup("<strong>ALA: </strong>" + sanitize(p.ala) + '<br/> <b>Numero de Resolucion: </b>' + sanitize(p.resolucion) + '<br/><b>Fecha RD: </b>' + sanitize(p.fecha) +
+            '<br/> <b>Tipo de Uso: </b>' + sanitize(p.uso) + '<br/><b>Clase: </b>' + sanitize(p.clase) + '<br/><b>Usuario: </b>' + sanitize(p.usuario);
     }
 });
 let rada_derecho = L.geoJson(rada_por_derecho, {
     onEachFeature: function(feature, layer) {
-
-        layer.bindPopup("<strong>ALA: </strong>" + feature.properties.ala + '<br/> <b>Numero de Resolucion: </b>' + feature.properties.resolucion + '<br/><b>Fecha RD: </b>' + feature.properties.fecha +
-            '<br/> <b>Tipo de Uso: </b>' + feature.properties.uso + '<br/><b>Clase: </b>' + feature.properties.clase + '<br/><b>Usuario: </b>' + feature.properties.usuario);
+        let p = feature.properties;
+        layer.bindPopup("<strong>ALA: </strong>" + sanitize(p.ala) + '<br/> <b>Numero de Resolucion: </b>' + sanitize(p.resolucion) + '<br/><b>Fecha RD: </b>' + sanitize(p.fecha) +
+            '<br/> <b>Tipo de Uso: </b>' + sanitize(p.uso) + '<br/><b>Clase: </b>' + sanitize(p.clase) + '<br/><b>Usuario: </b>' + sanitize(p.usuario);
     }
 });
 

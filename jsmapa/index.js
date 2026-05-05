@@ -1,6 +1,9 @@
 (function (window) {
     'use strict';
 
+    // Constante para URLs de archivos PDF del ANA
+    var ANA_BASE_URL = '' + ANA_BASE_URL + '';
+
     function sanitize(str) {
         if (str == null) return '';
         var div = document.createElement('div');
@@ -9,18 +12,34 @@
     }
 
     // Cargar datos desde API si no existen
-    function cargarDatosAPI() {
-        return fetch('http://localhost:3000/api/poligonos-faja')
-            .then(function(r) { return r.json(); })
-            .then(function(data) {
-                window.faja_poligono = data;
-                console.log('Datos faja cargados:', data.features.length);
-                return data;
-            })
-            .catch(function(e) {
-                console.error('Error cargando faja:', e);
-                return null;
-            });
+    function cargarDatosAPI(callback) {
+        var intentos = 0;
+        var maxIntentos = 3;
+        
+        function intentar() {
+            fetch('http://localhost:3000/api/poligonos-faja')
+                .then(function(r) { 
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.json(); 
+                })
+                .then(function(data) {
+                    window.faja_poligono = data;
+                    console.log('✅ Datos faja cargados:', data.features.length);
+                    if (callback) callback();
+                })
+                .catch(function(e) {
+                    console.warn('⚠️ Error cargando faja (intento ' + (intentos + 1) + '):', e.message);
+                    if (intentos < maxIntentos - 1) {
+                        intentos++;
+                        console.log('⏳ Reintentando en 2 segundos...');
+                        setTimeout(intentar, 2000);
+                    } else {
+                        console.error('❌ Falló después de ' + maxIntentos + ' intentos. Usando datos offline.');
+                        if (callback) callback();
+                    }
+                });
+        }
+        intentar();
     }
 
     function initMap() {
@@ -110,7 +129,7 @@
                         content += '<b>Sector:</b> ' + sanitize(p.sector) + '<br/>';
                         content += '<b>Resumen:</b> ' + sanitize(p.resumen) + '<br/>';
                         if (p.archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
+                            content += '<b>Archivo:</b> <a target="_blank" href="' + ANA_BASE_URL + '' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
                         }
                         layer.bindPopup(content);
                     }
@@ -152,7 +171,7 @@
                         content += '<b>Sector:</b> ' + sanitize(p.sector) + '<br/>';
                         content += '<b>Resumen:</b> ' + sanitize(p.resumen) + '<br/>';
                         if (p.archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
+                            content += '<b>Archivo:</b> <a target="_blank" href="' + ANA_BASE_URL + '' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
                         }
                         layer.bindPopup(content);
                     }
@@ -201,7 +220,7 @@
                         content += '<b>Sector:</b> ' + sanitize(p.sector) + '<br/>';
                         content += '<b>Resumen:</b> ' + sanitize(p.resumen) + '<br/>';
                         if (p.archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
+                            content += '<b>Archivo:</b> <a target="_blank" href="' + ANA_BASE_URL + '' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
                         }
                         layer.bindPopup(content);
                     }
