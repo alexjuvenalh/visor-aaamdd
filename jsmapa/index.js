@@ -257,11 +257,23 @@
                     onEachFeature: function(feature, layer) {
                         var p = feature.properties;
                         var content = '<div style="max-width:250px;max-height:200px;overflow:auto;">';
-                        for (var key in p) {
+                        
+                        // Campos importantes a mostrar
+                        var camposImportantes = ['Uso', 'Usuario', 'Documento', 'Resolució', 'Fecha', 'Fuente', 'Lugar_Uso', 'Volumen (m', 'Area (ha)', 'ALA', 'AAA', 'Departamen', 'Provincia', 'Distrito'];
+                        var camposPDF = ['Archivo'];
+                        
+                        // Mostrar campos importantes
+                        camposImportantes.forEach(function(key) {
                             if (p[key] !== null && p[key] !== undefined && p[key] !== '') {
                                 content += '<b>' + key + ':</b> ' + sanitize(String(p[key])) + '<br/>';
                             }
+                        });
+                        
+                        // Mostrar PDF si existe
+                        if (p.Archivo) {
+                            content += '<b>Archivo:</b> <a target="_blank" href="' + sanitize(p.Archivo) + '">📄 Ver PDF</a><br/>';
                         }
+                        
                         content += '</div>';
                         layer.bindPopup(content);
                     }
