@@ -1,6 +1,8 @@
 # Dependencies
 node_modules/
 api/node_modules/
+package.json
+package-lock.json
 
 # Third-party libraries (use CDN or install via npm)
 leaflet/
@@ -27,3 +29,8 @@ npm-debug.log*
 
 # Cache
 .cache/
+
+# Local scripts
+crear_repo.bat
+crear_repo2.bat
+jsmapa/index_backup.js
