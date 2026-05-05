@@ -1434,11 +1434,7 @@
     }
 
     window.addEventListener('load', function () {
-        // Inicializar detección online/offline primero
-        inicializarDeteccionOnline();
-        // Inicializar sincronización
-        inicializarSync();
-        // Luego inicializar el mapa
+        // Inicializar el mapa
         initMap();
     });
 
