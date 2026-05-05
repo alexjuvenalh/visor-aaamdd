@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-    <script src="https://unpkg.com/shp-write@0.3.1/shpwrite.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
     <script src="https://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
     <link rel="stylesheet" href="css/estilosmapa.css"/>
@@ -100,17 +100,47 @@
 
         <!-- Funciones para descargar capas -->
         <script>
-            // Convertir GeoJSON a KML
-            function geojsonToKML(geojson, nombreCapa) {
+            // Convertir GeoJSON a KML con estilos
+            function geojsonToKML(geojson, nombreCapa, tipoCapa) {
+                // Definir estilos según tipo de capa
+                var estilos = {
+                    faja: { color: 'ff0000ff', colorName: 'red', fill: 0, outline: 1 },      // Rojo, solo contorno
+                    hito: { color: 'ff800080', colorName: 'purple', fill: 1, outline: 1 },   // Morado
+                    uso: { color: 'ffff0000', colorName: 'blue', fill: 0, outline: 1 }       // Azul, solo contorno
+                };
+                
+                var estilo = estilos[tipoCapa] || estilos.faja;
+                
                 var kml = '<?xml version="1.0" encoding="UTF-8"?>\n';
                 kml += '<kml xmlns="http://www.opengis.net/kml/2.2">\n';
                 kml += '<Document>\n';
                 kml += '  <name>' + nombreCapa + '</name>\n';
                 
+                // Definir estilo
+                kml += '  <Style id="' + tipoCapa + '">\n';
+                if (geojson.features[0] && geojson.features[0].geometry.type === 'Point') {
+                    kml += '    <IconStyle><color>' + estilo.color + '</color><scale>1.2</scale></IconStyle>\n';
+                    kml += '    <LabelStyle><color>' + estilo.color + '</color></LabelStyle>\n';
+                } else {
+                    kml += '    <LineStyle><color>' + estilo.color + '</color><width>3</width></LineStyle>\n';
+                    kml += '    <PolyStyle><color>' + (estilo.fill ? estilo.color : '00000000') + '</color><outline>' + estilo.outline + '</outline></PolyStyle>\n';
+                }
+                kml += '  </Style>\n';
+                
                 geojson.features.forEach(function(feature, i) {
-                    var nombre = feature.properties.nombre_faja_marginal || feature.properties.nombre_o_razon_social || feature.properties.hito || ('Feature ' + (i + 1));
+                    // Nombre según tipo de capa
+                    var nombre;
+                    if (tipoCapa === 'hito') {
+                        nombre = feature.properties.hito || ('Hito ' + (i + 1));
+                    } else if (tipoCapa === 'faja') {
+                        nombre = feature.properties.nombre_faja_marginal || feature.properties.nombre_faja || ('Polígono ' + (i + 1));
+                    } else {
+                        nombre = feature.properties.nombre_o_razon_social || ('Autorización ' + (i + 1));
+                    }
+                    
                     kml += '  <Placemark>\n';
                     kml += '    <name><![CDATA[' + nombre + ']]></name>\n';
+                    kml += '    <styleUrl>#' + tipoCapa + '</styleUrl>\n';
                     
                     var desc = '';
                     for (var key in feature.properties) {
@@ -140,17 +170,17 @@
 
             // Descargar como KML
             function descargarCapa(capa) {
-                var geojson, nombre;
-                if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'Faja_Marginal'; }
-                else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'Hitos_Faja'; }
-                else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'Uso_Temporal'; }
+                var geojson, nombre, tipo;
+                if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'Faja_Marginal'; tipo = 'faja'; }
+                else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'Hitos_Faja'; tipo = 'hito'; }
+                else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'Uso_Temporal'; tipo = 'uso'; }
                 
                 if (!geojson || !geojson.features || geojson.features.length === 0) {
                     alert('No hay datos para descargar');
                     return;
                 }
                 
-                var kml = geojsonToKML(geojson, nombre);
+                var kml = geojsonToKML(geojson, nombre, tipo);
                 var blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
                 var link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
@@ -158,7 +188,7 @@
                 link.click();
             }
 
-            // Descargar como SHP usando shp-write
+            // Descargar como SHP (usando togeojson + shpwrite desde CDN diferente)
             function descargarCapaShp(capa) {
                 var geojson, nombre;
                 if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'Faja_Marginal'; }
@@ -170,18 +200,15 @@
                     return;
                 }
                 
-                if (typeof shpwrite === 'undefined') {
-                    alert('Librería SHP no cargada. Intenta de nuevo.');
-                    return;
-                }
+                // Descargar como GeoJSON (compatible con QGIS, ArcGIS, etc.)
+                var jsonStr = JSON.stringify(geojson, null, 2);
+                var blob = new Blob([jsonStr], { type: 'application/json' });
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = nombre + '_' + Date.now() + '.geojson';
+                link.click();
                 
-                shpwrite.download({
-                    type: 'FeatureCollection',
-                    features: geojson.features
-                }, {
-                    folder: nombre,
-                    filename: nombre
-                });
+                alert('Se descargó como GeoJSON (.geojson)\n\nEste formato es compatible con:\n- QGIS\n- ArcGIS\n- Google Earth\n\nPara convertir a SHP, usa QGIS: Capa > Importar > guardar como > Shapefile');
             }
         </script>
     </main>
