@@ -658,6 +658,10 @@
         console.log('Fajas disponibles:', window.faja_poligono?.features?.length || 0);
         console.log('Hitos disponibles:', window.faja_hito?.features?.length || 0);
         console.log('Autorizaciones disponibles:', window.uso_temporal?.features?.length || 0);
+        
+        // Exponer función para acceso global
+        window.getRadaFuente = getRadaFuente;
+        console.log('getRadaFuente expuesta globally');
     }
 
     window.addEventListener('load', function () {
