@@ -251,9 +251,14 @@
             if (!rada_fuente_cluster && window.rada_por_fuente && window.rada_por_fuente.features) {
                 console.log('Creando capa RADA con', window.rada_por_fuente.features.length, 'features');
                 
+                // Debug primer feature
+                console.log('Primer feature Uso:', window.rada_por_fuente.features[0].properties.Uso);
+                console.log('ColoresRADA:', coloresUsoRADA);
+                
                 var rada_fuente = L.geoJson(window.rada_por_fuente, {
                     pointToLayer: function(feature, latlng) {
                         var uso = feature.properties.Uso || 'Otro';
+                        console.log('Feature uso:', uso, 'color:', coloresUsoRADA[uso]);
                         var color = coloresUsoRADA[uso] || '#808080';
                         return L.circleMarker(latlng, {
                             radius: 6,
@@ -265,13 +270,14 @@
                     },
                     onEachFeature: function(feature, layer) {
                         var p = feature.properties;
-                        var content = '';
+                        var content = '<div style="max-width:250px;max-height:200px;overflow:auto;">';
                         // Agregar todos los campos disponibles
                         for (var key in p) {
                             if (p[key] !== null && p[key] !== undefined && p[key] !== '') {
                                 content += '<b>' + key + ':</b> ' + sanitize(String(p[key])) + '<br/>';
                             }
                         }
+                        content += '</div>';
                         layer.bindPopup(content);
                     }
                 });
