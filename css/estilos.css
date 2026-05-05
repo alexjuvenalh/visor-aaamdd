@@ -1,0 +1,5 @@
+/* Estilos para botones de descarga de capas */
+.capa-item { display: flex; align-items: center; gap: 5px; margin: 3px 0; }
+.capa-btns { display: inline-flex; gap: 3px; margin-left: 5px; }
+.btn-descarga { font-size: 9px; padding: 2px 6px; cursor: pointer; background: #607D8B; color: white; border: none; border-radius: 3px; }
+.btn-descarga:hover { background: #455A64; }
