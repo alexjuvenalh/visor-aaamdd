@@ -130,7 +130,7 @@
                 kml += '<Document>\n';
                 kml += '  <name>RADA Fuente</name>\n';
                 
-                // Crear estilos para cada Uso
+                // Crear estilos para cada Uso - con círculos y letra pequeña
                 var usos = {};
                 geojson.features.forEach(function(f) {
                     var uso = f.properties.Uso || 'Otro';
@@ -140,8 +140,14 @@
                 for (var uso in usos) {
                     var color = coloresRADA[uso] || 'ff808080';
                     kml += '  <Style id="rada-' + uso.replace(/[^a-zA-Z0-9]/g, '_') + '">\n';
-                    kml += '    <IconStyle><color>' + color + '</color><scale>1.0</scale></IconStyle>\n';
-                    kml += '    <LabelStyle><color>' + color + '</color><scale>0.7</scale></LabelStyle>\n';
+                    // Usar icono de círculo
+                    kml += '    <IconStyle>\n';
+                    kml += '      <color>' + color + '</color>\n';
+                    kml += '      <scale>0.5</scale>\n';
+                    kml += '      <Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-circle.png</href></Icon>\n';
+                    kml += '    </IconStyle>\n';
+                    // Letra pequeña
+                    kml += '    <LabelStyle><color>' + color + '</color><scale>0.5</scale></LabelStyle>\n';
                     kml += '  </Style>\n';
                 }
                 
@@ -152,8 +158,9 @@
                     
                     var styleId = 'rada-' + uso.replace(/[^a-zA-Z0-9]/g, '_');
                     
+                    // Solo mostrar Uso como nombre (más pequeño)
                     kml += '  <Placemark>\n';
-                    kml += '    <name><![CDATA[' + uso + ' - ' + nombre + ']]></name>\n';
+                    kml += '    <name><![CDATA[' + uso + ']]></name>\n';
                     kml += '    <styleUrl>#' + styleId + '</styleUrl>\n';
                     
                     var desc = '';

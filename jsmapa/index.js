@@ -248,7 +248,9 @@
         };
 
         function getRadaFuente() {
-            if (!rada_fuente_cluster && window.rada_por_fuente) {
+            if (!rada_fuente_cluster && window.rada_por_fuente && window.rada_por_fuente.features) {
+                console.log('Creando capa RADA con', window.rada_por_fuente.features.length, 'features');
+                
                 var rada_fuente = L.geoJson(window.rada_por_fuente, {
                     pointToLayer: function(feature, latlng) {
                         var uso = feature.properties.Uso || 'Otro';
@@ -264,14 +266,12 @@
                     onEachFeature: function(feature, layer) {
                         var p = feature.properties;
                         var content = '';
-                        if (p.Uso) content += '<b>Uso:</b> ' + sanitize(p.Uso) + '<br/>';
-                        if (p.Usuario) content += '<b>Usuario:</b> ' + sanitize(p.Usuario) + '<br/>';
-                        if (p['Resolucin'] || p.Resolución) content += '<b>Resolución:</b> ' + sanitize(p['Resolucin'] || p.Resolución) + '<br/>';
-                        if (p.Fuente) content += '<b>Fuente:</b> ' + sanitize(p.Fuente) + '<br/>';
-                        if (p.Lugar_Uso) content += '<b>Lugar:</b> ' + sanitize(p.Lugar_Uso) + '<br/>';
-                        if (p['Volumen (m']) content += '<b>Volumen:</b> ' + sanitize(p['Volumen (m']) + ' m³/s<br/>';
-                        if (p['Area (ha)']) content += '<b>Área:</b> ' + sanitize(p['Area (ha)']) + ' ha<br/>';
-                        if (p.Archivo) content += '<b>Archivo:</b> <a target="_blank" href="' + sanitize(p.Archivo) + '">📄 Ver PDF</a><br/>';
+                        // Agregar todos los campos disponibles
+                        for (var key in p) {
+                            if (p[key] !== null && p[key] !== undefined && p[key] !== '') {
+                                content += '<b>' + key + ':</b> ' + sanitize(String(p[key])) + '<br/>';
+                            }
+                        }
                         layer.bindPopup(content);
                     }
                 });
