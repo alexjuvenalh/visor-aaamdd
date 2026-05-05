@@ -607,56 +607,10 @@
                     alert('✅ Ruta exportada a TXT');
                 }
             });
-        }
-
-        // Sincronizar datos desde servidor
-        var btnSync = document.getElementById('btn-sync');
-        if (btnSync) {
-            btnSync.addEventListener('click', function() {
-                var btn = this;
-                var originalText = btn.innerHTML;
-                btn.innerHTML = '⏳ Sincronizando...';
-                btn.disabled = true;
-
-                Promise.all([
-                    fetch('/api/poligonos-faja').then(function(r) { return r.json(); }).catch(function() { return null; }),
-                    fetch('/api/hitos-faja').then(function(r) { return r.json(); }).catch(function() { return null; }),
-                    fetch('/api/autorizaciones').then(function(r) { return r.json(); }).catch(function() { return null; })
-                ])
-                .then(function(results) {
-                    var actualizado = false;
-                    if (results[0] && results[0].features && results[0].features.length > 0) {
-                        window.faja_poligono = results[0];
-                        actualizado = true;
-                    }
-                    if (results[1] && results[1].features && results[1].features.length > 0) {
-                        window.faja_hito = results[1];
-                        actualizado = true;
-                    }
-                    if (results[2] && results[2].features && results[2].features.length > 0) {
-                        window.uso_temporal = results[2];
-                        actualizado = true;
-                    }
-                    if (actualizado) {
-                        alert('✅ Datos actualizados desde el servidor');
-                        // Recargar capas si están activas
-                        window.location.reload();
-                    } else {
-                        alert('⚠️ No se pudieron obtener datos del servidor.\nUsando datos offline.');
-                    }
-                })
-                .catch(function(err) {
-                    alert('❌ Error de conexión. Trabajando en modo offline.');
-                })
-                .finally(function() {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                });
-            });
-        }
 
         console.log('Visor ANA inicializado correctamente');
         console.log('Fajas disponibles:', window.faja_poligono?.features?.length || 0);
+        console.log('Hitos disponibles:', window.faja_hito?.features?.length || 0);
         console.log('Autorizaciones disponibles:', window.uso_temporal?.features?.length || 0);
     }
 
