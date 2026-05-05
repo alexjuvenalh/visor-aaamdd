@@ -2,7 +2,7 @@
     'use strict';
 
     // Constante para URLs de archivos PDF del ANA
-    var ANA_BASE_URL = '' + ANA_BASE_URL + '';
+    var ANA_BASE_URL = 'http://www.ana.gob.pe/sites/default/files/normatividad/files/';
 
     function sanitize(str) {
         if (str == null) return '';
