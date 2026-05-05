@@ -8,6 +8,71 @@
         return div.innerHTML;
     }
 
+    // Colores para categorización de RADA por Uso (fuera de initMap)
+    var coloresUsoRADA = {
+        'Acuícola': '#00FFFF',
+        'Minero': '#BFBF00',
+        'Poblacional': '#FF0000',
+        'Otros Usos': '#808080',
+        'Agrícola': '#00FF00',
+        'Doméstico - Poblacional': '#0080FF',
+        'Industrial': '#8000FF',
+        'Recreativo': '#00BF00',
+        'Pecuario': '#804000',
+        'Energético': '#0000FF',
+        'Turístico': '#FF00FF'
+    };
+
+    // Función getRadaFuente fuera de initMap
+    var rada_fuente_cluster = null;
+
+    function getRadaFuente() {
+        console.log('>>> getRadaFuente() ejecutandose');
+        console.log('  rada_fuente_cluster existente:', rada_fuente_cluster);
+        console.log('  window.rada_por_fuente:', !!window.rada_por_fuente);
+        
+        if (!rada_fuente_cluster && window.rada_por_fuente && window.rada_por_fuente.features) {
+            console.log('Creando capa RADA con', window.rada_por_fuente.features.length, 'features');
+            
+            var rada_fuente = L.geoJson(window.rada_por_fuente, {
+                pointToLayer: function(feature, latlng) {
+                    var uso = feature.properties.Uso || 'Otro';
+                    var color = coloresUsoRADA[uso] || '#808080';
+                    console.log('  Feature uso:', uso, 'color:', color);
+                    return L.circleMarker(latlng, {
+                        radius: 6,
+                        fillColor: color,
+                        color: '#000',
+                        weight: 1,
+                        fillOpacity: 0.8
+                    });
+                },
+                onEachFeature: function(feature, layer) {
+                    var p = feature.properties;
+                    var content = '<div style="max-width:250px;max-height:200px;overflow:auto;">';
+                    for (var key in p) {
+                        if (p[key] !== null && p[key] !== undefined && p[key] !== '') {
+                            content += '<b>' + key + ':</b> ' + sanitize(String(p[key])) + '<br/>';
+                        }
+                    }
+                    content += '</div>';
+                    layer.bindPopup(content);
+                }
+            });
+
+            rada_fuente_cluster = L.markerClusterGroup({
+                maxClusterRadius: 50
+            });
+            rada_fuente_cluster.addLayer(rada_fuente);
+            console.log('Capa RADA creada:', !!rada_fuente_cluster);
+        }
+        return rada_fuente_cluster;
+    }
+
+    // Exponer globalmente
+    window.getRadaFuente = getRadaFuente;
+    console.log('getRadaFuente expuesta al window');
+
     // Cargar datos desde API si no existen
     function cargarDatosAPI() {
         return fetch('http://localhost:3000/api/poligonos-faja')
@@ -228,72 +293,7 @@
             }
             return aut;
         }
-        // CAPAS - RADA
-        // ============================================
-        var rada_fuente_cluster = null;
-
-        // Colores para categorización de RADA por Uso
-        var coloresUsoRADA = {
-            'Acuícola': '#00FFFF',
-            'Minero': '#BFBF00',
-            'Poblacional': '#FF0000',
-            'Otros Usos': '#808080',
-            'Agrícola': '#00FF00',
-            'Doméstico - Poblacional': '#0080FF',
-            'Industrial': '#8000FF',
-            'Recreativo': '#00BF00',
-            'Pecuario': '#804000',
-            'Energético': '#0000FF',
-            'Turístico': '#FF00FF'
-        };
-
-        function getRadaFuente() {
-            console.log('>>> getRadaFuente() ejecutandose');
-            console.log('  rada_fuente_cluster existente:', rada_fuente_cluster);
-            console.log('  window.rada_por_fuente:', !!window.rada_por_fuente);
-            console.log('  window.rada_por_fuente.features:', window.rada_por_fuente ? window.rada_por_fuente.features : 'undefined');
-            
-            if (!rada_fuente_cluster && window.rada_por_fuente && window.rada_por_fuente.features) {
-                console.log('Creando capa RADA con', window.rada_por_fuente.features.length, 'features');
-                
-                // Debug primer feature
-                console.log('Primer feature Uso:', window.rada_por_fuente.features[0].properties.Uso);
-                console.log('ColoresRADA:', coloresUsoRADA);
-                
-                var rada_fuente = L.geoJson(window.rada_por_fuente, {
-                    pointToLayer: function(feature, latlng) {
-                        var uso = feature.properties.Uso || 'Otro';
-                        console.log('Feature uso:', uso, 'color:', coloresUsoRADA[uso]);
-                        var color = coloresUsoRADA[uso] || '#808080';
-                        return L.circleMarker(latlng, {
-                            radius: 6,
-                            fillColor: color,
-                            color: '#000',
-                            weight: 1,
-                            fillOpacity: 0.8
-                        });
-                    },
-                    onEachFeature: function(feature, layer) {
-                        var p = feature.properties;
-                        var content = '<div style="max-width:250px;max-height:200px;overflow:auto;">';
-                        // Agregar todos los campos disponibles
-                        for (var key in p) {
-                            if (p[key] !== null && p[key] !== undefined && p[key] !== '') {
-                                content += '<b>' + key + ':</b> ' + sanitize(String(p[key])) + '<br/>';
-                            }
-                        }
-                        content += '</div>';
-                        layer.bindPopup(content);
-                    }
-                });
-
-                rada_fuente_cluster = L.markerClusterGroup({
-                    maxClusterRadius: 50
-                });
-                rada_fuente_cluster.addLayer(rada_fuente);
-            }
-            return rada_fuente_cluster;
-        }
+        // RADA usa la función global
 
         var rada_derecho_cluster = null;
 
@@ -658,10 +658,6 @@
         console.log('Fajas disponibles:', window.faja_poligono?.features?.length || 0);
         console.log('Hitos disponibles:', window.faja_hito?.features?.length || 0);
         console.log('Autorizaciones disponibles:', window.uso_temporal?.features?.length || 0);
-        
-        // Exponer función para acceso global
-        window.getRadaFuente = getRadaFuente;
-        console.log('getRadaFuente expuesta globally');
     }
 
     window.addEventListener('load', function () {
