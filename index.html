@@ -154,19 +154,26 @@
                 geojson.features.forEach(function(feature, i) {
                     var uso = feature.properties.Uso || 'Otro';
                     var nombre = feature.properties.Usuario || feature.properties.Lugar_Uso || ('Punto ' + (i + 1));
-                    var resolucion = feature.properties['Resolucin'] || feature.properties['Resolución'] || '';
                     
                     var styleId = 'rada-' + uso.replace(/[^a-zA-Z0-9]/g, '_');
                     
-                    // Solo mostrar Uso como nombre (más pequeño)
+                    // Solo mostrar Uso como nombre
                     kml += '  <Placemark>\n';
                     kml += '    <name><![CDATA[' + uso + ']]></name>\n';
                     kml += '    <styleUrl>#' + styleId + '</styleUrl>\n';
                     
+                    // Generar description solo con campos importantes
                     var desc = '';
-                    for (var key in feature.properties) {
+                    var camposImportantes = ['Usuario', 'Documento', 'Resolució', 'Fecha', 'Fuente', 'Lugar_Uso', 'Volumen (m', 'Area (ha)', 'ALA', 'AAA', 'Departamen', 'Provincia', 'Distrito'];
+                    camposImportantes.forEach(function(key) {
                         if (feature.properties[key]) desc += key + ': ' + feature.properties[key] + '\n';
+                    });
+                    
+                    // Agregar link PDF si existe
+                    if (feature.properties.Archivo) {
+                        desc += '\n<a href="' + feature.properties.Archivo + '">📄 Ver PDF</a>';
                     }
+                    
                     kml += '    <description><![CDATA[' + desc + ']]></description>\n';
                     
                     if (feature.geometry.type === 'Point') {
