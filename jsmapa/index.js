@@ -38,6 +38,9 @@
             zoom: 8,
         }).addLayer(osm);
 
+        // Expose map globally for other scripts
+        window.map = map;
+
         // Estilo para polígonos de Faja Marginal (rojo)
         var fajaStyle = {
             color: '#ff0000',

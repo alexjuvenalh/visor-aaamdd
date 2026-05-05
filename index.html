@@ -88,17 +88,18 @@
         <script src="visor/geojson/uso_temporal.js"></script>
         <script src="visor/geojson/rada_fuente.js"></script>
         <script>
-            // Asignar datos locales
-            window.faja_poligono = faja_poligono;
-            window.faja_hito = faja_hito;
-            window.uso_temporal = uso_temporal;
-            window.rada_por_fuente = (typeof rada_fuente !== 'undefined') ? rada_fuente : { type: 'FeatureCollection', features: [] };
-            window.rada_por_derecho = { type: 'FeatureCollection', features: [] };
-            console.log('Faja Marginal cargada:', faja_poligono.features.length);
-            console.log('Hitos Faja cargados:', faja_hito.features.length);
-            console.log('Uso Temporal cargado:', uso_temporal.features.length);
-            console.log('RADA Fuente cargado:', typeof rada_fuente !== 'undefined' ? rada_fuente.features.length : 'NO DEFINIDO');
-            console.log('chkRadaFuente element:', document.getElementById('chkRadaFuente'));
+            // Asignar datos locales cuando el DOM esté listo
+            document.addEventListener('DOMContentLoaded', function() {
+                window.faja_poligono = faja_poligono;
+                window.faja_hito = faja_hito;
+                window.uso_temporal = uso_temporal;
+                window.rada_por_fuente = (typeof rada_fuente !== 'undefined') ? rada_fuente : { type: 'FeatureCollection', features: [] };
+                window.rada_por_derecho = { type: 'FeatureCollection', features: [] };
+                console.log('Faja Marginal cargada:', faja_poligono.features.length);
+                console.log('Hitos Faja cargados:', faja_hito.features.length);
+                console.log('Uso Temporal cargado:', uso_temporal.features.length);
+                console.log('RADA Fuente cargado:', typeof rada_fuente !== 'undefined' ? rada_fuente.features.length : 'NO DEFINIDO');
+            });
         </script>
 
         </main>
