@@ -1,8 +1,8 @@
 # Dependencies
 node_modules/
 api/node_modules/
-package.json
-package-lock.json
+# package.json is needed for deployment
+# package-lock.json
 
 # Third-party libraries (use CDN or install via npm)
 leaflet/
