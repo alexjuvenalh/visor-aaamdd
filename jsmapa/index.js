@@ -222,14 +222,33 @@
         // CAPAS - RADA
         // ============================================
         var rada_fuente_cluster = null;
+        
+        // Colores para RADA por Uso
+        var coloresRADA = {
+            'Acuícola': '#00FFFF',
+            'Minero': '#BFBF00',
+            'Poblacional': '#FF0000',
+            'Otros Usos': '#808080',
+            'Agrícola': '#00FF00',
+            'Doméstico - Poblacional': '#0080FF',
+            'Industrial': '#8000FF',
+            'Recreativo': '#00BF00',
+            'Pecuario': '#804000',
+            'Energético': '#0000FF',
+            'Turístico': '#FF00FF'
+        };
 
         function getRadaFuente() {
-            if (!rada_fuente_cluster && window.rada_por_fuente) {
+            if (!rada_fuente_cluster && window.rada_por_fuente && window.rada_por_fuente.features) {
+                console.log('Creando RADA con', window.rada_por_fuente.features.length, 'puntos');
+                
                 var rada_fuente = L.geoJson(window.rada_por_fuente, {
                     pointToLayer: function(feature, latlng) {
+                        var uso = feature.properties.Uso || 'Otro';
+                        var color = coloresRADA[uso] || '#808080';
                         return L.circleMarker(latlng, {
                             radius: 6,
-                            fillColor: '#0000ff',
+                            fillColor: color,
                             color: '#000',
                             weight: 1,
                             fillOpacity: 0.8
@@ -237,7 +256,14 @@
                     },
                     onEachFeature: function(feature, layer) {
                         var p = feature.properties;
-                        layer.bindPopup('<b>Usuario:</b> ' + sanitize(p.usuario));
+                        var content = '<div style="max-width:250px;max-height:200px;overflow:auto;">';
+                        for (var key in p) {
+                            if (p[key] !== null && p[key] !== undefined && p[key] !== '') {
+                                content += '<b>' + key + ':</b> ' + sanitize(String(p[key])) + '<br/>';
+                            }
+                        }
+                        content += '</div>';
+                        layer.bindPopup(content);
                     }
                 });
 
