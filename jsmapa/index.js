@@ -27,10 +27,10 @@
         var self = this;
         var L = window.L;
 
-        // Capa base
-        var osm = L.tileLayer('https://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
-            maxZoom: 20,
-            subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+        // Capa base - OpenStreetMap (gratis, sin API key)
+        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
         });
 
         var map = L.map('map', {
