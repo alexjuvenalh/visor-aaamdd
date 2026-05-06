@@ -491,6 +491,40 @@
             }
         }
 
+        // Función para obtener posición con opciones de fallback
+        function obtenerPosicionInicial(onSuccess, onError) {
+            // Primero intentar con alta precisión
+            navigator.geolocation.getCurrentPosition(
+                function(pos) {
+                    onSuccess(pos);
+                },
+                function(err) {
+                    console.log('[GPS] Error alta precisión: ' + err.message + ', intentando con baja precisión...');
+                    // Si falla, intentar con menor precisión (más rápido)
+                    navigator.geolocation.getCurrentPosition(
+                        function(pos) {
+                            console.log('[GPS] Posición obtenida con baja precisión');
+                            onSuccess(pos);
+                        },
+                        function(err2) {
+                            console.log('[GPS] Error baja precisión: ' + err2.message);
+                            onError(err);
+                        },
+                        {
+                            enableHighAccuracy: false, // Usar red/wifi en vez de GPS
+                            timeout: 20000,
+                            maximumAge: 60000 // Aceptar posición de hasta 1 minuto
+                        }
+                    );
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 30000,
+                    maximumAge: 0
+                }
+            );
+        }
+
         // Función para iniciar seguimiento GPS
         function iniciarGPS() {
             if (!navigator.geolocation) {
@@ -528,12 +562,12 @@
                 opacity: 0.8
             }).addTo(window.map);
 
-            // Primero obtener posición inicial con getCurrentPosition (más rápido para primera posición)
-            actualizarEstadoGPS('buscando', 'Obteniendo ubicación inicial...');
+            // Primero obtener posición inicial
+            actualizarEstadoGPS('buscando', 'Obteniendo ubicación...');
 
-            navigator.geolocation.getCurrentPosition(
+            obtenerPosicionInicial(
                 function(posInicial) {
-                    // Posición inicial obtenida, ahora iniciar seguimiento continuo
+                    // Posición inicial obtenida
                     var lat = posInicial.coords.latitude;
                     var lng = posInicial.coords.longitude;
                     var prec = posInicial.coords.accuracy;
@@ -559,7 +593,7 @@
                     // Centrar mapa
                     window.map.setView([lat, lng], 16);
 
-                    // Ahora iniciar watchPosition para seguimiento continuo
+                    // Iniciar seguimiento continuo
                     actualizarEstadoGPS('buscando', 'Iniciando seguimiento...');
 
                     gpsWatchId = navigator.geolocation.watchPosition(
@@ -570,20 +604,16 @@
 
                             console.log('[GPS] Actualización: ' + lat + ', ' + lng + ' (±' + prec + 'm)');
 
-                            // Agregar al track
                             gpsTrackCoords.push([lat, lng]);
                             gpsPathLayer.setLatLngs(gpsTrackCoords);
 
-                            // Actualizar o crear marker
                             if (gpsMarker) {
                                 gpsMarker.setLatLng([lat, lng]);
                                 gpsMarker.setPopupContent('<b>📍 Tu ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm<br>Puntos: ' + gpsTrackCoords.length);
                             }
 
-                            // Centrar mapa en posición actual
                             window.map.setView([lat, lng], 16);
 
-                            // Actualizar estado
                             if (gpsEstado !== 'activo') {
                                 actualizarEstadoGPS('activo', 'Seguimiento activo - ' + gpsTrackCoords.length + ' puntos');
                             }
@@ -602,25 +632,26 @@
                         },
                         {
                             enableHighAccuracy: true,
-                            timeout: 30000, // 30 segundos para seguimiento
-                            maximumAge: 5000, // Aceptar posición de hasta 5 segundos
-                            distanceFilter: 5 // Actualizar cada 5 metros (menos sensible para ahorrar batería)
+                            timeout: 60000, // 60 segundos para seguimiento
+                            maximumAge: 10000, // Aceptar posición de hasta 10 segundos
+                            distanceFilter: 5
                         }
                     );
                 },
                 function(err) {
                     console.error('[GPS] Error posición inicial:', err.message);
                     var msg = '';
-                    if (err.code === 1) msg = 'Permiso de ubicación denegado. Por favor activa el GPS en configuración.';
-                    else if (err.code === 2) msg = 'No se pudo obtener ubicación. Verifica que el GPS esté activo.';
-                    else if (err.code === 3) msg = 'Tiempo de espera agotado. Intenta de nuevo.';
-                    alert('Error al obtener ubicación: ' + msg);
+                    if (err.code === 1) {
+                        msg = '❌ PERMISO DENEGADO\n\nPara activar:\n• Chrome: Botón de candado 🔒 → Ubicación\n• Configuración del dispositivo → Apps → Visor → Permisos';
+                    } else if (err.code === 2) {
+                        msg = '❌ GPS DESACTIVADO\n\nActiva el GPS en:\n• Ajustes → Ubicación (ON)\n• O desde la barra de notificaciones';
+                    } else if (err.code === 3) {
+                        msg = '⏱️ TIMEOUT\n\nEl GPS tardó demasiado. Intenta:\n• Ir afuera (mejor señal)\n• Esperar unos segundos\n• Revisar que GPS esté activo';
+                    } else {
+                        msg = 'Error: ' + err.message;
+                    }
+                    alert(msg);
                     actualizarEstadoGPS('inactivo', 'Error al iniciar');
-                },
-                {
-                    enableHighAccuracy: true,
-                    timeout: 30000, // 30 segundos para posición inicial
-                    maximumAge: 0
                 }
             );
         }
