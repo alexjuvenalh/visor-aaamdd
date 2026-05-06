@@ -262,7 +262,7 @@
                         var content = '<div style="max-width:250px;max-height:200px;overflow:auto;">';
                         
                         // Campos importantes a mostrar
-                        var camposImportantes = ['Uso', 'Usuario', 'Documento', 'Resolució', 'Fecha', 'Fuente', 'Lugar_Uso', 'Volumen (m', 'Area (ha)', 'ALA', 'AAA', 'Departamen', 'Provincia', 'Distrito'];
+                        var camposImportantes = ['Uso', 'Usuario', 'Documento', 'Resolució', 'Fecha', 'Fuente', 'Lugar_Uso', 'Volumen (m', 'Area (ha)', 'ALA', 'AAA', 'Departamen', 'Provincia', 'Distrito', 'CUR', 'Zona', 'Este', 'Norte', 'DATUM'];
                         var camposPDF = ['Archivo'];
                         
                         // Mostrar campos importantes
