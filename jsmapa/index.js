@@ -698,7 +698,8 @@
             }
         })();
 
-        // Botón "Exportar Ruta" del HTML
+// Botón "Exportar Ruta" del HTML
+        var btnExportGps = document.getElementById('btn-export-gps');
         if (btnExportGps) {
             btnExportGps.addEventListener('click', function() {
                 if (!gpsTrackCoords || gpsTrackCoords.length === 0) {
