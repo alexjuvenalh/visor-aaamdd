@@ -671,19 +671,32 @@
                         btnGps.style.background = '#4CAF50';
                     }
                 },
-                {
-                    enableHighAccuracy: true,
-                    timeout: 30000,
+{
+                    // FUERZA GPS PURO - ignora ubicación por red
+                    enableHighAccuracy: true, 
+                    timeout: 30000, 
                     maximumAge: 0
                 }
             );
         }
 
-// Asignar botón
+        // Asignar botón
         var btnGps = document.getElementById('btn-gps');
         if (btnGps) {
             btnGps.addEventListener('click', iniciarGPS);
         }
+
+        // Detectar si es Chrome móvil y mostrar advertencia
+        (function() {
+            var isChromeMobile = /Chrome/.test(navigator.userAgent) && /Mobile/.test(navigator.userAgent);
+            var isEdgeMobile = /Edg/.test(navigator.userAgent) && /Mobile/.test(navigator.userAgent);
+            
+            if (isChromeMobile && !isEdgeMobile) {
+                console.log('[GPS] Detectado Chrome móvil - puede haber problemas de ubicación');
+                // Agregar advertencia en consola para el usuario
+                console.log('%c⚠️ CHROME MÓVIL: Si el GPS no funciona bien, probá en Edge o desactivá "Vista de escritorio"', 'background: yellow; color: black; padding: 4px;');
+            }
+        })();
 
         // Botón "Exportar Ruta" del HTML
         if (btnExportGps) {
