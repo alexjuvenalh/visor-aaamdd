@@ -429,32 +429,95 @@
             inputBuscar.addEventListener('keypress', function(e) { if (e.key === 'Enter') buscarPorResolucion(); });
         }
 
+        // Función para buscar en un campo específico
+        function buscarEnCampo(prop, campo, texto) {
+            if (!prop || !prop[campo]) return false;
+            return String(prop[campo]).toUpperCase().includes(texto);
+        }
+
+        // Función de búsqueda unificada
         function buscarPorResolucion() {
             var texto = inputBuscar.value.trim().toUpperCase();
             if (!texto) return;
+            
+            console.log('[Búsqueda] Buscando: ' + texto);
+            
             var resultados = [];
+            
+            // 1. Faja Marginal - busca por numero_resolucion, cut, resumen
             if (window.faja_poligono && window.faja_poligono.features) {
                 window.faja_poligono.features.forEach(function(f) {
-                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                    var p = f.properties;
+                    if (p && (
+                        buscarEnCampo(p, 'numero_resolucion', texto) ||
+                        buscarEnCampo(p, 'cut', texto) ||
+                        buscarEnCampo(p, 'resumen', texto)
+                    )) {
                         resultados.push({ tipo: 'Faja Marginal', data: f });
                     }
                 });
             }
+            
+            // 2. Hitos - busca por numero_resolucion, cut, resumen
             if (window.faja_hito && window.faja_hito.features) {
                 window.faja_hito.features.forEach(function(f) {
-                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                    var p = f.properties;
+                    if (p && (
+                        buscarEnCampo(p, 'numero_resolucion', texto) ||
+                        buscarEnCampo(p, 'cut', texto) ||
+                        buscarEnCampo(p, 'resumen', texto)
+                    )) {
                         resultados.push({ tipo: 'Hito', data: f });
                     }
                 });
             }
+            
+            // 3. Uso Temporal - busca por numero_resolucion, cut, nombre_o_razon_social, numero_documento, resumen
             if (window.uso_temporal && window.uso_temporal.features) {
                 window.uso_temporal.features.forEach(function(f) {
-                    if (f.properties && f.properties.numero_resolucion && f.properties.numero_resolucion.toUpperCase().includes(texto)) {
+                    var p = f.properties;
+                    if (p && (
+                        buscarEnCampo(p, 'numero_resolucion', texto) ||
+                        buscarEnCampo(p, 'cut', texto) ||
+                        buscarEnCampo(p, 'nombre_o_razon_social', texto) ||
+                        buscarEnCampo(p, 'numero_documento', texto) ||
+                        buscarEnCampo(p, 'resumen', texto)
+                    )) {
                         resultados.push({ tipo: 'Uso Temporal', data: f });
                     }
                 });
             }
-            if (resultados.length === 0) { alert('No se encontró: ' + inputBuscar.value); return; }
+            
+            // 4. RADA Fuente - busca por Resolució, CUR
+            if (window.rada_por_fuente && window.rada_por_fuente.features) {
+                window.rada_por_fuente.features.forEach(function(f) {
+                    var p = f.properties;
+                    if (p && (
+                        buscarEnCampo(p, 'Resolució', texto) ||
+                        buscarEnCampo(p, 'CUR', texto)
+                    )) {
+                        resultados.push({ tipo: 'RADA Fuente', data: f });
+                    }
+                });
+            }
+            
+            console.log('[Búsqueda] Resultados encontrados: ' + resultados.length);
+            
+            if (resultados.length === 0) { 
+                alert('No se encontró ningún resultado para: ' + inputBuscar.value); 
+                return; 
+            }
+            
+            // Mostrar mensaje con cantidad de resultados por tipo
+            var msg = 'Se encontraron ' + resultados.length + ' resultado(s):\n';
+            var counts = { 'Faja Marginal': 0, 'Hito': 0, 'Uso Temporal': 0, 'RADA Fuente': 0 };
+            resultados.forEach(function(r) { counts[r.tipo]++; });
+            for (var tipo in counts) {
+                if (counts[tipo] > 0) msg += '- ' + tipo + ': ' + counts[tipo] + '\n';
+            }
+            console.log('[Búsqueda] ' + msg);
+            
+            // Ir al primer resultado
             var feature = resultados[0].data;
             var layer = L.geoJson(feature);
             var bounds = layer.getBounds();
