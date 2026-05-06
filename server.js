@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // Handle other routes - try to serve static, fallback to index
-app.get('*', (req, res, next) => {
+app.use((req, res, next) => {
   const filePath = path.join(__dirname, req.path);
   const fs = require('fs');
   if (fs.existsSync(filePath)) {
