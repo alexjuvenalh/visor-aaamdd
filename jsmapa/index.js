@@ -602,29 +602,25 @@
 
                     console.log('[GPS] Posición válida: ' + lat + ', ' + lng + ' (±' + prec + 'm)');
 
-                    // Si precisión es muy mala, reintentar
-                    if (prec > 500 && gpsIntentosInicial < gpsMaxIntentosInicial) {
-                        console.log('[GPS] Precisión muy mala: ' + prec + 'm, reintentando...');
-                        actualizarEstadoGPS('buscando', 'Precision: ' + Math.round(prec) + 'm - esperando mejor');
-                        setTimeout(obtenerPosicionInicialConReintentos, 3000);
-                        return;
-                    }
+                    // SIEMPRE mostrar confirmación al usuario en el primer intento
+                    console.log('[GPS] Mostrando confirmación al usuario...');
+                    actualizarEstadoGPS('buscando', 'Confirmando...');
 
-                    // Confirmar con usuario si la posición es correcta (solo en primer uso)
-                    if (!gpsUbicacionInicialConfirmada && gpsTrackCoords.length === 0) {
-                        if (confirmarUbicacionInicial(lat, lng, prec)) {
-                            gpsUbicacionInicialConfirmada = true;
-                            iniciarSeguimientoGPS(lat, lng, prec);
-                        } else {
-                            // Usuario dijo que no - reintentar
-                            console.log('[GPS] Usuario rechazó posición, reintentando...');
-                            if (gpsIntentosInicial < gpsMaxIntentosInicial) {
-                                setTimeout(obtenerPosicionInicialConReintentos, 2000);
-                            }
-                        }
-                    } else {
-                        // Ya confirmado o es seguimiento
+                    var confirmar = confirm('📍 ¿Estás en esta ubicación?\n\nLat: ' + lat.toFixed(6) + '\nLng: ' + lng.toFixed(6) + '\nPrecisión: ±' + Math.round(prec) + 'm\n\n¿Confirmas que es tu ubicación actual?');
+
+                    if (confirmar) {
+                        console.log('[GPS] Usuario confirmó ubicación');
+                        gpsUbicacionInicialConfirmada = true;
                         iniciarSeguimientoGPS(lat, lng, prec);
+                    } else {
+                        console.log('[GPS] Usuario rechazó, buscando mejor posición...');
+                        actualizarEstadoGPS('buscando', 'Buscando mejor posición...');
+                        if (gpsIntentosInicial < gpsMaxIntentosInicial) {
+                            setTimeout(obtenerPosicionInicialConReintentos, 3000);
+                        } else {
+                            alert('No se pudo obtener una ubicación correcta. Intenta de nuevo.');
+                            actualizarEstadoGPS('inactivo', 'Sin ubicación');
+                        }
                     }
                 },
                 function(err) {
