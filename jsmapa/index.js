@@ -488,13 +488,15 @@
                 });
             }
             
-            // 4. RADA Fuente - busca por Resolució, CUR
+            // 4. RADA Fuente - busca por Resolució, CUR, Usuario, Documento
             if (window.rada_por_fuente && window.rada_por_fuente.features) {
                 window.rada_por_fuente.features.forEach(function(f) {
                     var p = f.properties;
                     if (p && (
                         buscarEnCampo(p, 'Resolució', texto) ||
-                        buscarEnCampo(p, 'CUR', texto)
+                        buscarEnCampo(p, 'CUR', texto) ||
+                        buscarEnCampo(p, 'Usuario', texto) ||
+                        buscarEnCampo(p, 'Documento', texto)
                     )) {
                         resultados.push({ tipo: 'RADA Fuente', data: f });
                     }
