@@ -470,20 +470,21 @@
         var gpsTrackCoords = [];
         var gpsPathLayer = null;
         var gpsReintentos = 0;
-        var gpsMaxReintentos = 5;
+        var gpsMaxReintentos = 10;
         var gpsEstado = 'inactivo';
-        var gpsPrecisionMinima = 100; // metros - rechazar posiciones más inexactas
+        var gpsPrecisionMinima = 100;
         var gpsUltimaPosicionBuena = null;
         var gpsBotonMiUbicacion = null;
+        var gpsIntentosInicial = 0;
+        var gpsMaxIntentosInicial = 5;
 
-        // Función para crear marker de ubicación estilo Google Earth
+        // Función para crear marker de ubicación
         function crearMarkerGPS(lat, lng, precision) {
-            // Color según precisión: verde=buena, amarillo=regular, rojo=mala
-            var color = '#4CAF50'; // verde - buena
-            if (precision > 50) color = '#FF9800'; // amarillo - regular
-            if (precision > 100) color = '#f44336'; // rojo - mala
+            var color = '#4CAF50';
+            if (precision > 50) color = '#FF9800';
+            if (precision > 100) color = '#f44336';
 
-            var marker = L.marker([lat, lng], {
+            return L.marker([lat, lng], {
                 icon: L.divIcon({
                     className: 'gps-marker-container',
                     html: '<div style="position:relative;">' +
@@ -495,10 +496,9 @@
                 }),
                 zIndexOffset: 1000
             });
-            return marker;
         }
 
-        // Crear indicador de precisión en el mapa
+        // Indicador de precisión
         var gpsIndicatorPrecision = null;
         function actualizarIndicadorPrecision(precision) {
             if (!gpsIndicatorPrecision) {
@@ -517,20 +517,20 @@
             gpsIndicatorPrecision._div.style.color = color;
         }
 
-        // Función para mostrar estado del GPS
+        // Función para mostrar estado
         function actualizarEstadoGPS(estado, mensaje) {
             gpsEstado = estado;
             console.log('[GPS] ' + estado + ': ' + mensaje);
             var btnGps = document.getElementById('btn-gps');
             if (!btnGps) return;
             if (estado === 'buscando') {
-                btnGps.textContent = '⏳ Buscando GPS...';
+                btnGps.textContent = '⏳ Buscando...';
                 btnGps.style.background = '#FF9800';
             } else if (estado === 'activo') {
                 btnGps.textContent = '📍 GPS ACTIVO';
                 btnGps.style.background = '#2196F3';
             } else if (estado === 'esperando') {
-                btnGps.textContent = '⏳ Mejorando precisión...';
+                btnGps.textContent = '⏳ Mejorando...';
                 btnGps.style.background = '#9C27B0';
             } else {
                 btnGps.textContent = '📍 GPS';
@@ -538,7 +538,7 @@
             }
         }
 
-        // Función para agregar botón "Mi ubicación"
+        // Botón Mi Ubicación
         function agregarBotonMiUbicacion() {
             if (gpsBotonMiUbicacion) return;
             var btn = document.createElement('button');
@@ -556,7 +556,130 @@
             gpsBotonMiUbicacion = btn;
         }
 
-        // Función para iniciar GPS con validación de precisión
+        // Función para intentar obtener posición inicial - CON REINTENTOS
+        function obtenerPosicionInicialConReintentos() {
+            gpsIntentosInicial++;
+            console.log('[GPS] Intento de posición inicial: ' + gpsIntentosInicial + '/' + gpsMaxIntentosInicial);
+            actualizarEstadoGPS('buscando', 'Intento ' + gpsIntentosInicial + '...');
+
+            navigator.geolocation.getCurrentPosition(
+                function(pos) {
+                    // Éxito
+                    var lat = pos.coords.latitude;
+                    var lng = pos.coords.longitude;
+                    var prec = pos.coords.accuracy;
+                    console.log('[GPS] Posición obtenida: ' + lat + ', ' + lng + ' (±' + prec + 'm)');
+                    iniciarSeguimientoGPS(lat, lng, prec);
+                },
+                function(err) {
+                    // Error - reintentar automáticamente
+                    console.log('[GPS] Error: ' + err.message + ' (código: ' + err.code + ')');
+                    if (gpsIntentosInicial < gpsMaxIntentosInicial) {
+                        console.log('[GPS] Reintentando en 2 segundos...');
+                        actualizarEstadoGPS('buscando', 'Reintentando...');
+                        setTimeout(obtenerPosicionInicialConReintentos, 2000);
+                    } else {
+                        // Máximo de intentos alcanzado
+                        var msg = '';
+                        if (err.code === 1) {
+                            msg = '❌ PERMISO DENEGADO\n\nPara activar:\n• Chrome: Toca 🔒 → Ubicación → Permitir\n• O: Ajustes → Apps → Visor → Permisos → Ubicación';
+                        } else if (err.code === 2) {
+                            msg = '❌ GPS DESACTIVADO\n\nActiva el GPS:\n• Desliza desde arriba → toca icono de ubicación\n• O: Ajustes → Ubicación → ACTIVAR';
+                        } else {
+                            msg = '⏱️ TIMEOUT\n\nEl GPS tardó demasiado.\n\nIntenta:\n• Ir afuera\n• Activar y desactivar GPS\n• Esperar unos segundos';
+                        }
+                        alert(msg);
+                        actualizarEstadoGPS('inactivo', 'Error - sin señal');
+                    }
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 30000, // 30 segundos por intento
+                    maximumAge: 0
+                }
+            );
+        }
+
+        // Función para iniciar seguimiento continuo
+        function iniciarSeguimientoGPS(lat, lng, prec) {
+            console.log('[GPS] Iniciando seguimiento con posición: ' + lat + ', ' + lng);
+
+            // Agregar primer punto
+            gpsTrackCoords.push([lat, lng]);
+            gpsPathLayer.setLatLngs(gpsTrackCoords);
+
+            // Crear marker
+            gpsMarker = crearMarkerGPS(lat, lng, prec);
+            gpsMarker.addTo(window.map);
+            gpsMarker.bindPopup('<b>📍 Mi ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm');
+            gpsMarker.openPopup();
+
+            gpsUltimaPosicionBuena = [lat, lng];
+
+            // Indicador de precisión
+            actualizarIndicadorPrecision(prec);
+
+            // Botón Mi Ubicación
+            agregarBotonMiUbicacion();
+
+            // Centrar mapa
+            var zoom = prec > 100 ? 13 : (prec > 50 ? 15 : 17);
+            window.map.setView([lat, lng], zoom);
+
+            // Iniciar watchPosition
+            actualizarEstadoGPS('activo', 'Seguiendo...');
+
+            gpsWatchId = navigator.geolocation.watchPosition(
+                function(pos) {
+                    var lat = pos.coords.latitude;
+                    var lng = pos.coords.longitude;
+                    var prec = pos.coords.accuracy;
+
+                    // Ignorar posiciones muy imprecisas
+                    if (prec > gpsPrecisionMinima && gpsTrackCoords.length > 0) {
+                        console.log('[GPS] Ignorando posición imprecisa: ' + prec + 'm');
+                        actualizarEstadoGPS('esperando', 'Precisión: ±' + Math.round(prec) + 'm');
+                        actualizarIndicadorPrecision(prec);
+                        return;
+                    }
+
+                    console.log('[GPS] Track: ' + lat + ', ' + lng + ' (±' + prec + 'm)');
+
+                    gpsUltimaPosicionBuena = [lat, lng];
+                    gpsTrackCoords.push([lat, lng]);
+                    gpsPathLayer.setLatLngs(gpsTrackCoords);
+
+                    if (gpsMarker) {
+                        gpsMarker.setLatLng([lat, lng]);
+                        gpsMarker.setPopupContent('<b>📍 Mi ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm<br>Puntos: ' + gpsTrackCoords.length);
+                    }
+
+                    actualizarIndicadorPrecision(prec);
+                    window.map.setView([lat, lng], 17);
+                    actualizarEstadoGPS('activo', gpsTrackCoords.length + ' puntos');
+                },
+                function(err) {
+                    console.log('[GPS] Error seguimiento: ' + err.message);
+                    gpsReintentos++;
+                    if (gpsReintentos < gpsMaxReintentos) {
+                        console.log('[GPS] Reintentando seguimiento... (' + gpsReintentos + ')');
+                    } else {
+                        alert('⚠️ GPS perdió señal. Se detuvo.');
+                        navigator.geolocation.clearWatch(gpsWatchId);
+                        gpsWatchId = null;
+                        actualizarEstadoGPS('inactivo', 'Señal perdida');
+                    }
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 60000,
+                    maximumAge: 0,
+                    distanceFilter: 0
+                }
+            );
+        }
+
+        // Función principal - iniciar GPS
         function iniciarGPS() {
             if (!navigator.geolocation) {
                 alert('Tu navegador no soporta GPS');
@@ -567,7 +690,7 @@
             if (gpsWatchId !== null) {
                 navigator.geolocation.clearWatch(gpsWatchId);
                 gpsWatchId = null;
-                actualizarEstadoGPS('inactivo', 'Seguimiento detenido');
+                actualizarEstadoGPS('inactivo', 'Detenido');
                 if (gpsIndicatorPrecision) {
                     window.map.removeControl(gpsIndicatorPrecision);
                     gpsIndicatorPrecision = null;
@@ -580,8 +703,13 @@
             if (gpsMarker) { window.map.removeLayer(gpsMarker); gpsMarker = null; }
             if (gpsPathLayer) { window.map.removeLayer(gpsPathLayer); gpsPathLayer = null; }
             if (gpsBotonMiUbicacion) { gpsBotonMiUbicacion.remove(); gpsBotonMiUbicacion = null; }
+            if (gpsIndicatorPrecision) {
+                window.map.removeControl(gpsIndicatorPrecision);
+                gpsIndicatorPrecision = null;
+            }
             gpsTrackCoords = [];
             gpsReintentos = 0;
+            gpsIntentosInicial = 0;
             gpsUltimaPosicionBuena = null;
 
             // Crear track
@@ -591,139 +719,8 @@
                 opacity: 0.9
             }).addTo(window.map);
 
-            // Obtener posición inicial - SIN FALLBACK, solo GPS puro
-            actualizarEstadoGPS('buscando', 'Buscando satellites...');
-
-            navigator.geolocation.getCurrentPosition(
-                function(pos) {
-                    var lat = pos.coords.latitude;
-                    var lng = pos.coords.longitude;
-                    var prec = pos.coords.accuracy;
-
-                    console.log('[GPS] Posición inicial: ' + lat + ', ' + lng + ' (±' + prec + 'm)');
-
-                    // Validar precisión
-                    if (prec > gpsPrecisionMinima) {
-                        console.log('[GPS] Precisión muy baja (' + prec + 'm), esperando mejor...');
-                        actualizarEstadoGPS('esperando', 'Precisión: ±' + Math.round(prec) + 'm - esperando mejor');
-                    }
-
-                    // Agregar punto
-                    gpsTrackCoords.push([lat, lng]);
-                    gpsPathLayer.setLatLngs(gpsTrackCoords);
-
-                    // Crear marker
-                    gpsMarker = crearMarkerGPS(lat, lng, prec);
-                    gpsMarker.addTo(window.map);
-                    gpsMarker.bindPopup('<b>📍 Mi ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm<br>Puntos: ' + gpsTrackCoords.length);
-                    gpsMarker.openPopup();
-
-                    // Agregar indicador de precisión
-                    actualizarIndicadorPrecision(prec);
-
-                    // Agregar botón Mi Ubicación
-                    agregarBotonMiUbicacion();
-
-                    // Centrar mapa según precisión
-                    var zoom = 17;
-                    if (prec > 50) zoom = 15;
-                    if (prec > 100) zoom = 13;
-                    window.map.setView([lat, lng], zoom);
-
-                    // Iniciar seguimiento continuo
-                    actualizarEstadoGPS('buscando', 'Iniciando seguimiento...');
-
-                    gpsWatchId = navigator.geolocation.watchPosition(
-                        function(pos) {
-                            var lat = pos.coords.latitude;
-                            var lng = pos.coords.longitude;
-                            var prec = pos.coords.accuracy;
-
-                            console.log('[GPS] Actualización: ' + lat + ', ' + lng + ' (±' + prec + 'm)');
-
-                            // Solo procesar si la precisión es aceptable
-                            if (prec > gpsPrecisionMinima && gpsTrackCoords.length > 0) {
-                                console.log('[GPS] Precisión baja, ignorando posición');
-                                actualizarEstadoGPS('esperando', 'Precisión baja: ±' + Math.round(prec) + 'm');
-                                actualizarIndicadorPrecision(prec);
-                                return;
-                            }
-
-                            // Guardar última posición buena
-                            gpsUltimaPosicionBuena = [lat, lng];
-
-                            // Agregar al track
-                            gpsTrackCoords.push([lat, lng]);
-                            gpsPathLayer.setLatLngs(gpsTrackCoords);
-
-                            // Actualizar marker
-                            if (gpsMarker) {
-                                gpsMarker.setLatLng([lat, lng]);
-                                gpsMarker.setIcon(L.divIcon({
-                                    className: 'gps-marker-container',
-                                    html: '<div style="position:relative;">' +
-                                        '<div style="background:#4CAF50;width:20px;height:20px;border-radius:50%;border:3px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>' +
-                                        '<div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:white;border-radius:50%;"></div>' +
-                                        '</div>',
-                                    iconSize: [20, 20],
-                                    iconAnchor: [10, 10]
-                                }));
-                                gpsMarker.setPopupContent('<b>📍 Mi ubicación</b><br>Lat: ' + lat.toFixed(6) + '<br>Lng: ' + lng.toFixed(6) + '<br>Precisión: ±' + Math.round(prec) + 'm<br>Puntos: ' + gpsTrackCoords.length);
-                            }
-
-                            // Actualizar indicador
-                            actualizarIndicadorPrecision(prec);
-
-                            // Centrar mapa
-                            window.map.setView([lat, lng], 17);
-
-                            // Actualizar estado
-                            if (gpsEstado !== 'activo') {
-                                actualizarEstadoGPS('activo', 'Seguimiento activo - ' + gpsTrackCoords.length + ' puntos');
-                            }
-                        },
-                        function(err) {
-                            console.error('[GPS] Error:', err.message);
-                            gpsReintentos++;
-                            if (gpsReintentos < gpsMaxReintentos) {
-                                console.log('[GPS] Reintentando... (' + gpsReintentos + '/' + gpsMaxReintentos + ')');
-                                actualizarEstadoGPS('buscando', 'Reintentando...');
-                            } else {
-                                alert('⚠️ GPS perdió la señal.\n\nEl seguimiento se detuvo.\nIntenta presionar el botón GPS para continuar.');
-                                navigator.geolocation.clearWatch(gpsWatchId);
-                                gpsWatchId = null;
-                                actualizarEstadoGPS('inactivo', 'Error - se detuvo');
-                            }
-                        },
-                        {
-                            enableHighAccuracy: true, // SIEMPRE GPS puro
-                            timeout: 60000,
-                            maximumAge: 0, // Siempre posición fresca
-                            distanceFilter: 0 // Todas las actualizaciones
-                        }
-                    );
-                },
-                function(err) {
-                    console.error('[GPS] Error inicial:', err.message);
-                    var msg = '';
-                    if (err.code === 1) {
-                        msg = '❌ PERMISO DENEGADO\n\nPara activar el GPS:\n1. Toca el candado 🔒 en la barra de direcciones\n2. Selecciona "Permitir" en Ubicación\n\nO ve a: Ajustes → Apps → Visor → Permisos → Ubicación';
-                    } else if (err.code === 2) {
-                        msg = '❌ GPS DESACTIVADO\n\nActiva el GPS:\n• Desliza desde arriba → icono de ubicación\n• O: Ajustes → Ubicación → ACTIVAR';
-                    } else if (err.code === 3) {
-                        msg = '⏱️ GPS SIN SEÑAL\n\nEl GPS no encuentra satélites.\n\nConsejos:\n• Ve afuera (no bajo techo)\n• Espera unos segundos\n• Activa y desactiva el GPS';
-                    } else {
-                        msg = 'Error: ' + err.message;
-                    }
-                    alert(msg);
-                    actualizarEstadoGPS('inactivo', 'Error al iniciar');
-                },
-                {
-                    enableHighAccuracy: true, // GPS puro, SIN fallback
-                    timeout: 60000,
-                    maximumAge: 0
-                }
-            );
+            // Comenzar a obtener posición con reintentos
+            obtenerPosicionInicialConReintentos();
         }
 
         // Event listener
