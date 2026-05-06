@@ -27,10 +27,10 @@
         var self = this;
         var L = window.L;
 
-        // Capa base - OpenStreetMap (gratis, sin API key)
-        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        // Capa base - Satélite Esri World Imagery (gratis)
+        var osm = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             maxZoom: 19,
-            attribution: '&copy; OpenStreetMap contributors'
+            attribution: 'Esri World Imagery'
         });
 
         var map = L.map('map', {
