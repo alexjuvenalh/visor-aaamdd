@@ -258,6 +258,7 @@ html, body {
     flex: 1; /* Ocupa el espacio restante */
     width: 100%;
     min-height: 300px;
+    touch-action: none; /* Evita scroll/zoom no deseado al tocar el mapa en móvil */
 }
 
 .icon {

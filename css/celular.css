@@ -1,18 +1,88 @@
 /* Estilos para Celular (320px+) */
-/* El base ya es responsive, esto añade ajustes específicos */
-
 #controls {
     padding: 8px 10px;
-    gap: 10px;
-    font-size: 14px;
+    gap: 8px;
+    font-size: 13px;
+    max-height: 45vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: wrap;
 }
 
 #controls input[type="checkbox"] {
-    margin-right: 5px;
+    margin-right: 4px;
+    transform: scale(1.2); /* Checkbox más grande para táctil */
 }
 
-/* En celulares muy pequeños,labels en línea */
 #controls label {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     margin-right: 8px;
+    padding: 8px 4px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Items de capa más compactos */
+.capa-item {
+    flex-basis: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 2px 0;
+}
+
+.capa-btns {
+    display: inline-flex;
+    gap: 2px;
+    margin-left: auto;
+}
+
+.btn-descarga {
+    font-size: 9px;
+    padding: 2px 4px;
+}
+
+/* Buscador más pequeño en móvil */
+#search-box {
+    flex-basis: 100%;
+    margin-left: 0;
+    margin-top: 5px;
+}
+
+#search-box input {
+    width: 100%;
+    padding: 6px 8px;
+    font-size: 14px;
+}
+
+#search-box button {
+    padding: 6px 10px;
+}
+
+/* Export box */
+#export-box {
+    margin-left: 0;
+    margin-top: 5px;
+}
+
+/* Cajas de archivo y GPS más compactas */
+#file-input-box, #gps-box {
+    margin-top: 5px;
+    padding: 5px 0;
+}
+
+#file-input-box label {
+    font-size: 10px;
+}
+
+#file-kml {
+    font-size: 10px;
+}
+
+/* Botones más táctiles */
+#btn-gps, #btn-export-gps, #btn-limpiar-kml {
+    font-size: 11px;
+    padding: 6px 10px;
 }
