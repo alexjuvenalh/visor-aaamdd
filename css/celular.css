@@ -1,88 +1,119 @@
-/* Estilos para Celular (320px+) */
-#controls {
-    padding: 8px 10px;
-    gap: 8px;
-    font-size: 13px;
-    max-height: 45vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    flex-wrap: wrap;
-}
-
-#controls input[type="checkbox"] {
-    margin-right: 4px;
-    transform: scale(1.2); /* Checkbox más grande para táctil */
-}
-
-#controls label {
-    display: inline-flex;
-    align-items: center;
-    margin-right: 8px;
-    padding: 8px 4px;
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Items de capa más compactos */
-.capa-item {
-    flex-basis: 100%;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin: 2px 0;
-}
-
-.capa-btns {
-    display: inline-flex;
-    gap: 2px;
-    margin-left: auto;
-}
-
-.btn-descarga {
-    font-size: 9px;
-    padding: 2px 4px;
-}
-
-/* Buscador más pequeño en móvil */
-#search-box {
-    flex-basis: 100%;
-    margin-left: 0;
-    margin-top: 5px;
-}
-
-#search-box input {
-    width: 100%;
-    padding: 6px 8px;
-    font-size: 14px;
-}
-
-#search-box button {
-    padding: 6px 10px;
-}
-
-/* Export box */
-#export-box {
-    margin-left: 0;
-    margin-top: 5px;
-}
-
-/* Cajas de archivo y GPS más compactas */
-#file-input-box, #gps-box {
-    margin-top: 5px;
-    padding: 5px 0;
-}
-
-#file-input-box label {
-    font-size: 10px;
-}
-
-#file-kml {
-    font-size: 10px;
-}
-
-/* Botones más táctiles */
-#btn-gps, #btn-export-gps, #btn-limpiar-kml {
-    font-size: 11px;
-    padding: 6px 10px;
+/* Estilos para Celular - Modo teléfono móvil */
+@media screen and (max-width: 480px) {
+    /* Contenedor principal - layout vertical */
+    .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        height: 100dvh;
+    }
+    
+    /* Panel de controles fijo arriba */
+    #controls {
+        flex-shrink: 0;
+        padding: 6px 8px;
+        gap: 4px;
+        font-size: 12px;
+        max-height: 35vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        background: #f0f0f0;
+        border-bottom: 2px solid #ccc;
+    }
+    
+    /* Checkboxes más grandes y tocables */
+    #controls input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 6px;
+    }
+    
+    /* Labels más grandes para tocar */
+    #controls label {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 6px;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        user-select: none;
+    }
+    
+    /* Items de capa en línea horizontal */
+    .capa-item {
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin: 1px 0;
+        flex-wrap: wrap;
+    }
+    
+    /* Botones de descarga más pequeños */
+    .capa-btns {
+        display: inline-flex;
+        gap: 2px;
+        margin-left: auto;
+    }
+    
+    .btn-descarga {
+        font-size: 8px;
+        padding: 2px 4px;
+    }
+    
+    /* Buscador */
+    #search-box {
+        display: flex;
+        gap: 3px;
+        margin-top: 3px;
+    }
+    
+    #search-box input {
+        flex: 1;
+        padding: 8px 6px;
+        font-size: 13px;
+    }
+    
+    #search-box button {
+        padding: 8px 10px;
+    }
+    
+    /* OCULTAR exportar en móvil - no tiene utilidad */
+    #export-box {
+        display: none !important;
+    }
+    
+    /* Archivo y GPS en línea */
+    #file-input-box {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-top: 4px;
+    }
+    
+    #file-input-box label {
+        font-size: 9px;
+        padding: 2px;
+    }
+    
+    #file-kml {
+        font-size: 10px;
+    }
+    
+    #gps-box {
+        display: flex;
+        gap: 4px;
+        margin-top: 4px;
+    }
+    
+    #btn-gps, #btn-export-gps, #btn-limpiar-kml {
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+    
+    /* El mapa ocupa el resto */
+    #map {
+        flex: 1;
+        min-height: 0;
+        touch-action: none;
+    }
 }
