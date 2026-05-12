@@ -221,11 +221,11 @@ function descargarCapa(capa) {
 
 // Descargar como SHP real (usa @mapbox/shp-write + JSZip)
 function descargarCapaShp(capa) {
-    var geojson, nombre, nombreZip;
-    if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'PoligonoFajaMarginal'; }
-    else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'HitosFajaMarginal'; }
-    else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'AUT'; }
-    else if (capa === 'rada') { geojson = window.rada_por_fuente; nombre = 'RADA'; }
+    var geojson, nombre, tipoGeo;
+    if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'PoligonoFajaMarginal'; tipoGeo = 'polygon'; }
+    else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'HitosFajaMarginal'; tipoGeo = 'point'; }
+    else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'AUT'; tipoGeo = 'polygon'; }
+    else if (capa === 'rada') { geojson = window.rada_por_fuente; nombre = 'RADA'; tipoGeo = 'point'; }
     
     if (!geojson || !geojson.features || geojson.features.length === 0) {
         alert('No hay datos para descargar');
@@ -235,16 +235,16 @@ function descargarCapaShp(capa) {
     // Intentar generar SHP real con shp-write
     if (typeof shpwrite !== 'undefined' && typeof shpwrite.zip === 'function') {
         try {
+            // Los .shp, .shx, .dbf, .prj internos usan el nombre de la capa
+            var tipos = {};
+            tipos[tipoGeo] = nombre;
+            
             var opciones = {
                 folder: nombre,
                 filename: nombre + '_' + Date.now(),
                 outputType: 'blob',
                 compression: 'STORE',
-                types: {
-                    point: 'puntos',
-                    polygon: 'poligonos',
-                    polyline: 'polilineas'
-                }
+                types: tipos
             };
             
             var resultado = shpwrite.zip(geojson, opciones);
