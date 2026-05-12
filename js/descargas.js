@@ -219,7 +219,7 @@ function descargarCapa(capa) {
     link.click();
 }
 
-// Descargar como SHP (usando togeojson + shpwrite desde CDN diferente)
+// Descargar como SHP real (usa @mapbox/shp-write + JSZip)
 function descargarCapaShp(capa) {
     var geojson, nombre;
     if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'Faja_Marginal'; }
@@ -232,13 +232,63 @@ function descargarCapaShp(capa) {
         return;
     }
     
-    // Descargar como GeoJSON (compatible con QGIS, ArcGIS, etc.)
+    // Intentar generar SHP real con shp-write
+    if (typeof shpwrite !== 'undefined' && typeof shpwrite.zip === 'function') {
+        try {
+            var opciones = {
+                folder: nombre,
+                filename: nombre + '_' + Date.now(),
+                outputType: 'blob',
+                compression: 'STORE',
+                types: {
+                    point: 'puntos',
+                    polygon: 'poligonos',
+                    polyline: 'polilineas'
+                }
+            };
+            
+            var resultado = shpwrite.zip(geojson, opciones);
+            
+            function descargarBlob(blob) {
+                var link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = nombre + '_' + Date.now() + '.zip';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(function() { URL.revokeObjectURL(link.href); }, 10000);
+            }
+            
+            // shpwrite.zip puede devolver blob directo o Promise
+            if (resultado && typeof resultado.then === 'function') {
+                resultado.then(descargarBlob).catch(function(err) {
+                    console.error('Error generando SHP:', err);
+                    descargarComoGeoJSON(geojson, nombre);
+                });
+            } else if (resultado) {
+                descargarBlob(resultado);
+            } else {
+                descargarComoGeoJSON(geojson, nombre);
+            }
+            return;
+        } catch(e) {
+            console.error('Error generando SHP:', e);
+        }
+    }
+    
+    // Fallback: descargar como GeoJSON
+    descargarComoGeoJSON(geojson, nombre);
+}
+
+function descargarComoGeoJSON(geojson, nombre) {
     var jsonStr = JSON.stringify(geojson, null, 2);
     var blob = new Blob([jsonStr], { type: 'application/json' });
     var link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = nombre + '_' + Date.now() + '.geojson';
+    document.body.appendChild(link);
     link.click();
-    
-    alert('Se descargó como GeoJSON (.geojson)\n\nEste formato es compatible con:\n- QGIS\n- ArcGIS\n- Google Earth\n\nPara convertir a SHP, usa QGIS: Capa > Importar > guardar como > Shapefile');
+    document.body.removeChild(link);
+    setTimeout(function() { URL.revokeObjectURL(link.href); }, 10000);
+    alert('No se pudo generar el SHP. Se descargó como GeoJSON.\n\nPara convertir a SHP, usa QGIS: Capa → Importar → Guardar como → Shapefile');
 }
