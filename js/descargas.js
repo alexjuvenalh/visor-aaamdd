@@ -221,11 +221,11 @@ function descargarCapa(capa) {
 
 // Descargar como SHP real (usa @mapbox/shp-write + JSZip)
 function descargarCapaShp(capa) {
-    var geojson, nombre;
-    if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'Faja_Marginal'; }
-    else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'Hitos_Faja'; }
-    else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'Uso_Temporal'; }
-    else if (capa === 'rada') { geojson = window.rada_por_fuente; nombre = 'RADA_Fuente'; }
+    var geojson, nombre, nombreZip;
+    if (capa === 'faja') { geojson = window.faja_poligono; nombre = 'PoligonoFajaMarginal'; }
+    else if (capa === 'hito') { geojson = window.faja_hito; nombre = 'HitosFajaMarginal'; }
+    else if (capa === 'uso') { geojson = window.uso_temporal; nombre = 'AUT'; }
+    else if (capa === 'rada') { geojson = window.rada_por_fuente; nombre = 'RADA'; }
     
     if (!geojson || !geojson.features || geojson.features.length === 0) {
         alert('No hay datos para descargar');
