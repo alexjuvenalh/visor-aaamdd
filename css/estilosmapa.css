@@ -97,38 +97,6 @@ html, body {
     color: white;
 }
 
-/* Exportar */
-#export-box {
-    display: flex;
-    gap: 5px;
-    margin-left: 10px;
-}
-
-#btn-exportar, #btn-toggle-panel {
-    padding: 8px 15px;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-#btn-exportar {
-    background: #e67e22;
-}
-
-#btn-exportar:hover {
-    background: #d35400;
-}
-
-#btn-toggle-panel {
-    background: #8e44ad;
-}
-
-#btn-toggle-panel:hover {
-    background: #9b59b6;
-}
-
 /* ============================================
    PANEL DE INFORMACIÓN LATERAL
    ============================================ */

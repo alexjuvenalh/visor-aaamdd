@@ -68,19 +68,6 @@
             fillOpacity: 0.8
         };
 
-        // FileLayer
-        L.Control.FileLayerLoad.LABEL = '<img class="icon" src="imagenes/Folder.svg" alt="file icon"/>';
-        var control = L.Control.fileLayerLoad({
-            fitBounds: true,
-            layerOptions: {
-                style: polygonStyle,
-                pointToLayer: function (data, latlng) {
-                    return L.circleMarker(latlng, { style: pointStyle });
-                }
-            }
-        });
-        control.addTo(map);
-
         // ============================================
         // LEYENDA
         // ============================================
@@ -92,7 +79,7 @@
             div.innerHTML += '<div><span style="background:#ffff00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Hitos Faja</div>';
             div.innerHTML += '<div><span style="background:#00ff00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Uso Temporal</div>';
             div.innerHTML += '<div><span style="background:#0000ff;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> RADA Fuente</div>';
-            div.innerHTML += '<div><span style="background:#ff00ff;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> RADA Derecho</div>';
+
             return div;
         };
         legend.addTo(map);
@@ -291,33 +278,7 @@
             return rada_fuente_cluster;
         }
 
-        var rada_derecho_cluster = null;
 
-        function getRadaDerecho() {
-            if (!rada_derecho_cluster && window.rada_por_derecho) {
-                var rada_derecho = L.geoJson(window.rada_por_derecho, {
-                    pointToLayer: function(feature, latlng) {
-                        return L.circleMarker(latlng, {
-                            radius: 6,
-                            fillColor: '#ff00ff',
-                            color: '#000',
-                            weight: 1,
-                            fillOpacity: 0.8
-                        });
-                    },
-                    onEachFeature: function(feature, layer) {
-                        var p = feature.properties;
-                        layer.bindPopup('<b>Usuario:</b> ' + sanitize(p.usuario));
-                    }
-                });
-
-                rada_derecho_cluster = L.markerClusterGroup({
-                    maxClusterRadius: 50
-                });
-                rada_derecho_cluster.addLayer(rada_derecho);
-            }
-            return rada_derecho_cluster;
-        }
 
         // ============================================
         // EVENT LISTENERS
@@ -326,7 +287,7 @@
         var checkBoxHito = document.getElementById("chkHito");
         var checkBoxAut = document.getElementById("chkAut");
         var checkBoxRadaFuente = document.getElementById("chkRadaFuente");
-        var checkBoxRadaDerecho = document.getElementById("chkRadaDerecho");
+
 
         if (checkBoxFaja) {
             checkBoxFaja.addEventListener("click", function() {
@@ -376,45 +337,9 @@
             });
         }
 
-        if (checkBoxRadaDerecho) {
-            checkBoxRadaDerecho.addEventListener("click", function() {
-                if (checkBoxRadaDerecho.checked) {
-                    var capa = getRadaDerecho();
-                    if (capa) capa.addTo(map);
-                } else {
-                    var capa = getRadaDerecho();
-                    if (capa) map.removeLayer(capa);
-                }
-            });
-        }
 
-        // Exportar
-        var btnExportar = document.getElementById("btn-exportar");
-        if (btnExportar) {
-            btnExportar.addEventListener("click", function() {
-                var csv = 'Capa,Nombre,Resolución,Distrito\n';
-                // Faja marginal
-                if (window.faja_poligono && window.faja_poligono.features) {
-                    window.faja_poligono.features.forEach(function(f) {
-                        var p = f.properties;
-                        csv += '"Faja Marginal","' + (p.nombre_faja_marginal || '') + '","' + (p.numero_resolucion || '') + '","' + (p.distrito || '') + '"\n';
-                    });
-                }
-                // Autorizaciones
-                if (window.uso_temporal && window.uso_temporal.features) {
-                    window.uso_temporal.features.forEach(function(f) {
-                        var p = f.properties;
-                        csv += '"Uso Temporal","' + (p.nombre_o_razon_social || '') + '","' + (p.numero_resolucion || '') + '","' + (p.distrito || '') + '"\n';
-                    });
-                }
 
-                var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-                var link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'visor_ana_datos.csv';
-                link.click();
-            });
-        }
+
 
         console.log('Visor ANA inicializado correctamente');
         console.log('Fajas disponibles:', window.faja_poligono?.features?.length || 0);

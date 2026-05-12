@@ -77,10 +77,6 @@
         padding: 8px 10px;
     }
     
-    /* OCULTAR exportar en móvil - no tiene utilidad */
-    #export-box {
-        display: none !important;
-    }
     
     /* Archivo y GPS en línea */
     #file-input-box {

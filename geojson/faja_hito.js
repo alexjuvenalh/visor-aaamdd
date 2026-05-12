@@ -1,1 +1,0 @@
-var faja_hito = {"error":"no existe la columna r.archivo"};
