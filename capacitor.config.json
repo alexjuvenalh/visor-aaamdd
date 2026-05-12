@@ -1,0 +1,18 @@
+{
+  "appId": "pe.ana.visor",
+  "appName": "Visor ANA",
+  "webDir": "www",
+  "server": {
+    "cleartext": true,
+    "allowNavigation": [
+      "mt1.google.com",
+      "mt0.google.com",
+      "maps.google.com",
+      "unpkg.com",
+      "cdnjs.cloudflare.com"
+    ]
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

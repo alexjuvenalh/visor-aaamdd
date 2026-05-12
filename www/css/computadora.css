@@ -1,0 +1,34 @@
+/* Estilos para Computadora (1200px+) */
+
+#controls {
+    padding: 15px 25px;
+    gap: 25px;
+}
+
+#controls label {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Controles en línea con más separación */
+#controls label {
+    display: inline-block;
+    padding: 5px 10px;
+}
+
+/* Opcional: sidebar para controles en pantallas grandes */
+/*
+.container {
+    flex-direction: row;
+}
+#controls {
+    width: 250px;
+    height: 100%;
+    flex-direction: column;
+    border-bottom: none;
+    border-right: 1px solid #ddd;
+}
+#map {
+    flex: 1;
+}
+*/

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="imagenes/favicon.png">
+    <link rel="icon" type="image/jpeg" href="imagenes/favicon.jpg">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Visor GIS de la Autoridad Nacional del Agua - Madre de Dios">
+    <title>Visor AAA Madre de Dios</title>
+
+    <link rel="stylesheet" href="leaflet/leaflet.css">
+    <script src="leaflet/leaflet.js"></script>
+
+    <!-- Librerías de clusterización (solo las necesarias) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://unpkg.com/@mapbox/shp-write@0.4.3/shpwrite.js"></script>
+
+    <script src="https://maps.google.com/maps/api/js?v=3.2&sensor=false"></script>
+    <link rel="stylesheet" href="css/estilosmapa.css"/>
+    <link rel="stylesheet" href="css/celular.css" media="screen and (min-width: 320px)"/>
+    <link rel="stylesheet" href="css/tablet.css" media="screen and (min-width: 768px)"/>
+    <link rel="stylesheet" href="css/computadora.css" media="screen and (min-width: 1200px)"/>
+    <link rel="stylesheet" href="css/estilos.css"/>
+</head>
+
+<body>
+    <main class="container">
+        <div id="controls">
+            <div class="capa-item">
+                <label><input type="checkbox" id="chkFaja"> Faja Marginal</label>
+                <span class="capa-btns">
+                    <button class="btn-descarga" onclick="descargarCapa('faja')">KML</button>
+                    <button class="btn-descarga" onclick="descargarCapaShp('faja')">SHP</button>
+                </span>
+            </div>
+            <div class="capa-item">
+                <label><input type="checkbox" id="chkHito"> Hitos Faja</label>
+                <span class="capa-btns">
+                    <button class="btn-descarga" onclick="descargarCapa('hito')">KML</button>
+                    <button class="btn-descarga" onclick="descargarCapaShp('hito')">SHP</button>
+                </span>
+            </div>
+            <div class="capa-item">
+                <label><input type="checkbox" id="chkAut"> Uso Temporal</label>
+                <span class="capa-btns">
+                    <button class="btn-descarga" onclick="descargarCapa('uso')">KML</button>
+                    <button class="btn-descarga" onclick="descargarCapaShp('uso')">SHP</button>
+                </span>
+            </div>
+            <div class="capa-item">
+                <label><input type="checkbox" id="chkRadaFuente"> RADA Fuente</label>
+                <span class="capa-btns">
+                    <button class="btn-descarga" onclick="descargarCapa('rada')">KML</button>
+                    <button class="btn-descarga" onclick="descargarCapaShp('rada')">SHP</button>
+                </span>
+            </div>
+
+            <div id="search-box">
+                <input type="text" id="buscar-input" placeholder="Buscar...">
+                <button id="btn-buscar">🔍</button>
+            </div>
+
+            <div id="file-input-box" style="margin-top: 10px;">
+                <label for="file-kml" style="font-size:11px; font-weight:bold;">Subir archivo:</label><br>
+                <input type="file" id="file-kml" accept=".kml,.kmz,.gpx,.geojson,.json" style="font-size:10px;">
+                <button id="btn-limpiar-kml" title="Limpiar KML" style="margin-left:5px; font-size:10px; padding:2px 6px; cursor:pointer; background:#f44336; color:white; border:none; border-radius:3px;">🗑️</button>
+            </div>
+
+            <div id="gps-box" style="margin-top: 10px;">
+                <button id="btn-gps" title="Iniciar/detener seguimiento GPS" style="font-size:10px; padding:3px 8px; cursor:pointer; background:#4CAF50; color:white; border:none; border-radius:3px;">📍 GPS</button>
+                <button id="btn-export-gps" title="Exportar ruta" style="margin-left:5px; font-size:10px; padding:3px 8px; cursor:pointer; background:#FF9800; color:white; border:none; border-radius:3px;">📤 Exportar Ruta</button>
+            </div>
+        </div>
+
+        <div id="map"></div>
+
+        <!-- Datos locales (modo offline) -->
+        <script src="visor/geojson/faja_poligono.js"></script>
+        <script src="visor/geojson/faja_hito.js"></script>
+        <script src="visor/geojson/uso_temporal.js"></script>
+        <script src="visor/geojson/rada_fuente.js"></script>
+        <script>
+            // Asignar datos locales cuando el DOM esté listo
+            document.addEventListener('DOMContentLoaded', function() {
+                window.faja_poligono = faja_poligono;
+                window.faja_hito = faja_hito;
+                window.uso_temporal = uso_temporal;
+                window.rada_por_fuente = (typeof rada_fuente !== 'undefined') ? rada_fuente : { type: 'FeatureCollection', features: [] };
+                window.rada_por_derecho = { type: 'FeatureCollection', features: [] };
+                console.log('Faja Marginal cargada:', faja_poligono.features.length);
+                console.log('Hitos Faja cargados:', faja_hito.features.length);
+                console.log('Uso Temporal cargado:', uso_temporal.features.length);
+                console.log('RADA Fuente cargado:', typeof rada_fuente !== 'undefined' ? rada_fuente.features.length : 'NO DEFINIDO');
+            });
+        </script>
+
+        </main>
+
+    <script src="https://unpkg.com/togeojson@0.16.0"></script>
+    <script src="jsmapa/index.js"></script>
+    <!-- Cargar archivos.js después del mapa -->
+    <script src="js/descargas.js"></script>
+    <script src="js/archivos.js"></script>
+</body>
+</html>

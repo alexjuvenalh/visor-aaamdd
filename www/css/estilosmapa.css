@@ -1,0 +1,321 @@
+/* Reset básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Evita scrollbars no deseados */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+#controls {
+    width: 100%;
+    min-height: 50px;
+    padding: 10px 15px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+#controls label {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+/* Buscador */
+#search-box {
+    display: flex;
+    gap: 5px;
+    margin-left: auto;
+}
+
+#search-box input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+    font-size: 13px;
+}
+
+#search-box button {
+    padding: 6px 12px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#search-box button:hover {
+    background: #2980b9;
+}
+
+/* Filtros */
+#filters {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+#filters select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    min-width: 100px;
+}
+
+#filters button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#btn-filtrar {
+    background: #27ae60;
+    color: white;
+}
+
+#btn-limpiar-filtros {
+    background: #95a5a6;
+    color: white;
+}
+
+/* ============================================
+   PANEL DE INFORMACIÓN LATERAL
+   ============================================ */
+#info-panel {
+    position: fixed;
+    top: 0;
+    right: -350px;
+    width: 350px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+#info-panel.open {
+    right: 0;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #2c3e50;
+    color: white;
+}
+
+.panel-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+#btn-close-panel {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.stats-box {
+    background: #ecf0f1;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.stats-box h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+#layer-stats {
+    margin-bottom: 20px;
+}
+
+.layer-stat {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-left: 4px solid #3498db;
+    border-radius: 3px;
+}
+
+.layer-stat.active {
+    background: #d5f4e6;
+    border-left-color: #27ae60;
+}
+
+.layer-stat h5 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+}
+
+.layer-stat p {
+    margin: 0;
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+#history-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+
+#history-section h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+#visit-history {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#visit-history li {
+    padding: 8px;
+    margin-bottom: 5px;
+    background: #f8f9fa;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#visit-history li:hover {
+    background: #e8f4f8;
+}
+
+/* Ajuste del mapa cuando el panel está abierto */
+#map.panel-open {
+    margin-right: 0;
+}
+
+#map {
+    flex: 1; /* Ocupa el espacio restante */
+    width: 100%;
+    min-height: 300px;
+    touch-action: none; /* Evita scroll/zoom no deseado al tocar el mapa en móvil */
+}
+
+.icon {
+    max-width: 70%;
+    max-height: 70%;
+    margin: 4px;
+}
+
+/* ============================================
+   LEYENDA
+   ============================================ */
+.info.legend {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: 200px;
+}
+
+.info.legend h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* ============================================
+   CLUSTERS DE MARCADORES
+   ============================================ */
+.marker-cluster {
+    background: transparent;
+}
+
+.marker-cluster div {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 50%;
+    font: 12px "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.marker-cluster-small {
+    background: rgba(110, 204, 57, 0.6);
+}
+
+.marker-cluster-small div {
+    background: rgba(110, 204, 57, 0.8);
+    color: #fff;
+}
+
+.marker-cluster-medium {
+    background: rgba(240, 194, 12, 0.6);
+}
+
+.marker-cluster-medium div {
+    background: rgba(240, 194, 12, 0.8);
+    color: #fff;
+}
+
+.marker-cluster-large {
+    background: rgba(241, 128, 23, 0.6);
+}
+
+.marker-cluster-large div {
+    background: rgba(241, 128, 23, 0.8);
+    color: #fff;
+}
+
+/* ============================================
+   LEAFLET-MEASURE
+   ============================================ */
+.leaflet-control-measure {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
+.leaflet-control-measure-toggle {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23333" d="M14 1H2v2h12V1zm0 4H2v2h12V5zm0 4H2v2h12V9zM2 13h12v2H2v-2z"/></svg>') no-repeat center;
+    background-size: 14px;
+}
+
+.leaflet-control-measure a {
+    background: white;
+    color: #333;
+    font-size: 12px;
+}
