@@ -34,3 +34,8 @@ npm-debug.log*
 crear_repo.bat
 crear_repo2.bat
 jsmapa/index_backup.js
+# Android keystore (DO NOT COMMIT)
+android/app/*.keystore
+
+# Keystore properties (contains passwords)
+android/keystore.properties

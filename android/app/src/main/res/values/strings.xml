@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Visor ANA</string>
-    <string name="title_activity_main">Visor ANA</string>
+    <string name="app_name">Visor AAA - Madre de Dios</string>
+    <string name="title_activity_main">Visor AAA - Madre de Dios</string>
     <string name="package_name">pe.ana.visor</string>
     <string name="custom_url_scheme">pe.ana.visor</string>
 </resources>
