@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalar Visor AAA - Madre de Dios</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            padding: 32px 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 22px;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 24px;
+        }
+        .qr-container {
+            background: white;
+            padding: 16px;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .qr-container img {
+            width: 250px;
+            height: 250px;
+            display: block;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 8px 0 20px 0;
+            transition: background 0.2s;
+        }
+        .download-btn:hover { background: #219a52; }
+        .steps {
+            text-align: left;
+            margin: 20px 0;
+        }
+        .step {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+        .step-num {
+            background: #3498db;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .step-content {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .step-content strong {
+            color: #2c3e50;
+        }
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 10px;
+            padding: 14px;
+            font-size: 13px;
+            color: #856404;
+            margin: 16px 0;
+            text-align: left;
+        }
+        .otros-metodos {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        .otros-metodos h3 {
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+        .metodo {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            text-align: left;
+        }
+        .version {
+            font-size: 12px;
+            color: #95a5a6;
+            margin-top: 20px;
+        }
+        .badge {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #27ae60;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Visor AAA - Madre de Dios</h1>
+        <p class="subtitle">App Android del Visor GIS ANA</p>
+
+        <div class="badge">✅ APK Firmado - v1.0.0</div>
+
+        <!-- QR Code -->
+        <div class="qr-container">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://github.com/alexjuvenalh/visor-aaamdd/releases/download/v1.0.0/app-release.apk"
+                 alt="QR para descargar APK">
+        </div>
+
+        <p style="font-size:13px; color:#555; margin-bottom:12px;">
+            Escaneá el QR con la cámara de tu celular
+        </p>
+
+        <a class="download-btn" href="https://github.com/alexjuvenalh/visor-aaamdd/releases/download/v1.0.0/app-release.apk" target="_blank">
+            ⬇️ Descargar APK
+        </a>
+
+        <!-- Pasos -->
+        <div class="steps">
+            <div class="step">
+                <span class="step-num">1</span>
+                <div class="step-content">
+                    <strong>Descargá el APK</strong><br>
+                    Escaneá el QR o tocá "Descargar APK"
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-num">2</span>
+                <div class="step-content">
+                    <strong>Abrí el archivo</strong><br>
+                    En las notificaciones tocá "app-release.apk"
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-num">3</span>
+                <div class="step-content">
+                    <strong>Permití instalar</strong><br>
+                    Si es la primera vez, activá "Instalar apps desconocidas" para tu navegador
+                </div>
+            </div>
+            <div class="step">
+                <span class="step-num">4</span>
+                <div class="step-content">
+                    <strong>¡Listo!</strong><br>
+                    Tocá "Instalar" y después "Abrir"
+                </div>
+            </div>
+        </div>
+
+        <div class="warning">
+            ⚠️ Es normal que Android te avise que la app no está en Play Store.
+            Tocá "Instalar de todas formas" — la app está firmada con nuestro keystore.
+        </div>
+
+        <div class="otros-metodos">
+            <h3>📤 Otros métodos de instalación</h3>
+
+            <div class="metodo">
+                <strong>📧 Email / WhatsApp / Telegram</strong><br>
+                Compartí este link o el APK directamente desde la PC:<br>
+                <a href="https://github.com/alexjuvenalh/visor-aaamdd/releases/download/v1.0.0/app-release.apk" target="_blank" style="font-size:12px;word-break:break-all;">
+                    github.com/alexjuvenalh/visor-aaamdd/...app-release.apk
+                </a>
+            </div>
+
+            <div class="metodo">
+                <strong>☁️ Google Drive</strong><br>
+                Subí el APK a Drive desde la PC, abrilo desde el celular y tocá "Instalar"
+            </div>
+
+            <div class="metodo">
+                <strong>🔌 Cable USB</strong><br>
+                Copiá el APK a la memoria del celular, abrí la carpeta desde "Archivos" y tocá el APK
+            </div>
+
+            <div class="metodo">
+                <strong>📡 Servidor local (misma red WiFi)</strong><br>
+                En la PC ejecutá: <code style="background:#eee;padding:2px 6px;border-radius:3px;font-size:12px;">npx http-server android/app/build/outputs/apk/release/</code><br>
+                y accedé desde el celular a la IP que muestra
+            </div>
+        </div>
+
+        <p class="version">
+            Visor AAA - Madre de Dios v1.0.0<br>
+            APK Signature Scheme v2 — pe.ana.visor
+        </p>
+    </div>
+</body>
+</html>

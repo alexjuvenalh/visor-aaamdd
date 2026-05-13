@@ -30,50 +30,61 @@
 
 <body>
     <main class="container">
-        <div id="controls">
-            <div class="capa-item">
-                <label><input type="checkbox" id="chkFaja"> Faja Marginal</label>
-                <span class="capa-btns">
-                    <button class="btn-descarga" onclick="descargarCapa('faja')">KML</button>
-                    <button class="btn-descarga" onclick="descargarCapaShp('faja')">SHP</button>
-                </span>
-            </div>
-            <div class="capa-item">
-                <label><input type="checkbox" id="chkHito"> Hitos Faja</label>
-                <span class="capa-btns">
-                    <button class="btn-descarga" onclick="descargarCapa('hito')">KML</button>
-                    <button class="btn-descarga" onclick="descargarCapaShp('hito')">SHP</button>
-                </span>
-            </div>
-            <div class="capa-item">
-                <label><input type="checkbox" id="chkAut"> Uso Temporal</label>
-                <span class="capa-btns">
-                    <button class="btn-descarga" onclick="descargarCapa('uso')">KML</button>
-                    <button class="btn-descarga" onclick="descargarCapaShp('uso')">SHP</button>
-                </span>
-            </div>
-            <div class="capa-item">
-                <label><input type="checkbox" id="chkRadaFuente"> RADA Fuente</label>
-                <span class="capa-btns">
-                    <button class="btn-descarga" onclick="descargarCapa('rada')">KML</button>
-                    <button class="btn-descarga" onclick="descargarCapaShp('rada')">SHP</button>
-                </span>
+        <div id="controls" class="controls-collapsed">
+            <!-- Header del panel (siempre visible) -->
+            <div id="controls-header" onclick="toggleControls()">
+                <span id="controls-title">☰ Capas y herramientas</span>
+                <span id="controls-arrow">▲</span>
             </div>
 
-            <div id="search-box">
-                <input type="text" id="buscar-input" placeholder="Buscar...">
-                <button id="btn-buscar">🔍</button>
-            </div>
+            <!-- Contenido del panel (colapsable) -->
+            <div id="controls-body">
+                <div class="capa-item">
+                    <label><input type="checkbox" id="chkFaja"> Faja Marginal</label>
+                    <span class="capa-btns">
+                        <button class="btn-descarga" onclick="descargarCapa('faja')">KML</button>
+                        <button class="btn-descarga" onclick="descargarCapaShp('faja')">SHP</button>
+                    </span>
+                </div>
+                <div class="capa-item">
+                    <label><input type="checkbox" id="chkHito"> Hitos Faja</label>
+                    <span class="capa-btns">
+                        <button class="btn-descarga" onclick="descargarCapa('hito')">KML</button>
+                        <button class="btn-descarga" onclick="descargarCapaShp('hito')">SHP</button>
+                    </span>
+                </div>
+                <div class="capa-item">
+                    <label><input type="checkbox" id="chkAut"> Uso Temporal</label>
+                    <span class="capa-btns">
+                        <button class="btn-descarga" onclick="descargarCapa('uso')">KML</button>
+                        <button class="btn-descarga" onclick="descargarCapaShp('uso')">SHP</button>
+                    </span>
+                </div>
+                <div class="capa-item">
+                    <label><input type="checkbox" id="chkRadaFuente"> RADA Fuente</label>
+                    <span class="capa-btns">
+                        <button class="btn-descarga" onclick="descargarCapa('rada')">KML</button>
+                        <button class="btn-descarga" onclick="descargarCapaShp('rada')">SHP</button>
+                    </span>
+                </div>
 
-            <div id="file-input-box" style="margin-top: 10px;">
-                <label for="file-kml" style="font-size:11px; font-weight:bold;">Subir archivo:</label><br>
-                <input type="file" id="file-kml" accept=".kml,.kmz,.gpx,.geojson,.json" style="font-size:10px;">
-                <button id="btn-limpiar-kml" title="Limpiar KML" style="margin-left:5px; font-size:10px; padding:2px 6px; cursor:pointer; background:#f44336; color:white; border:none; border-radius:3px;">🗑️</button>
-            </div>
+                <div id="search-box">
+                    <input type="text" id="buscar-input" placeholder="Buscar por resolución, CUT, nombre...">
+                    <button id="btn-buscar">🔍</button>
+                </div>
 
-            <div id="gps-box" style="margin-top: 10px;">
-                <button id="btn-gps" title="Iniciar/detener seguimiento GPS" style="font-size:10px; padding:3px 8px; cursor:pointer; background:#4CAF50; color:white; border:none; border-radius:3px;">📍 GPS</button>
-                <button id="btn-export-gps" title="Exportar ruta" style="margin-left:5px; font-size:10px; padding:3px 8px; cursor:pointer; background:#FF9800; color:white; border:none; border-radius:3px;">📤 Exportar Ruta</button>
+                <div class="section-title">Archivos</div>
+                <div id="file-input-box" class="mobile-row">
+                    <label for="file-kml">Subir archivo:</label>
+                    <input type="file" id="file-kml" accept=".kml,.kmz,.gpx,.geojson,.json">
+                    <button id="btn-limpiar-kml" class="btn-danger" title="Limpiar KML">🗑️</button>
+                </div>
+
+                <div class="section-title">GPS</div>
+                <div id="gps-box" class="mobile-row">
+                    <button id="btn-gps" class="btn-gps-primary">📍 GPS</button>
+                    <button id="btn-export-gps" class="btn-export">📤 Exportar Ruta</button>
+                </div>
             </div>
         </div>
 
