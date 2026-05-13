@@ -190,6 +190,11 @@
         margin-top: 8px;
         flex-wrap: wrap;
     }
+    /* Mayor especificidad para override de estilos base */
+    #file-input-box.mobile-row,
+    #gps-box.mobile-row {
+        margin-top: 8px;
+    }
 
     #file-input-box label {
         font-size: 14px;
@@ -205,17 +210,7 @@
         min-height: 44px;
     }
 
-    #btn-limpiar-kml {
-        padding: 10px 14px;
-        font-size: 16px;
-        cursor: pointer;
-        background: #f44336;
-        color: white;
-        border: none;
-        border-radius: 8px;
-    }
-
-    button.btn-danger {
+    #btn-limpiar-kml.btn-danger {
         padding: 10px 14px;
         font-size: 16px;
         cursor: pointer;
