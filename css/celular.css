@@ -13,33 +13,59 @@
         overflow: hidden;
     }
 
-    /* === BOTTOM SHEET - CONTROLES === */
-    #controls {
+    /* === BOTÓN FLOTANTE + PANEL MODAL === */
+
+    /* Colapsado: botón redondo flotante en esquina inferior derecha */
+    #controls.controls-collapsed {
         position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        bottom: 24px;
+        right: 16px;
+        left: auto;
+        top: auto;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: #2c3e50;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         z-index: 1000;
+        transform: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        min-height: auto;
+        gap: 0;
+        border: none;
+        cursor: pointer;
+    }
+    #controls.controls-collapsed:active {
+        background: #34495e;
+    }
+
+    /* Expandido: panel modal centrado */
+    #controls.controls-expanded {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        width: 90vw;
+        max-width: 380px;
+        max-height: 75vh;
         background: #f5f5f5;
-        border-radius: 16px 16px 0 0;
-        box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
-        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        max-height: 50vh;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        z-index: 1000;
         display: flex;
         flex-direction: column;
+        padding: 0;
+        min-height: auto;
+        gap: 0;
+        border: none;
     }
 
-    /* Colapsado: solo se ve el header */
-    #controls.controls-collapsed {
-        transform: translateY(calc(100% - 52px));
-    }
-
-    /* Expandido: todo visible */
-    #controls.controls-expanded {
-        transform: translateY(0);
-    }
-
-    /* Backdrop oscuro detrás del panel expandido */
+    /* Backdrop oscuro detrás del modal */
     #controls.controls-expanded::before {
         content: '';
         position: fixed;
@@ -47,12 +73,12 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.35);
+        background: rgba(0, 0, 0, 0.5);
         z-index: -1;
         pointer-events: none;
     }
 
-    /* === HEADER DEL PANEL (siempre visible) === */
+    /* === HEADER DEL PANEL MODAL === */
     #controls-header {
         flex-shrink: 0;
         display: flex;
@@ -80,11 +106,37 @@
         transition: transform 0.3s ease;
     }
 
-    #controls.controls-expanded #controls-arrow {
-        transform: rotate(180deg);
+    /* Colapsado (botón flotante): header ocupa todo el círculo */
+    #controls.controls-collapsed #controls-header {
+        border-radius: 50%;
+        justify-content: center;
+        padding: 0;
+        background: none;
+        min-height: auto;
+        width: 56px;
+        height: 56px;
     }
 
-    /* === CUERPO DEL PANEL (scrollable) === */
+    /* En botón colapsado: solo icono ☰, ocultar texto y flecha */
+    #controls.controls-collapsed #title-text,
+    #controls.controls-collapsed #controls-arrow {
+        display: none;
+    }
+    #controls.controls-collapsed #hamburger-icon {
+        font-size: 24px;
+        line-height: 1;
+    }
+
+    /* Expandido: flecha gira hacia abajo */
+    #controls.controls-expanded #controls-arrow {
+        transform: rotate(180deg);
+        transition: transform 0.3s ease;
+    }
+
+    /* === CUERPO DEL PANEL (visible solo en modal) === */
+    #controls.controls-collapsed #controls-body {
+        display: none;
+    }
     #controls-body {
         flex: 1;
         overflow-y: auto;
