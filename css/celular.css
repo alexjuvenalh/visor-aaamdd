@@ -84,25 +84,32 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 14px 18px;
+        padding: 10px 14px;
         background: #2c3e50;
         color: white;
         border-radius: 16px 16px 0 0;
         cursor: pointer;
         user-select: none;
         -webkit-tap-highlight-color: transparent;
-        min-height: 52px;
+        min-height: 44px;
         touch-action: manipulation;
     }
 
     #controls-title {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 600;
-        letter-spacing: 0.3px;
+        letter-spacing: 0.2px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    #controls-title #hamburger-icon {
+        font-size: 16px;
     }
 
     #controls-arrow {
-        font-size: 18px;
+        font-size: 14px;
         transition: transform 0.3s ease;
     }
 
@@ -130,7 +137,6 @@
     /* Expandido: flecha gira hacia abajo */
     #controls.controls-expanded #controls-arrow {
         transform: rotate(180deg);
-        transition: transform 0.3s ease;
     }
 
     /* === CUERPO DEL PANEL (visible solo en modal) === */
