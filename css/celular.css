@@ -24,7 +24,7 @@
         border-radius: 16px 16px 0 0;
         box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
         transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        max-height: 75vh;
+        max-height: 50vh;
         display: flex;
         flex-direction: column;
     }
@@ -94,7 +94,7 @@
     .capa-item {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 4px;
         margin: 4px 0;
         flex-wrap: wrap;
     }
@@ -116,8 +116,8 @@
     }
 
     #controls input[type="checkbox"] {
-        width: 22px;
-        height: 22px;
+        width: 20px;
+        height: 20px;
         margin: 0;
         cursor: pointer;
         accent-color: #3498db;
@@ -133,7 +133,7 @@
     .btn-descarga {
         font-size: 13px;
         font-weight: 600;
-        padding: 10px 14px;
+        padding: 8px 10px;
         min-width: 48px;
         min-height: 44px;
         cursor: pointer;
