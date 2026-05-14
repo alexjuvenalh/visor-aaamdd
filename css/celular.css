@@ -158,10 +158,10 @@
     /* === CAPAS === */
     .capa-item {
         display: flex;
-        align-items: center;
-        gap: 4px;
-        margin: 4px 0;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        margin: 6px 0;
     }
 
     #controls label {
@@ -191,7 +191,8 @@
     .capa-btns {
         display: inline-flex;
         gap: 4px;
-        margin-left: auto;
+        margin-left: 0;
+        padding-left: 34px;
     }
 
     /* === BOTONES (todos con touch target ≥ 44px) === */
