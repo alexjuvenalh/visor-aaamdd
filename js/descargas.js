@@ -61,7 +61,9 @@ function geojsonToKMLRADA(geojson) {
         
         // Agregar link PDF si existe
         if (feature.properties.Archivo) {
-            desc += '\n<a href="https://www.ana.gob.pe/sites/default/files/normatividad/files/' + feature.properties.Archivo + '">📄 Ver PDF</a>';
+            var pdfUrl = 'https://www.ana.gob.pe/sites/default/files/normatividad/files/' + feature.properties.Archivo;
+                if (!feature.properties.Archivo.toLowerCase().endsWith('.pdf')) pdfUrl += '.pdf';
+                desc += '\n<a href="' + pdfUrl + '">📄 Ver PDF</a>';
         }
         
         kml += '    <description><![CDATA[' + desc + ']]></description>\n';
