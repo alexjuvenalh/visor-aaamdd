@@ -111,7 +111,7 @@
                         content += '<b>Sector:</b> ' + sanitize(p.sector) + '<br/>';
                         content += '<b>Resumen:</b> ' + sanitize(p.resumen) + '<br/>';
                         if (p.archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
+                            content += '<b>Archivo:</b> <a target="_blank" href="https://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
                         }
                         layer.bindPopup(content);
                     }
@@ -153,7 +153,7 @@
                         content += '<b>Sector:</b> ' + sanitize(p.sector) + '<br/>';
                         content += '<b>Resumen:</b> ' + sanitize(p.resumen) + '<br/>';
                         if (p.archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
+                            content += '<b>Archivo:</b> <a target="_blank" href="https://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
                         }
                         layer.bindPopup(content);
                     }
@@ -202,7 +202,7 @@
                         content += '<b>Sector:</b> ' + sanitize(p.sector) + '<br/>';
                         content += '<b>Resumen:</b> ' + sanitize(p.resumen) + '<br/>';
                         if (p.archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
+                            content += '<b>Archivo:</b> <a target="_blank" href="https://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.archivo) + '">📄 Ver PDF</a>';
                         }
                         layer.bindPopup(content);
                     }
@@ -262,7 +262,7 @@
                         
                         // Mostrar PDF si existe
                         if (p.Archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="http://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.Archivo) + '">📄 Ver PDF</a><br/>';
+                            content += '<b>Archivo:</b> <a target="_blank" href="https://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.Archivo) + '">📄 Ver PDF</a><br/>';
                         }
                         
                         content += '</div>';
