@@ -670,7 +670,7 @@ var gpsProvider = (function() {
                             var btn = document.createElement('button');
                             btn.id = 'btn-mi-ubicacion';
                             btn.innerHTML = '🎯 Mi Ubicación';
-                            btn.style.cssText = 'margin-top:5px;padding:5px 10px;cursor:pointer;background:#673AB7;color:white;border:none;border-radius:3px;font-size:11px;width:100%;';
+                            btn.className = 'btn-mi-ubicacion';
                             btn.onclick = function() {
                                 if (gpsMarker) {
                                     window.map.setView(gpsMarker.getLatLng(), 17);
@@ -801,12 +801,11 @@ var gpsProvider = (function() {
             
             var exportDiv = document.createElement('div');
             exportDiv.id = 'gps-export-btns';
-            exportDiv.style.cssText = 'margin-top:10px;padding:10px;background:#e3f2fd;border-radius:5px;';
             exportDiv.innerHTML = '<b>📍 Track GPS (' + gpsTrackCoords.length + ' puntos)</b><br>' +
-                '<button id="btn-gps-gpx" style="margin:3px;padding:3px 8px;cursor:pointer;background:#4CAF50;color:white;border:none;border-radius:3px;">📥 GPX</button>' +
-                '<button id="btn-gps-geojson" style="margin:3px;padding:3px 8px;cursor:pointer;background:#2196F3;color:white;border:none;border-radius:3px;">📥 GeoJSON</button>' +
-                '<button id="btn-gps-txt" style="margin:3px;padding:3px 8px;cursor:pointer;background:#ff9800;color:white;border:none;border-radius:3px;">📥 TXT</button>' +
-                '<button id="btn-gps-limpiar" style="margin:3px;padding:3px 8px;cursor:pointer;background:#f44336;color:white;border:none;border-radius:3px;">🗑️ Limpiar</button>';
+                '<button id="btn-gps-gpx" class="btn-gps-export gpx">📥 GPX</button>' +
+                '<button id="btn-gps-geojson" class="btn-gps-export geojson">📥 GeoJSON</button>' +
+                '<button id="btn-gps-txt" class="btn-gps-export txt">📥 TXT</button>' +
+                '<button id="btn-gps-limpiar" class="btn-gps-export limpiar">🗑️ Limpiar</button>';
             infoDiv.appendChild(exportDiv);
             
             // GPX
@@ -859,6 +858,19 @@ var gpsProvider = (function() {
                 if (exportDiv) exportDiv.remove();
             };
         }
+
+    // === TOGGLE DE PANEL DE CONTROLES (MÓVIL) ===
+    window.toggleControls = function() {
+        var ctrl = document.getElementById('controls');
+        if (!ctrl) return;
+        if (ctrl.classList.contains('controls-collapsed')) {
+            ctrl.classList.remove('controls-collapsed');
+            ctrl.classList.add('controls-expanded');
+        } else {
+            ctrl.classList.remove('controls-expanded');
+            ctrl.classList.add('controls-collapsed');
+        }
+    };
 
     window.addEventListener('load', function () {
         initMap();
