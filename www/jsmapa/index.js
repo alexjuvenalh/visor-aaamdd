@@ -25,6 +25,17 @@
 
     function initMap() {
         var self = this;
+
+        // Si los datos aún no se cargaron, esperar
+        if (!window.faja_poligono || !window.faja_hito) {
+            console.log('⏳ Esperando carga de datos...');
+            window.addEventListener('datos-cargados', function() {
+                console.log('📦 Datos recibidos, inicializando mapa...');
+                initMap();
+            });
+            return;
+        }
+
         var L = window.L;
 
         // Capa base - Google Maps satélite (sin API key)
