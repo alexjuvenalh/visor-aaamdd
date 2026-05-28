@@ -1,11 +1,12 @@
 /**
- * Script para generar archivos .js desde PostgreSQL
+ * Script para generar archivos .js con GeoJSON desde PostgreSQL
  * 
- * Uso: node generar-geojson.js
+ * Uso: node scripts/generar-geojson.js
  * 
- * Requiere: npm install pg y json2js (o usa built-in)
- * 
- * Configura las variables de conexión abajo según tu PostgreSQL
+ * Antes de usarlo:
+ *   1. npm install pg
+ *   2. Verificar conexión PostgreSQL abajo (CONFIG)
+ *   3. Verificar nombres de vistas/tablas en TABLAS
  */
 
 const { Client } = require('pg');
@@ -35,7 +36,10 @@ const OUTPUT_DIR = path.join(__dirname, '..', 'visor', 'geojson');
 // ============= FUNCIONES =============
 
 async function exportarTabla(client, nombreTabla, nombreArchivo) {
-    console.log(`\n📦 Exportando ${nombreTabla}...`);
+    // El nombre de variable JS se deriva del nombre del archivo (sin .js)
+    const nombreVariable = nombreArchivo.replace(/\.js$/, '');
+    
+    console.log(`\n📦 Exportando ${nombreVariable} (${nombreTabla})...`);
     
     try {
         // Obtener registros usando ST_AsGeoJSON para la geometría
@@ -51,7 +55,7 @@ async function exportarTabla(client, nombreTabla, nombreArchivo) {
         
         if (filas.length === 0) {
             console.log(`   ⚠️ No hay datos, creando archivo vacío`);
-            const contenido = `var ${nombreTabla} = { type: "FeatureCollection", features: [] };`;
+            const contenido = `var ${nombreVariable} = { type: "FeatureCollection", features: [] };`;
             fs.writeFileSync(path.join(OUTPUT_DIR, nombreArchivo), contenido, 'utf8');
             return;
         }
@@ -81,8 +85,8 @@ async function exportarTabla(client, nombreTabla, nombreArchivo) {
             features: features
         };
         
-        // Generar contenido JS
-        const contenido = `var ${nombreTabla} = ${JSON.stringify(geojson, null, 2)};`;
+        // Generar contenido JS con el nombre de variable CORRECTO
+        const contenido = `var ${nombreVariable} = ${JSON.stringify(geojson, null, 2)};`;
         
         // Guardar archivo
         const rutaArchivo = path.join(OUTPUT_DIR, nombreArchivo);

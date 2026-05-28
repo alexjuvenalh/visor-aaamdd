@@ -24784,671 +24784,6 @@ var faja_hito = {
     {
       "type": "Feature",
       "properties": {
-        "id_punto_hito": 736,
-        "hito": "MD-1",
-        "este": "239196.000000",
-        "norte": "8572019.000000",
-        "ancho_faja": "27.100000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.403484159,
-          -12.906162981
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 737,
-        "hito": "MD-2",
-        "este": "239157.000000",
-        "norte": "8571984.000000",
-        "ancho_faja": "12.250000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.40384637,
-          -12.906475895
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 738,
-        "hito": "MD-3",
-        "este": "239103.000000",
-        "norte": "8571852.000000",
-        "ancho_faja": "27.400000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.404355111,
-          -12.907663909
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 739,
-        "hito": "MD-4",
-        "este": "239044.000000",
-        "norte": "8571818.000000",
-        "ancho_faja": "27.500000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.40490144,
-          -12.907966091
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 740,
-        "hito": "MD-5",
-        "este": "238943.000000",
-        "norte": "8571650.000000",
-        "ancho_faja": "74.800000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.405846174,
-          -12.909475368
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 741,
-        "hito": "MD-6",
-        "este": "238858.000000",
-        "norte": "8571578.000000",
-        "ancho_faja": "44.300000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.406635257,
-          -12.910118661
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 742,
-        "hito": "MD-7",
-        "este": "238710.000000",
-        "norte": "8571497.000000",
-        "ancho_faja": "55.900000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.408005358,
-          -12.910837916
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 743,
-        "hito": "MD-8",
-        "este": "238675.000000",
-        "norte": "8571446.000000",
-        "ancho_faja": "56.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.408332126,
-          -12.911295716
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 744,
-        "hito": "MD-9",
-        "este": "238386.000000",
-        "norte": "8571454.000000",
-        "ancho_faja": "14.500000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.410993154,
-          -12.911198887
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 745,
-        "hito": "MD-10",
-        "este": "238119.000000",
-        "norte": "8571395.000000",
-        "ancho_faja": "38.300000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.413457366,
-          -12.911709229
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 746,
-        "hito": "MD-11",
-        "este": "237862.000000",
-        "norte": "8571181.000000",
-        "ancho_faja": "37.700000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.415842941,
-          -12.913620774
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 747,
-        "hito": "MI-1",
-        "este": "239145.000000",
-        "norte": "8572157.000000",
-        "ancho_faja": "17.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.40394195,
-          -12.904911862
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 748,
-        "hito": "MI-2",
-        "este": "239130.000000",
-        "norte": "8572069.000000",
-        "ancho_faja": "17.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.404087699,
-          -12.905705651
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 749,
-        "hito": "MI-3",
-        "este": "239031.000000",
-        "norte": "8571927.000000",
-        "ancho_faja": "30.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.405011751,
-          -12.9069802
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 750,
-        "hito": "MI-4",
-        "este": "238625.000000",
-        "norte": "8571724.000000",
-        "ancho_faja": "15.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.408768568,
-          -12.908779813
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 751,
-        "hito": "MI-5",
-        "este": "238370.000000",
-        "norte": "8571563.000000",
-        "ancho_faja": "15.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.411131071,
-          -12.910212742
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 752,
-        "hito": "MI-6",
-        "este": "238213.000000",
-        "norte": "8571552.000000",
-        "ancho_faja": "15.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.412578003,
-          -12.910298776
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 753,
-        "hito": "MI-7",
-        "este": "238111.000000",
-        "norte": "8571529.000000",
-        "ancho_faja": "18.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.413519423,
-          -12.910497897
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 754,
-        "hito": "MI-8",
-        "este": "237958.000000",
-        "norte": "8571439.000000",
-        "ancho_faja": "18.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "94545-2019",
-        "numero_resolucion": "0236-2019",
-        "fecha_resolucion": "2019-06-26T05:00:00.000Z",
-        "resumen": "APROBAR el Estudio de \"Delimitación de la faja marginal de un tramo de 1.72 km. en ambas márgenes del ria Tono, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusca\", por el método de huellas máximas, por encontrarse conforme a lo establecido en el artículo 12º del Reglamento citado; de conformidad con lo dispuesto en el anexo 1 y el plano que forma parte de la presente resolución.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2019",
-        "archivo": "59-RD-0236-2019-05",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "TONO",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.414936372,
-          -12.911297999
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id_punto_hito": 755,
         "hito": "H01",
         "este": "475108.000000",
@@ -97829,951 +97164,6 @@ var faja_hito = {
     {
       "type": "Feature",
       "properties": {
-        "id_punto_hito": 3455,
-        "hito": "HMD-001",
-        "este": "240508.737140",
-        "norte": "8573472.814560",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.391269012,
-          -12.893138877
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3456,
-        "hito": "HMD-002",
-        "este": "240220.104563",
-        "norte": "8573161.915120",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.393953904,
-          -12.895923494
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3457,
-        "hito": "HMD-003",
-        "este": "239626.818257",
-        "norte": "8572799.177630",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.3994491,
-          -12.899150688
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3458,
-        "hito": "HMD-004",
-        "este": "239287.333690",
-        "norte": "8572476.167300",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.402603526,
-          -12.902040308
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3459,
-        "hito": "HMD-005",
-        "este": "239294.424782",
-        "norte": "8572161.371100",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.402565383,
-          -12.904885024
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3460,
-        "hito": "HMD-006",
-        "este": "239467.417864",
-        "norte": "8571867.845430",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.400997447,
-          -12.907551609
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3461,
-        "hito": "HMD-007",
-        "este": "239594.950296",
-        "norte": "8571718.103650",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.39983578,
-          -12.908915286
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3462,
-        "hito": "HMD-008",
-        "este": "239757.777272",
-        "norte": "8571453.209640",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.398358959,
-          -12.911322323
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3463,
-        "hito": "HMD-009",
-        "este": "239968.731847",
-        "norte": "8571129.912610",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.396443874,
-          -12.914261083
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3464,
-        "hito": "HMD-010",
-        "este": "240069.751343",
-        "norte": "8570869.613560",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.39553587,
-          -12.916621374
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3465,
-        "hito": "HMD-011",
-        "este": "240196.752337",
-        "norte": "8570608.425460",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.394388627,
-          -12.918991892
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3466,
-        "hito": "HMD-012",
-        "este": "240271.400695",
-        "norte": "8570240.092630",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.39373279,
-          -12.922326022
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3467,
-        "hito": "HMD-013",
-        "este": "240228.405817",
-        "norte": "8569931.190970",
-        "ancho_faja": "25.000000",
-        "margen": "DERECHA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.394155405,
-          -12.925113264
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3468,
-        "hito": "HMI-001",
-        "este": "240135.630368",
-        "norte": "8574023.034310",
-        "ancho_faja": "25.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.394657885,
-          -12.888136292
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3469,
-        "hito": "HMI-002",
-        "este": "239754.629606",
-        "norte": "8573699.183660",
-        "ancho_faja": "25.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.398194519,
-          -12.891030094
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3470,
-        "hito": "HMI-003",
-        "este": "239485.365098",
-        "norte": "8573269.012120",
-        "ancho_faja": "25.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.400711354,
-          -12.894893868
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3471,
-        "hito": "HMI-004",
-        "este": "239234.619766",
-        "norte": "8572963.471620",
-        "ancho_faja": "25.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.403046965,
-          -12.897633155
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3472,
-        "hito": "HMI-005",
-        "este": "239101.636633",
-        "norte": "8572638.731540",
-        "ancho_faja": "25.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.404299726,
-          -12.900555852
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3473,
-        "hito": "HMI-006",
-        "este": "239070.939392",
-        "norte": "8572263.362930",
-        "ancho_faja": "25.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.404614855,
-          -12.903944623
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3474,
-        "hito": "HMI-007",
-        "este": "239355.009195",
-        "norte": "8571812.944140",
-        "ancho_faja": "25.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.402037472,
-          -12.908038116
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3475,
-        "hito": "HMI-008",
-        "este": "239254.202744",
-        "norte": "8571647.050060",
-        "ancho_faja": "25.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.402980227,
-          -12.909528397
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3476,
-        "hito": "HMI-009",
-        "este": "239302.483334",
-        "norte": "8571366.458060",
-        "ancho_faja": "64.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.402559785,
-          -12.912067573
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3477,
-        "hito": "HMI-010",
-        "este": "239471.999957",
-        "norte": "8571152.000150",
-        "ancho_faja": "30.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.401017013,
-          -12.91401951
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3478,
-        "hito": "HMI-011",
-        "este": "239783.999971",
-        "norte": "8570905.000180",
-        "ancho_faja": "65.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.398164701,
-          -12.916277507
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3479,
-        "hito": "HMI-012",
-        "este": "239990.999948",
-        "norte": "8570528.000110",
-        "ancho_faja": "38.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.396290638,
-          -12.919701135
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3480,
-        "hito": "HMI-014",
-        "este": "239988.260743",
-        "norte": "8570205.829940",
-        "ancho_faja": "28.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.396343635,
-          -12.922611652
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id_punto_hito": 3481,
-        "hito": "HMI-015",
-        "este": "240034.487013",
-        "norte": "8569900.531980",
-        "ancho_faja": "25.000000",
-        "margen": "IZQUIERDA",
-        "activo": "1",
-        "aaa": "MADRE DE DIOS",
-        "ala": "TAHUAMANU - MADRE DE DIOS",
-        "cut": "175111-2021",
-        "numero_resolucion": "0011-2022",
-        "fecha_resolucion": "2022-01-24T05:00:00.000Z",
-        "resumen": "APROBAR los estudios de modelamiento hidráulico que conforma el “Estudio de delimitación de la faja marginal de un tramo de 5.27 km de ambas márgenes del rio Pillcopata, en el distrito de Kosñipata, provincia de Paucartambo, departamento de Cusco”; elaborado por el Área Técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
-        "clase_resolucion": "FAJA MARGINAL",
-        "anio_rd": "2022",
-        "archivo": "59-RD-0011-2022-09.pdf",
-        "detalle_rd": "ANA-AAA.MDD",
-        "nombre_fuente": "RIO",
-        "departamento": "PILLCOPATA",
-        "provincia": "CUSCO",
-        "distrito": "PAUCARTAMBO",
-        "sector": "KOSÑIPATA",
-        "tipo": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -71.395944178,
-          -12.925373871
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id_punto_hito": 3482,
         "hito": "HMI-001",
         "este": "501382.970000",
@@ -152989,6 +151379,41 @@ var faja_hito = {
     {
       "type": "Feature",
       "properties": {
+        "id_punto_hito": 6916,
+        "hito": "1",
+        "este": "334542.000000",
+        "norte": "8563106.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.527457086,
+          -12.99673521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id_punto_hito": 5224,
         "hito": "HMI-004",
         "este": "294490.062797",
@@ -157953,6 +156378,601 @@ var faja_hito = {
         "coordinates": [
           -70.100951133,
           -12.978945326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6917,
+        "hito": "2",
+        "este": "334453.000000",
+        "norte": "8562737.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.528297771,
+          -13.000065988
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6918,
+        "hito": "3",
+        "este": "334451.000000",
+        "norte": "8562674.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.528319671,
+          -13.000635373
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6919,
+        "hito": "4",
+        "este": "334449.000000",
+        "norte": "8562610.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.528341626,
+          -13.001213797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6920,
+        "hito": "5",
+        "este": "334456.000000",
+        "norte": "8563032.000000",
+        "ancho_faja": "50.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.5282539,
+          -12.997399475
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6921,
+        "hito": "6",
+        "este": "334489.000000",
+        "norte": "8562967.000000",
+        "ancho_faja": "50.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.527953278,
+          -12.997988838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6922,
+        "hito": "7",
+        "este": "334442.000000",
+        "norte": "8562911.000000",
+        "ancho_faja": "50.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.528389604,
+          -12.998492505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6923,
+        "hito": "8",
+        "este": "334400.000000",
+        "norte": "8562842.000000",
+        "ancho_faja": "50.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.528780556,
+          -12.999113957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6924,
+        "hito": "9",
+        "este": "334377.000000",
+        "norte": "8562763.000000",
+        "ancho_faja": "50.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.528996917,
+          -12.999826835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6925,
+        "hito": "10",
+        "este": "334372.000000",
+        "norte": "8562680.000000",
+        "ancho_faja": "50.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.529047572,
+          -13.000576848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6926,
+        "hito": "11",
+        "este": "334462.000000",
+        "norte": "8563105.000000",
+        "ancho_faja": "50.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.52819458,
+          -12.996739911
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6927,
+        "hito": "12",
+        "este": "334204.000000",
+        "norte": "8562290.000000",
+        "ancho_faja": "50.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.530617694,
+          -13.004093155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6928,
+        "hito": "13",
+        "este": "334541.000000",
+        "norte": "8563047.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.527469545,
+          -12.997268491
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6929,
+        "hito": "14",
+        "este": "334569.000000",
+        "norte": "8563015.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.527213199,
+          -12.997559275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6930,
+        "hito": "15",
+        "este": "334571.000000",
+        "norte": "8562961.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.527197729,
+          -12.998047521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6931,
+        "hito": "16",
+        "este": "334562.000000",
+        "norte": "8562911.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.527283438,
+          -12.998499012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6932,
+        "hito": "17",
+        "este": "334519.000000",
+        "norte": "8562864.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.527682397,
+          -12.998921541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6933,
+        "hito": "18",
+        "este": "334480.000000",
+        "norte": "8562815.000000",
+        "ancho_faja": "30.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "682-2009",
+        "numero_resolucion": "0015-2010",
+        "fecha_resolucion": "2010-02-01T05:00:00.000Z",
+        "resumen": "ARTICULO PRIMERO: Aprobar los planos de delimitacion de faja marginal de un tramo de 600 metros de la quebrada Negro Maza que forman parte del expdiente, localizado en el sector localidad de Huepetuhe, Distritos de Huepetuhe Provinciade Manu Despartamento de Madre de Dios jurisdiccion de la Administracion Local del Agua Maldonado de conformidad con los fundamentos expuestos en la parte considerativa de la presente resolucion.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2010",
+        "archivo": "59-RA-0015-2010-02.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "HUEPETUHE",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.528044594,
+          -12.999362366
         ]
       }
     },
@@ -201003,6 +200023,3961 @@ var faja_hito = {
         "coordinates": [
           -70.281950173,
           -12.876254075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6803,
+        "hito": "HMD-01",
+        "este": "239201.000000",
+        "norte": "8572072.000000",
+        "ancho_faja": "7.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.403429056,
+          -12.905688817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6804,
+        "hito": "HMD-02",
+        "este": "239169.000000",
+        "norte": "8572012.000000",
+        "ancho_faja": "6.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.403733467,
+          -12.906224502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6805,
+        "hito": "HMD-03",
+        "este": "239103.000000",
+        "norte": "8571852.000000",
+        "ancho_faja": "26.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.404355111,
+          -12.907663909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6806,
+        "hito": "HMD-04",
+        "este": "239044.000000",
+        "norte": "8571818.000000",
+        "ancho_faja": "21.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.40490144,
+          -12.907966091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6807,
+        "hito": "HMD-05",
+        "este": "238943.000000",
+        "norte": "8571650.000000",
+        "ancho_faja": "46.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.405846174,
+          -12.909475368
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6808,
+        "hito": "HMD-06",
+        "este": "238858.000000",
+        "norte": "8571578.000000",
+        "ancho_faja": "21.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.406635257,
+          -12.910118661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6809,
+        "hito": "HMD-07",
+        "este": "238710.000000",
+        "norte": "8571497.000000",
+        "ancho_faja": "43.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.408005358,
+          -12.910837916
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6810,
+        "hito": "HMD-08",
+        "este": "238675.000000",
+        "norte": "8571446.000000",
+        "ancho_faja": "29.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.408332126,
+          -12.911295716
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6811,
+        "hito": "HMD-09",
+        "este": "238562.000000",
+        "norte": "8571408.000000",
+        "ancho_faja": "77.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.409378903,
+          -12.911629445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6812,
+        "hito": "HMD-10",
+        "este": "238449.000000",
+        "norte": "8571415.000000",
+        "ancho_faja": "56.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.410418514,
+          -12.911555237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6813,
+        "hito": "HMD-11",
+        "este": "238426.000000",
+        "norte": "8571431.000000",
+        "ancho_faja": "37.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.410629196,
+          -12.911408899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6814,
+        "hito": "HMD-12",
+        "este": "238337.000000",
+        "norte": "8571443.000000",
+        "ancho_faja": "25.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.411444709,
+          -12.911294072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6815,
+        "hito": "HMD-13",
+        "este": "238119.000000",
+        "norte": "8571395.000000",
+        "ancho_faja": "36.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.413460878,
+          -12.91171116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6816,
+        "hito": "HMD-14",
+        "este": "237862.000000",
+        "norte": "8571181.000000",
+        "ancho_faja": "38.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.415842941,
+          -12.913620774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6817,
+        "hito": "HMI-01",
+        "este": "239144.000000",
+        "norte": "8572149.000000",
+        "ancho_faja": "15.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.403955868,
+          -12.904987662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6818,
+        "hito": "HMI-02",
+        "este": "239130.000000",
+        "norte": "8572069.000000",
+        "ancho_faja": "13.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.404087699,
+          -12.905705651
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6819,
+        "hito": "HMI-03",
+        "este": "239018.000000",
+        "norte": "8571930.000000",
+        "ancho_faja": "21.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.405132833,
+          -12.906951541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6820,
+        "hito": "HMI-04",
+        "este": "238625.000000",
+        "norte": "8571724.000000",
+        "ancho_faja": "15.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.408768568,
+          -12.908779813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6821,
+        "hito": "HMI-05",
+        "este": "238370.000000",
+        "norte": "8571563.000000",
+        "ancho_faja": "11.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.411131071,
+          -12.910212742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6822,
+        "hito": "HMI-06",
+        "este": "238213.000000",
+        "norte": "8571552.000000",
+        "ancho_faja": "13.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.412578003,
+          -12.910298776
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6823,
+        "hito": "HMI-07",
+        "este": "238111.000000",
+        "norte": "8571530.000000",
+        "ancho_faja": "15.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.413520987,
+          -12.910492857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6824,
+        "hito": "HMI-08",
+        "este": "237959.000000",
+        "norte": "8571439.000000",
+        "ancho_faja": "18.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "241820-2025",
+        "numero_resolucion": "0129-2026",
+        "fecha_resolucion": "2026-04-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR el estudio técnico denominado “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD, presentado de oficio, respecto a la longitud del tramo delimitado, límite superior de la faja marginal derecha e izquierda del rio Tono, incremento del número de hitos en la margen derecho del rio Tono, y el ancho de la faja marginal en ambas márgenes del rio Tono en el tramo de interés, conforme a la metodología establecida en artículo 9 del Reglamento.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0129-2026-06.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.414927277,
+          -12.911294491
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6825,
+        "hito": "HMD-01",
+        "este": "446147.000000",
+        "norte": "8740817.000000",
+        "ancho_faja": "4.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493616932,
+          -11.390318016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6826,
+        "hito": "HMD-02",
+        "este": "446147.000000",
+        "norte": "8740793.000000",
+        "ancho_faja": "4.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493614188,
+          -11.390533725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6827,
+        "hito": "HMD-03",
+        "este": "446166.000000",
+        "norte": "8740789.000000",
+        "ancho_faja": "5.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493442235,
+          -11.390569835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6828,
+        "hito": "HMD-04",
+        "este": "446211.000000",
+        "norte": "8740773.000000",
+        "ancho_faja": "6.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493027468,
+          -11.390715712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6829,
+        "hito": "HMD-05",
+        "este": "446257.000000",
+        "norte": "8740762.000000",
+        "ancho_faja": "5.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492607579,
+          -11.390814629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6830,
+        "hito": "HMD-06",
+        "este": "446273.000000",
+        "norte": "8740754.000000",
+        "ancho_faja": "5.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492464743,
+          -11.390881606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6831,
+        "hito": "HMD-07",
+        "este": "446274.000000",
+        "norte": "8740745.000000",
+        "ancho_faja": "6.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492451356,
+          -11.390967179
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6832,
+        "hito": "HMD-08",
+        "este": "446300.000000",
+        "norte": "8740742.000000",
+        "ancho_faja": "4.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492215359,
+          -11.390990806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6833,
+        "hito": "HMI-01",
+        "este": "446098.000000",
+        "norte": "8740781.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.494070183,
+          -11.390640965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6834,
+        "hito": "HMI-02",
+        "este": "446117.000000",
+        "norte": "8740781.000000",
+        "ancho_faja": "9.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493890275,
+          -11.390641783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6835,
+        "hito": "HMI-03",
+        "este": "446138.000000",
+        "norte": "8740781.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493696281,
+          -11.390642108
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6836,
+        "hito": "HMI-04",
+        "este": "446142.000000",
+        "norte": "8740778.000000",
+        "ancho_faja": "5.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493665621,
+          -11.390669105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6837,
+        "hito": "HMI-05",
+        "este": "446159.000000",
+        "norte": "8740775.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493507197,
+          -11.390696582
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6838,
+        "hito": "HMI-06",
+        "este": "446160.000000",
+        "norte": "8740761.000000",
+        "ancho_faja": "7.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493496597,
+          -11.390819487
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6839,
+        "hito": "HMI-07",
+        "este": "446172.000000",
+        "norte": "8740756.000000",
+        "ancho_faja": "5.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493391025,
+          -11.3908672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6840,
+        "hito": "HMI-08",
+        "este": "446198.000000",
+        "norte": "8740742.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493147332,
+          -11.390991315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6841,
+        "hito": "HMI-09",
+        "este": "446219.000000",
+        "norte": "8740732.000000",
+        "ancho_faja": "5.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492961099,
+          -11.391081816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6842,
+        "hito": "HMI-10",
+        "este": "446242.000000",
+        "norte": "8740727.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492743786,
+          -11.391125763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6843,
+        "hito": "HMI-11",
+        "este": "446271.000000",
+        "norte": "8740728.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492482281,
+          -11.391124233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6844,
+        "hito": "HMI-12",
+        "este": "446300.000000",
+        "norte": "8740728.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492215587,
+          -11.391123191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6845,
+        "hito": "HMD-01",
+        "este": "240509.000000",
+        "norte": "8573473.000000",
+        "ancho_faja": "25.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.391269012,
+          -12.893138877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6846,
+        "hito": "HMD-02",
+        "este": "240220.000000",
+        "norte": "8573162.000000",
+        "ancho_faja": "26.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.393953904,
+          -12.895923494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6847,
+        "hito": "HMD-03",
+        "este": "239627.000000",
+        "norte": "8572799.000000",
+        "ancho_faja": "15.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.3994491,
+          -12.899150688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6848,
+        "hito": "HMD-04",
+        "este": "239287.000000",
+        "norte": "8572476.000000",
+        "ancho_faja": "49.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.40260356,
+          -12.902040283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6849,
+        "hito": "HMD-05",
+        "este": "239294.000000",
+        "norte": "8572161.000000",
+        "ancho_faja": "12.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.402565383,
+          -12.904885024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6850,
+        "hito": "HMD-06",
+        "este": "239467.000000",
+        "norte": "8571868.000000",
+        "ancho_faja": "13.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.400997447,
+          -12.907551609
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6851,
+        "hito": "HMD-07",
+        "este": "239595.000000",
+        "norte": "8571718.000000",
+        "ancho_faja": "20.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.39983578,
+          -12.908915286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6852,
+        "hito": "HMD-08",
+        "este": "239758.000000",
+        "norte": "8571453.000000",
+        "ancho_faja": "16.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.398358959,
+          -12.911322323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6853,
+        "hito": "HMD-09",
+        "este": "239967.000000",
+        "norte": "8571133.000000",
+        "ancho_faja": "45.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.396461099,
+          -12.914231952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6854,
+        "hito": "HMD-10",
+        "este": "240070.000000",
+        "norte": "8570870.000000",
+        "ancho_faja": "15.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.39553587,
+          -12.916621374
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6855,
+        "hito": "HMD-11",
+        "este": "240197.000000",
+        "norte": "8570608.000000",
+        "ancho_faja": "22.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.394388627,
+          -12.918991892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6856,
+        "hito": "HMD-12",
+        "este": "240283.000000",
+        "norte": "8570243.000000",
+        "ancho_faja": "25.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.39362189,
+          -12.922298048
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6857,
+        "hito": "HMD-13",
+        "este": "240228.000000",
+        "norte": "8569931.000000",
+        "ancho_faja": "19.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.394155405,
+          -12.925113264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6858,
+        "hito": "HMI-01",
+        "este": "240136.000000",
+        "norte": "8574023.000000",
+        "ancho_faja": "196.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.394657885,
+          -12.888136292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6859,
+        "hito": "HMI-02",
+        "este": "239755.000000",
+        "norte": "8573699.000000",
+        "ancho_faja": "233.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.398194519,
+          -12.891030094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6860,
+        "hito": "HMI-03",
+        "este": "239485.000000",
+        "norte": "8573269.000000",
+        "ancho_faja": "116.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.400711354,
+          -12.894893868
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6861,
+        "hito": "HMI-04",
+        "este": "239230.000000",
+        "norte": "8572959.000000",
+        "ancho_faja": "47.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.403089011,
+          -12.897672502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6862,
+        "hito": "HMI-05",
+        "este": "239102.000000",
+        "norte": "8572639.000000",
+        "ancho_faja": "15.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.404299726,
+          -12.900555852
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6863,
+        "hito": "HMI-06",
+        "este": "239071.000000",
+        "norte": "8572263.000000",
+        "ancho_faja": "40.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.40461485,
+          -12.903944649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6864,
+        "hito": "HMI-07",
+        "este": "239355.000000",
+        "norte": "8571813.000000",
+        "ancho_faja": "5.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.402037472,
+          -12.908038116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6865,
+        "hito": "HMI-08",
+        "este": "239241.000000",
+        "norte": "8571683.000000",
+        "ancho_faja": "103.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.40309566,
+          -12.90920467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6866,
+        "hito": "HMI-09",
+        "este": "239358.000000",
+        "norte": "8571386.000000",
+        "ancho_faja": "193.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.402049904,
+          -12.911892099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6867,
+        "hito": "HMI-10",
+        "este": "239472.000000",
+        "norte": "8571152.000000",
+        "ancho_faja": "195.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.401017013,
+          -12.914019511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6868,
+        "hito": "HMI-11",
+        "este": "239771.000000",
+        "norte": "8570895.000000",
+        "ancho_faja": "82.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.398286814,
+          -12.916370143
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6869,
+        "hito": "HMI-12",
+        "este": "239865.000000",
+        "norte": "8570777.000000",
+        "ancho_faja": "58.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.397425657,
+          -12.917441217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6870,
+        "hito": "HMI-13",
+        "este": "239988.000000",
+        "norte": "8570206.000000",
+        "ancho_faja": "49.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.396343635,
+          -12.922611652
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6871,
+        "hito": "HMI-14",
+        "este": "240034.000000",
+        "norte": "8569901.000000",
+        "ancho_faja": "63.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "175111-2021",
+        "numero_resolucion": "0131-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación para la modificación de las fajas marginales de los rio Tono y Pillcopata, aprobadas mediante las R.D. N° 0236-2019-ANA-AAA.MDD y R.D. N° 0011-2022- ANAAAA.MDD”, elaborado por el área técnica de esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 9 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "MODIFICACION FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0131-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "RIO",
+        "departamento": "PILLCOPATA",
+        "provincia": "CUSCO",
+        "distrito": "PAUCARTAMBO",
+        "sector": "KOSÑIPATA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.395944178,
+          -12.925373871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6872,
+        "hito": "HMD-01",
+        "este": "336807.000000",
+        "norte": "8559974.000000",
+        "ancho_faja": "20.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.504873447,
+          -13.021768376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6873,
+        "hito": "HMD-02",
+        "este": "336818.000000",
+        "norte": "8559906.000000",
+        "ancho_faja": "51.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.504777762,
+          -13.022384223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6874,
+        "hito": "HMD-03",
+        "este": "336767.000000",
+        "norte": "8559804.000000",
+        "ancho_faja": "27.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505246612,
+          -13.023302612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6875,
+        "hito": "HMD-04",
+        "este": "336727.000000",
+        "norte": "8559735.000000",
+        "ancho_faja": "17.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505621276,
+          -13.023928729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6876,
+        "hito": "HMD-05",
+        "este": "336743.000000",
+        "norte": "8559687.000000",
+        "ancho_faja": "13.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.50548069,
+          -13.02436341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6877,
+        "hito": "HMD-06",
+        "este": "336742.000000",
+        "norte": "8559609.000000",
+        "ancho_faja": "14.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505486098,
+          -13.025061923
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6878,
+        "hito": "HMD-07",
+        "este": "336754.000000",
+        "norte": "8559570.000000",
+        "ancho_faja": "15.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505378462,
+          -13.02541534
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6879,
+        "hito": "HMI-01",
+        "este": "336688.000000",
+        "norte": "8559746.000000",
+        "ancho_faja": "18.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.50598234,
+          -13.023823116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6880,
+        "hito": "HMI-02",
+        "este": "336698.000000",
+        "norte": "8559678.000000",
+        "ancho_faja": "23.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505893954,
+          -13.024435293
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6881,
+        "hito": "HMI-03",
+        "este": "336693.000000",
+        "norte": "8559616.000000",
+        "ancho_faja": "27.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505944902,
+          -13.024994679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6882,
+        "hito": "HMI-04",
+        "este": "336715.000000",
+        "norte": "8559553.000000",
+        "ancho_faja": "20.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52058-2026",
+        "numero_resolucion": "0146-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 500 metros en ambas márgenes de la quebrada Pedro Gutiérrez, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychiwe Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0146-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505743196,
+          -13.025570764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6883,
+        "hito": "HMD-01",
+        "este": "336857.000000",
+        "norte": "8560104.000000",
+        "ancho_faja": "46.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.50440078,
+          -13.020596679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6884,
+        "hito": "HMD-02",
+        "este": "336802.000000",
+        "norte": "8560005.000000",
+        "ancho_faja": "22.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.504911409,
+          -13.021490706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6885,
+        "hito": "HMD-03",
+        "este": "336766.000000",
+        "norte": "8559944.000000",
+        "ancho_faja": "17.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505248879,
+          -13.022034079
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6886,
+        "hito": "HMD-04",
+        "este": "336727.000000",
+        "norte": "8559882.000000",
+        "ancho_faja": "32.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505616818,
+          -13.02259291
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6887,
+        "hito": "HMD-05",
+        "este": "336673.000000",
+        "norte": "8559770.000000",
+        "ancho_faja": "51.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.506115798,
+          -13.023605244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6888,
+        "hito": "HMD-06",
+        "este": "336635.000000",
+        "norte": "8559675.000000",
+        "ancho_faja": "41.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.506472256,
+          -13.024464222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6889,
+        "hito": "HMD-07",
+        "este": "336582.000000",
+        "norte": "8559576.000000",
+        "ancho_faja": "42.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.506967951,
+          -13.02535468
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6890,
+        "hito": "HMI-01",
+        "este": "336753.000000",
+        "norte": "8560138.000000",
+        "ancho_faja": "29.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505360518,
+          -13.020283466
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6891,
+        "hito": "HMI-02",
+        "este": "336708.000000",
+        "norte": "8560041.000000",
+        "ancho_faja": "36.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.505780478,
+          -13.021157026
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6892,
+        "hito": "HMI-03",
+        "este": "336633.000000",
+        "norte": "8559940.000000",
+        "ancho_faja": "42.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.506481171,
+          -13.022064832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6893,
+        "hito": "HMI-04",
+        "este": "336566.000000",
+        "norte": "8559869.000000",
+        "ancho_faja": "45.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.507098507,
+          -13.022700454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6894,
+        "hito": "HMI-05",
+        "este": "336501.000000",
+        "norte": "8559726.000000",
+        "ancho_faja": "49.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.507701526,
+          -13.023993305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6895,
+        "hito": "HMI-06",
+        "este": "336425.000000",
+        "norte": "8559620.000000",
+        "ancho_faja": "52.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "52068-2026",
+        "numero_resolucion": "0147-2026",
+        "fecha_resolucion": "2026-05-19T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de Huella Máxima que conforma el “Estudio de delimitación de la faja marginal en un tramo de 688 metros en ambas márgenes de la quebrada Cuatro Amigos, ubicado en el centro poblado Nueva, distrito de Huepetuhe, provincia de Manu, departamento de Madre de Dios”, elaborado por la Municipalidad Centro Poblado de Caychihue Alto y Quebradas Nueva y replanteado por esta Autoridad Administrativa del Agua, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0147-2026-05.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "NUEVA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "MANU",
+        "sector": "HUEPETUHE",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -70.508414732,
+          -13.024950661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6896,
+        "hito": "HMD-01",
+        "este": "446147.000000",
+        "norte": "8740817.000000",
+        "ancho_faja": "4.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493616932,
+          -11.390318016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6897,
+        "hito": "HMD-02",
+        "este": "446147.000000",
+        "norte": "8740793.000000",
+        "ancho_faja": "4.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493614188,
+          -11.390533725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6898,
+        "hito": "HMD-03",
+        "este": "446166.000000",
+        "norte": "8740789.000000",
+        "ancho_faja": "5.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493442235,
+          -11.390569835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6899,
+        "hito": "HMD-04",
+        "este": "446211.000000",
+        "norte": "8740773.000000",
+        "ancho_faja": "6.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493027468,
+          -11.390715712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6900,
+        "hito": "HMD-05",
+        "este": "446257.000000",
+        "norte": "8740762.000000",
+        "ancho_faja": "5.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492607579,
+          -11.390814629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6901,
+        "hito": "HMD-06",
+        "este": "446273.000000",
+        "norte": "8740754.000000",
+        "ancho_faja": "5.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492464743,
+          -11.390881606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6902,
+        "hito": "HMD-07",
+        "este": "446274.000000",
+        "norte": "8740745.000000",
+        "ancho_faja": "6.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492451356,
+          -11.390967179
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6903,
+        "hito": "HMD-08",
+        "este": "446300.000000",
+        "norte": "8740742.000000",
+        "ancho_faja": "4.000000",
+        "margen": "DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492215359,
+          -11.390990806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6904,
+        "hito": "HMI-01",
+        "este": "446098.000000",
+        "norte": "8740781.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.494070183,
+          -11.390640965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6905,
+        "hito": "HMI-02",
+        "este": "446117.000000",
+        "norte": "8740781.000000",
+        "ancho_faja": "9.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493890275,
+          -11.390641783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6906,
+        "hito": "HMI-03",
+        "este": "446138.000000",
+        "norte": "8740781.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493696281,
+          -11.390642108
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6907,
+        "hito": "HMI-04",
+        "este": "446142.000000",
+        "norte": "8740778.000000",
+        "ancho_faja": "5.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493665621,
+          -11.390669105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6908,
+        "hito": "HMI-05",
+        "este": "446159.000000",
+        "norte": "8740775.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493507197,
+          -11.390696582
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6909,
+        "hito": "HMI-06",
+        "este": "446160.000000",
+        "norte": "8740761.000000",
+        "ancho_faja": "7.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493496597,
+          -11.390819487
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6910,
+        "hito": "HMI-07",
+        "este": "446172.000000",
+        "norte": "8740756.000000",
+        "ancho_faja": "5.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493391025,
+          -11.3908672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6911,
+        "hito": "HMI-08",
+        "este": "446198.000000",
+        "norte": "8740742.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.493147332,
+          -11.390991315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6912,
+        "hito": "HMI-09",
+        "este": "446219.000000",
+        "norte": "8740732.000000",
+        "ancho_faja": "5.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492961099,
+          -11.391081816
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6913,
+        "hito": "HMI-10",
+        "este": "446242.000000",
+        "norte": "8740727.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492743786,
+          -11.391125763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6914,
+        "hito": "HMI-11",
+        "este": "446271.000000",
+        "norte": "8740728.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492482281,
+          -11.391124233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_punto_hito": 6915,
+        "hito": "HMI-12",
+        "este": "446300.000000",
+        "norte": "8740728.000000",
+        "ancho_faja": "4.000000",
+        "margen": "IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "33719-2026",
+        "numero_resolucion": "0130-2026",
+        "fecha_resolucion": "2026-04-28T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- APROBAR los estudios de huella máxima que conforma el “Estudio de delimitación de la faja marginal con huella máxima de un tramo de 198 metros de ambas márgenes de la quebrada El Aguajal, en el sector Iberia, distrito de Iberia, provincia de Tahuamanu, departamento de Madre de Dios”, elaborado por la administrada, conforme a la metodología establecida en artículo 10 del Reglamento para la Delimitación y Mantenimiento de Fajas Marginales.",
+        "clase_resolucion": "FAJA MARGINAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0130-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.-MDD",
+        "nombre_fuente": "QUEBRADA",
+        "departamento": "IBERIA",
+        "provincia": "MADRE DE DIOS",
+        "distrito": "TAHUAMANU",
+        "sector": "IBERIA",
+        "tipo": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -69.492215587,
+          -11.391123191
         ]
       }
     }

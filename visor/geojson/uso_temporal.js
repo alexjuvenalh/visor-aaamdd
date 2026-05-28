@@ -7035,6 +7035,65 @@ var uso_temporal = {
     {
       "type": "Feature",
       "properties": {
+        "id_poligono_aut": 375,
+        "zona": "19",
+        "datum": "WGS 84 (UTM)",
+        "area_otorgada": "4.300000",
+        "bien_asociado": "BIFURCACION DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "55179-2026",
+        "numero_resolucion": "0151-2026",
+        "fecha_resolucion": "2025-05-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- OTORGAR Autorización de uso temporal de un área de terreno de la bifurcación derecha del cauce principal del rio Madre de Dios para siembra de cultivos de 4.30 ha., a favor del señor TONI ROBERTO HUAYTA CONDORI, identificado con DNI N° 04827332, dicha área se ubica en el sector Laberinto, distrito de Laberinto, provincia de Tambopata, departamento de Madre de Dios.",
+        "clase_resolucion": "AUTORIZACION DE USO TEMPORAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0151-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.MDD",
+        "nombre_o_razon_social": "TONI ROBERTO HUAYTA CONDORI",
+        "tipo_documento": "DNI",
+        "numero_documento": "04827332",
+        "departamento": "MADRE DE DIOS",
+        "provincia": "TAMBOPATA",
+        "distrito": "LABERINTO",
+        "sector": "LABERINTO",
+        "tipo_aut": "BIFURCACION",
+        "area_total": "4.300000",
+        "periodo_autorizacion": "3 AÑOS",
+        "fecha_autorizacion": "2029-05-21T05:00:00.000Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -69.589180869,
+              -12.721868872
+            ],
+            [
+              -69.587772678,
+              -12.722342208
+            ],
+            [
+              -69.587963642,
+              -12.725271546
+            ],
+            [
+              -69.588948454,
+              -12.724934787
+            ],
+            [
+              -69.589180869,
+              -12.721868872
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id_poligono_aut": 323,
         "zona": "19",
         "datum": "WGS 84 (UTM)",
@@ -7429,6 +7488,128 @@ var uso_temporal = {
     {
       "type": "Feature",
       "properties": {
+        "id_poligono_aut": 373,
+        "zona": "19",
+        "datum": "WGS 84 (UTM)",
+        "area_otorgada": "4.800000",
+        "bien_asociado": "BIFURCACION IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "38578-2026",
+        "numero_resolucion": "0132-2026",
+        "fecha_resolucion": "2026-04-29T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- OTORGAR autorización de uso temporal de un área de la bifurcación izquierda del rio Inambari para siembra de cultivos, en un área de 4.80 hectáreas (ha), a favor de la señora SANCHEZ MOLINA, JEMELI identificada con DNI N° 48698084; dicha área se ubica en el sector Ponal, distrito de Inambari, provincia de Tambopata, departamento de Madre de Dios.",
+        "clase_resolucion": "AUTORIZACION DE USO TEMPORAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0132-2026-03.pdf",
+        "detalle_rd": "ANA-AAA.MDD",
+        "nombre_o_razon_social": "SANCHEZ MOLINA, JEMELI",
+        "tipo_documento": "DNI",
+        "numero_documento": "48698084",
+        "departamento": "MADRE DE DIOS",
+        "provincia": "TAMBOPATA",
+        "distrito": "INAMBARI",
+        "sector": "PONAL",
+        "tipo_aut": "BIFURCACION",
+        "area_total": "4.800000",
+        "periodo_autorizacion": "4 AÑOS",
+        "fecha_autorizacion": "2030-04-29T05:00:00.000Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.25736896,
+              -12.809488981
+            ],
+            [
+              -70.25809847,
+              -12.811691468
+            ],
+            [
+              -70.259423848,
+              -12.811441027
+            ],
+            [
+              -70.259630793,
+              -12.810445542
+            ],
+            [
+              -70.259616236,
+              -12.809369749
+            ],
+            [
+              -70.25736896,
+              -12.809488981
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_poligono_aut": 376,
+        "zona": "19",
+        "datum": "WGS 84 (UTM)",
+        "area_otorgada": "0.800000",
+        "bien_asociado": "FAJA MARGINAL DERECHA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAHUAMANU - MADRE DE DIOS",
+        "cut": "61537-2026",
+        "numero_resolucion": "0152-2026",
+        "fecha_resolucion": "2025-05-21T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- OTORGAR Autorización de uso temporal de un área de terreno de la faja marginal derecha del rio Madre de Dios para siembra de cultivos de 0.80 hectáreas (ha), a favor del señor HERNAN ORTIZ DE ORUE TUPFIA, identificado con DNI N° 42300992, dicha área se ubica en el sector Alta Cachuela, distrito de Tambopata, provincia de Tambopata, departamento de Madre de Dios.",
+        "clase_resolucion": "AUTORIZACION DE USO TEMPORAL",
+        "anio_rd": "2026",
+        "archivo": "59-RD-0152-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.MDD",
+        "nombre_o_razon_social": "HERNAN ORTIZ DE ORUE TUPFIA",
+        "tipo_documento": "DNI",
+        "numero_documento": "42300992",
+        "departamento": "MADRE DE DIOS",
+        "provincia": "TAMBOPATA",
+        "distrito": "TAMBOPATA",
+        "sector": "ALTA CACHUELA",
+        "tipo_aut": "FAJA MARGINAL",
+        "area_total": "0.800000",
+        "periodo_autorizacion": "3 AÑOS",
+        "fecha_autorizacion": "2029-05-21T05:00:00.000Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -69.18172306,
+              -12.487209261
+            ],
+            [
+              -69.180977655,
+              -12.48726402
+            ],
+            [
+              -69.180996646,
+              -12.488105009
+            ],
+            [
+              -69.181843274,
+              -12.488032095
+            ],
+            [
+              -69.18172306,
+              -12.487209261
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id_poligono_aut": 324,
         "zona": "19",
         "datum": "WGS 84 (UTM)",
@@ -7622,6 +7803,148 @@ var uso_temporal = {
             [
               -70.351583107,
               -12.91595359
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_poligono_aut": 374,
+        "zona": "19",
+        "datum": "WGS 84 (UTM)",
+        "area_otorgada": "5.000000",
+        "bien_asociado": "BIFURCACION IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "198612-2025",
+        "numero_resolucion": "0133-2026",
+        "fecha_resolucion": "2026-04-29T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- OTORGAR Autorización de uso temporal de un área de terreno de la bifurcación izquierda del rio Inambari para siembra de cultivos de 5.00 hectáreas (ha) a favor del señor MANUEL JESUS TUNQUI CCALLO, identificado con DNI N° 04813847; dicha área se ubica en el sector Ponal, distrito de Inambari, provincia de Tambopata y departamento de Madre de Dios.",
+        "clase_resolucion": "AUTORIZACION DE USO TEMPORAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0133-2026-04.pdf",
+        "detalle_rd": "ANA-AAA.MDD",
+        "nombre_o_razon_social": "MANUEL JESUS TUNQUI CCALLO",
+        "tipo_documento": "DNI",
+        "numero_documento": "04813847",
+        "departamento": "MADRE DE DIOS",
+        "provincia": "TAMBOPATA",
+        "distrito": "INAMBARI",
+        "sector": "PONAL",
+        "tipo_aut": "BIFURCACION",
+        "area_total": "5.000000",
+        "periodo_autorizacion": "4 AÑOS",
+        "fecha_autorizacion": "2030-04-29T05:00:00.000Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.268290515,
+              -12.810422049
+            ],
+            [
+              -70.265299971,
+              -12.811132584
+            ],
+            [
+              -70.266674831,
+              -12.811568973
+            ],
+            [
+              -70.26838098,
+              -12.811931433
+            ],
+            [
+              -70.268649406,
+              -12.812183283
+            ],
+            [
+              -70.27032362,
+              -12.811687004
+            ],
+            [
+              -70.268290515,
+              -12.810422049
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id_poligono_aut": 377,
+        "zona": "19",
+        "datum": "WGS 84 (UTM)",
+        "area_otorgada": "5.000000",
+        "bien_asociado": "BIFURCACION IZQUIERDA",
+        "activo": "1",
+        "aaa": "MADRE DE DIOS",
+        "ala": "TAMBOPATA - INAMBARI",
+        "cut": "67767-2026",
+        "numero_resolucion": "0156-2026",
+        "fecha_resolucion": "2026-05-26T05:00:00.000Z",
+        "resumen": "ARTÍCULO 1.- OTORGAR Autorización de uso temporal de un área de terreno de la bifurcación izquierda del rio Inambari para siembra de cultivos de 5.00 ha a favor del señor DINER SANCHEZ MOLINA, identificado con DNI N° 71515428, dicha área se ubica en el sector Ponal, distrito de Inambari, provincia de Tambopata y departamento de Madre de Dios.",
+        "clase_resolucion": "AUTORIZACION DE USO TEMPORAL",
+        "anio_rd": "2026",
+        "archivo": "64-RD-0156-2026-04_6.pdf",
+        "detalle_rd": "ANA-AAA.MDD",
+        "nombre_o_razon_social": "DINER SANCHEZ MOLINA",
+        "tipo_documento": "DNI",
+        "numero_documento": "71515428",
+        "departamento": "MADRE DE DIOS",
+        "provincia": "TAMBOPATA",
+        "distrito": "INAMBARI",
+        "sector": "PONAL",
+        "tipo_aut": "BIFURCACION",
+        "area_total": "5.000000",
+        "periodo_autorizacion": "3 AÑOS",
+        "fecha_autorizacion": "2029-05-26T05:00:00.000Z"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.255617289,
+              -12.812950955
+            ],
+            [
+              -70.257912545,
+              -12.813211222
+            ],
+            [
+              -70.257785471,
+              -12.811738168
+            ],
+            [
+              -70.258006211,
+              -12.811664786
+            ],
+            [
+              -70.257267579,
+              -12.809480424
+            ],
+            [
+              -70.256827088,
+              -12.80982608
+            ],
+            [
+              -70.257060176,
+              -12.810385502
+            ],
+            [
+              -70.256641783,
+              -12.811472404
+            ],
+            [
+              -70.255617289,
+              -12.812950955
             ]
           ]
         ]
