@@ -123,8 +123,10 @@ async function main() {
         console.log('\n' + '='.repeat(50));
         console.log('🎉 ¡Completado!');
         console.log('='.repeat(50));
-        console.log(`\nArchivos generados en: ${OUTPUT_DIR}`);
-        console.log('\nAhora podés hacer commit de los nuevos archivos .js');
+        console.log(`\nArchivos .js generados en: ${OUTPUT_DIR}`);
+        console.log('\n📋 Ahora ejecutá: node scripts/convertir-geojson.js --precision 6');
+        console.log('   Esto genera los .json optimizados (fetch + JSON.parse)');
+        console.log('\nLuego hacé commit de .js Y .json juntos.');
         
     } catch (error) {
         console.error('\n❌ Error de conexión:', error.message);
