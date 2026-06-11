@@ -273,7 +273,7 @@
                         
                         // Mostrar PDF si existe
                         if (p.Archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="https://www.ana.gob.pe/sites/default/files/normatividad/files/' + sanitize(p.Archivo) + (p.Archivo.toLowerCase().endsWith('.pdf') ? '' : '.pdf') + '">📄 Ver PDF</a><br/>';
+                            content += '<b>Archivo:</b> <a target="_blank" href="https://snirh.ana.gob.pe/MIDARH/output/Resolucion/' + sanitize(p.Archivo) + (p.Archivo.toLowerCase().endsWith('.pdf') ? '' : '.pdf') + '">📄 Ver PDF</a><br/>';
                         }
                         
                         content += '</div>';

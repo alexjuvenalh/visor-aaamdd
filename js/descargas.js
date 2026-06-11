@@ -61,7 +61,7 @@ function geojsonToKMLRADA(geojson) {
         
         // Agregar link PDF si existe
         if (feature.properties.Archivo) {
-            var pdfUrl = 'https://www.ana.gob.pe/sites/default/files/normatividad/files/' + feature.properties.Archivo;
+            var pdfUrl = 'https://snirh.ana.gob.pe/MIDARH/output/Resolucion/' + feature.properties.Archivo;
                 if (!feature.properties.Archivo.toLowerCase().endsWith('.pdf')) pdfUrl += '.pdf';
                 desc += '\n<a href="' + pdfUrl + '">📄 Ver PDF</a>';
         }
