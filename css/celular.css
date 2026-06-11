@@ -370,6 +370,42 @@
     .btn-gps-export.limpiar { background: #f44336; color: white; }
     .btn-gps-export:active { opacity: 0.8; }
 
+    /* === COORDENADAS UTM === */
+    #coords-box.mobile-row {
+        gap: 4px;
+    }
+    #coords-box input[type="number"] {
+        flex: 1;
+        min-width: 0;
+        font-size: 13px;
+        padding: 6px 8px;
+        border: 1px solid #bbb;
+        border-radius: 6px;
+        min-height: 40px;
+        -moz-appearance: textfield;
+    }
+    #coords-box input[type="number"]::-webkit-outer-spin-button,
+    #coords-box input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    #btn-ir-coordenada {
+        font-size: 13px;
+        font-weight: 600;
+        padding: 8px 12px;
+        cursor: pointer;
+        background: #E65100;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        min-height: 40px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+    #btn-ir-coordenada:active {
+        background: #BF360C;
+    }
+
     /* === MAPA === */
     #map {
         flex: 1;

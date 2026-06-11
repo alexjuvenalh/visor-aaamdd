@@ -20,11 +20,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://unpkg.com/@mapbox/shp-write@0.4.3/shpwrite.js"></script>
 
-    <link rel="stylesheet" href="css/estilosmapa.css?v=3"/>
-    <link rel="stylesheet" href="css/celular.css?v=3" media="screen and (min-width: 320px)"/>
-    <link rel="stylesheet" href="css/tablet.css?v=3" media="screen and (min-width: 768px)"/>
-    <link rel="stylesheet" href="css/computadora.css?v=3" media="screen and (min-width: 1200px)"/>
-    <link rel="stylesheet" href="css/estilos.css?v=3"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.11.0/proj4.js"></script>
+    <link rel="stylesheet" href="css/estilosmapa.css?v=4"/>
+    <link rel="stylesheet" href="css/celular.css?v=4" media="screen and (min-width: 320px)"/>
+    <link rel="stylesheet" href="css/tablet.css?v=4" media="screen and (min-width: 768px)"/>
+    <link rel="stylesheet" href="css/computadora.css?v=4" media="screen and (min-width: 1200px)"/>
+    <link rel="stylesheet" href="css/estilos.css?v=4"/>
 </head>
 
 <body>
@@ -84,6 +85,13 @@
                     <button id="btn-gps" class="btn-gps-primary">📍 GPS</button>
                     <button id="btn-export-gps" class="btn-export">📤 Exportar Ruta</button>
                 </div>
+
+                <div class="section-title">Coordenadas UTM 19S</div>
+                <div id="coords-box" class="mobile-row">
+                    <input type="number" id="coord-x" placeholder="Este (X)" step="any" inputmode="decimal">
+                    <input type="number" id="coord-y" placeholder="Norte (Y)" step="any" inputmode="decimal">
+                    <button id="btn-ir-coordenada" title="Ir a coordenadas">🎯 Ir</button>
+                </div>
             </div>
         </div>
 
@@ -99,5 +107,6 @@
     <!-- Cargar archivos.js después del mapa -->
     <script src="js/descargas.js"></script>
     <script src="js/archivos.js"></script>
+    <script src="js/coordenadas.js"></script>
 </body>
 </html>
