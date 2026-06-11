@@ -372,6 +372,8 @@
 
     /* === COORDENADAS UTM === */
     #coords-box.mobile-row {
+        display: flex;
+        flex-wrap: wrap;
         gap: 4px;
     }
     #coords-box input[type="number"] {
