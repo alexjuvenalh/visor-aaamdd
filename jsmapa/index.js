@@ -250,12 +250,17 @@
                     pointToLayer: function(feature, latlng) {
                         var uso = feature.properties.Uso || 'Otros Usos';
                         var svg = iconosRADA[uso] || iconosRADA['Otros Usos'];
+                        // Etiqueta SVG + texto abajo
+                        var html = '<div style="text-align:center;line-height:1;">' +
+                            '<div style="width:28px;height:28px;">' + svg + '</div>' +
+                            '<div style="font-size:9px;font-weight:bold;color:#333;text-shadow:0 0 2px #fff,0 0 2px #fff;margin-top:1px;max-width:70px;word-wrap:break-word;line-height:1.1;">' + uso + '</div>' +
+                            '</div>';
                         return L.marker(latlng, {
                             icon: L.divIcon({
                                 className: 'rada-icono',
-                                html: svg,
-                                iconSize: [28, 28],
-                                iconAnchor: [14, 14],
+                                html: html,
+                                iconSize: [80, 44],
+                                iconAnchor: [40, 14],
                                 popupAnchor: [0, -14]
                             })
                         });
