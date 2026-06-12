@@ -280,9 +280,14 @@
                             }
                         });
                         
-                        // Mostrar PDF si existe
+                        // Mostrar PDF si existe — intenta filedarh, si falla usa snirh
                         if (p.Archivo) {
-                            content += '<b>Archivo:</b> <a target="_blank" href="https://filedarh.ana.gob.pe/dir_rada/' + p.Archivo.split('-')[0] + '/' + sanitize(p.Archivo) + (p.Archivo.toLowerCase().endsWith('.pdf') ? '' : '.pdf') + '">📄 Ver PDF</a><br/>';
+                            var archivoLimpio = sanitize(p.Archivo);
+                            var ext = archivoLimpio.toLowerCase().endsWith('.pdf') ? '' : '.pdf';
+                            var prefijo = p.Archivo.split('-')[0];
+                            var url1 = 'https://filedarh.ana.gob.pe/dir_rada/' + prefijo + '/' + archivoLimpio + ext;
+                            var url2 = 'https://snirh.ana.gob.pe/MIDARH/output/Resolucion/' + archivoLimpio + ext;
+                            content += '<b>Archivo:</b> <a href="#" onclick="abrirPDF(event,\'' + url1 + '\',\'' + url2 + '\')" style="color:#0066cc;text-decoration:underline;">📄 Ver PDF</a><br/>';
                         }
                         
                         content += '</div>';
@@ -897,3 +902,25 @@ var gpsProvider = (function() {
     });
 
 }(window));
+
+/**
+ * Abre un PDF intentando la URL primaria (filedarh).
+ * Si falla (CORS, 404, red), abre automáticamente la URL de fallback (snirh).
+ * Totalmente transparente para el usuario: un clic, sin decisiones.
+ */
+function abrirPDF(e, urlPrimaria, urlFallback) {
+    e.preventDefault();
+    // Intentar HEAD a la primaria para ver si existe
+    fetch(urlPrimaria, { method: 'HEAD' })
+        .then(function(r) {
+            if (r.ok) {
+                window.open(urlPrimaria, '_blank');
+            } else {
+                window.open(urlFallback, '_blank');
+            }
+        })
+        .catch(function() {
+            // CORS o error de red → intentar fallback directo
+            window.open(urlFallback, '_blank');
+        });
+}
