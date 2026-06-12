@@ -452,11 +452,13 @@
         line-height: 1.4;
     }
 
-    /* === LEYENDA EN MÓVIL (más compacta) === */
+    /* === LEYENDA EN MÓVIL (más compacta, scrollable) === */
     .info.legend {
-        max-width: 160px;
+        max-width: 170px;
         font-size: 12px;
-        padding: 8px 12px;
+        padding: 8px 10px;
+        max-height: 50vh;
+        overflow-y: auto;
     }
     .info.legend h4 {
         font-size: 13px;

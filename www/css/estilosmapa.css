@@ -293,7 +293,9 @@ html, body {
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     font-size: 13px;
     line-height: 1.5;
-    max-width: 200px;
+    max-width: 220px;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .info.legend h4 {
@@ -301,6 +303,12 @@ html, body {
     font-size: 14px;
     font-weight: bold;
     text-align: center;
+}
+
+/* Íconos RADA en el mapa */
+.rada-icono {
+    background: transparent !important;
+    border: none !important;
 }
 
 /* ============================================

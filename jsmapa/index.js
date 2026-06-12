@@ -89,7 +89,24 @@
             div.innerHTML += '<div><span style="background:#ff0000;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Faja Marginal</div>';
             div.innerHTML += '<div><span style="background:#ffff00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Hitos Faja</div>';
             div.innerHTML += '<div><span style="background:#0000ff;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Uso Temporal</div>';
-            div.innerHTML += '<div><span style="background:#00FFFF;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> RADA Fuente</div>';
+            div.innerHTML += '<div style="margin-top:6px;border-top:1px solid #ccc;padding-top:4px;font-weight:bold;font-size:12px;">RADA Fuente</div>';
+            
+            // Mostrar los 11 usos con SVG miniatura + nombre
+            var usosRADA = [
+                'Acuícola', 'Minero', 'Poblacional', 'Otros Usos', 'Agrícola',
+                'Doméstico - Poblacional', 'Industrial', 'Recreativo', 'Pecuario',
+                'Energético', 'Turístico'
+            ];
+            usosRADA.forEach(function(uso) {
+                var svgMini = iconosRADA[uso] || '';
+                // Usar el SVG directamente como miniatura (14x14)
+                if (svgMini) {
+                    div.innerHTML += '<div style="display:flex;align-items:center;gap:4px;line-height:1.3;">' +
+                        '<span style="width:14px;height:14px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;">' + svgMini + '</span>' +
+                        '<span style="font-size:11px;">' + uso + '</span>' +
+                        '</div>';
+                }
+            });
 
             return div;
         };
@@ -225,35 +242,22 @@
         // ============================================
         var rada_fuente_cluster = null;
         
-        // Colores para RADA por Uso
-        var coloresRADA = {
-            'Acuícola': '#00FFFF',
-            'Minero': '#BFBF00',
-            'Poblacional': '#FF0000',
-            'Otros Usos': '#808080',
-            'Agrícola': '#00FF00',
-            'Doméstico - Poblacional': '#0080FF',
-            'Industrial': '#8000FF',
-            'Recreativo': '#00BF00',
-            'Pecuario': '#804000',
-            'Energético': '#0000FF',
-            'Turístico': '#FF00FF'
-        };
-
         function getRadaFuente() {
             if (!rada_fuente_cluster && window.rada_por_fuente && window.rada_por_fuente.features) {
                 console.log('Creando RADA con', window.rada_por_fuente.features.length, 'puntos');
                 
                 var rada_fuente = L.geoJson(window.rada_por_fuente, {
                     pointToLayer: function(feature, latlng) {
-                        var uso = feature.properties.Uso || 'Otro';
-                        var color = coloresRADA[uso] || '#808080';
-                        return L.circleMarker(latlng, {
-                            radius: 6,
-                            fillColor: color,
-                            color: '#000',
-                            weight: 1,
-                            fillOpacity: 0.8
+                        var uso = feature.properties.Uso || 'Otros Usos';
+                        var svg = iconosRADA[uso] || iconosRADA['Otros Usos'];
+                        return L.marker(latlng, {
+                            icon: L.divIcon({
+                                className: 'rada-icono',
+                                html: svg,
+                                iconSize: [28, 28],
+                                iconAnchor: [14, 14],
+                                popupAnchor: [0, -14]
+                            })
                         });
                     },
                     onEachFeature: function(feature, layer) {
