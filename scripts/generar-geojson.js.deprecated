@@ -1,4 +1,21 @@
 /**
+ * ⛔ DEPRECATED — Julio 2026
+ * 
+ * Este script YA NO SE USA. La generación de GeoJSON ahora se hace
+ * desde el Sistema de Gestión AAA (Sisgeoalfa), Módulo 6 visor-integracion.
+ * 
+ * Script activo: Sisgeoalfa/scripts/generar-geojson.js
+ *   - Genera .json directo (no .js)
+ *   - Exporta 5 capas: faja_poligono, faja_hito, uso_temporal, ocupacion_faja, rada_fuente
+ *   - Usa .env para la conexión (no hardcodeada)
+ *   - Salida: ..\\..\\Visor\\aaamdd\\visor\\geojson\\
+ * 
+ * Para actualizar datos del visor:
+ *   cd Sisgeoalfa && node scripts/generar-geojson.js
+ *   Luego en visor-aaamdd: git add visor/geojson/ && git commit && git push
+ * 
+ * --- original docs below (kept for reference) ---
+ * 
  * Script para generar archivos .js con GeoJSON desde PostgreSQL
  * 
  * Uso: node scripts/generar-geojson.js
