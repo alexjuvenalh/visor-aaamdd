@@ -309,6 +309,14 @@ html, body {
 .rada-icono {
     background: transparent !important;
     border: none !important;
+    pointer-events: auto;
+}
+
+/* Permitir que los clics pasen a través del SVG y lleguen al marker */
+.rada-icono svg,
+.rada-icono svg *,
+.rada-icono div {
+    pointer-events: none !important;
 }
 
 /* ============================================
