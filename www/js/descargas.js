@@ -1,16 +1,16 @@
 // Colores para categorización de RADA por Uso
 var coloresRADA = {
-    'Acuícola': 'ff00ffff',      // Cyan
-    'Minero': 'ffbf00ff',        // Amarillo
-    'Poblacional': 'ff0000ff',    // Rojo
-    'Otros Usos': 'ff808080',    // Gris
-    'Agrícola': 'ff00ff00',      // Verde
-    'Doméstico - Poblacional': 'ff0080ff', // Naranja
-    'Industrial': 'ff8000ff',    // Púrpura
-    'Recreativo': 'ff00bf00',    // Lima
-    'Pecuario': 'ff804000',      // Marrón
-    'Energético': 'ff0000ff',    // Azul
-    'Turístico': 'ffff00ff'      // Rosa
+    'ACUÍCOLA': 'ff00ffff',      // Cyan
+    'MINERO': 'ffbf00ff',        // Amarillo
+    'POBLACIONAL': 'ff0000ff',    // Rojo
+    'OTROS USOS': 'ff808080',    // Gris
+    'AGRÍCOLA': 'ff00ff00',      // Verde
+    'DOMÉSTICO - POBLACIONAL': 'ff0080ff', // Naranja
+    'INDUSTRIAL': 'ff8000ff',    // Púrpura
+    'RECREATIVO': 'ff00bf00',    // Lima
+    'PECUARIO': 'ff804000',      // Marrón
+    'ENERGÉTICO': 'ff0000ff',    // Azul
+    'TURÍSTICO': 'ffff00ff'      // Rosa
 };
 
 // Convertir GeoJSON a KML para RADA con categorización por Uso
@@ -23,7 +23,7 @@ function geojsonToKMLRADA(geojson) {
     // Crear estilos para cada Uso - con círculos y letra pequeña
     var usos = {};
     geojson.features.forEach(function(f) {
-        var uso = f.properties.Uso || 'Otro';
+        var uso = (f.properties.uso || 'OTRO').toUpperCase();
         if (!usos[uso]) usos[uso] = true;
     });
     
@@ -42,7 +42,7 @@ function geojsonToKMLRADA(geojson) {
     }
     
     geojson.features.forEach(function(feature, i) {
-        var uso = feature.properties.Uso || 'Otro';
+        var uso = (feature.properties.uso || 'OTRO').toUpperCase();
         var nombre = feature.properties.Usuario || feature.properties.Lugar_Uso || ('Punto ' + (i + 1));
         
         var styleId = 'rada-' + uso.replace(/[^a-zA-Z0-9]/g, '_');

@@ -93,9 +93,9 @@
             
             // Mostrar los 11 usos con SVG miniatura + nombre
             var usosRADA = [
-                'Acuícola', 'Minero', 'Poblacional', 'Otros Usos', 'Agrícola',
-                'Doméstico - Poblacional', 'Industrial', 'Recreativo', 'Pecuario',
-                'Energético', 'Turístico'
+                'ACUÍCOLA', 'MINERO', 'POBLACIONAL', 'OTROS USOS', 'AGRÍCOLA',
+                'DOMÉSTICO - POBLACIONAL', 'INDUSTRIAL', 'RECREATIVO', 'PECUARIO',
+                'ENERGÉTICO', 'TURÍSTICO'
             ];
             usosRADA.forEach(function(uso) {
                 var svgMini = iconosRADA[uso] || '';
@@ -248,8 +248,8 @@
                 
                 var rada_fuente = L.geoJson(window.rada_por_fuente, {
                     pointToLayer: function(feature, latlng) {
-                        var uso = feature.properties.Uso || 'Otros Usos';
-                        var svg = iconosRADA[uso] || iconosRADA['Otros Usos'];
+                        var uso = (feature.properties.uso || 'OTROS USOS').toUpperCase();
+                        var svg = iconosRADA[uso] || iconosRADA['OTROS USOS'];
                         // Etiqueta SVG + texto abajo
                         var html = '<div style="text-align:center;line-height:1;">' +
                             '<div style="width:28px;height:28px;">' + svg + '</div>' +
