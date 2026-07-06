@@ -269,22 +269,31 @@
                         var p = feature.properties;
                         var content = '<div style="max-width:250px;max-height:200px;overflow:auto;">';
                         
-                        // Campos importantes a mostrar
-                        var camposImportantes = ['Uso', 'Usuario', 'Documento', 'Resolució', 'Fecha', 'Fuente', 'Lugar_Uso', 'Volumen (m', 'Area (ha)', 'ALA', 'AAA', 'Departamen', 'Provincia', 'Distrito', 'CUR', 'Zona', 'Este', 'Norte', 'DATUM'];
-                        var camposPDF = ['Archivo'];
+                        // Campos importantes a mostrar [columnaDB, etiqueta]
+                        var camposImportantes = [
+                            ['uso', 'Uso'], ['usuario', 'Usuario'], ['documento', 'Documento'],
+                            ['resolucion', 'Resolución'], ['fecha', 'Fecha'], ['fuente', 'Fuente'],
+                            ['lugar_de_uso', 'Lugar de Uso'], ['volumen', 'Volumen (m³)'],
+                            ['area', 'Área (ha)'], ['ala', 'ALA'], ['aaa', 'AAA'],
+                            ['departamento', 'Departamento'], ['provincia', 'Provincia'],
+                            ['distrito', 'Distrito'], ['cur', 'CUR'], ['zona', 'Zona'],
+                            ['este', 'Este'], ['norte', 'Norte'], ['datum', 'DATUM']
+                        ];
+                        var camposPDF = ['archivo'];
                         
                         // Mostrar campos importantes
-                        camposImportantes.forEach(function(key) {
+                        camposImportantes.forEach(function(item) {
+                            var key = item[0], label = item[1];
                             if (p[key] !== null && p[key] !== undefined && p[key] !== '') {
-                                content += '<b>' + key + ':</b> ' + sanitize(String(p[key])) + '<br/>';
+                                content += '<b>' + label + ':</b> ' + sanitize(String(p[key])) + '<br/>';
                             }
                         });
                         
                         // Mostrar PDF si existe — intenta filedarh, si falla usa snirh
-                        if (p.Archivo) {
-                            var archivoLimpio = sanitize(p.Archivo);
+                        if (p.archivo) {
+                            var archivoLimpio = sanitize(p.archivo);
                             var ext = archivoLimpio.toLowerCase().endsWith('.pdf') ? '' : '.pdf';
-                            var prefijo = p.Archivo.split('-')[0];
+                            var prefijo = p.archivo.split('-')[0];
                             var url1 = 'https://filedarh.ana.gob.pe/dir_rada/' + prefijo + '/' + archivoLimpio + ext;
                             var url2 = 'https://snirh.ana.gob.pe/MIDARH/output/Resolucion/' + archivoLimpio + ext;
                             content += '<b>Archivo:</b> <a href="#" onclick="abrirPDF(event,\'' + url1 + '\',\'' + url2 + '\')" style="color:#0066cc;text-decoration:underline;">📄 Ver PDF</a><br/>';

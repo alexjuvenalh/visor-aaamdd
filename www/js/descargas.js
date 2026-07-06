@@ -43,7 +43,7 @@ function geojsonToKMLRADA(geojson) {
     
     geojson.features.forEach(function(feature, i) {
         var uso = (feature.properties.uso || 'OTRO').toUpperCase();
-        var nombre = feature.properties.Usuario || feature.properties.Lugar_Uso || ('Punto ' + (i + 1));
+        var nombre = feature.properties.usuario || feature.properties.lugar_de_uso || ('Punto ' + (i + 1));
         
         var styleId = 'rada-' + uso.replace(/[^a-zA-Z0-9]/g, '_');
         
@@ -54,15 +54,15 @@ function geojsonToKMLRADA(geojson) {
         
         // Generar description solo con campos importantes
         var desc = '';
-        var camposImportantes = ['Usuario', 'Documento', 'Resolució', 'Fecha', 'Fuente', 'Lugar_Uso', 'Volumen (m', 'Area (ha)', 'ALA', 'AAA', 'Departamen', 'Provincia', 'Distrito'];
+        var camposImportantes = ['usuario', 'documento', 'resolucion', 'fecha', 'fuente', 'lugar_de_uso', 'volumen', 'area', 'ala', 'aaa', 'departamento', 'provincia', 'distrito'];
         camposImportantes.forEach(function(key) {
             if (feature.properties[key]) desc += key + ': ' + feature.properties[key] + '\n';
         });
         
         // Agregar link PDF si existe
-        if (feature.properties.Archivo) {
-            var pdfUrl = 'https://filedarh.ana.gob.pe/dir_rada/' + feature.properties.Archivo.split('-')[0] + '/' + feature.properties.Archivo;
-                if (!feature.properties.Archivo.toLowerCase().endsWith('.pdf')) pdfUrl += '.pdf';
+        if (feature.properties.archivo) {
+            var pdfUrl = 'https://filedarh.ana.gob.pe/dir_rada/' + feature.properties.archivo.split('-')[0] + '/' + feature.properties.archivo;
+                if (!feature.properties.archivo.toLowerCase().endsWith('.pdf')) pdfUrl += '.pdf';
                 desc += '\n<a href="' + pdfUrl + '">📄 Ver PDF</a>';
         }
         
