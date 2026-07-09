@@ -11,12 +11,15 @@
     'use strict';
 
     var activo = false;
-    var puntos = [];         // [{latlng: L.LatLng, marker: L.CircleMarker}]
-    var polyline = null;     // L.Polyline
-    var tooltip = null;      // L.Tooltip (sigue al mouse)
-    var tooltipFijo = null;  // L.Tooltip (fijo en ultimo punto)
-    var tempLine = null;     // linea temporal mouse→ultimo punto
+    var puntos = [];           // [{latlng: L.LatLng, marker: L.CircleMarker}]
+    var polyline = null;       // L.Polyline
+    var tooltip = null;        // L.Tooltip (sigue al mouse)
+    var tooltipFijo = null;    // L.Tooltip (fijo en ultimo punto)
+    var tempLine = null;       // linea temporal mouse→ultimo punto
     var mapClickHandler = null;
+    var keydownHandler = null; // referencia para cleanup
+    var dblclickHandler = null;// referencia para cleanup
+    var mousemoveHandler = null;// referencia para cleanup
 
     /**
      * Formatea distancia: < 1000 m → "567 m", >= 1000 → "12.3 km"
@@ -132,11 +135,15 @@
         // Cambiar cursor
         map.getContainer().style.cursor = 'crosshair';
 
-        // Tooltip que sigue al mouse
+        // Tooltip que sigue al mouse — inicializado con posicion valida
+        // para evitar crash de Leaflet al hacer zoom/pan sin latlng seteado
         tooltip = L.tooltip({
             sticky: true,
             className: 'medir-tooltip'
-        }).addTo(map);
+        })
+        .setLatLng(map.getCenter())
+        .setContent('Clic para iniciar')
+        .addTo(map);
 
         // Handler de clic en el mapa
         mapClickHandler = function(e) {
@@ -145,7 +152,7 @@
         map.on('click', mapClickHandler);
 
         // Handler de mouse move para tooltip y linea temporal
-        map.on('mousemove', function(e) {
+        mousemoveHandler = function(e) {
             if (!activo) return;
             var ultimo = puntos.length > 0 ? puntos[puntos.length-1].latlng : null;
             if (ultimo) {
@@ -163,21 +170,24 @@
             } else {
                 tooltip.setLatLng(e.latlng).setContent('Clic para iniciar');
             }
-        });
+        };
+        map.on('mousemove', mousemoveHandler);
 
         // Doble clic = terminar (pero mantener visible)
-        map.on('dblclick', function(e) {
+        dblclickHandler = function(e) {
             if (!activo) return;
             L.DomEvent.stop(e);
             desactivar(true);
-        });
+        };
+        map.on('dblclick', dblclickHandler);
 
         // Tecla Escape = cancelar
-        document.addEventListener('keydown', function(e) {
+        keydownHandler = function(e) {
             if (e.key === 'Escape' && activo) {
                 desactivar(false);
             }
-        });
+        };
+        document.addEventListener('keydown', keydownHandler);
 
         console.log('[Medir] Modo medicion activado');
         actualizarInfo();
@@ -185,7 +195,7 @@
         // Actualizar boton
         var btn = document.getElementById('btn-medir');
         if (btn) {
-            btn.textContent = '📏 Midiendo... (clic en mapa)';
+            btn.textContent = '📏 Midiendo...';
             btn.style.background = '#FF9800';
         }
     }
@@ -205,7 +215,9 @@
 
         // Quitar handlers
         if (mapClickHandler) { map.off('click', mapClickHandler); mapClickHandler = null; }
-        map.off('mousemove');
+        if (mousemoveHandler) { map.off('mousemove', mousemoveHandler); mousemoveHandler = null; }
+        if (dblclickHandler) { map.off('dblclick', dblclickHandler); dblclickHandler = null; }
+        if (keydownHandler) { document.removeEventListener('keydown', keydownHandler); keydownHandler = null; }
 
         // Quitar tooltip volante y linea temporal
         if (tooltip) { map.removeLayer(tooltip); tooltip = null; }
@@ -222,7 +234,7 @@
         // Restaurar boton
         var btn = document.getElementById('btn-medir');
         if (btn) {
-            btn.textContent = '📏 Medir Distancia';
+            btn.textContent = '📏';
             btn.style.background = '#2196F3';
         }
 
