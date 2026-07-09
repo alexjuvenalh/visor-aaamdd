@@ -2,7 +2,9 @@
  * medir.js — Herramienta de medicion de distancias
  * 
  * Similar a la regla de Google Earth: clic en el mapa para 
- * agregar puntos, muestra distancia acumulada en tiempo real.
+ * agregar puntos, clic derecho para terminar.
+ * 
+ * Info de distancia: tarjeta flotante en el mapa (no en el panel).
  * 
  * Depende de: util.js (AppState), Leaflet (L)
  */
@@ -11,14 +13,16 @@
     'use strict';
 
     var activo = false;
-    var puntos = [];           // [{latlng: L.LatLng, marker: L.CircleMarker}]
-    var polyline = null;       // L.Polyline
-    var tooltipFijo = null;    // L.Tooltip (fijo en ultimo punto, muestra total)
-    var tempLine = null;       // linea temporal mouse→ultimo punto
+    var puntos = [];              // [{latlng: L.LatLng, marker: L.CircleMarker}]
+    var polyline = null;          // L.Polyline
+    var tooltipFijo = null;       // L.Tooltip (fijo en ultimo punto, muestra total)
+    var tempLine = null;          // linea temporal mouse→ultimo punto
+    var infoCard = null;          // tarjeta flotante en el mapa con distancias
     var mapClickHandler = null;
-    var keydownHandler = null; // referencia para cleanup
-    var dblclickHandler = null;// referencia para cleanup
-    var mousemoveHandler = null;// referencia para cleanup
+    var keydownHandler = null;
+    var dblclickHandler = null;
+    var mousemoveHandler = null;
+    var contextmenuHandler = null;
 
     /**
      * Formatea distancia: < 1000 m → "567 m", >= 1000 → "12.3 km"
@@ -42,25 +46,47 @@
     }
 
     /**
-     * Actualiza el texto de distancia en el panel.
+     * Crea o actualiza la tarjeta flotante de info en el mapa.
      */
-    function actualizarInfo() {
-        var info = document.getElementById('medir-info');
-        if (!info) return;
-        if (puntos.length < 2) {
-            info.textContent = 'Clic en el mapa para empezar';
-            return;
+    function actualizarInfoCard() {
+        if (!infoCard) {
+            infoCard = document.createElement('div');
+            infoCard.id = 'medir-flotante';
+            infoCard.style.cssText =
+                'position:absolute;bottom:30px;left:50%;transform:translateX(-50%);' +
+                'background:rgba(255,255,255,0.92);padding:8px 16px;border-radius:8px;' +
+                'box-shadow:0 2px 12px rgba(0,0,0,0.25);font-size:13px;font-family:sans-serif;' +
+                'z-index:1000;white-space:nowrap;pointer-events:none;' +
+                'border:1px solid rgba(0,0,0,0.1);';
+            var mapDiv = document.getElementById('map');
+            if (mapDiv) mapDiv.appendChild(infoCard);
         }
-        var total = calcDistanciaTotal();
-        var ultimo = puntos.length >= 2
-            ? puntos[puntos.length-2].latlng.distanceTo(puntos[puntos.length-1].latlng)
-            : 0;
 
-        info.innerHTML = 'Total: <b>' + formatDist(total) + '</b>';
-        if (puntos.length >= 2) {
-            info.innerHTML += ' | Tramo: ' + formatDist(ultimo);
+        if (puntos.length === 0) {
+            infoCard.innerHTML = '📏 <b>Clic</b> para iniciar — <b>Clic derecho</b> para terminar';
+            infoCard.style.display = '';
+        } else if (puntos.length === 1) {
+            infoCard.innerHTML = '📏 1 punto — seguí haciendo clic';
+            infoCard.style.display = '';
+        } else {
+            var total = calcDistanciaTotal();
+            var ultimo = puntos[puntos.length-2].latlng.distanceTo(puntos[puntos.length-1].latlng);
+            infoCard.innerHTML =
+                '📏 Total: <b>' + formatDist(total) + '</b>' +
+                ' &nbsp;|&nbsp; Tramo: ' + formatDist(ultimo) +
+                ' &nbsp;|&nbsp; Puntos: ' + puntos.length;
+            infoCard.style.display = '';
         }
-        info.innerHTML += ' | Puntos: ' + puntos.length;
+    }
+
+    /**
+     * Oculta y remueve la tarjeta flotante.
+     */
+    function removerInfoCard() {
+        if (infoCard) {
+            if (infoCard.parentNode) infoCard.parentNode.removeChild(infoCard);
+            infoCard = null;
+        }
     }
 
     /**
@@ -70,7 +96,6 @@
         var map = AppState.map;
         if (!map) return;
 
-        // Limpiar capa anterior
         if (polyline) { map.removeLayer(polyline); polyline = null; }
 
         if (puntos.length < 2) return;
@@ -102,7 +127,7 @@
         puntos.push({ latlng: latlng, marker: marker });
         redibujar();
 
-        // Mover tooltip fijo al ultimo punto
+        // Tooltip fijo en el ultimo punto con distancia acumulada
         if (puntos.length >= 2) {
             if (tooltipFijo) { map.removeLayer(tooltipFijo); }
             var total = calcDistanciaTotal();
@@ -116,7 +141,7 @@
             .addTo(map);
         }
 
-        actualizarInfo();
+        actualizarInfoCard();
     }
 
     /**
@@ -126,26 +151,29 @@
         var map = AppState.map;
         if (!map) return;
 
-        activo = true;
+        // Limpiar medicion anterior (marcadores, lineas)
+        puntos.forEach(function(p) { map.removeLayer(p.marker); });
         puntos = [];
         if (polyline) { map.removeLayer(polyline); polyline = null; }
         if (tooltipFijo) { map.removeLayer(tooltipFijo); tooltipFijo = null; }
+        if (tempLine) { map.removeLayer(tempLine); tempLine = null; }
+
+        activo = true;
 
         // Desactivar zoom por doble clic mientras medimos
-        // para que el dblclick siempre termine la medicion
         map.doubleClickZoom.disable();
 
         // Cambiar cursor
         map.getContainer().style.cursor = 'crosshair';
 
-        // Handler de clic en el mapa
+        // Handler de clic en el mapa → agrega punto
         mapClickHandler = function(e) {
+            if (!activo) return;
             agregarPunto(e.latlng);
         };
         map.on('click', mapClickHandler);
 
-        // Handler de mouse move: solo linea temporal (sin tooltip flotante
-        // que tape la vista — la distancia se ve en el panel medir-info)
+        // Handler de mouse move → linea temporal punteada
         mousemoveHandler = function(e) {
             if (!activo) return;
             var ultimo = puntos.length > 0 ? puntos[puntos.length-1].latlng : null;
@@ -161,36 +189,37 @@
         };
         map.on('mousemove', mousemoveHandler);
 
-        // Doble clic = terminar.
-        // El doble clic dispara click+click+dblclick; los 2 clicks agregan
-        // 2 puntos en el mismo lugar. Removemos el duplicado y terminamos.
+        // Doble clic = terminar (secundario)
         dblclickHandler = function(e) {
             if (!activo) return;
             L.DomEvent.stop(e);
-            // Remover el punto duplicado del 2do click
+            // Remover punto duplicado del 2do click del doble clic
             if (puntos.length > 0) {
                 var duplicado = puntos.pop();
                 map.removeLayer(duplicado.marker);
             }
-            // Actualizar polyline sin el duplicado
             redibujar();
-            // Mover tooltip fijo al ultimo punto real
-            if (puntos.length >= 2) {
-                if (tooltipFijo) { map.removeLayer(tooltipFijo); }
-                var ultimo = puntos[puntos.length-1].latlng;
+            if (puntos.length >= 2 && tooltipFijo) {
+                map.removeLayer(tooltipFijo);
                 tooltipFijo = L.tooltip({
-                    permanent: true,
-                    direction: 'top',
-                    className: 'medir-tooltip'
+                    permanent: true, direction: 'top', className: 'medir-tooltip'
                 })
-                .setLatLng(ultimo)
+                .setLatLng(puntos[puntos.length-1].latlng)
                 .setContent('<b>' + formatDist(calcDistanciaTotal()) + '</b>')
                 .addTo(map);
             }
-            actualizarInfo();
+            actualizarInfoCard();
             desactivar(true);
         };
         map.on('dblclick', dblclickHandler);
+
+        // Clic derecho = terminar (primario — mas confiable)
+        contextmenuHandler = function(e) {
+            if (!activo) return;
+            L.DomEvent.stop(e);
+            desactivar(true);
+        };
+        map.on('contextmenu', contextmenuHandler);
 
         // Tecla Escape = cancelar
         keydownHandler = function(e) {
@@ -200,8 +229,8 @@
         };
         document.addEventListener('keydown', keydownHandler);
 
-        console.log('[Medir] Modo medicion activado');
-        actualizarInfo();
+        // Mostrar tarjeta flotante
+        actualizarInfoCard();
 
         // Actualizar boton
         var btn = document.getElementById('btn-medir');
@@ -209,6 +238,8 @@
             btn.textContent = '📏 Midiendo...';
             btn.style.background = '#FF9800';
         }
+
+        console.log('[Medir] Modo medicion activado (clic = punto, clic derecho = terminar)');
     }
 
     /**
@@ -228,19 +259,20 @@
         map.doubleClickZoom.enable();
 
         // Quitar handlers
-        if (mapClickHandler) { map.off('click', mapClickHandler); mapClickHandler = null; }
-        if (mousemoveHandler) { map.off('mousemove', mousemoveHandler); mousemoveHandler = null; }
-        if (dblclickHandler) { map.off('dblclick', dblclickHandler); dblclickHandler = null; }
-        if (keydownHandler) { document.removeEventListener('keydown', keydownHandler); keydownHandler = null; }
+        if (mapClickHandler)    { map.off('click', mapClickHandler); mapClickHandler = null; }
+        if (mousemoveHandler)   { map.off('mousemove', mousemoveHandler); mousemoveHandler = null; }
+        if (dblclickHandler)    { map.off('dblclick', dblclickHandler); dblclickHandler = null; }
+        if (contextmenuHandler) { map.off('contextmenu', contextmenuHandler); contextmenuHandler = null; }
+        if (keydownHandler)     { document.removeEventListener('keydown', keydownHandler); keydownHandler = null; }
 
         // Quitar linea temporal
         if (tempLine) { map.removeLayer(tempLine); tempLine = null; }
 
         if (!mantener) {
-            // Limpiar todo
             limpiar();
         } else {
-            // Mantener lineas, quitar tooltips excepto el fijo
+            // Mantener lineas y tooltip fijo
+            actualizarInfoCard();
             console.log('[Medir] Medicion finalizada. Distancia: ' + formatDist(calcDistanciaTotal()));
         }
 
@@ -250,8 +282,6 @@
             btn.textContent = '📏';
             btn.style.background = '#2196F3';
         }
-
-        actualizarInfo();
     }
 
     /**
@@ -263,11 +293,10 @@
 
         puntos.forEach(function(p) { map.removeLayer(p.marker); });
         puntos = [];
-        if (polyline) { map.removeLayer(polyline); polyline = null; }
+        if (polyline)    { map.removeLayer(polyline); polyline = null; }
         if (tooltipFijo) { map.removeLayer(tooltipFijo); tooltipFijo = null; }
-        if (tempLine) { map.removeLayer(tempLine); tempLine = null; }
-
-        actualizarInfo();
+        if (tempLine)    { map.removeLayer(tempLine); tempLine = null; }
+        removerInfoCard();
     }
 
     /**
