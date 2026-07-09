@@ -1,24 +1,18 @@
 /**
  * search.js — Módulo de búsqueda del Visor AAA Madre de Dios
  * 
- * Extraído de jsmapa/index.js (líneas 383-489).
- * Búsqueda unificada sobre todas las capas: Faja, Hitos, Uso Temporal, RADA.
+ * Búsqueda unificada sobre todas las capas (4 principales + 8 base).
  * 
- * Depende de: util.js (AppState, sanitize), Leaflet (L)
+ * v2: Agregadas capas base (aaa, ala, departamento, provincia, distrito,
+ *     carta, rio_principal, rio). Río y Río Principal se buscan solo
+ *     si ya fueron cargados (lazy load).
  */
 
-/**
- * Busca un texto en un campo específico de las properties (case-insensitive).
- */
 function buscarEnCampo(prop, campo, texto) {
     if (!prop || !prop[campo]) return false;
     return String(prop[campo]).toUpperCase().includes(texto);
 }
 
-/**
- * Búsqueda unificada sobre las 4 capas.
- * Escanea todas las features y navega al primer resultado.
- */
 function buscarPorResolucion() {
     var inputBuscar = document.getElementById('buscar-input');
     if (!inputBuscar) return;
@@ -26,85 +20,55 @@ function buscarPorResolucion() {
     var texto = inputBuscar.value.trim().toUpperCase();
     if (!texto) return;
 
-    console.log('[Búsqueda] Buscando: ' + texto);
+    console.log('[Busqueda] Buscando: ' + texto);
 
     var resultados = [];
     var data = AppState.data;
 
-    // 1. Faja Marginal — numero_resolucion, cut, resumen
-    if (data.faja_poligono && data.faja_poligono.features) {
-        data.faja_poligono.features.forEach(function(f) {
+    // Helper: buscar en una capa
+    function buscarEnCapa(nombreCapa, geojson, campos) {
+        if (!geojson || !geojson.features) return;
+        geojson.features.forEach(function(f) {
             var p = f.properties;
-            if (p && (
-                buscarEnCampo(p, 'numero_resolucion', texto) ||
-                buscarEnCampo(p, 'cut', texto) ||
-                buscarEnCampo(p, 'resumen', texto)
-            )) {
-                resultados.push({ tipo: 'Faja Marginal', data: f });
+            if (!p) return;
+            for (var i = 0; i < campos.length; i++) {
+                if (buscarEnCampo(p, campos[i], texto)) {
+                    resultados.push({ tipo: nombreCapa, data: f });
+                    return;
+                }
             }
         });
     }
 
-    // 2. Hitos — numero_resolucion, cut, resumen
-    if (data.faja_hito && data.faja_hito.features) {
-        data.faja_hito.features.forEach(function(f) {
-            var p = f.properties;
-            if (p && (
-                buscarEnCampo(p, 'numero_resolucion', texto) ||
-                buscarEnCampo(p, 'cut', texto) ||
-                buscarEnCampo(p, 'resumen', texto)
-            )) {
-                resultados.push({ tipo: 'Hito', data: f });
-            }
-        });
-    }
+    // Capas principales
+    buscarEnCapa('Faja Marginal', data.faja_poligono, ['numero_resolucion', 'cut', 'resumen']);
+    buscarEnCapa('Hito', data.faja_hito, ['numero_resolucion', 'cut', 'resumen']);
+    buscarEnCapa('Uso Temporal', data.uso_temporal, ['numero_resolucion', 'cut', 'nombre_o_razon_social', 'numero_documento', 'resumen']);
+    buscarEnCapa('RADA Fuente', data.rada_por_fuente, ['resolucion', 'cur', 'usuario', 'documento']);
 
-    // 3. Uso Temporal — numero_resolucion, cut, nombre_o_razon_social, numero_documento, resumen
-    if (data.uso_temporal && data.uso_temporal.features) {
-        data.uso_temporal.features.forEach(function(f) {
-            var p = f.properties;
-            if (p && (
-                buscarEnCampo(p, 'numero_resolucion', texto) ||
-                buscarEnCampo(p, 'cut', texto) ||
-                buscarEnCampo(p, 'nombre_o_razon_social', texto) ||
-                buscarEnCampo(p, 'numero_documento', texto) ||
-                buscarEnCampo(p, 'resumen', texto)
-            )) {
-                resultados.push({ tipo: 'Uso Temporal', data: f });
-            }
-        });
-    }
+    // Capas base
+    buscarEnCapa('AAA', data.aaa, ['nombre_aaa', 'cod_aaa']);
+    buscarEnCapa('ALA', data.ala, ['nombre_ala', 'codigo_ala']);
+    buscarEnCapa('Departamento', data.departamento, ['nombre_departamento', 'codigo_departamento']);
+    buscarEnCapa('Provincia', data.provincia, ['nombre_provincia', 'codigo_provincia']);
+    buscarEnCapa('Distrito', data.distrito, ['nombre_distrito', 'nombre_provincia', 'nombre_departamento']);
+    buscarEnCapa('Carta IGN', data.carta, ['carta', 'fila', 'columna', 'zona']);
+    // Río y Río Principal solo si ya fueron cargados (lazy)
+    if (data.rio_principal) buscarEnCapa('Rio Principal', data.rio_principal, ['nombre_rio', 'codigo_rio']);
+    if (data.rio) buscarEnCapa('Rio', data.rio, ['nombre_rio', 'codigo_rio']);
 
-    // 4. RADA Fuente — resolucion, cur, usuario, documento
-    if (data.rada_por_fuente && data.rada_por_fuente.features) {
-        data.rada_por_fuente.features.forEach(function(f) {
-            var p = f.properties;
-            if (p && (
-                buscarEnCampo(p, 'resolucion', texto) ||
-                buscarEnCampo(p, 'cur', texto) ||
-                buscarEnCampo(p, 'usuario', texto) ||
-                buscarEnCampo(p, 'documento', texto)
-            )) {
-                resultados.push({ tipo: 'RADA Fuente', data: f });
-            }
-        });
-    }
-
-    console.log('[Búsqueda] Resultados encontrados: ' + resultados.length);
+    console.log('[Busqueda] Resultados: ' + resultados.length);
 
     if (resultados.length === 0) {
-        alert('No se encontró ningún resultado para: ' + inputBuscar.value);
+        alert('No se encontro ningun resultado para: ' + inputBuscar.value);
         return;
     }
 
-    // Mostrar resumen en consola
     var msg = 'Se encontraron ' + resultados.length + ' resultado(s):\n';
-    var counts = { 'Faja Marginal': 0, 'Hito': 0, 'Uso Temporal': 0, 'RADA Fuente': 0 };
-    resultados.forEach(function(r) { counts[r.tipo]++; });
-    for (var tipo in counts) {
-        if (counts[tipo] > 0) msg += '- ' + tipo + ': ' + counts[tipo] + '\n';
-    }
-    console.log('[Búsqueda] ' + msg);
+    var counts = {};
+    resultados.forEach(function(r) { counts[r.tipo] = (counts[r.tipo] || 0) + 1; });
+    for (var tipo in counts) { msg += '- ' + tipo + ': ' + counts[tipo] + '\n'; }
+    console.log('[Busqueda] ' + msg);
 
     // Ir al primer resultado
     var feature = resultados[0].data;
@@ -116,9 +80,6 @@ function buscarPorResolucion() {
     else if (feature.geometry.type === 'Point') { var c = feature.geometry.coordinates; mapa.setView([c[1], c[0]], 15); }
 }
 
-/**
- * Inicializa el input de búsqueda y el botón.
- */
 function initSearch() {
     var btnBuscar = document.getElementById('btn-buscar');
     var inputBuscar = document.getElementById('buscar-input');

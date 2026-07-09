@@ -43,7 +43,15 @@ $geojson = @(
     "faja_poligono.json",
     "faja_hito.json",
     "uso_temporal.json",
-    "rada_fuente.json"
+    "rada_fuente.json",
+    "aaa.json",
+    "ala.json",
+    "departamento.json",
+    "provincia.json",
+    "distrito.json",
+    "carta.json",
+    "rio_principal.json",
+    "rio.json"
 )
 
 $ok = 0
