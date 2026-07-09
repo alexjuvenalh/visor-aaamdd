@@ -20,7 +20,11 @@ var GEOJSON_FILES = [
     { name: 'departamento',   varname: 'departamento',     url: 'visor/geojson/departamento.json' },
     { name: 'provincia',      varname: 'provincia',        url: 'visor/geojson/provincia.json' },
     { name: 'distrito',       varname: 'distrito',         url: 'visor/geojson/distrito.json' },
-    { name: 'carta',          varname: 'carta',            url: 'visor/geojson/carta.json' }
+    { name: 'carta',          varname: 'carta',            url: 'visor/geojson/carta.json' },
+    // Capas base nuevas — agua y territorio
+    { name: 'lago_laguna',   varname: 'lago_laguna',     url: 'visor/geojson/lago_laguna.json' },
+    { name: 'cuenca_transf', varname: 'cuenca_transfronteriza', url: 'visor/geojson/cuenca_transfronteriza.json' },
+    { name: 'unidad_hidro',  varname: 'unidad_hidrografica', url: 'visor/geojson/unidad_hidrografica.json' }
     // rio_principal (2.5 MB) y rio (10.2 MB) → lazy load en jsmapa/index.js
 ];
 

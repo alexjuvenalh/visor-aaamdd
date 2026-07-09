@@ -56,7 +56,10 @@
             distrito:       { color: '#B8860B', weight: 1, fillOpacity: 0 },       // dark goldenrod
             carta:          { color: '#A0522D', weight: 1, dashArray: '5,5', fillOpacity: 0 }, // sienna dashed
             rio_principal:  { color: '#1E90FF', weight: 2 },                        // dodger blue
-            rio:            { color: '#48D1CC', weight: 1, opacity: 0.7 }           // turquoise
+            rio:            { color: '#48D1CC', weight: 1, opacity: 0.7 },          // turquoise
+            lago_laguna:    { color: '#008B8B', weight: 2, fillOpacity: 0.15 },     // dark cyan
+            cuenca_transfronteriza: { color: '#B22222', weight: 2, fillOpacity: 0.1, dashArray: '8,4' }, // firebrick
+            unidad_hidrografica:    { color: '#6B8E23', weight: 2, fillOpacity: 0.15 }  // olive drab
         };
 
         // ============================================
@@ -106,13 +109,19 @@
                 { id: 'chkBaseDist',     label: 'Distrito',         color: '#B8860B' },
                 { id: 'chkBaseCarta',    label: 'Carta IGN',        color: '#A0522D', dash: true },
                 { id: 'chkBaseRioPrin',  label: 'Río Principal',    color: '#1E90FF', line: true },
-                { id: 'chkBaseRio',      label: 'Ríos',             color: '#48D1CC', line: true }
+                { id: 'chkBaseRio',      label: 'Ríos',             color: '#48D1CC', line: true },
+                { id: 'chkBaseLaguna',   label: 'Lagos / Lagunas',  color: '#008B8B', fill: true },
+                { id: 'chkBaseCuencaT',  label: 'Cuenca Transf.',   color: '#B22222', fill: true, dash: true },
+                { id: 'chkBaseUniHidro', label: 'Unidad Hidrog.',   color: '#6B8E23', fill: true }
             ];
 
             capas.forEach(function(c) {
                 var spanStyle = 'background:' + c.color + ';width:14px;height:14px;display:inline-block;margin-right:5px;';
                 if (c.line) {
                     spanStyle += 'border-bottom:3px solid ' + c.color + ';background:transparent;height:0;vertical-align:middle;position:relative;top:-2px;';
+                } else if (c.fill) {
+                    // Polígono con relleno semitransparente
+                    spanStyle += 'opacity:0.5;border:1px solid ' + c.color + ';border-radius:2px;';
                 } else if (c.dash) {
                     spanStyle += 'border:2px dashed ' + c.color + ';background:transparent;border-radius:0;';
                 } else {
@@ -240,6 +249,9 @@
         function getProv()    { return getBaseLayer('provincia', baseStyles.provincia); }
         function getDist()    { return getBaseLayer('distrito', baseStyles.distrito); }
         function getCarta()   { return getBaseLayer('carta', baseStyles.carta); }
+        function getLaguna()  { return getBaseLayer('lago_laguna', baseStyles.lago_laguna); }
+        function getCuencaT() { return getBaseLayer('cuenca_transfronteriza', baseStyles.cuenca_transfronteriza); }
+        function getUniHidro(){ return getBaseLayer('unidad_hidrografica', baseStyles.unidad_hidrografica); }
 
         // Capas pesadas (lazy) — cargan al primer clic del checkbox
         function getRioPrincipal(cb) {
@@ -427,6 +439,9 @@
             wireCheckbox('chkBaseProv', getProv);
             wireCheckbox('chkBaseDist', getDist);
             wireCheckbox('chkBaseCarta', getCarta);
+            wireCheckbox('chkBaseLaguna', getLaguna);
+            wireCheckbox('chkBaseCuencaT', getCuencaT);
+            wireCheckbox('chkBaseUniHidro', getUniHidro);
             wireCheckbox('chkBaseRioPrin', getRioPrincipal);
             wireCheckbox('chkBaseRio', getRio);
         }, 100);

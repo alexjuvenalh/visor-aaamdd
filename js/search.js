@@ -53,6 +53,9 @@ function buscarPorResolucion() {
     buscarEnCapa('Provincia', data.provincia, ['nombre_provincia', 'codigo_provincia']);
     buscarEnCapa('Distrito', data.distrito, ['nombre_distrito', 'nombre_provincia', 'nombre_departamento']);
     buscarEnCapa('Carta IGN', data.carta, ['carta', 'fila', 'columna', 'zona']);
+    buscarEnCapa('Lagos / Lagunas', data.lago_laguna, ['nombre', 'cod_laguna']);
+    buscarEnCapa('Cuenca Transf.', data.cuenca_transfronteriza, ['nombre', 'cod_cuenca']);
+    buscarEnCapa('Unidad Hidrog.', data.unidad_hidrografica, ['nombre']);
     // Río y Río Principal solo si ya fueron cargados (lazy)
     if (data.rio_principal) buscarEnCapa('Rio Principal', data.rio_principal, ['nombre_rio', 'codigo_rio']);
     if (data.rio) buscarEnCapa('Rio', data.rio, ['nombre_rio', 'codigo_rio']);

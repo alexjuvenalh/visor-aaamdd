@@ -52,7 +52,10 @@ $geojson = @(
     "distrito.json",
     "carta.json",
     "rio_principal.json",
-    "rio.json"
+    "rio.json",
+    "lago_laguna.json",
+    "cuenca_transfronteriza.json",
+    "unidad_hidrografica.json"
 )
 
 $ok = 0

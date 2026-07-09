@@ -90,6 +90,24 @@ const CAPAS = [
         simplify: 0.001,
         mergeBy: ['nombre_rio', 'codigo_rio', 'tipo'],  // 48K segmentos → ~1K rios
         desc: 'Ríos (mergeados por nombre)'
+    },
+    {
+        tabla: 'geo.lago_laguna',
+        archivo: 'lago_laguna.json',
+        simplify: 0.0005,
+        desc: 'Lagos y Lagunas'
+    },
+    {
+        tabla: 'geo.cuenca_transfronteriza',
+        archivo: 'cuenca_transfronteriza.json',
+        simplify: 0.001,
+        desc: 'Cuenca Transfronteriza'
+    },
+    {
+        tabla: 'geo.unidad_hidrografica',
+        archivo: 'unidad_hidrografica.json',
+        simplify: 0.001,
+        desc: 'Unidad Hidrográfica'
     }
 ];
 
