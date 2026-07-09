@@ -305,21 +305,28 @@ html, body {
     text-align: center;
 }
 
-/* Panel Capas Base (topright) — fondo semitransparente */
+/* Panel Capas Base (topright) — semitransparente, scrollable para N capas */
 .capas-base-panel {
     background: rgba(255, 255, 255, 0.75) !important;
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
 .capas-base-panel h4 {
-    margin: 0 0 6px 0;
+    margin: 0 0 4px 0;
     font-size: 13px;
     font-weight: bold;
     text-align: center;
+    position: sticky;
+    top: 0;
+    background: inherit;
+    padding-bottom: 2px;
+    z-index: 1;
 }
 
 .capas-base-panel label {
-    font-size: 12px;
-    line-height: 1.6;
+    font-size: 11px;
+    line-height: 1.5;
 }
 
 /* Íconos RADA en el mapa */
