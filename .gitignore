@@ -4,8 +4,18 @@ api/node_modules/
 # package.json is needed for deployment
 # package-lock.json
 
-# Third-party libraries (use CDN or install via npm)
+# Third-party libraries (now local for offline mode)
 leaflet/
+!leaflet/leaflet.js
+!leaflet/leaflet.css
+!leaflet/images/
+!leaflet/leaflet.markercluster.js
+!leaflet/MarkerCluster.css
+!leaflet/MarkerCluster.Default.css
+!leaflet/jszip.min.js
+!leaflet/shpwrite.js
+!leaflet/proj4.js
+!leaflet/togeojson.js
 leaflet-geoman-develop/
 leaflet-search-master/
 Leaflet.FileLayer-master/

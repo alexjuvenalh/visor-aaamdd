@@ -1,11 +1,13 @@
-var kmlLayer = null;
-
-function sanitize(str) {
-    if (str == null) return '';
-    var div = document.createElement('div');
-    div.textContent = String(str);
-    return div.innerHTML;
-}
+/**
+ * archivos.js — Manejo de archivos subidos (KML, GPX, GeoJSON)
+ * 
+ * Permite al usuario cargar archivos locales y visualizarlos como capa temporal.
+ * 
+ * Depende de: util.js (AppState, sanitize), togeojson (CDN), Leaflet (L)
+ * 
+ * v2: Eliminado sanitize() duplicado (usa util.js).
+ *     kmlLayer → AppState.fileLayer.
+ */
 
 function parsearKMLManual(text) {
     var parser = new DOMParser();
@@ -73,22 +75,22 @@ function parsearKMLManual(text) {
     return { type: 'FeatureCollection', features: features };
 }
 
-function inicializar() {
+function inicializarArchivos() {
     var fileInput = document.getElementById('file-kml');
-    if (!fileInput) { setTimeout(inicializar, 300); return; }
+    if (!fileInput) { setTimeout(inicializarArchivos, 300); return; }
     fileInput.onclick = function(e) { e.target.value = ''; };
     fileInput.onchange = function(e) {
         var file = e.target.files[0];
         if (!file) return;
-        if (!window.map) return;
+        if (!AppState.map) return;
         procesarArchivo(file);
     };
     var btnLimpiar = document.getElementById('btn-limpiar-kml');
     if (btnLimpiar) {
         btnLimpiar.onclick = function() {
-            if (kmlLayer && window.map) {
-                window.map.removeLayer(kmlLayer);
-                kmlLayer = null;
+            if (AppState.fileLayer && AppState.map) {
+                AppState.map.removeLayer(AppState.fileLayer);
+                AppState.fileLayer = null;
                 document.getElementById('file-kml').value = '';
             }
         };
@@ -117,12 +119,18 @@ function procesarArchivo(file) {
                 geojson = toGeoJSON.gpx(doc);
             }
         } else if (ext === 'json' || ext === 'geojson') {
-            geojson = JSON.parse(text);
+            try {
+                geojson = JSON.parse(text);
+            } catch(e) {
+                console.error('Error parseando GeoJSON:', e);
+                alert('El archivo JSON no es válido.');
+                return;
+            }
         }
         if (!geojson || !geojson.features || geojson.features.length === 0) return;
-        var mapa = window.map;
-        if (kmlLayer) mapa.removeLayer(kmlLayer);
-        kmlLayer = L.geoJson(geojson, {
+        var mapa = AppState.map;
+        if (AppState.fileLayer) mapa.removeLayer(AppState.fileLayer);
+        AppState.fileLayer = L.geoJson(geojson, {
             style: { color: '#ff0000', weight: 3 },
             pointToLayer: function(f, latlng) { return L.circleMarker(latlng, { radius: 8, fillColor: '#ff0000', fillOpacity: 1 }); },
             onEachFeature: function(feature, layer) {
@@ -133,11 +141,11 @@ function procesarArchivo(file) {
             }
         }).addTo(mapa);
         document.getElementById('file-kml').value = '';
-        var bounds = kmlLayer.getBounds();
+        var bounds = AppState.fileLayer.getBounds();
         if (bounds.isValid()) mapa.fitBounds(bounds);
     };
     reader.readAsText(file);
 }
 
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inicializar);
-else inicializar();
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inicializarArchivos);
+else inicializarArchivos();

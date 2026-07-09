@@ -1,5 +1,5 @@
 /**
- * Cargador dinámico de datos GeoJSON (optimizado)
+ * cargador-datos.js — Cargador dinámico de datos GeoJSON
  * 
  * Usa fetch() + .json() (JSON.parse nativo, 10-20x más rápido
  * que cargar como <script> con var = {...}).
@@ -11,6 +11,10 @@
  * 
  * Así la app Android NUNCA necesita rebuildear el APK
  * cuando se actualicen los datos — solo subir a GitHub.
+ * 
+ * v3: Popula AppState.data (nuevo estado encapsulado) 
+ *     + mantiene window.* para compatibilidad legacy.
+ *     Eliminado ocupacion_faja (código muerto — sin UI).
  */
 
 var GEOJSON_FILES = [
@@ -34,6 +38,8 @@ function cargarArchivo(file) {
             return r.json();
         })
         .then(function(data) {
+            // Poblar AppState (nuevo) + window (legacy)
+            AppState.data[file.varname] = data;
             window[file.varname] = data;
             console.log('✅ ' + file.name + ' desde GitHub (' + (data.features ? data.features.length : 0) + ' features)');
             return { name: file.name, ok: true };
@@ -46,6 +52,7 @@ function cargarArchivo(file) {
                     return r.json();
                 })
                 .then(function(data) {
+                    AppState.data[file.varname] = data;
                     window[file.varname] = data;
                     console.log('✅ ' + file.name + ' desde local (' + (data.features ? data.features.length : 0) + ' features)');
                     return { name: file.name, ok: true };
@@ -76,18 +83,19 @@ function cargarDatos() {
             var exitos = resultados.filter(function(r) { return r.ok; }).length;
             var fallos = resultados.filter(function(r) { return !r.ok; }).length;
 
-            // Asegurar que rada_por_derecho existe (aunque no tenga datos aún)
-            window.rada_por_derecho = window.rada_por_derecho || { type: 'FeatureCollection', features: [] };
+            // Asegurar que rada_por_derecho existe
+            AppState.data.rada_por_derecho = AppState.data.rada_por_derecho || { type: 'FeatureCollection', features: [] };
+            window.rada_por_derecho = AppState.data.rada_por_derecho;
 
             var t1 = performance.now();
             var tiempo = ((t1 - t0) / 1000).toFixed(1);
 
             console.log('');
             console.log('📊 Resumen de carga (' + tiempo + 's):');
-            if (window.faja_poligono) console.log('   Faja Marginal: ' + window.faja_poligono.features.length + ' polígonos');
-            if (window.faja_hito) console.log('   Hitos Faja: ' + window.faja_hito.features.length + ' puntos');
-            if (window.uso_temporal) console.log('   Uso Temporal: ' + window.uso_temporal.features.length + ' polígonos');
-            if (window.rada_por_fuente) console.log('   RADA Fuente: ' + window.rada_por_fuente.features.length + ' puntos');
+            if (AppState.data.faja_poligono) console.log('   Faja Marginal: ' + AppState.data.faja_poligono.features.length + ' polígonos');
+            if (AppState.data.faja_hito) console.log('   Hitos Faja: ' + AppState.data.faja_hito.features.length + ' puntos');
+            if (AppState.data.uso_temporal) console.log('   Uso Temporal: ' + AppState.data.uso_temporal.features.length + ' polígonos');
+            if (AppState.data.rada_por_fuente) console.log('   RADA Fuente: ' + AppState.data.rada_por_fuente.features.length + ' puntos');
             if (fallos > 0) console.warn('   ⚠️ ' + fallos + ' archivo(s) no se pudieron cargar');
             console.log('');
 

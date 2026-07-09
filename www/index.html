@@ -9,22 +9,24 @@
     <meta name="description" content="Visor GIS de la Autoridad Nacional del Agua - Madre de Dios">
     <title>Visor AAA Madre de Dios</title>
 
+    <!-- Leaflet (local) -->
     <link rel="stylesheet" href="leaflet/leaflet.css">
     <script src="leaflet/leaflet.js"></script>
 
-    <!-- Librerías de clusterización (solo las necesarias) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
-    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://unpkg.com/@mapbox/shp-write@0.4.3/shpwrite.js"></script>
+    <!-- Librerías de clusterización y utilidades (LOCAL — offline-first) -->
+    <link rel="stylesheet" href="leaflet/MarkerCluster.css">
+    <link rel="stylesheet" href="leaflet/MarkerCluster.Default.css">
+    <script src="leaflet/leaflet.markercluster.js"></script>
+    <script src="leaflet/jszip.min.js"></script>
+    <script src="leaflet/shpwrite.js"></script>
+    <script src="leaflet/proj4.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.11.0/proj4.js"></script>
-    <link rel="stylesheet" href="css/estilosmapa.css?v=5"/>
-    <link rel="stylesheet" href="css/celular.css?v=5" media="screen and (min-width: 320px)"/>
-    <link rel="stylesheet" href="css/tablet.css?v=5" media="screen and (min-width: 768px)"/>
-    <link rel="stylesheet" href="css/computadora.css?v=5" media="screen and (min-width: 1200px)"/>
-    <link rel="stylesheet" href="css/estilos.css?v=5"/>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/estilosmapa.css?v=6"/>
+    <link rel="stylesheet" href="css/celular.css?v=6"/>
+    <link rel="stylesheet" href="css/tablet.css?v=6" media="screen and (min-width: 768px)"/>
+    <link rel="stylesheet" href="css/computadora.css?v=6" media="screen and (min-width: 1200px)"/>
+    <link rel="stylesheet" href="css/estilos.css?v=6"/>
 </head>
 
 <body>
@@ -96,17 +98,32 @@
 
         <div id="map"></div>
 
-        <!-- Cargador dinámico de datos (GitHub primero, local como fallback) -->
-        <script src="js/cargar-datos.js?v=2"></script>
+        <!-- === SCRIPTS (orden importa) === -->
+
+        <!-- 1. Utilidades compartidas (AppState, sanitize) — debe cargar PRIMERO -->
+        <script src="js/util.js?v=1"></script>
+
+        <!-- 2. Cargador dinámico de datos (GitHub → local fallback) -->
+        <script src="js/cargar-datos.js?v=3"></script>
 
         </main>
 
-    <script src="https://unpkg.com/togeojson@0.16.0"></script>
+    <!-- 3. Librerías (local — offline-first) -->
+    <script src="leaflet/togeojson.js"></script>
+
+    <!-- 4. Iconos RADA (SVG inline) -->
     <script src="js/iconos-rada.js"></script>
-    <script src="jsmapa/index.js"></script>
-    <!-- Cargar archivos.js después del mapa -->
+
+    <!-- 5. Módulos de funcionalidad -->
+    <script src="js/gps.js?v=1"></script>
+    <script src="js/search.js?v=1"></script>
+
+    <!-- 6. Mapa principal (init, capas, checkboxes, toggle, abrirPDF) -->
+    <script src="jsmapa/index.js?v=1"></script>
+
+    <!-- 7. Funcionalidades complementarias -->
     <script src="js/descargas.js"></script>
-    <script src="js/archivos.js"></script>
+    <script src="js/archivos.js?v=2"></script>
     <script src="js/coordenadas.js"></script>
 </body>
 </html>
