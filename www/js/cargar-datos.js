@@ -1,31 +1,30 @@
 /**
  * cargador-datos.js — Cargador dinámico de datos GeoJSON
  * 
- * Carga en PARALELO con Promise.all().
- * GitHub primero, local como fallback (offline).
+ * FASE 1: 4 capas principales (eager) → dispara el mapa enseguida.
+ * FASE 2: 9 capas base (background) → cargan sin bloquear.
  * 
- * v4: +6 capas base livianas (eager). Río y Río Principal
- *     se cargan lazy al activar su checkbox (jsmapa/index.js).
+ * GitHub primero, local como fallback (offline).
+ * Río Principal y Río → lazy load al activar checkbox (jsmapa/index.js).
  */
 
-var GEOJSON_FILES = [
-    // Capas principales (existentes)
+var PRIMARY_FILES = [
     { name: 'faja_poligono',  varname: 'faja_poligono',    url: 'visor/geojson/faja_poligono.json' },
     { name: 'faja_hito',      varname: 'faja_hito',        url: 'visor/geojson/faja_hito.json' },
     { name: 'uso_temporal',   varname: 'uso_temporal',     url: 'visor/geojson/uso_temporal.json' },
-    { name: 'rada_fuente',    varname: 'rada_por_fuente',  url: 'visor/geojson/rada_fuente.json' },
-    // Capas base livianas (eager — <1 MB c/u)
+    { name: 'rada_fuente',    varname: 'rada_por_fuente',  url: 'visor/geojson/rada_fuente.json' }
+];
+
+var BASE_FILES = [
     { name: 'aaa',            varname: 'aaa',              url: 'visor/geojson/aaa.json' },
     { name: 'ala',            varname: 'ala',              url: 'visor/geojson/ala.json' },
     { name: 'departamento',   varname: 'departamento',     url: 'visor/geojson/departamento.json' },
     { name: 'provincia',      varname: 'provincia',        url: 'visor/geojson/provincia.json' },
     { name: 'distrito',       varname: 'distrito',         url: 'visor/geojson/distrito.json' },
     { name: 'carta',          varname: 'carta',            url: 'visor/geojson/carta.json' },
-    // Capas base nuevas — agua y territorio
-    { name: 'lago_laguna',   varname: 'lago_laguna',     url: 'visor/geojson/lago_laguna.json' },
-    { name: 'cuenca_transf', varname: 'cuenca_transfronteriza', url: 'visor/geojson/cuenca_transfronteriza.json' },
-    { name: 'unidad_hidro',  varname: 'unidad_hidrografica', url: 'visor/geojson/unidad_hidrografica.json' }
-    // rio_principal (2.5 MB) y rio (10.2 MB) → lazy load en jsmapa/index.js
+    { name: 'lago_laguna',    varname: 'lago_laguna',      url: 'visor/geojson/lago_laguna.json' },
+    { name: 'cuenca_transf',  varname: 'cuenca_transfronteriza', url: 'visor/geojson/cuenca_transfronteriza.json' },
+    { name: 'unidad_hidro',   varname: 'unidad_hidrografica', url: 'visor/geojson/unidad_hidrografica.json' }
 ];
 
 var GITHUB_BASE = 'https://raw.githubusercontent.com/alexjuvenalh/visor-aaamdd/master/';
@@ -72,7 +71,8 @@ function cargarDatos() {
 
     var t0 = performance.now();
 
-    return Promise.all(GEOJSON_FILES.map(cargarArchivo))
+    // FASE 1: capas principales → mostrar mapa enseguida
+    Promise.all(PRIMARY_FILES.map(cargarArchivo))
         .then(function(resultados) {
             var exitos = resultados.filter(function(r) { return r.ok; }).length;
             var fallos = resultados.filter(function(r) { return !r.ok; }).length;
@@ -83,19 +83,29 @@ function cargarDatos() {
             var t1 = performance.now();
             var tiempo = ((t1 - t0) / 1000).toFixed(1);
 
-            console.log('');
-            console.log('📊 Resumen de carga (' + tiempo + 's):');
-            GEOJSON_FILES.forEach(function(f) {
+            console.log('📊 Capas principales (' + tiempo + 's):');
+            PRIMARY_FILES.forEach(function(f) {
                 var d = AppState.data[f.varname];
                 if (d && d.features) console.log('   ' + f.name + ': ' + d.features.length);
             });
-            if (fallos > 0) console.warn('   ⚠️ ' + fallos + ' archivo(s) no se pudieron cargar');
-            console.log('   Río Principal + Ríos → carga bajo demanda');
-            console.log('');
 
             if (mapDiv) { mapDiv.style.background = ''; mapDiv.innerHTML = ''; }
 
+            // Disparar el mapa — YA, sin esperar capas base
             window.dispatchEvent(new Event('datos-cargados'));
+
+            // FASE 2: capas base en segundo plano (no bloquean)
+            Promise.all(BASE_FILES.map(cargarArchivo))
+                .then(function(resBase) {
+                    var t2 = performance.now();
+                    console.log('📊 Capas base (' + ((t2 - t1) / 1000).toFixed(1) + 's):');
+                    BASE_FILES.forEach(function(f) {
+                        var d = AppState.data[f.varname];
+                        if (d && d.features) console.log('   ' + f.name + ': ' + d.features.length);
+                    });
+                    console.log('   Río Principal + Ríos → carga bajo demanda');
+                    console.log('✅ Todas las capas listas (' + ((t2 - t0) / 1000).toFixed(1) + 's total)');
+                });
         });
 }
 
