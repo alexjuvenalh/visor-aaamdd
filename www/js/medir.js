@@ -235,7 +235,7 @@
         // Actualizar boton
         var btn = document.getElementById('btn-medir');
         if (btn) {
-            btn.textContent = '📏 Midiendo...';
+            btn.innerHTML = '📏<br>Midiendo...';
             btn.style.background = '#FF9800';
         }
 
@@ -279,7 +279,7 @@
         // Restaurar boton
         var btn = document.getElementById('btn-medir');
         if (btn) {
-            btn.textContent = '📏';
+            btn.innerHTML = '📏<br>Medir';
             btn.style.background = '#2196F3';
         }
     }
