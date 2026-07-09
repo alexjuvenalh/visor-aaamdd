@@ -4,7 +4,11 @@
  * FASE 1: 4 capas principales (eager) → dispara el mapa enseguida.
  * FASE 2: 9 capas base (background) → cargan sin bloquear.
  * 
- * GitHub primero, local como fallback (offline).
+ * Promise.race: local y GitHub compiten — gana el más rápido.
+ *   • Android APK: local gana (archivos bundlereados, instantáneo).
+ *   • Web: GitHub CDN suele ganar (distribuido, más rápido que servidor local).
+ *   • Offline: GitHub falla → local gana.
+ * 
  * Río Principal y Río → lazy load al activar checkbox (jsmapa/index.js).
  */
 
@@ -29,37 +33,36 @@ var BASE_FILES = [
 
 var GITHUB_BASE = 'https://raw.githubusercontent.com/alexjuvenalh/visor-aaamdd/master/';
 
+/**
+ * Carga un archivo: local y GitHub compiten, gana el primero en responder.
+ */
 function cargarArchivo(file) {
-    // LOCAL primero (instantáneo en APK, rápido en web).
-    // GitHub como fallback para updates de datos.
-    return fetch(file.url)
-        .then(function(r) {
+    var localUrl = file.url;
+    var githubUrl = GITHUB_BASE + file.url;
+
+    function fetchJson(url, origen) {
+        return fetch(url).then(function(r) {
             if (!r.ok) throw new Error('HTTP ' + r.status);
-            return r.json();
-        })
-        .then(function(data) {
-            AppState.data[file.varname] = data;
-            window[file.varname] = data;
-            console.log('✅ ' + file.name + ' desde local (' + (data.features ? data.features.length : 0) + ' features)');
-            return { name: file.name, ok: true };
-        })
-        .catch(function() {
-            return fetch(GITHUB_BASE + file.url)
-                .then(function(r) {
-                    if (!r.ok) throw new Error('HTTP ' + r.status);
-                    return r.json();
-                })
-                .then(function(data) {
-                    AppState.data[file.varname] = data;
-                    window[file.varname] = data;
-                    console.log('✅ ' + file.name + ' desde GitHub (' + (data.features ? data.features.length : 0) + ' features)');
-                    return { name: file.name, ok: true };
-                })
-                .catch(function(err) {
-                    console.error('❌ No se pudo cargar ' + file.name, err);
-                    return { name: file.name, ok: false };
-                });
+            return r.json().then(function(data) {
+                return { data: data, origen: origen };
+            });
         });
+    }
+
+    return Promise.race([
+        fetchJson(localUrl, 'local'),
+        fetchJson(githubUrl, 'GitHub')
+    ])
+    .then(function(result) {
+        AppState.data[file.varname] = result.data;
+        window[file.varname] = result.data;
+        console.log('✅ ' + file.name + ' desde ' + result.origen + ' (' + (result.data.features ? result.data.features.length : 0) + ' features)');
+        return { name: file.name, ok: true };
+    })
+    .catch(function(err) {
+        console.error('❌ No se pudo cargar ' + file.name, err);
+        return { name: file.name, ok: false };
+    });
 }
 
 function cargarDatos() {
