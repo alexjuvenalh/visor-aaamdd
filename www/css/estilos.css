@@ -77,3 +77,41 @@
     flex-wrap: wrap;
     align-items: center;
 }
+
+/* === MEDICION DE DISTANCIAS === */
+#medir-box {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.btn-medir {
+    background: #2196F3;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    flex: 1;
+}
+
+.btn-medir:hover {
+    background: #1976D2;
+}
+
+.medir-tooltip {
+    background: rgba(33, 150, 243, 0.9) !important;
+    border: 2px solid #1565C0 !important;
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+}
+
+.medir-tooltip::before {
+    border-top-color: rgba(33, 150, 243, 0.9) !important;
+}

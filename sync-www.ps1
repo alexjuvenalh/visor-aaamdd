@@ -26,6 +26,7 @@ $files = @(
     "js\descargas.js",
     "js\archivos.js",
     "js\coordenadas.js",
+    "js\medir.js",
     "jsmapa\index.js",
     "leaflet\leaflet.js",
     "leaflet\leaflet.css",
