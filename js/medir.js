@@ -13,8 +13,7 @@
     var activo = false;
     var puntos = [];           // [{latlng: L.LatLng, marker: L.CircleMarker}]
     var polyline = null;       // L.Polyline
-    var tooltip = null;        // L.Tooltip (sigue al mouse)
-    var tooltipFijo = null;    // L.Tooltip (fijo en ultimo punto)
+    var tooltipFijo = null;    // L.Tooltip (fijo en ultimo punto, muestra total)
     var tempLine = null;       // linea temporal mouse→ultimo punto
     var mapClickHandler = null;
     var keydownHandler = null; // referencia para cleanup
@@ -139,31 +138,18 @@
         // Cambiar cursor
         map.getContainer().style.cursor = 'crosshair';
 
-        // Tooltip que sigue al mouse — inicializado con posicion valida
-        // para evitar crash de Leaflet al hacer zoom/pan sin latlng seteado
-        tooltip = L.tooltip({
-            sticky: true,
-            className: 'medir-tooltip'
-        })
-        .setLatLng(map.getCenter())
-        .setContent('Clic para iniciar')
-        .addTo(map);
-
         // Handler de clic en el mapa
         mapClickHandler = function(e) {
             agregarPunto(e.latlng);
         };
         map.on('click', mapClickHandler);
 
-        // Handler de mouse move para tooltip y linea temporal
+        // Handler de mouse move: solo linea temporal (sin tooltip flotante
+        // que tape la vista — la distancia se ve en el panel medir-info)
         mousemoveHandler = function(e) {
             if (!activo) return;
             var ultimo = puntos.length > 0 ? puntos[puntos.length-1].latlng : null;
             if (ultimo) {
-                var dist = ultimo.distanceTo(e.latlng);
-                tooltip.setLatLng(e.latlng).setContent(formatDist(dist));
-
-                // Linea temporal
                 if (tempLine) { map.removeLayer(tempLine); }
                 tempLine = L.polyline([ultimo, e.latlng], {
                     color: '#2196F3',
@@ -171,16 +157,37 @@
                     dashArray: '4, 8',
                     opacity: 0.6
                 }).addTo(map);
-            } else {
-                tooltip.setLatLng(e.latlng).setContent('Clic para iniciar');
             }
         };
         map.on('mousemove', mousemoveHandler);
 
-        // Doble clic = terminar (pero mantener visible)
+        // Doble clic = terminar.
+        // El doble clic dispara click+click+dblclick; los 2 clicks agregan
+        // 2 puntos en el mismo lugar. Removemos el duplicado y terminamos.
         dblclickHandler = function(e) {
             if (!activo) return;
             L.DomEvent.stop(e);
+            // Remover el punto duplicado del 2do click
+            if (puntos.length > 0) {
+                var duplicado = puntos.pop();
+                map.removeLayer(duplicado.marker);
+            }
+            // Actualizar polyline sin el duplicado
+            redibujar();
+            // Mover tooltip fijo al ultimo punto real
+            if (puntos.length >= 2) {
+                if (tooltipFijo) { map.removeLayer(tooltipFijo); }
+                var ultimo = puntos[puntos.length-1].latlng;
+                tooltipFijo = L.tooltip({
+                    permanent: true,
+                    direction: 'top',
+                    className: 'medir-tooltip'
+                })
+                .setLatLng(ultimo)
+                .setContent('<b>' + formatDist(calcDistanciaTotal()) + '</b>')
+                .addTo(map);
+            }
+            actualizarInfo();
             desactivar(true);
         };
         map.on('dblclick', dblclickHandler);
@@ -226,8 +233,7 @@
         if (dblclickHandler) { map.off('dblclick', dblclickHandler); dblclickHandler = null; }
         if (keydownHandler) { document.removeEventListener('keydown', keydownHandler); keydownHandler = null; }
 
-        // Quitar tooltip volante y linea temporal
-        if (tooltip) { map.removeLayer(tooltip); tooltip = null; }
+        // Quitar linea temporal
         if (tempLine) { map.removeLayer(tempLine); tempLine = null; }
 
         if (!mantener) {
