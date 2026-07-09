@@ -30,7 +30,9 @@ var BASE_FILES = [
 var GITHUB_BASE = 'https://raw.githubusercontent.com/alexjuvenalh/visor-aaamdd/master/';
 
 function cargarArchivo(file) {
-    return fetch(GITHUB_BASE + file.url)
+    // LOCAL primero (instantáneo en APK, rápido en web).
+    // GitHub como fallback para updates de datos.
+    return fetch(file.url)
         .then(function(r) {
             if (!r.ok) throw new Error('HTTP ' + r.status);
             return r.json();
@@ -38,11 +40,11 @@ function cargarArchivo(file) {
         .then(function(data) {
             AppState.data[file.varname] = data;
             window[file.varname] = data;
-            console.log('✅ ' + file.name + ' desde GitHub (' + (data.features ? data.features.length : 0) + ' features)');
+            console.log('✅ ' + file.name + ' desde local (' + (data.features ? data.features.length : 0) + ' features)');
             return { name: file.name, ok: true };
         })
         .catch(function() {
-            return fetch(file.url)
+            return fetch(GITHUB_BASE + file.url)
                 .then(function(r) {
                     if (!r.ok) throw new Error('HTTP ' + r.status);
                     return r.json();
@@ -50,7 +52,7 @@ function cargarArchivo(file) {
                 .then(function(data) {
                     AppState.data[file.varname] = data;
                     window[file.varname] = data;
-                    console.log('✅ ' + file.name + ' desde local (' + (data.features ? data.features.length : 0) + ' features)');
+                    console.log('✅ ' + file.name + ' desde GitHub (' + (data.features ? data.features.length : 0) + ' features)');
                     return { name: file.name, ok: true };
                 })
                 .catch(function(err) {
