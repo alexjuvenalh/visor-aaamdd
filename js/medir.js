@@ -132,6 +132,10 @@
         if (polyline) { map.removeLayer(polyline); polyline = null; }
         if (tooltipFijo) { map.removeLayer(tooltipFijo); tooltipFijo = null; }
 
+        // Desactivar zoom por doble clic mientras medimos
+        // para que el dblclick siempre termine la medicion
+        map.doubleClickZoom.disable();
+
         // Cambiar cursor
         map.getContainer().style.cursor = 'crosshair';
 
@@ -212,6 +216,9 @@
 
         // Restaurar cursor
         map.getContainer().style.cursor = '';
+
+        // Reactivar zoom por doble clic
+        map.doubleClickZoom.enable();
 
         // Quitar handlers
         if (mapClickHandler) { map.off('click', mapClickHandler); mapClickHandler = null; }
