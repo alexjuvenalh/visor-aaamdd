@@ -307,7 +307,7 @@ html, body {
 
 /* Panel Capas Base (topright) — fondo semitransparente */
 .capas-base-panel {
-    background: rgba(255, 255, 255, 0.85) !important;
+    background: rgba(255, 255, 255, 0.65) !important;
 }
 
 .capas-base-panel h4 {
