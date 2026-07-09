@@ -53,8 +53,8 @@
             ala:            { color: '#FF8C00', weight: 2, fillOpacity: 0 },       // dark orange
             departamento:   { color: '#2E8B57', weight: 2, fillOpacity: 0 },       // sea green
             provincia:      { color: '#8B008B', weight: 1.5, fillOpacity: 0 },     // dark magenta
-            distrito:       { color: '#696969', weight: 1, fillOpacity: 0 },       // dim gray
-            carta:          { color: '#555555', weight: 1, dashArray: '5,5', fillOpacity: 0 }, // dashed dark gray
+            distrito:       { color: '#B8860B', weight: 1, fillOpacity: 0 },       // dark goldenrod
+            carta:          { color: '#A0522D', weight: 1, dashArray: '5,5', fillOpacity: 0 }, // sienna dashed
             rio_principal:  { color: '#1E90FF', weight: 2 },                        // dodger blue
             rio:            { color: '#48D1CC', weight: 1, opacity: 0.7 }           // turquoise
         };
@@ -103,8 +103,8 @@
                 { id: 'chkBaseALA',      label: 'ALA',              color: '#FF8C00' },
                 { id: 'chkBaseDepto',    label: 'Departamento',     color: '#2E8B57' },
                 { id: 'chkBaseProv',     label: 'Provincia',        color: '#8B008B' },
-                { id: 'chkBaseDist',     label: 'Distrito',         color: '#696969' },
-                { id: 'chkBaseCarta',    label: 'Carta IGN',        color: '#555555', dash: true },
+                { id: 'chkBaseDist',     label: 'Distrito',         color: '#B8860B' },
+                { id: 'chkBaseCarta',    label: 'Carta IGN',        color: '#A0522D', dash: true },
                 { id: 'chkBaseRioPrin',  label: 'Río Principal',    color: '#1E90FF', line: true },
                 { id: 'chkBaseRio',      label: 'Ríos',             color: '#48D1CC', line: true }
             ];

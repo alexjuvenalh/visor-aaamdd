@@ -305,6 +305,23 @@ html, body {
     text-align: center;
 }
 
+/* Panel Capas Base (topright) — fondo semitransparente */
+.capas-base-panel {
+    background: rgba(255, 255, 255, 0.85) !important;
+}
+
+.capas-base-panel h4 {
+    margin: 0 0 6px 0;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.capas-base-panel label {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
 /* Íconos RADA en el mapa */
 .rada-icono {
     background: transparent !important;

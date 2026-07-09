@@ -81,57 +81,93 @@ const CAPAS = [
         tabla: 'geo.rio_principal',
         archivo: 'rio_principal.json',
         simplify: 0.0005,
-        desc: 'Ríos principales'
+        mergeBy: ['nombre_rio', 'codigo_rio', 'tipo'],  // mergea segmentos del mismo rio
+        desc: 'Ríos principales (mergeados por nombre)'
     },
     {
         tabla: 'geo.rio',
         archivo: 'rio.json',
-        simplify: 0.001,  // ~111m — reduce drasticamente los 88k km
-        desc: 'Ríos (simplificados)'
+        simplify: 0.001,
+        mergeBy: ['nombre_rio', 'codigo_rio', 'tipo'],  // 48K segmentos → ~1K rios
+        desc: 'Ríos (mergeados por nombre)'
     }
 ];
 
 async function exportarCapa(client, capa) {
-    const { tabla, archivo, simplify, desc } = capa;
+    const { tabla, archivo, simplify, mergeBy, desc } = capa;
     console.log(`\n📤 ${desc} (${tabla})...`);
 
-    // Construir query — excluir columnas geométricas e IDs internos
+    const schema = tabla.split('.')[0];
+    const tname = tabla.split('.')[1];
+
+    // Columnas de propiedades (excluyendo geom e IDs)
     const colsRes = await client.query(`
         SELECT column_name
         FROM information_schema.columns
-        WHERE table_schema = '${tabla.split('.')[0]}'
-          AND table_name = '${tabla.split('.')[1]}'
+        WHERE table_schema = '${schema}'
+          AND table_name = '${tname}'
           AND column_name NOT IN ('geom')
           AND column_name NOT LIKE 'id_%'
           AND column_name NOT IN ('gid', 'ogc_fid')
         ORDER BY ordinal_position
     `);
 
-    const propCols = colsRes.rows.map(r => `"${r.column_name}"`);
+    const propCols = colsRes.rows.map(r => r.column_name);
 
     let geomExpr = 'geom';
     if (simplify > 0) {
         geomExpr = `ST_SimplifyPreserveTopology(geom, ${simplify})`;
     }
 
-    const propSelect = propCols.length > 0
-        ? propCols.map(c => `'${c.replace(/"/g, '')}', ${c}`).join(', ')
-        : '';
+    let sql;
 
-    const sql = `
-        SELECT jsonb_build_object(
-            'type', 'FeatureCollection',
-            'features', jsonb_agg(
-                jsonb_build_object(
-                    'type', 'Feature',
-                    'geometry', ST_AsGeoJSON(${geomExpr}, 6)::jsonb,
-                    'properties', jsonb_build_object(${propSelect})
+    if (mergeBy && mergeBy.length > 0) {
+        // MERGE: agrupar por columnas clave, juntar geometrías con ST_Collect
+        // Subquery para evitar anidar agregados (ST_Collect + jsonb_agg)
+        const groupCols = mergeBy.map(c => `"${c}"`).join(', ');
+        const propSelect = mergeBy.map(c => `'${c}', "${c}"`).join(', ');
+
+        sql = `
+            SELECT jsonb_build_object(
+                'type', 'FeatureCollection',
+                'features', jsonb_agg(
+                    jsonb_build_object(
+                        'type', 'Feature',
+                        'geometry', ST_AsGeoJSON(geom, 6)::jsonb,
+                        'properties', props
+                    )
                 )
-            )
-        ) AS geojson
-        FROM ${tabla}
-        WHERE ${geomExpr} IS NOT NULL
-    `;
+            ) AS geojson
+            FROM (
+                SELECT ${groupCols},
+                       ST_Collect(${geomExpr}) AS geom,
+                       jsonb_build_object(${propSelect}) AS props
+                FROM ${tabla}
+                WHERE ${geomExpr} IS NOT NULL
+                GROUP BY ${groupCols}
+            ) sub
+        `;
+    } else {
+        // Normal: una feature por fila
+        const propSelect = propCols.length > 0
+            ? propCols.map(c => `'${c}', "${c}"`).join(', ')
+            : '';
+
+        sql = `
+            SELECT jsonb_build_object(
+                'type', 'FeatureCollection',
+                'features', jsonb_agg(
+                    jsonb_build_object(
+                        'type', 'Feature',
+                        'geometry', ST_AsGeoJSON(${geomExpr}, 6)::jsonb,
+                        'properties', jsonb_build_object(${propSelect})
+                    )
+                )
+            ) AS geojson
+            FROM ${tabla}
+            WHERE ${geomExpr} IS NOT NULL
+        `;
+    }
 
     const start = Date.now();
     const res = await client.query(sql);
