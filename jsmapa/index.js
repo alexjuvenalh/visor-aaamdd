@@ -68,11 +68,14 @@
         var legend = L.control({ position: 'bottomleft' });
         legend.onAdd = function (m) {
             var div = L.DomUtil.create('div', 'info legend');
-            div.innerHTML += '<h4>Leyenda</h4>';
-            div.innerHTML += '<div><span style="background:#ff0000;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Faja Marginal</div>';
-            div.innerHTML += '<div><span style="background:#ffff00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Hitos Faja</div>';
-            div.innerHTML += '<div><span style="background:#0000ff;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Uso Temporal</div>';
-            div.innerHTML += '<div style="margin-top:6px;border-top:1px solid #ccc;padding-top:4px;font-weight:bold;font-size:12px;">RADA Fuente</div>';
+
+            // === VERSIÓN COMPLETA (desktop) ===
+            var full = L.DomUtil.create('div', 'legend-full');
+            full.innerHTML = '<h4>Leyenda</h4>';
+            full.innerHTML += '<div><span style="background:#ff0000;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Faja Marginal</div>';
+            full.innerHTML += '<div><span style="background:#ffff00;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:50%;"></span> Hitos Faja</div>';
+            full.innerHTML += '<div><span style="background:#0000ff;width:12px;height:12px;display:inline-block;margin-right:5px;border-radius:2px;"></span> Uso Temporal</div>';
+            full.innerHTML += '<div style="margin-top:6px;border-top:1px solid #ccc;padding-top:4px;font-weight:bold;font-size:12px;">RADA Fuente</div>';
 
             var usosRADA = [
                 'ACUÍCOLA', 'MINERO', 'POBLACIONAL', 'OTROS USOS', 'AGRÍCOLA',
@@ -82,12 +85,63 @@
             usosRADA.forEach(function(uso) {
                 var svgMini = iconosRADA[uso] || '';
                 if (svgMini) {
-                    div.innerHTML += '<div style="display:flex;align-items:center;gap:4px;line-height:1.3;">' +
+                    full.innerHTML += '<div style="display:flex;align-items:center;gap:4px;line-height:1.3;">' +
                         '<span style="width:14px;height:14px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;">' + svgMini + '</span>' +
                         '<span style="font-size:11px;">' + uso + '</span>' +
                         '</div>';
                 }
             });
+            div.appendChild(full);
+
+            // === VERSIÓN COMPACTA (móvil) ===
+            var compact = L.DomUtil.create('div', 'legend-compact');
+            compact.innerHTML =
+                '<span class="legend-dot" style="display:flex;align-items:center;gap:3px;">' +
+                  '<span style="background:#ff0000;width:8px;height:8px;display:inline-block;border-radius:2px;flex-shrink:0;"></span>Faja' +
+                '</span>' +
+                '<span class="legend-dot" style="display:flex;align-items:center;gap:3px;">' +
+                  '<span style="background:#ffff00;width:8px;height:8px;display:inline-block;border-radius:50%;flex-shrink:0;"></span>Hitos' +
+                '</span>' +
+                '<span class="legend-dot" style="display:flex;align-items:center;gap:3px;">' +
+                  '<span style="background:#0000ff;width:8px;height:8px;display:inline-block;border-radius:2px;flex-shrink:0;"></span>Uso' +
+                '</span>' +
+                '<button class="btn-leyenda-rada" title="Ver íconos RADA">🛈</button>';
+
+            // Toggle: al tocar ℹ️, mostrar/esconder minileyenda RADA
+            var radaMini = L.DomUtil.create('div', 'rada-mini-leyenda');
+            radaMini.style.cssText = 'display:none;position:absolute;bottom:100%;left:0;margin-bottom:4px;background:white;padding:6px 8px;border-radius:4px;box-shadow:0 0 8px rgba(0,0,0,0.2);font-size:11px;max-height:40vh;overflow-y:auto;z-index:1000;';
+
+            var radaContent = '';
+            usosRADA.forEach(function(uso) {
+                var svgMini = iconosRADA[uso] || '';
+                if (svgMini) {
+                    radaContent += '<div style="display:flex;align-items:center;gap:4px;line-height:1.5;white-space:nowrap;">' +
+                        '<span style="width:14px;height:14px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;">' + svgMini + '</span>' +
+                        '<span>' + uso + '</span></div>';
+                }
+            });
+            radaMini.innerHTML = radaContent;
+
+            var btnRada = compact.querySelector('.btn-leyenda-rada');
+            btnRada.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (radaMini.style.display === 'none') {
+                    radaMini.style.display = 'block';
+                } else {
+                    radaMini.style.display = 'none';
+                }
+            });
+
+            // Cerrar radaMini al tocar fuera
+            L.DomEvent.on(document, 'click', function(e) {
+                if (radaMini.style.display === 'block' && !compact.contains(e.target)) {
+                    radaMini.style.display = 'none';
+                }
+            });
+
+            div.appendChild(compact);
+            div.appendChild(radaMini);
+            L.DomEvent.disableClickPropagation(div);
 
             return div;
         };
@@ -98,8 +152,17 @@
         // ============================================
         var capasBaseControl = L.control({ position: 'topright' });
         capasBaseControl.onAdd = function (m) {
-            var div = L.DomUtil.create('div', 'info legend capas-base-panel');
-            div.innerHTML = '<h4>🗂️ Capas Base</h4>';
+            var div = L.DomUtil.create('div', 'info legend capas-base-panel collapsed');
+
+            // Toggle button (visible solo en móvil)
+            var toggleBtn = L.DomUtil.create('div', 'capas-base-toggle');
+            toggleBtn.innerHTML = '🗂️';
+            toggleBtn.title = 'Capas Base';
+            div.appendChild(toggleBtn);
+
+            // Contenido del panel
+            var content = L.DomUtil.create('div', 'capas-base-content');
+            content.innerHTML = '<h4>🗂️ Capas Base</h4>';
 
             var capas = [
                 { id: 'chkBaseAAA',      label: 'AAA',              color: '#800000' },
@@ -120,18 +183,47 @@
                 if (c.line) {
                     spanStyle += 'border-bottom:3px solid ' + c.color + ';background:transparent;height:0;vertical-align:middle;position:relative;top:-2px;';
                 } else if (c.fill) {
-                    // Polígono con relleno semitransparente
                     spanStyle += 'opacity:0.5;border:1px solid ' + c.color + ';border-radius:2px;';
                 } else if (c.dash) {
                     spanStyle += 'border:2px dashed ' + c.color + ';background:transparent;border-radius:0;';
                 } else {
                     spanStyle += 'border:2px solid ' + c.color + ';background:transparent;border-radius:2px;';
                 }
-                div.innerHTML += '<div style="margin-bottom:2px;">' +
+                content.innerHTML += '<div style="margin-bottom:2px;">' +
                     '<label style="cursor:pointer;font-size:12px;display:flex;align-items:center;">' +
                     '<input type="checkbox" id="' + c.id + '" style="margin-right:4px;">' +
                     '<span style="' + spanStyle + '"></span>' + c.label +
                     '</label></div>';
+            });
+            div.appendChild(content);
+
+            // Toggle lógica
+            toggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                div.classList.toggle('collapsed');
+                toggleBtn.innerHTML = div.classList.contains('collapsed') ? '🗂️' : '✕';
+                toggleBtn.title = div.classList.contains('collapsed') ? 'Capas Base' : 'Cerrar';
+            });
+
+            // Cerrar al tocar el mapa (solo en móvil)
+            map.on('click', function() {
+                if (window.innerWidth <= 480 && !div.classList.contains('collapsed')) {
+                    div.classList.add('collapsed');
+                    toggleBtn.innerHTML = '🗂️';
+                    toggleBtn.title = 'Capas Base';
+                }
+            });
+
+            // Auto-colapsar al marcar un checkbox (solo en móvil)
+            var checkboxes = content.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(cb) {
+                cb.addEventListener('change', function() {
+                    if (window.innerWidth <= 480) {
+                        div.classList.add('collapsed');
+                        toggleBtn.innerHTML = '🗂️';
+                        toggleBtn.title = 'Capas Base';
+                    }
+                });
             });
 
             // Prevent map click/drag when interacting with the panel

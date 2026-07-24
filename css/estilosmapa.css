@@ -311,6 +311,13 @@ html, body {
     max-height: 70vh;
     overflow-y: auto;
 }
+/* Desktop: siempre mostrar contenido, ocultar toggle */
+.capas-base-panel .capas-base-content {
+    display: block;
+}
+.capas-base-panel .capas-base-toggle {
+    display: none;
+}
 
 .capas-base-panel h4 {
     margin: 0 0 4px 0;
@@ -406,4 +413,16 @@ html, body {
     background: white;
     color: #333;
     font-size: 12px;
+}
+
+/* ============================================
+   LEYENDA DUAL (desktop: full, mobile: compact)
+   ============================================ */
+.legend-compact {
+    display: none;
+}
+
+/* RADA mini-leyenda (popup al tocar ℹ️ en móvil) */
+.rada-mini-leyenda {
+    display: none;
 }

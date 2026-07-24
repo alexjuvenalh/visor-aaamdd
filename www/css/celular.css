@@ -441,26 +441,121 @@
         z-index: 1;
     }
 
-    /* === INDICADOR GPS (creado por JS) === */
-    .gps-precision-indicator {
+    /* === PANEL CAPAS BASE COLAPSABLE (móvil) === */
+
+    /* Botón toggle: visible solo en móvil, estilo Leaflet control */
+    .capas-base-panel .capas-base-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+        cursor: pointer;
         background: white;
-        padding: 10px;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        font-size: 13px;
-        font-family: sans-serif;
-        line-height: 1.4;
+        border-radius: 4px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+        flex-shrink: 0;
+    }
+    .capas-base-toggle:active {
+        background: #eee;
     }
 
-    /* === LEYENDA EN MÓVIL (más compacta, scrollable) === */
-    .info.legend {
-        max-width: 170px;
-        font-size: 12px;
-        padding: 8px 10px;
-        max-height: 50vh;
-        overflow-y: auto;
+    /* Panel colapsado: solo el botón, sin contenido ni título */
+    .capas-base-panel.collapsed {
+        padding: 4px;
+        max-height: none;
+        overflow: hidden;
+        background: transparent;
     }
-    .info.legend h4 {
-        font-size: 13px;
+    .capas-base-panel.collapsed .capas-base-content {
+        display: none;
+    }
+
+    /* Panel expandido: contenido completo con scroll */
+    .capas-base-panel:not(.collapsed) {
+        max-height: 50vh;
+        padding: 8px 10px;
+        overflow-y: auto;
+        position: relative;
+    }
+    .capas-base-panel:not(.collapsed) .capas-base-toggle {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        font-size: 16px;
+        width: 36px;
+        height: 36px;
+        z-index: 2;
+    }
+
+    /* Arranca colapsado en móvil */
+    .capas-base-panel {
+        max-height: none;
+        overflow: hidden;
+        padding: 4px;
+    }
+    .capas-base-panel .capas-base-content {
+        display: none;
+    }
+    /* JS remueve .collapsed al tocar toggle, entonces .capas-base-panel sin .collapsed = expandido */
+    .capas-base-panel:not(.collapsed) .capas-base-content {
+        display: block;
+    }
+
+    /* === LEYENDA EN MÓVIL (ultra-compacta: 1 línea de colores + ℹ️) === */
+    .legend-full { display: none; }
+    .legend-compact {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    .info.legend {
+        max-width: none;
+        max-height: none;
+        padding: 5px 8px;
+        font-size: 11px;
+        overflow: visible;
+        position: relative;
+    }
+
+    /* Botón ℹ️ para ver íconos RADA */
+    .btn-leyenda-rada {
+        font-size: 11px;
+        padding: 2px 5px;
+        border: 1px solid #bbb;
+        border-radius: 3px;
+        background: #f5f5f5;
+        cursor: pointer;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+        min-height: 26px;
+        min-width: 26px;
+        line-height: 1;
+    }
+    .btn-leyenda-rada:active {
+        background: #e0e0e0;
+    }
+
+    /* Mini-leyenda RADA flotante */
+    .rada-mini-leyenda {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        margin-bottom: 4px;
+        background: white;
+        padding: 6px 8px;
+        border-radius: 4px;
+        box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        font-size: 11px;
+        max-height: 40vh;
+        overflow-y: auto;
+        z-index: 1000;
     }
 }
