@@ -4,10 +4,10 @@
  * FASE 1: 4 capas principales (eager) → dispara el mapa enseguida.
  * FASE 2: 9 capas base (background) → cargan sin bloquear.
  * 
- * Promise.race: local y GitHub compiten — gana el más rápido.
- *   • Android APK: local gana (archivos bundlereados, instantáneo).
- *   • Web: GitHub CDN suele ganar (distribuido, más rápido que servidor local).
- *   • Offline: GitHub falla → local gana.
+ * GitHub primero (timeout 3s), local como fallback.
+ *   • Con internet: GitHub responde → datos frescos sin recompilar APK.
+ *   • Sin internet: timeout 3s → carga datos del APK (offline).
+ *   • Web: GitHub CDN responde rápido (distribuido).
  * 
  * Río Principal y Río → lazy load al activar checkbox (jsmapa/index.js).
  */
@@ -34,7 +34,7 @@ var BASE_FILES = [
 var GITHUB_BASE = 'https://raw.githubusercontent.com/alexjuvenalh/visor-aaamdd/master/';
 
 /**
- * Carga un archivo: local y GitHub compiten, gana el primero en responder.
+ * Carga un archivo: GitHub primero (timeout 3s), local como fallback.
  */
 function cargarArchivo(file) {
     var localUrl = file.url;
@@ -49,10 +49,24 @@ function cargarArchivo(file) {
         });
     }
 
-    return Promise.race([
-        fetchJson(localUrl, 'local'),
-        fetchJson(githubUrl, 'GitHub')
-    ])
+    // GitHub primero con timeout de 3s, local como fallback
+    var githubWithTimeout = new Promise(function(resolve, reject) {
+        var timeout = setTimeout(function() {
+            reject(new Error('timeout'));
+        }, 3000);
+        
+        fetchJson(githubUrl, 'GitHub').then(function(result) {
+            clearTimeout(timeout);
+            resolve(result);
+        }).catch(function(err) {
+            clearTimeout(timeout);
+            reject(err);
+        });
+    });
+
+    return githubWithTimeout.catch(function() {
+        return fetchJson(localUrl, 'local');
+    })
     .then(function(result) {
         AppState.data[file.varname] = result.data;
         window[file.varname] = result.data;
