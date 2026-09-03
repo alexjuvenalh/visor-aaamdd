@@ -35,6 +35,7 @@
         var map = L.map('map', {
             center: [-12.5933100, -69.1891300],
             zoom: 8,
+            maxZoom: 20
         }).addLayer(osm);
 
         AppState.map = map;
@@ -61,6 +62,180 @@
             cuenca_transfronteriza: { color: '#B22222', weight: 2, fillOpacity: 0.1, dashArray: '8,4' }, // firebrick
             unidad_hidrografica:    { color: '#6B8E23', weight: 2, fillOpacity: 0.15 }  // olive drab
         };
+
+        // ============================================
+        // MODO OFFLINE — FALLBACK VECTORIAL DEL MAPA BASE
+        // ============================================
+        // El mapa base (Google satélite) se sirve desde internet. Sin conexión,
+        // se reemplaza por capas vectoriales locales (departamento, cuenca, ríos)
+        // sobre fondo neutro. Instancias propias: nunca tocan las capas de los
+        // checkboxes (AppState.layers.base_*).
+
+        var offlineState = {
+            active: false,
+            tileErrors: 0,
+            layers: {},   // { key: L.GeoJSON } — instancias propias del fallback
+            badge: null,
+            retryTimer: null
+        };
+
+        var OFFLINE_RETRY_MS = 30000;
+
+        // Panes dedicados: el basemap offline queda SIEMPRE debajo de las capas
+        // del usuario (overlayPane z=400) y en orden fijo: tierra < agua < ríos < límites.
+        var OFFLINE_PANES = {
+            offlineLand:    351,
+            offlineWater:   352,
+            offlineRivers:  353,
+            offlineBounds:  354
+        };
+
+        var OFFLINE_BASE = [
+            { key: 'departamento', url: 'visor/geojson/departamento.json', pane: 'offlineLand',
+              style: { color: '#9C8F6E', weight: 1.5, fillColor: '#EAE2CC', fillOpacity: 0.9 } },
+            { key: 'provincia', url: 'visor/geojson/provincia.json', pane: 'offlineBounds',
+              style: { color: '#C8BFA6', weight: 1, fill: false } },
+            { key: 'lago_laguna', url: 'visor/geojson/lago_laguna.json', pane: 'offlineWater',
+              style: { color: '#7FAED4', weight: 1, fillColor: '#A9C9E6', fillOpacity: 0.9 } },
+            { key: 'rio', url: 'visor/geojson/rio.json', pane: 'offlineRivers',
+              style: { color: '#6FA8D6', weight: 1.2, opacity: 0.85 } },
+            { key: 'rio_principal', url: 'visor/geojson/rio_principal.json', pane: 'offlineRivers',
+              style: { color: '#3E8BC4', weight: 2.5, opacity: 0.9 } }
+        ];
+
+        function ensureOfflinePanes() {
+            for (var name in OFFLINE_PANES) {
+                if (!map.getPane(name)) {
+                    var pane = map.createPane(name);
+                    pane.style.zIndex = OFFLINE_PANES[name];
+                    pane.style.pointerEvents = 'none';
+                }
+            }
+        }
+
+        function isOnline() {
+            return navigator.onLine !== false;
+        }
+
+        function addOfflineBadge() {
+            if (offlineState.badge) return;
+            var Badge = L.Control.extend({
+                options: { position: 'bottomright' },
+                onAdd: function() {
+                    var div = L.DomUtil.create('div', 'offline-badge');
+                    div.innerHTML = '📡 Modo offline — mapa base no disponible';
+                    div.style.cssText = 'background:rgba(44,62,80,0.9);color:#fff;padding:5px 10px;border-radius:4px;font-size:11px;font-family:sans-serif;box-shadow:0 1px 5px rgba(0,0,0,0.3);pointer-events:none;white-space:nowrap;';
+                    return div;
+                }
+            });
+            offlineState.badge = new Badge().addTo(map);
+        }
+
+        function removeOfflineBadge() {
+            if (offlineState.badge) {
+                offlineState.badge.remove();
+                offlineState.badge = null;
+            }
+        }
+
+        // Crea (si no existe) y agrega al mapa una capa de contexto del fallback
+        function addOfflineContextLayer(item) {
+            var data = AppState.data[item.key];
+            if (!data) return false;
+            if (!offlineState.layers[item.key]) {
+                offlineState.layers[item.key] = L.geoJson(data, {
+                    pane: item.pane,
+                    interactive: false,
+                    style: item.style
+                });
+            }
+            var layer = offlineState.layers[item.key];
+            if (!map.hasLayer(layer)) layer.addTo(map);
+            return true;
+        }
+
+        function activateOfflineBase() {
+            if (offlineState.active) return;
+            offlineState.active = true;
+            offlineState.tileErrors = 0;
+            if (map.hasLayer(osm)) map.removeLayer(osm);
+            map.getContainer().style.background = '#EDE7D6';
+            ensureOfflinePanes();
+            OFFLINE_BASE.forEach(function(item) {
+                if (AppState.data[item.key]) {
+                    addOfflineContextLayer(item);
+                } else {
+                    // Capa aún no cargada: lazy load local. Comparte el cache de
+                    // datos con los checkboxes, pero crea su propia capa.
+                    // quiet=true: sin alert si falla estando offline.
+                    lazyLoadGeoJSON(item.url, item.key, function() {
+                        if (offlineState.active) addOfflineContextLayer(item);
+                    }, true);
+                }
+            });
+            addOfflineBadge();
+            // Si el navegador sigue reportando conexión, el fallback se disparó por
+            // errores de tiles: programar reintentos de recuperación automática.
+            if (isOnline()) scheduleRecoveryRetry();
+            console.log('📡 Modo offline: mapa base satélite reemplazado por capas vectoriales locales');
+        }
+
+        function activateOnlineBase() {
+            if (!offlineState.active) return;
+            offlineState.active = false;
+            offlineState.tileErrors = 0;
+            stopRecoveryRetry();
+            OFFLINE_BASE.forEach(function(item) {
+                var layer = offlineState.layers[item.key];
+                if (layer && map.hasLayer(layer)) map.removeLayer(layer);
+            });
+            map.getContainer().style.background = '';
+            if (!map.hasLayer(osm)) map.addLayer(osm);
+            removeOfflineBadge();
+            console.log('🌐 Conexión restaurada: mapa base satélite reactivado');
+        }
+
+        // Recuperación: si el fallback se activó por errores de tiles mientras el
+        // navegador sigue reportando conexión, reintentar periódicamente montando
+        // los tiles (ocultos bajo el fallback). tileload confirma la reconexión;
+        // tileerror los desmonta y seguimos en fallback hasta el próximo intento.
+        function stopRecoveryRetry() {
+            if (offlineState.retryTimer) {
+                clearInterval(offlineState.retryTimer);
+                offlineState.retryTimer = null;
+            }
+        }
+
+        function scheduleRecoveryRetry() {
+            stopRecoveryRetry();
+            offlineState.retryTimer = setInterval(function() {
+                if (!offlineState.active || !isOnline()) return;
+                if (!map.hasLayer(osm)) map.addLayer(osm);
+            }, OFFLINE_RETRY_MS);
+        }
+
+        // Detección: eventos del navegador + errores de tiles de Google
+        osm.on('tileerror', function() {
+            if (offlineState.active) {
+                // Error durante un reintento de recuperación: desmontar y esperar el próximo
+                if (map.hasLayer(osm)) map.removeLayer(osm);
+                return;
+            }
+            offlineState.tileErrors++;
+            if (offlineState.tileErrors >= 3) activateOfflineBase();
+        });
+        osm.on('tileload', function() {
+            offlineState.tileErrors = 0;
+            if (offlineState.active && isOnline()) {
+                // Los tiles volvieron: restaurar el satélite definitivamente
+                activateOnlineBase();
+            }
+        });
+        window.addEventListener('online', activateOnlineBase);
+        window.addEventListener('offline', activateOfflineBase);
+
+        // Estado inicial
+        if (!isOnline()) activateOfflineBase();
 
         // ============================================
         // LEYENDA (bottomleft)
@@ -295,7 +470,8 @@
         // ============================================
 
         // Helper: carga un GeoJSON bajo demanda (para capas pesadas)
-        function lazyLoadGeoJSON(url, key, callback) {
+        // quiet=true: no muestra alert si falla (usado por el fallback offline)
+        function lazyLoadGeoJSON(url, key, callback, quiet) {
             if (AppState.data[key]) {
                 callback(AppState.data[key]);
                 return;
@@ -311,7 +487,7 @@
                 })
                 .catch(function(err) {
                     console.error('❌ Error cargando ' + key, err);
-                    alert('No se pudo cargar la capa ' + key);
+                    if (!quiet) alert('No se pudo cargar la capa ' + key);
                 });
         }
 

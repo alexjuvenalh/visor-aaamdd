@@ -49,3 +49,5 @@ android/app/*.keystore
 
 # Keystore properties (contains passwords)
 android/keystore.properties
+# Local Pi runtime state
+.atl/
