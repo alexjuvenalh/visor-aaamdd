@@ -16,7 +16,7 @@ Update RADA map data from the refreshed SHP using the clean path only: SHP -> `g
 - [x] Import the SHP using `scripts/migrar-rada.js`, which targets `geo.rada`.
 - [x] Regenerate visor GeoJSON.
 - [x] Verify the working tree and confirm only expected RADA outputs changed.
-- [ ] Report results and pending commit/push decision.
+- [x] Report results and commit/push outcome.
 
 ## Evidence
 - `geo.rada` backup: `../Sisgeoalfa/backups/respaldo-geo-rada-20261012-183418.dump` (272 KB).
@@ -25,3 +25,5 @@ Update RADA map data from the refreshed SHP using the clean path only: SHP -> `g
 - Forbidden table counts unchanged: `geo.resolucion=4495`, `geo.derecho=2725`, `geo.punto_derecho=4618`.
 - GeoJSON regenerated with `VISOR_GEOJSON_DIR` pointed at the current `Visor` root; `rada_fuente.json` has 2831 features in both `visor/geojson/` and `www/visor/geojson/`.
 - Working tree after cleanup: only `visor/geojson/rada_fuente.json`, `www/visor/geojson/rada_fuente.json`, and this ODD task file are changed/untracked.
+- Work-unit commit pushed: `052f4415b643c02b1d9c9210d27dfa6d530997e2` (`chore(geojson): update rada fuente from shp`).
+- Native review inspect attempted after push; unavailable because package-local Gentle AI binary is missing (`native-status-package-binary-missing`), so no lineage was created.
